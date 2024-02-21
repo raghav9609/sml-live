@@ -50,17 +50,13 @@
             url: url,
             data: "query_id="+query_id+"&cust_iddd="+cust_iddd,
             success: function(response) {
-                if(offers_level_type == 1){
-                    $(".id01").html(response);
-                    lead_popup();
-                }else if(journey_type == 1){
-                    $("#new_offers_journey").html(response);
-                }
-                
+                $("#new_offers_journey").html(response);
+                verticalToggle('step1');
             }
         });
         //Changes - GoldLoanApi - Akash - Ends
     }
+
     function cibil_summary(cibil,destId){
         $.ajax({      
 	        method:'POST',
