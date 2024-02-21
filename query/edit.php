@@ -412,10 +412,9 @@ if ($exe_form['id'] == '' || $exe_form['id'] == 0) {
                                     input: "tel",
                                     showCancelButton: true,
                                     confirmButtonText: "Submit",
-                                    showLoaderOnConfirm: true,
+                                    showLoaderOnConfirm: false,
                                 }).then((result) => {
                                     if (result.isConfirmed) {
-                                        alert(result.value);
                                         $.ajax({
                                             type: "POST",
                                             dataType: "text",
@@ -427,16 +426,10 @@ if ($exe_form['id'] == '' || $exe_form['id'] == 0) {
                                                 var obj = jQuery.parseJSON(data);
                                             }
                                             });
-                                        Swal.fire({
-                                        title: `${result.value.login}'s avatar`,
-                                        imageUrl: result.value.avatar_url
-                                        });
-                                }
+                                    }
                                 });
                             }
-                           
-                            alert(data);
-                            //window.location.href=headURL+'/app/edit.php?app_id='+$("#app_id").val();
+                            window.location.href=headURL+'/query/edit.php?id='+query_id;
                         }
                     });
                 }
