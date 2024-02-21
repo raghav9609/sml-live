@@ -22,7 +22,7 @@ if ($recordcount > 0) {
         $record++;
         $disablcls = '';
         if(in_array($exe_form['id'],$createdApplications)){
-            $disablcls = 'disabled';
+            $disablcls = 'checked disabled';
         }
         $data_bnk[] = '<input type ="checkbox" style="position: unset !important;" class="check_bank" name = "check_bank[]" id = "check_bank_'.$exe_form['id'].'" value ="'.$exe_form['id'].'" '.$disablcls.'>'.$exe_form['value'];
     }
