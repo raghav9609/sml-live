@@ -278,7 +278,7 @@ if($user_role == 4){
                         $qry .= " AND cust.email_id = '" . $email_search . "' ";
                     }
 
-                    $qry .= " AND qry.follow_given_by = 2 order by qry.id desc limit " . $offset . "," . $max_offset;
+                    $qry .= " AND qry.follow_given_by = 1 order by qry.id desc limit " . $offset . "," . $max_offset;
 
                     ?>
                     <fieldset>
