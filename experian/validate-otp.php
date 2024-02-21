@@ -17,7 +17,7 @@ if(in_array($type,array(1,2)) && $query_id > 0){
         $apitype = 'CUSTOM';
     }
     $url_otp_gen = "https://ecvuat.experian.in/ECV-P2/content/validateMobileOTP.action";
-   echo $content_otp_gen = 'stgOneHitId='.$jsonDecodeResp['stgOneHitId'].'&stgTwoHitId='.$jsonDecodeResp['stgTwoHitId'].'&mobileNo='.$result['phone_no'].'&type='.$apitype.'&otp='.$otp;
+   echo $content_otp_gen = 'stgOneHitId='.stage_one_id.'&stgTwoHitId='.$stage_two_id.'&mobileNo='.$result['phone_no'].'&type='.$apitype.'&otp='.$otp;
     $response_otpgeneration = curl_helper($url_otp_gen,$header,$content_otp_gen);
     $resp_otp_gen  = json_decode($response_otpgeneration,true);
     if($resp_otp_gen['showHtmlReportForCreditReport'] != "" && $resp_otp_gen['showHtmlReportForCreditReport'] != "null"  && $resp_otp_gen['showHtmlReportForCreditReport'] != null){
