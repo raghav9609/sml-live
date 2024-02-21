@@ -6,7 +6,7 @@
         echo "Connected";
     }
 
-    $query = "CREATE TRIGGER `Data Split` AFTER INSERT ON `crm_raw_data`
+    echo $query = "CREATE TRIGGER `Data Split` AFTER INSERT ON `crm_raw_data`
     FOR EACH ROW BEGIN
    DECLARE get_cust_id bigint(20);
    DECLARE get_last_raw_data_id bigint(20);
