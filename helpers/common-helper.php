@@ -203,7 +203,6 @@ function special_encryption($sData)
 if (!function_exists('curl_helper')) {
     function curl_helper($url, $header = array('content-type:application/json'), $content = '')
     {
-        echo "<br><br>Hello sumit    ".$url;
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_POST, true);
         curl_setopt($curl, CURLOPT_POSTFIELDS, $content);
@@ -218,8 +217,14 @@ if (!function_exists('curl_helper')) {
         $response = curl_exec($curl);
         $error = curl_error($curl);
         $status = curl_getinfo($curl);
+        echo "Resp<br><br>";
+        print_r($response);
+        echo "Error<br><br>";
+        print_r($error);
+        echo "Status<br><br>";
+        print_r($status);
         curl_close($curl);
-        return $response." ".$error." ".$status;
+        return $response;
     }
 }
 if (!function_exists('curl_get_helper')) {
