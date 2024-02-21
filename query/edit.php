@@ -200,7 +200,8 @@ if ($exe_form['id'] == '' || $exe_form['id'] == 0) {
             </div>
             <script src="../assets/js/easyResponsiveTabs.js" type="text/javascript"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
+            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.5/dist/sweetalert2.all.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.5/dist/sweetalert2.min.css" rel="stylesheet">                   
             <script type="text/javascript">
                 $(document).ready(function () {
                     $('#horizontal_details_tab').easyResponsiveTabs({
@@ -412,28 +413,34 @@ if ($exe_form['id'] == '' || $exe_form['id'] == 0) {
                                     input: "text",
                                     showCancelButton: true,
                                     confirmButtonText: "Submit",
-                                    showLoaderOnConfirm: true
-                                }).then((result) => {
-                                if (result.isConfirmed) {
-                                    alert(result.value);
-                                    $.ajax({
-                                        type: "POST",
-                                        dataType: "text",
-                                        data: "type="+type+"&query_id="+query_id+"&otp="+result.value,
-                                        cache: false,
-                                        beforeSend: function () {
-                                            $("#shrt_url_"+type).attr('value', 'Processing...');
-                                            $("#shrt_url_"+type).prop('disabled', true);
-                                        }, 
-                                        url: "<?php echo $head_url;?>/experian/validate-otp.php",
-                                        success: function (data) {
-                                            var obj = jQuery.parseJSON(data);
+                                    showLoaderOnConfirm: true,
+                                    preConfirm: async (login) => {
+                                        
+                                        try{
+                                            alert(result.value.login);
+                                            $.ajax({
+                                            type: "POST",
+                                            dataType: "text",
+                                            data: "type="+type+"&query_id="+query_id+"&otp="+result.value.login,
+                                            cache: false,
+                                            url: "<?php echo $head_url;?>/experian/validate-otp.php",
+                                            success: function (data) {
+                                                alert(data);
+                                                var obj = jQuery.parseJSON(data);
+                                            }
+                                            });
+                                        } catch (error) {
+                                            Swal.showValidationMessage(`Request failed: ${error}`);
                                         }
-                                    });
-                                    Swal.fire({
-                                    title: `${result.value.login}'s avatar`,
-                                    imageUrl: result.value.avatar_url
-                                    });
+                                    },
+                                    allowOutsideClick: () => !Swal.isLoading()
+                                }).then((result) => {
+                                    if (result.isConfirmed) {
+                                        alert(result.value);
+                                        Swal.fire({
+                                        title: `${result.value.login}'s avatar`,
+                                        imageUrl: result.value.avatar_url
+                                        });
                                 }
                                 });
                             }
