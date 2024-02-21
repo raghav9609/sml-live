@@ -231,11 +231,11 @@ if (!function_exists('curl_get_helper')) {
         curl_setopt($curl, CURLOPT_CONNECTTIMEOUT, 60);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, TRUE);
         curl_setopt($curl, CURLOPT_HTTPHEADER, $header);
-        echo $response = curl_exec($curl);
-        echo $error = curl_error($curl);
-        echo $status = curl_getinfo($curl);
+        $response = curl_exec($curl);
+        $error = curl_error($curl);
+        $status = curl_getinfo($curl);
         curl_close($curl);
-        return $response;
+        return $status;
     }
 }
 
