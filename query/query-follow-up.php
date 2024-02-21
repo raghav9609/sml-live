@@ -1,6 +1,9 @@
 <?php
 $query_id = $id;
 ?>
+ <script>
+    var headURL = "<?php echo $head_url; ?>";
+</script>
 <script src="<?php echo $head_url; ?>/assets/js/query-follow-up.js?version=1.84"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 <link rel="stylesheet" type="text/css" href="<?php echo $head_url; ?>/assets/css/style.css"/>
