@@ -1,16 +1,14 @@
 <?php
-echo "sdafsadf";
-exit
-require_once(dirname(__FILE__) . '/../../../config/config.php');
+// require_once(dirname(__FILE__) . '/../../../config/config.php');
 require_once(dirname(__FILE__) . '/../include/constant.php');    
 
-;
+
 class DBController
 {
-        private $host = $confighost;
-        private $user = $configuser;
-        private $password = $configpassword;
-        private $database = $configdatabase;
+        private $host = "digitalpldbcrm.c1e80z56vnnv.ap-south-1.rds.amazonaws.com";
+        private $user = "admin";
+        private $password = "bd339354e50a4544b157474ac3134f0b";
+        private $database = "crmsml";
         private $connection = "";
 
         function __construct()
