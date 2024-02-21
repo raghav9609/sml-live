@@ -51,6 +51,6 @@ require_once(dirname(__FILE__) . '/include/constant.php');
 			var head_url = "<?php echo $head_url; ?>";
 		</script>
         <script src="<?php echo $head_url; ?>/assets/js/jquery-1.10.2.js"></script>
-        <script src="<?php echo $head_url; ?>/assets/js/login.js?v=1"></script>
+        <script src="<?php echo $head_url; ?>/assets/js/login.js?v=2"></script>
     </body>
 </html>
