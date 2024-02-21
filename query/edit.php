@@ -86,11 +86,11 @@ if ($exe_form['id'] == '' || $exe_form['id'] == 0) {
     }
     $pan_card = $result_cust_data['pan_card'];
     $city_id = $result_cust_data['city_id'];
-    $city_name = '';
-    if($city_id > 0){
-        $getcityId = get_name("city_id", $city_id);
-        $city_name = getcityId["city_name"];
-    }
+    // $city_name = '';
+    // if($city_id > 0){
+    //     $getcityId = get_name("city_id", $city_id);
+    //     $city_name = getcityId["city_name"];
+    // }
     $alt_phone = $result_cust_data['alt_phone'];
     $account_no = $result_cust_data['account_no'];
     $office_landline = $result_cust_data['ofc_contact'];
