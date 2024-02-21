@@ -320,7 +320,7 @@
                             </div>
                             <div class="form-group col-xl-2 col-lg-4 col-md-6 bt_case">
                                 <span class="fa-icon fa-bank"></span>
-                                <?php echo get_dropdown(13,'exs_bank_id',$exstn_bank,'class="bt_case"'); ?>
+                                <?php echo get_dropdown(2,'exs_bank_id',$exstn_bank,'class="bt_case"'); ?>
                                 <label for="exs_bank_id" class="label-tag">Existing Bank</label>
                             </div>
                             <div class="form-group col-xl-2 col-lg-4 col-md-6 bt_case">
