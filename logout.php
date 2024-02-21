@@ -14,8 +14,7 @@
         $db_handle->insertRows($ins_qry);
     }
     session_destroy();
-    header("Location: http://52.66.203.12");
-    header("location:".$head_url);
+
     echo '<script>window.location.href = "'.$head_url.'";</script>';
     exit();
 ?>
