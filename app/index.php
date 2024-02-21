@@ -372,7 +372,9 @@ $qry_execute = $qry_ex." limit ".$offset.",".$max_offset;
 
 <input class="cursor" type="submit" name="searchsubmit" value="Filter">
 <input class="cursor" type="button" onclick="resetform()" value="Clear">
+<?php if($user_role ==1 ){ ?>
 <a href="<?php echo $head_url; ?>/report/download-app.php?page=1&fetchdata=<?php echo base64_encode($downloadreportapp);?>" target="_blank"><input class="cursor" type="button" value="Download"></a>
+<?php } ?>
 </td></tr></table>
 </form>
 </fieldset>
