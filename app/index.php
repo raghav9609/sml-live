@@ -409,6 +409,20 @@ if($follow_up_date == '' || $follow_up_date == '0000-00-00' || $follow_up_date =
 }else{
  $final_follow_up_date = date("d-m-Y",strtotime($follow_up_date));   
 }
+
+
+if ($final_follow_up_date != "-") {
+    if (strtotime($final_follow_up_date) == strtotime(date("d-m-Y"))) {
+        $final_follow_up_date = "<span class='orange badge-success badge-pill badge'>" . $final_follow_up_date . " " . $follow_up_time . "</span>";
+    } else if (strtotime($final_follow_up_date) < strtotime(date("d-m-Y"))) {
+        $final_follow_up_date = "<span class='orange badge-failure badge-pill badge'>" . $final_follow_up_date . " " . $follow_up_time . "</span>";
+    } else {
+        $final_follow_up_date = $final_follow_up_date . " " . $follow_up_time;
+    }
+}
+
+
+
 if($follow_up_time == '' || $follow_up_time == '00:00:00' ){
  $final_follow_up_time = "-";   
 }else{
@@ -502,7 +516,7 @@ if ($(this).not(":checked")) {
 </td>
 
 <td>
-    <?php echo $final_follow_up_date." ".$final_follow_up_time;?>
+    <?php echo $final_follow_up_date;?>
 </td>
 <td>
     <?php echo $get_user_name;?>
