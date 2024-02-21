@@ -391,8 +391,27 @@ if ($exe_form['id'] == '' || $exe_form['id'] == 0) {
                             $("#shrt_url_"+type).attr('value', 'Processing...');
     			            $("#shrt_url_"+type).prop('disabled', true);
                         },                         
-                        url: "<?php echo $head_url;?>experian/index.php",
+                        url: "<?php echo $head_url;?>/experian/index.php",
                         success: function (data) {
+                            function sweetAlert(){
+                                (async () => {
+                                    const { value: formValues } = await Swal.fire({
+                                        title: 'Enter OTP recieved ',
+                                        html:
+                                        '<input id="swal-input1" class="swal2-input">',
+                                        focusConfirm: false,
+                                        preConfirm: () => {
+                                            return [
+                                                document.getElementById('swal-input1').value
+                                            ]
+                                        }
+                                    })
+                                    if (formValues) {
+                                        Swal.fire(JSON.stringify(formValues))
+                                    }
+                                })()
+                            }
+
                             //alert(data);
                             alert(data);
                             //window.location.href=headURL+'/app/edit.php?app_id='+$("#app_id").val();
