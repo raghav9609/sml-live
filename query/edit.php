@@ -423,7 +423,18 @@ if ($exe_form['id'] == '' || $exe_form['id'] == 0) {
                                             url: "<?php echo $head_url;?>/experian/validate-otp.php",
                                             success: function (data) {
                                                 alert(data);
-                                                var obj = jQuery.parseJSON(data);
+                                                var objresp = jQuery.parseJSON(data);
+                                                var errorstring = objresp.errorstring;
+                                                Swal.fire({
+                                                    title: errorstring,
+                                                    didOpen: function () {
+                                                        Swal.showLoading()
+                                                        // AJAX request simulated with setTimeout
+                                                        setTimeout(function () {
+                                                            Swal.close()
+                                                        }, 2000)
+                                                    }
+                                                });
                                             }
                                             });
                                     }
