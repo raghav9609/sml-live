@@ -1,9 +1,10 @@
 <?php
+echo "sdafsadf";
+exit
 require_once(dirname(__FILE__) . '/../../../config/config.php');
 require_once(dirname(__FILE__) . '/../include/constant.php');    
 
-echo "sdafsadf";
-exit;
+;
 class DBController
 {
         private $host = $confighost;
