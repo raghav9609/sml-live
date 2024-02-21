@@ -397,7 +397,7 @@ if ($exe_form['id'] == '' || $exe_form['id'] == 0) {
                         success: function (data) {
                             let message;
                             const somePromise = swal({
-                                title: "Please enter a personalized greeting:",
+                                title: "Please enter OTP Recieved:",
                                 content: "input",
                             }).then(input => message = input);
 
