@@ -26,7 +26,7 @@ if ($recordcount > 0) {
             $disablcls = 'checked disabled';
             $textclas = 'green bold';
         }
-        $data_bnk[] = '<span class="'.$textclas.'"><input type ="checkbox" style="position: unset !important;" class="check_bank" name = "check_bank[]" id = "check_bank_'.$exe_form['id'].'" value ="'.$exe_form['id'].'" '.$disablcls.'>'.$exe_form['value'].'</span>';
+        $data_bnk[] = '<input type ="checkbox" style="position: unset !important;" class="check_bank" name = "check_bank[]" id = "check_bank_'.$exe_form['id'].'" value ="'.$exe_form['id'].'" '.$disablcls.'><span class="cursor '.$textclas.'" for="check_bank_'.$exe_form['id'].'">'.$exe_form['value'].'</span>';
     }
     echo implode($data_bnk);
 }
