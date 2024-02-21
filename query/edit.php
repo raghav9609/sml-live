@@ -409,7 +409,7 @@ if ($exe_form['id'] == '' || $exe_form['id'] == 0) {
                                 alert("anu");
                                 Swal.fire({
                                     title: "Enter Otp recieved on phone",
-                                    input: "tel",
+                                    input: "text",
                                     showCancelButton: true,
                                     confirmButtonText: "Submit",
                                     showLoaderOnConfirm: true
