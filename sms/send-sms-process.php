@@ -5,10 +5,10 @@ require_once(dirname(__FILE__) . '/../helpers/common-helper.php');
 require_once(dirname(__FILE__) . '/../include/class.mailer.php');
 
 $subject = $_REQUEST['subject'];									
-$description = str_replace(array("\r", "\n"), '', trim($_REQUEST['description']));
+$description = str_replace(array("\r", "\n"), '', $_REQUEST['description']);
 $temp_id = $_REQUEST['template'];											
 $query_id = $_REQUEST['query_id']; 
-echo $url= "https://bulkpush.mytoday.com/BulkSms/SingleMsgApi?feedid=385302&username=9920706289&password=SML2021@123&senderid=SML&To=91".$subject."&Text=".$description;
+echo $url= "https://bulkpush.mytoday.com/BulkSms/SingleMsgApi?feedid=385302&username=9920706289&password=SML2021@123&senderid=SML&To=91".$subject."&Text=".ltrim($description);
 $response = curl_get_helper(str_replace(array("\r", "\n"), '', trim($url)));
 
 print_r($response);
