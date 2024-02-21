@@ -14,8 +14,8 @@ $recordcount = mysqli_num_rows($res);
                 <tr>
                     <th>S No.</th>
                     <th>User</th>
-                    <th>Remarks By User</th>
                     <th>Remarks By Bank</th>
+                    <th>Remarks By User</th>
                     <th>Follow Up Date Time</th>
                     <th>Created On</th>
                 </tr>
