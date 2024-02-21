@@ -24,7 +24,7 @@ if(in_array($type,array(1,2)) && $query_id > 0){
         $resp_otp_gen['errorString'] = "Report Generated Successfully";
         mysqli_query($Conn1,"Insert into crm_experian_data set query_id='".$query_id."',xml_report='".base64_encode($resp_otp_gen['showHtmlReportForCreditReport'])."'");
     }
-    echo json_encode(array(""errorstring"=>,"stgOneHitId"=>$jsonDecodeResp['stgOneHitId'],"stgTwoHitId"=>$jsonDecodeResp['stgTwoHitId']));
+    echo json_encode(array("errorstring"=>,"stgOneHitId"=>$jsonDecodeResp['stgOneHitId'],"stgTwoHitId"=>$jsonDecodeResp['stgTwoHitId']));
 }
 
 ?>
