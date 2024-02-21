@@ -429,7 +429,8 @@ if ($exe_form['id'] == '' || $exe_form['id'] == 0) {
                                     }
                                 });
                             }
-                            window.location.href=headURL+'/query/edit.php?id='+query_id;
+                            alert(data);
+                            //window.location.href=headURL+'/query/edit.php?id='+query_id;
                         }
                     });
                 }
