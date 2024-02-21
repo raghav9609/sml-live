@@ -15,7 +15,7 @@ $replytomail = array();
 $cctomail = $cc_email;
 $mailresp = mailSend($recep_mail,$cctomail,$replytomail,$subject,htmlspecialchars_decode($description));
 }
-//echo '<script>window.location.href = "'.$head_url.'/query/";</script>';
+echo '<script>window.location.href = "'.$head_url.'/query/";</script>';
 
 ?>       
  
