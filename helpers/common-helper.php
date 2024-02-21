@@ -217,12 +217,6 @@ if (!function_exists('curl_helper')) {
         $response = curl_exec($curl);
         $error = curl_error($curl);
         $status = curl_getinfo($curl);
-        echo "Resp<br><br>";
-        print_r($response);
-        echo "Error<br><br>";
-        print_r($error);
-        echo "Status<br><br>";
-        print_r($status);
         curl_close($curl);
         return $response;
     }
