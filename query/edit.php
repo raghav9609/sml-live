@@ -47,7 +47,11 @@ if ($exe_form['id'] == '' || $exe_form['id'] == 0) {
     $description = $exe_form['description'];
     $user_name = $exe_form['user_name'];
     $contact_no = $exe_form['contact_no'];
-    $loantype_name = $exe_form['loan_type_name'];
+    $loantype_name = 'Personal Loan';
+    if($loan_type > 0) {
+        $loantype_nameval = get_name('master_code_id',$loan_type);
+        $loantype_name = $loantype_nameval["value"];
+    }
     $lead_date_time = $exe_form['date'];
     $new_src = str_replace('', '', $exe_form['page_url']);
     $src_exp = explode("/", $new_src);
@@ -82,6 +86,11 @@ if ($exe_form['id'] == '' || $exe_form['id'] == 0) {
     }
     $pan_card = $result_cust_data['pan_card'];
     $city_id = $result_cust_data['city_id'];
+    $city_name = '';
+    if($city_id > 0){
+        $getcityId = get_name("city_id", $city_id);
+        $city_name = getcityId["city_name"];
+    }
     $alt_phone = $result_cust_data['alt_phone'];
     $account_no = $result_cust_data['account_no'];
     $office_landline = $result_cust_data['ofc_contact'];
@@ -90,7 +99,11 @@ if ($exe_form['id'] == '' || $exe_form['id'] == 0) {
     $ofc_email = $result_cust_data['ofc_email'];
     $work_city = $result_cust_data['work_city'];
     $maritalstatus = $result_cust_data['maritalstatus'];
-    $ofc_city_name = get_display_name("city_name", $work_city);
+    $ofc_city_name = '';
+    if($work_city > 0){
+        $getofccityId = get_name("city_id", $work_city);
+        $ofc_city_name = getofccityId["city_name"];
+    }
     $curDate = currentDate();
     $result_cust_data['cur_comp_wrk_exp'];
     $ccweget = dateDiff($curDate,$result_cust_data['cur_comp_wrk_exp'],1);
