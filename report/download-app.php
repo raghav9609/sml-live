@@ -5,7 +5,6 @@ require_once(dirname(__FILE__) . '/../helpers/common-helper.php');
 require_once(dirname(__FILE__) . '/../config/config-report.php');
 
 require_once(dirname(__FILE__) . '/../include/helper.functions.php');
-require_once(dirname(__FILE__) . '/../include/display-name-functions.php');
 
 $filename = "application-report-".date('d-m-Y').".csv";
 

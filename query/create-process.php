@@ -4,7 +4,6 @@ require_once(dirname(__FILE__) . '/../config/session.php');
 require_once(dirname(__FILE__) . '/../helpers/common-helper.php');
 require_once(dirname(__FILE__) . '/../config/config.php');
 require_once "../include/helper.functions.php";
-require_once "../include/display-name-functions.php";
 
 $partnerId = $_REQUEST['partner_id'];
 $query_id = $_REQUEST['query_id'];

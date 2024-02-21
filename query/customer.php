@@ -90,8 +90,7 @@ if($user_role == 4){
     // if (isset($_REQUEST['query_new_status'])) {
     //     $query_new_status = replace_special($_REQUEST['query_new_status']);
     // }
-require_once(dirname(__FILE__) . '/../include/helper.functions.php');
-require_once(dirname(__FILE__) . '/../include/display-name-functions.php');
+    require_once(dirname(__FILE__) . '/../include/helper.functions.php');
 
     ?>
     <!DOCTYPE html>

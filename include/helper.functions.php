@@ -98,7 +98,15 @@ if(!function_exists('get_name')){
             case "master_code_id":
                 $qry = "select * from crm_masters where id = '".$id."'";
             break;
-            
+            case "comp_id":
+                $qry = "select * from crm_master_company where company_name = '".$id."'";
+            break;
+            case "comp_name":
+                $qry = "select * from crm_master_company where id = '".$id."'";
+            break;
+            case "customer_id":
+                $qry = "Select * from crm_customer where phone_no = '".$id."'";
+            break;
             default:
             $qry = "select * from crm_masters as master where id = ".$id;
             break;

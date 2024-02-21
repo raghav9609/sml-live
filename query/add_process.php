@@ -3,7 +3,6 @@ require_once(dirname(__FILE__) . '/../config/session.php');
 require_once(dirname(__FILE__) . '/../helpers/common-helper.php');
 require_once(dirname(__FILE__) . '/../config/config.php');
 
-require_once(dirname(__FILE__) . '/../include/display-name-functions.php');
 
 $loan_type = replace_special($_REQUEST['loan_type']);
 $loan_amount = replace_special($_REQUEST['loan_amount']);
@@ -62,8 +61,12 @@ if($user_role = 3){
     $user_id = $_SESSION['userDetails']['user_id'];
 }
 
-$comp_id = get_display_name('comp_id',$company_name);
-$cust_id = get_display_name('customer_id',$phone);
+$companyIdfetch = get_name('comp_id',$company_name); 
+$comp_id = $companyIdfetch['id']; 
+
+$custIdfetch = get_name('customer_id',$phone); 
+$cust_id = $custIdfetch['id']; 
+
 if($comp_id == '' || $comp_id == '0'){
     $comp_id_n = '';
     $comp_name_other = $company_name;

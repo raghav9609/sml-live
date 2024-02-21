@@ -4,8 +4,6 @@ require_once(dirname(__FILE__) . '/../config/session.php');
 require_once(dirname(__FILE__) . "/../config/config.php");
 require_once(dirname(__FILE__) . '/../helpers/common-helper.php');
 
-//require_once(dirname(__FILE__) . "/../../../include/class.memcache.php");
-require_once(dirname(__FILE__) . "/../include/display-name-functions.php");
 require_once "../include/helper.functions.php";
 
 	if($_REQUEST['step'] == 1){

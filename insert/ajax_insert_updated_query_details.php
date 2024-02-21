@@ -1,7 +1,6 @@
 <?php
 require_once "../config/config.php";
 require_once "../include/helper.functions.php";
-require_once "../include/display-name-functions.php";
 
 $qryyy_id = $_REQUEST['query_id'];
 $return_html = "";
@@ -14,8 +13,9 @@ if($recordcount > 0) {
   // print_r($res_data);
     $company_nm = "";
     // $cust_id = $res_data['cust_id'];
-    if($res_data['company_id'] != '0') {
-        $company_nm = get_display_name('comp_name',$res_data['company_id']); 
+    if($res_data['company_id'] > 0 ) {
+        $company_nmfetch = get_name('comp_name',$res_data['company_id']); 
+        $company_nm = $company_nmfetch['company_name']; 
     } else {
         $company_nm = $res_data['company_name'];
     }
@@ -28,13 +28,15 @@ if($recordcount > 0) {
     $salary_pay_id = (!empty($res_data['mode_of_salary'])) ? $res_data['mode_of_salary'] : "";
     
     $salry_py_mod = "--";
-    if(!empty($salary_pay_id)) {
-        $salry_py_mod = get_display_name('salary_method',$salary_pay_id);
+    if($salary_pay_id > 0 ) {
+        $salry_py_modget = get_name('master_code_id',$salary_pay_id);
+        $salry_py_mod = $salry_py_modget['value'];
     }
 
     $city_nm = "--";
-    if(!empty($res_data['city_id'])) {
-        $city_nm = get_display_name('city_name',$res_data['city_id']); 
+    if($res_data['city_id'] > 0) {
+        $getcityId = get_name("city_id", $res_data['city_id']);
+        $city_nm = $getcityId["city_name"];
     }
     $return_html .= "<table class='gridtable table_set' border='1'><tr class='font-weight-bold'><th>Net Monthly Income</th><th>Company</th><th>Salary Payment Mode</th><th>PAN Card</th><th>City</th><th>Pin Code</th><th>Loan Amount</th><th>Email Id</th><th>Name</th><th>DOB</th></tr>";
 
