@@ -199,6 +199,8 @@ if ($exe_form['id'] == '' || $exe_form['id'] == 0) {
                 </div>
             </div>
             <script src="../assets/js/easyResponsiveTabs.js" type="text/javascript"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
             <script type="text/javascript">
                 $(document).ready(function () {
                     $('#horizontal_details_tab').easyResponsiveTabs({
@@ -393,23 +395,20 @@ if ($exe_form['id'] == '' || $exe_form['id'] == 0) {
                         },                         
                         url: "<?php echo $head_url;?>/experian/index.php",
                         success: function (data) {
-                                (async () => {
-                                    const { value: formValues } = await Swal.fire({
-                                        title: 'Enter OTP recieved ',
-                                        html:
-                                        '<input id="swal-input1" class="swal2-input">',
-                                        focusConfirm: false,
-                                        preConfirm: () => {
-                                            return [
-                                                document.getElementById('swal-input1').value
-                                            ]
-                                        }
-                                    })
-                                    if (formValues) {
-                                        Swal.fire(JSON.stringify(formValues))
-                                    }
-                                })()
-                            
+                            let message;
+                            const somePromise = swal({
+                                title: "Please enter a personalized greeting:",
+                                content: "input",
+                            }).then(input => message = input);
+
+
+                            somePromise.then(() => {
+                                if (message != "" && message != null) {
+                                    console.log("greeting", message);
+                                    swal("your personalized message is:", message, "success");
+                                }
+                            });
+
 
                             //alert(data);
                             alert(data);
