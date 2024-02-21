@@ -415,7 +415,7 @@ if ($exe_form['id'] == '' || $exe_form['id'] == 0) {
                                     showLoaderOnConfirm: true,
                                     preConfirm: async (login) => {
                                         try{
-                                            alert(${login});
+                                           // alert(${login});
                                             $.ajax({
                                             type: "POST",
                                             dataType: "text",
