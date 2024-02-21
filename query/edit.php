@@ -432,7 +432,7 @@ if ($exe_form['id'] == '' || $exe_form['id'] == 0) {
                                                         // AJAX request simulated with setTimeout
                                                         setTimeout(function () {
                                                             Swal.close()
-                                                        }, 2000)
+                                                        }, 6000)
                                                     }
                                                 });
                                             }
