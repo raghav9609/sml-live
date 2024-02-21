@@ -497,7 +497,7 @@ if ($(this).not(":checked")) {
 </td>
 
 <td>
-    <?php echo  $get_application_status['value'];?>
+    <?php echo  $get_application_status;?>
 
 </td>
 
