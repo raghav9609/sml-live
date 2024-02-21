@@ -1,10 +1,10 @@
 <?php 
-
     require_once(dirname(__FILE__) . '/config/config.php');	
     if($Conn1){
         echo "Connected";
     }
-    mysqli_query($Conn1,"CREATE TRIGGER `Data Split` AFTER INSERT ON `crm_raw_data`
+
+    $query = "CREATE TRIGGER `Data Split` AFTER INSERT ON `crm_raw_data`
     FOR EACH ROW BEGIN
    DECLARE get_cust_id bigint(20);
    DECLARE get_last_raw_data_id bigint(20);
@@ -24,8 +24,8 @@
    INSERT INTO crm_experian_data (query_id,xml_report) VALUES(get_last_raw_data_id,new.xml_report);
    END IF;
    END IF;
-    
    END IF;
    END IF;
-   END;") or die(mysqli_error($Conn1));
+   END;";
+    mysqli_query($Conn1,$query) or die(mysqli_error($Conn1));
 ?>
