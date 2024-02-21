@@ -4,14 +4,13 @@ require_once(dirname(__FILE__) . '/../config/config.php');
 require_once(dirname(__FILE__) . '/../helpers/common-helper.php');
 
 $query_id = base64_decode($_REQUEST['query_id']);
-$type = base64_decode($_REQUEST['type']);
-preArray($_REQUEST);
+$type = ($_REQUEST['type']);
 
-
+print_r($_REQUEST);
 if(in_array($type,array(1,2)) && $query_id > 0){
     $get_customerData = mysqli_query($Conn1,"select * from crm_query as qry INNER JOIN crm_customer as customer ON qry.crm_customer_id = customer.id where qry.id = ".$query_id);
     $result = mysqli_fetch_array($get_customerData);
-$header = array('content-type:application/x-www-form-urlencoded'), 
+$header = array('content-type:application/x-www-form-urlencoded');
 if($type == 1){
 
     $name = explode(" ",trim($result['name']));
