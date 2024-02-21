@@ -35,7 +35,7 @@ function mailSend($recepitientMail,$ccMail,$replyMail,$subject,$body){
 		foreach($replyMail as $replytomail){
 			$mail->AddReplyTO($replytomail);
 		}
-		$mail->SetFrom($email_username,$email_name);
+		$mail->SetFrom("mycrm@switchmyloan.in","SwitchMyLoan");
         $mail->Subject =$subject;
         $mail->Body = $body;
         $mail->IsHTML(true);	
