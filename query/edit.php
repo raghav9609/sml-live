@@ -413,13 +413,13 @@ if ($exe_form['id'] == '' || $exe_form['id'] == 0) {
                                     showCancelButton: true,
                                     confirmButtonText: "Submit",
                                     showLoaderOnConfirm: true,
-                                    preConfirm: async (login) => {
-                                        try{
-                                           // alert(${login});
-                                            $.ajax({
+                                }).then((result) => {
+                                    if (result.isConfirmed) {
+                                        alert(result.value);
+                                        $.ajax({
                                             type: "POST",
                                             dataType: "text",
-                                            data: "type="+type+"&query_id="+query_id+"&otp="+result.value.login,
+                                            data: "type="+type+"&query_id="+query_id+"&otp="+result.value,
                                             cache: false,
                                             url: "<?php echo $head_url;?>/experian/validate-otp.php",
                                             success: function (data) {
@@ -427,14 +427,6 @@ if ($exe_form['id'] == '' || $exe_form['id'] == 0) {
                                                 var obj = jQuery.parseJSON(data);
                                             }
                                             });
-                                        } catch (error) {
-                                            Swal.showValidationMessage(`Request failed: ${error}`);
-                                        }
-                                    },
-                                    allowOutsideClick: () => !Swal.isLoading()
-                                }).then((result) => {
-                                    if (result.isConfirmed) {
-                                        alert(result.value);
                                         Swal.fire({
                                         title: `${result.value.login}'s avatar`,
                                         imageUrl: result.value.avatar_url
