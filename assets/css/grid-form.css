@@ -5393,3 +5393,23 @@
   .fa-percent:before {
     content: "\f295";
   }
+  .fa-icon { 
+    font-size: 18px;
+}
+.fa-mobile {
+    font-size: 25px !important;
+}
+#form_step4 b.caret{
+    margin-left:215px!important;
+    display: inline;
+}
+#form_step4 .border-class{
+    font-size: 14px;
+    margin-left: 6px!important;
+    border-bottom: 1px solid #ced4da!important;
+    width: 100%!important;
+    }
+    #form_step4 .dropdown-menu {
+    left: -150px;
+    width: 241px;
+}

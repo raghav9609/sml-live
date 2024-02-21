@@ -1,26 +1,4 @@
 <link href="<?php echo $head_url; ?>/assets/css/grid-form.css?v=1.1" rel="stylesheet">
-<style>
-    .fa-icon { 
-        font-size: 18px;
-    }
-    .fa-mobile {
-        font-size: 25px !important;
-    }
-    #form_step4 b.caret{
-        margin-left:215px!important;
-        display: inline;
-    }
-    #form_step4 .border-class{
-        font-size: 14px;
-        margin-left: 6px!important;
-        border-bottom: 1px solid #ced4da!important;
-        width: 100%!important;
-        }
-        #form_step4 .dropdown-menu {
-        left: -150px;
-        width: 241px;
-    }
-</style>
 <div class="main-crmform col-12" style="margin-top:10px;">
     <div class="popup-ctext up-list-box">
         <h2 class='f_14 fw_bold'>Query Detail</h2>
@@ -29,9 +7,7 @@
             <?php 
                 if ($employer_type == 0) {
                     $comp_name = $result_cust_data['comp_name_other'];
-                } else if($loan_type == 11){
-                    $comp_name = $hospital_name;
-                }
+                } 
                 if($dob !='0000-00-00' && $dob != '1970-01-01'){
                     $dob1=$dob;
                     $diff = (date('Y') - date('Y',strtotime($dob1)));
@@ -128,7 +104,7 @@
         <div class="pl-md-3 pl-2 pr-md-3 pr-2 col-12">
             <div class="d-flex flex-wrap gen-box text-center white-bg pe-none">
                 <div class="col-3 tab-click active-tab" data-toggle="step1">Personal Details</div>
-                <div class="col-3 tab-click" data-toggle="step2"><?php if($loan_type != 71){ echo "Loan";}else{echo "Card";} ?> Details</div>
+                <div class="col-3 tab-click" data-toggle="step2">Loan Details</div>
                 <div class="col-3 tab-click active-tab hidden" data-toggle="step3">Offer Details</div>
             </div>
             <div class="gen-box white-bg">
@@ -161,8 +137,8 @@
                         </div>
                         <div class="form-group col-xl-2 col-lg-4 col-md-6">
                             <span class="fa-icon fa-calendar"></span>
-                            <input type="text" class="text form-control" name="dob" id="dob" maxlength="10" value="<?php echo $dob != '0000-00-00'?$dob:'';?>" placeholder="yyyy-mm-dd" <?php if(in_array($loan_type,array(71,11,57,63,56))){?> required <?php }?>/>
-                            <label for="dob" class="label-tag <?php if(!in_array($loan_type,array(71,11,57,63,56))){ ?> optional-tag <?php } ?>">Date of Birth</label>
+                            <input type="text" class="text form-control" name="dob" id="dob" maxlength="10" value="<?php echo $dob != '0000-00-00'?$dob:'';?>" placeholder="yyyy-mm-dd" required />
+                            <label for="dob" class="label-tag ">Date of Birth</label>
                             <span class='green' id='age' style="position: absolute;top: 100%;background: transparent;color: green;left: 15px;"></span>
                         </div>
                         <div class="form-group col-xl-2 col-lg-4 col-md-6">
@@ -302,8 +278,8 @@
                         </div>
                         <div class="form-group col-xl-2 col-lg-4 col-md-6">
                             <span class="fa-icon fa-building"></span>
-                            <textarea name="address" class="text valid form-control" id="address" maxlength="200" <?php if(in_array($loan_type,array(71,11,57,63))){echo "required";} ?>><?php echo $res_addrs ;?></textarea>
-                            <label for="address" class="label-tag <?php if(!in_array($loan_type,array(71,11,57,63))){echo "optional-tag";} ?>">Residence Address</label>
+                            <textarea name="address" class="text valid form-control" id="address" maxlength="200" ><?php echo $res_addrs ;?></textarea>
+                            <label for="address" class="label-tag optional-tag">Residence Address</label>
                         </div>
                     </div>
                     <div class="text-center col-12 mb-2">
