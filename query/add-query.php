@@ -85,14 +85,14 @@ require_once(dirname(__FILE__) . '/../model/queryHelper.php');
                                     <label for="" class="radio-tag set-label-pos label-tag">Employment Type</label>
                                     <div class="radio-button error_contain new-label">
 
-                                        <input type="radio" name="occupation_id" id="occupation_id1"  value="1" >
+                                        <input type="radio" name="occupation_id" id="occupation_id1"  value="46" >
                                         <label for="occupation_id1" class="occupation1">Salaried</label>
 
-                                        <input type="radio" name="occupation_id" id="occupation_id2" value="2" >
-                                        <label for="occupation_id2" class="occupation2">Self Employed - Professional</label>
+                                        <input type="radio" name="occupation_id" id="occupation_id2" value="47" >
+                                        <label for="occupation_id2" class="occupation2">Self Employed</label>
 
-                                        <input type="radio" name="occupation_id" id="occupation_id3" value="3" >
-                                        <label for="occupation_id3" class="occupation3">Self Employed - Business</label>
+                                        <input type="radio" name="occupation_id" id="occupation_id3" value="48" >
+                                        <label for="occupation_id3" class="occupation3">Contractual</label>
 
                                     </div>
                                 </div>

@@ -76,54 +76,6 @@ $(document).ready(function(){
           $("#deposit_interest").val("");
       }
     });
-    //Changes - FDFieldsOnCRM - Akash - Ends
-
-    // function dl(){
-    //     var occup_id = $('[name="occupation_id"] option:selected').val();
-    //     if(occup_id == 1){
-    //       $(".dl_salaried").removeClass('hidden').attr('required',true);
-    //       $(".dl_senp").addClass('hidden').removeAttr('required').val('');
-    //       $("input[name='place_of_business']").addClass('hidden').removeAttr('required').val('');
-    //       $("#dl_work_on").text("Private Clinic");
-    //     }else if(occup_id == 2){
-    //       $(".dl_senp").removeClass('hidden').attr('required',true);
-    //       $("input[name='place_of_business']").removeClass('hidden').attr('required',true);
-    //       $(".dl_salaried").addClass('hidden').removeAttr('required').val('');
-    //       $("#dl_work_on").text("Hospital");
-    //     }else{
-    //        $(".dl_senp,.dl_salaried,input[name='place_of_business']").addClass('hidden').removeAttr('required').val('');
-    //        $("#dl_work_on").text("Private Clinic");
-    //     }
-    // }
-
-    // function professional_loan(){
-    //     var occup_id = $('[name="occupation_id"] option:selected').val();
-    //     if(occup_id == 2){
-    //       $(".dl_senp,.pl_senp,.gar").removeClass('hidden').attr('required',true);
-    //       $("input[name='place_of_business']").removeClass('hidden').attr('required',true);
-    //       $(".bl_sep").addClass('hidden').removeAttr('required').val('');
-    //       $(".annual_turnover_value_formt,.annual_profit_value_formt").text('');
-
-    //     }else if(occup_id == 3){
-    //       $(".dl_senp,.bl_sep").removeClass('hidden').attr('required',true);
-    //       $("input[name='place_of_business']").removeClass('hidden').attr('required',true);
-    //       $(".pl_senp,.gar").addClass('hidden').removeAttr('required').val('');
-    //       industry_type();
-    //       type_of_registration();
-    //     }else{
-    //       $(".dl_senp,.pl_senp,.bl_sep,.gar").addClass('hidden').removeAttr('required').val('');
-    //       $("input[name='place_of_business']").addClass('hidden').removeAttr('required').val('');
-    //       $(".annual_turnover_value_formt,.annual_profit_value_formt").text('');
-    //     }
-    // }
-    // function type_of_registration(){
-    //   var val = $("#type_of_registration option:selected").val();
-    //   if(val == 6 || val == 7 || val == 8){
-    //     $("#bank_account_type").children("option[value='4']").hide();
-    //   }else{
-    //     $("#bank_account_type").children("option[value='4']").show();
-    //   }
-    // }
     
     function occupation(){
       var occupation = $('[name="occupation_id"] option:selected').val();
