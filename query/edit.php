@@ -102,8 +102,7 @@ if ($exe_form['id'] == '' || $exe_form['id'] == 0) {
     $ofc_city_name = '';
     if($work_city > 0){
         $getofccityId = get_name("city_id", $work_city);
-        print_r($getofccityId);
-        $ofc_city_name = getofccityId["city_name"];
+        $ofc_city_name = $getofccityId["city_name"];
     }
     $curDate = currentDate();
     $result_cust_data['cur_comp_wrk_exp'];
