@@ -47,7 +47,7 @@ if ($exe_form['id'] == '' || $exe_form['id'] == 0) {
     $description = $exe_form['description'];
     $user_name = $exe_form['user_name'];
     $contact_no = $exe_form['contact_no'];
-    $loantype_name = $exe_form['loan_type_name'];
+    $loantype_name = get_name('master_code_id',$exe_form['loan_type']);
     $lead_date_time = $exe_form['date'];
     $new_src = str_replace('', '', $exe_form['page_url']);
     $src_exp = explode("/", $new_src);
