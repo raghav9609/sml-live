@@ -250,8 +250,8 @@
                         </div>
                         <div class="form-group col-xl-2 col-lg-4 col-md-6">
                             <span class="fa-icon fa-building"></span>
-                            <textarea name="offce_address" class="text valid form-control" id="offce_address" maxlength="200" <?php if(in_array($loan_type,array(71,11,57,63))){echo "required";} ?>><?php echo $offce_address ;?></textarea>
-                            <label for="offce_address" class="label-tag <?php if(!in_array($loan_type,array(71,11,57,63))){echo "optional-tag";} ?>">Office Address</label>
+                            <textarea name="offce_address" class="text valid form-control" id="offce_address" maxlength="200" ><?php echo $offce_address ;?></textarea>
+                            <label for="offce_address" class="label-tag optional-tag">Office Address</label>
                         </div>
                         <div class="form-group col-xl-2 col-lg-4 col-md-6">
                             <span class="fa-icon fa-briefcase"></span>
@@ -287,13 +287,13 @@
                         <input type="button" class="btn btn-primary" name="submit" id="step1" value="SUBMIT">     
                     </div>                  
                 </form> 
-                <div class="gray col-12 font-weight-nb pb-2 pt-2 blue-bg font-20 brdr-top-gray pe-none" data-toggle="step2" id="switch_step2"><span id="text_step2">STEP 2</span> : <?php if($loan_type != 71){ echo "Loan";}else{echo "Card";} ?> Details</div>    
+                <div class="gray col-12 font-weight-nb pb-2 pt-2 blue-bg font-20 brdr-top-gray pe-none" data-toggle="step2" id="switch_step2"><span id="text_step2">STEP 2</span> : Loan Details</div>    
                     <form action="" class="col-12 form-step" id="form_step2" style="display:none">
                         <input type="hidden" name="id" value="<?php echo $id; ?>">
                         <input type="hidden" name="customer_id" value="<?php echo $cust_id; ?>">
                         <input type="hidden" name="step" value="2">
                         <input type="hidden" name="user_id" id="user_id"  value="<?php echo $user;?>">
-                        <input type="hidden" name="if_hot_case" id="if_hot_case" class="if_hot_case"  value="<?php echo $hotcase;?>">
+                       
                         <div class="row div-width">
                             <div class="form-group col-xl-2 col-lg-4 col-md-6 ">
                                 <span class="fa-icon fa-amnt"></span>
