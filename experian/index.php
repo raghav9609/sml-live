@@ -17,7 +17,7 @@ if($type == 1){
     $name = explode(" ",trim($result['name']));
 
     if(count($name) > 0 && count($name) != ""){
-        $lastname = str_replace($name,"",trim($result['name']));
+        $lastname = str_replace($name[0],"",trim($result['name']));
     }else{
         $lastname = trim($result['name']);
     }
