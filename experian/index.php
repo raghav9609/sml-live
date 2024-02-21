@@ -15,7 +15,8 @@ $header = array('content-type:application/x-www-form-urlencoded');
 if($type == 1){
 
     $name = explode(" ",trim($result['name']));
-    if(count($name) > 0){
+
+    if(count($name) > 0 && count($name) != ""){
         $lastname = str_replace($name,"",trim($result['name']));
     }else{
         $lastname = trim($result['name']);
@@ -28,7 +29,9 @@ if($type == 1){
 //     $url = "https://ecvuat.experian.in/ECV-P2/content/validateMobileOTP.action";
 //     $apitype= "NORMAL";
 // }
-echo $response = curl_helper($url,$header,$content);
+ $response = curl_helper($url,$header,$content);
+
+ print_r($response);
 }
 
 echo '<script>window.location.href = "'.$head_url.'/query/edit.php?id='.$query_id.';</script>';

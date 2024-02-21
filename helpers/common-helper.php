@@ -218,7 +218,7 @@ if (!function_exists('curl_helper')) {
         $error = curl_error($curl);
         $status = curl_getinfo($curl);
         curl_close($curl);
-        return $response;
+        return $response." ".$error." ".$status;
     }
 }
 if (!function_exists('curl_get_helper')) {
