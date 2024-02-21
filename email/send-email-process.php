@@ -13,9 +13,11 @@ if(!empty($email)){
 $recep_mail = $email;
 $replytomail = array();
 $cctomail = $cc_email;
-mailSend($recep_mail,$cctomail,$replytomail,$subject,htmlspecialchars_decode($description),$query_id);
+$mailresp = mailSend($recep_mail,$cctomail,$replytomail,$subject,htmlspecialchars_decode($description));
+echo $qry = "INSERT INTO crm_communication_history SET query_id='".$query_id."',type = 1, communication_id = '".$recpemail."', cc_communication = '".implode(',',$ccMail)."', response='".$mailresp."',subject = '".base64_encode($subject)."', description = '".base64_encode($body)."'";
+$insert_comm = mysqli_query($Conn1,$qry);
 }
-echo '<script>window.location.href = "'.$head_url.'/query/";</script>';
+//echo '<script>window.location.href = "'.$head_url.'/query/";</script>';
 
 ?>       
  

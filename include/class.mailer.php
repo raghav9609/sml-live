@@ -6,7 +6,7 @@ use PHPMailer\PHPMailer\Exception;
 require_once(dirname(__FILE__) . '/PHPMailer/src/Exception.php');
 require_once(dirname(__FILE__) . '/PHPMailer/src/PHPMailer.php');
 require_once(dirname(__FILE__) . '/PHPMailer/src/SMTP.php');
-function mailSend($recepitientMail,$ccMail,$replyMail,$subject,$body,$query_id=0){
+function mailSend($recepitientMail,$ccMail,$replyMail,$subject,$body){
 	global $email_username,$email_password,$Conn1;
 		$mail = new PHPMailer(true);
 
@@ -46,8 +46,6 @@ function mailSend($recepitientMail,$ccMail,$replyMail,$subject,$body,$query_id=0
 			$message = "Not sent";
 		}
 		$recpemail = implode(',',$recepitientMail);
-		 $qry = "INSERT INTO crm_communication_history SET query_id='".$query_id."',type = 1, communication_id = '".$recpemail."', cc_communication = '".implode(',',$ccMail)."', response='".$message."',subject = '".base64_encode($subject)."', description = '".base64_encode($body)."'";
-		$insert_comm = mysqli_query($Conn1,$qry);
 		return $message;
 		
 }
