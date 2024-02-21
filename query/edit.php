@@ -149,7 +149,8 @@ if ($exe_form['id'] == '' || $exe_form['id'] == 0) {
                     <a href="<?php echo $head_url; ?>/calculators/eligibility.php" target="_blank">
                     <input type="button" class="buttonsub cursor" value="Eligibility"></a>
                     <a href="javascript:void(0);" onclick="suggestion_box('2','1');"><input type="button" class="buttonsub cursor" value="Offers"></a>
-                    <a href='<?php echo $src_id; ?>' target="_blank"><input type="button" style='background: #1b8c1b;' class="buttonsub cursor" id='shrt_url' value="Fetch Experian"></a> 
+                    <input type="button" style='background: #1b8c1b;' class="buttonsub cursor" id='shrt_url' onclick="fetchexperian('1','<?php echo urlencode(base64_encode($id)); ?>');" value="Fetch Experian Enhanced">
+                    <input type="button" style='background: #1b8c1b;' class="buttonsub cursor" onclick="fetchexperian('2','<?php echo urlencode(base64_encode($id)); ?>');" id='shrt_url' value="Fetch Experian Full">
                     <?php if($user_role != 1) { ?>
                         <a href="javascript:void(0);" id='show_btn' onclick="number_show('<?php echo $id; ?>','query');"> <input type="button" style='background: #18375f;' class="buttonsub cursor" value="Show Number"> </a>
                         <a href="javascript:void(0);" id='show_alt_btn' onclick="alt_number_show('<?php echo $id; ?>','query');"> <input type="button" style='background: #18375f;' class="buttonsub cursor" value="Show Alt. Number"> </a>
