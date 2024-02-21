@@ -1,13 +1,10 @@
 <?php
-echo "hello1";
 require_once(dirname(__FILE__) . '/../config/session.php');
-echo "hello1";
 require_once(dirname(__FILE__) . '/../helpers/common-helper.php');
-echo "hello1";
 require_once(dirname(__FILE__) . '/../config/config.php');
-echo "hello1";
+
 require_once(dirname(__FILE__) . '/../include/display-name-functions.php');
-echo "hello1";
+
 $loan_type = replace_special($_REQUEST['loan_type']);
 $loan_amount = replace_special($_REQUEST['loan_amount']);
 $amt_deposit = replace_special($_REQUEST['amt_deposit']);
@@ -22,33 +19,30 @@ if($amt_deposit > 0){
     $loan_amount = $amt_deposit;
 }
 if(preg_match('/^[1-9][0-9]{5}$/',$_REQUEST['city_name'])){
+    $qry = mysqli_query($Conn1,"SELECT pin.city_id as city_id FROM crm_master_pincode as pin WHERE pin.pincode = '".$_REQUEST['city_name']."'");
+    $result_qry = mysqli_fetch_array($qry);
+    $pin_code_id = $_REQUEST['city_name'];
+    $city_id = $result_qry['city_id'];
+
+    if($city_id != '' && $city_id != '0'){
+    $city_id = $city_id;
+    }else{
+    $city_id = '26';
+    }
+} else if(preg_match('/^[a-zA-Z0-9]/',$_REQUEST['city_name'])){
     
-  
-$qry = mysqli_query($Conn1,"SELECT pin.city_id as city_id FROM crm_master_pincode as pin WHERE pin.pincode = '".$_REQUEST['city_name']."'");
-$result_qry = mysqli_fetch_array($qry);
-$pin_code_id = $_REQUEST['city_name'];
-$city_id = $result_qry['city_id'];
+    $qry = mysqli_query($Conn1,"SELECT id FROM crm_master_city WHERE city_name = '".$_REQUEST['city_name']."'");
+    $result_qry = mysqli_fetch_array($qry);
+    $city_id_oth = $result_qry['id'];
 
-if($city_id != '' && $city_id != '0'){
-$city_id = $city_id;
-}else{
-$city_id = '26';
+    if($city_id_oth != '' && $city_id_oth != '0'){
+    $city_id = $city_id_oth;
+    }else{
+    $city_id = '26';
+    }
 }
 
-}else if(preg_match('/^[a-zA-Z0-9]/',$_REQUEST['city_name'])){
-    
-$qry = mysqli_query($Conn1,"SELECT id FROM crm_master_city WHERE city_name = '".$_REQUEST['city_name']."'");
-$result_qry = mysqli_fetch_array($qry);
-$city_id_oth = $result_qry['id'];
-
-if($city_id_oth != '' && $city_id_oth != '0'){
-$city_id = $city_id_oth;
-}else{
-$city_id = '26';
-}
-}
-
-
+echo "hello1";
 $phone = replace_special($_REQUEST['phone_no']); 
 $email = replace_special($_REQUEST['email']);
 $occup_id = replace_special($_REQUEST['occupation_id']);
@@ -57,6 +51,7 @@ $company_name = replace_special($_REQUEST['comp_name']);
 $acq_id = replace_special($_REQUEST['acq_id']);
 $ref_type = replace_special($_REQUEST['ref_type']);
 
+echo "hello2";
 if($_REQUEST['assign_to'] == '1'){
     $user_id = $user;
 } else if($_REQUEST['assign_to'] == '2'){
@@ -70,7 +65,7 @@ if($user_role = 3){
     $user_id = $_SESSION['userDetails']['user_id'];
 }
 
-
+echo "hello3";
 $comp_id = get_display_name('comp_id',$company_name);
 $cust_id = get_display_name('customer_id',$phone);
 if($comp_id == '' || $comp_id == '0'){
@@ -80,9 +75,7 @@ if($comp_id == '' || $comp_id == '0'){
     $comp_id_n = $comp_id;$comp_name_other = '';
 }
 
-
-            
-if($loan_type == 56){
+echo "hello4";
 if($_REQUEST['salary_method'] == '2' || $_REQUEST['salary_method'] == '3'){
     $salary_paid = $_REQUEST['salary_method'];
     $main_account = '';
@@ -93,13 +86,7 @@ if($_REQUEST['salary_method'] == '2' || $_REQUEST['salary_method'] == '3'){
     $salary_paid = '1';
     $main_account = $_REQUEST['salary_method'];
 }
-}
-
-if($loan_type == 57 || $loan_type == 63){
-    $net_income = $_REQUEST['anl_prof']/12;
-} else {
    $net_income =  $net_incm;
-}
 
 $position = strpos($name, " ");
 $first_name = "";
@@ -111,7 +98,7 @@ if($position != "" && $position > 0) {
 } else {
     $first_name = $name;
 }
-
+echo "hello5";
 $qry_edit = "insert into crm_raw_data set salutation_id='".$saluation."',name='".$first_name."', email_id ='".$email."',phone_no = '".$phone."', alternate_phone_no = '".$phone."', city_id = '".$city_id."', pincode = '".$pin_code_id."', occupation_id = '".$occup_id."', loan_type_id = '".$loan_type."', loan_amount = '".$loan_amount."', company_id = '".$comp_id_n."', company_name = '".$comp_name_other."', net_income = '".$net_income."',bank_account_no = '".$main_account."', query_status='1',tool_type='Add_Query',mode_of_salary='".$salary_paid."', created_on=CURDATE(),user_ip='".$_SERVER['REMOTE_ADDR']."',lead_assign_to='".$user_id."',description='".$desc."',ref_mobile='".$ref_id."', refer_form_type='".$ref_type."', verify_phone='1'";
 
 if($date_of_birth != "") {
@@ -121,6 +108,7 @@ if($date_of_birth != "") {
 if($bank_account_type != "") {
     $qry_edit .= ", bank_acc_type = '".$bank_account_type."' ";
 }
+echo $qry_edit;
 $res_qry = mysqli_query($Conn1,$qry_edit);
     echo '<script>window.location.href = "'.$head_url.'/query/add-query.php";</script>';
     include("../include/footer_close.php");
