@@ -393,7 +393,6 @@ if ($exe_form['id'] == '' || $exe_form['id'] == 0) {
                         },                         
                         url: "<?php echo $head_url;?>/experian/index.php",
                         success: function (data) {
-                            function sweetAlert(){
                                 (async () => {
                                     const { value: formValues } = await Swal.fire({
                                         title: 'Enter OTP recieved ',
@@ -410,7 +409,7 @@ if ($exe_form['id'] == '' || $exe_form['id'] == 0) {
                                         Swal.fire(JSON.stringify(formValues))
                                     }
                                 })()
-                            }
+                            
 
                             //alert(data);
                             alert(data);
