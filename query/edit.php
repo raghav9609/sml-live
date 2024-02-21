@@ -422,7 +422,6 @@ if ($exe_form['id'] == '' || $exe_form['id'] == 0) {
                                             cache: false,
                                             url: "<?php echo $head_url;?>/experian/validate-otp.php",
                                             success: function (data) {
-                                                alert(data);
                                                 var objresp = jQuery.parseJSON(data);
                                                 var errorstring = objresp.errorstring;
                                                 Swal.fire({
@@ -440,8 +439,6 @@ if ($exe_form['id'] == '' || $exe_form['id'] == 0) {
                                     }
                                 });
                             }
-                            alert(data);
-                            //window.location.href=headURL+'/query/edit.php?id='+query_id;
                         }
                     });
                 }
