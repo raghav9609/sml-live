@@ -17,7 +17,7 @@ var deviceId = 2;
                     $.ajax({
                         type: "POST",
                         data: "id=" + user + "&otp=" + pwd + "&deviceId=" + deviceId,
-                        url: head_url+"include/login-action.php",
+                        url: head_url+"/include/login-action.php",
                         cache: false,
                         beforeSend: function () {
                             $("#submit").val('Please Wait....');

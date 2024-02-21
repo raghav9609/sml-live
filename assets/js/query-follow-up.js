@@ -28,13 +28,13 @@ $(document).ready(function () {
                 data: data_string,
                 cache: false,
                 timeout: 60000,
-                url: "https://astechnos.com/crmsml/query/update-follow-up.php",
+                url: headURL+"/query/update-follow-up.php",
                 success: function(response){
                   setTimeout(  function() {  
                     console.log("Follow Up Added Successfully");  
                   alert("Follow Up Added Successfully");
                   
-                    window.location.href = 'https://astechnos.com/crmsml/query/index.php';
+                    window.location.href = headURL+'/query/index.php';
                   
                   $('#loader').css("display","none");
                   verticalToggle('step4');

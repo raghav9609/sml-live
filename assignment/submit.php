@@ -96,10 +96,6 @@ foreach ($seconduserValues as $user_id_array) {
 $index++;
 }
 }
-
-
-// header("location:https://astechnos.com/crmsml/assignment/index.php?msg=1");
-
 echo '<script>window.location.href = "'.$head_url.'/assignment/index.php?msg=1";</script>';
 exit();
 ?>

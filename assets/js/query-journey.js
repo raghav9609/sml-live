@@ -653,7 +653,6 @@ function card_tocard(){
                   success: function(response){
                     console.log("Application Created successfully");
                     alert("Application Created successfully");
-                    //window.location.href = 'https://astechnos.com/crmsml/query/index.php';
                     $('#loader').css("display","none");
                     verticalToggle('step1');
                   }                                                                                 
@@ -672,11 +671,9 @@ function card_tocard(){
                     setTimeout(  function() {  
                       console.log("Follow Up Added Successfully");  
                     alert("Follow Up Added Successfully");
-                    if(user_role == 3){
-                      window.location.href = 'https://astechnos.com/crmsml/query/user.php';
-                    }else{
-                      window.location.href = 'https://astechnos.com/crmsml/query/index.php';
-                    }
+                    
+                      window.location.href = headURL+'/query/index.php';
+                    
                     $('#loader').css("display","none");
                     verticalToggle('step4');
                     }, 3000);  
