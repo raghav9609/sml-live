@@ -8,7 +8,7 @@ $subject = $_REQUEST['subject'];
 $description = trim($_REQUEST['description']);
 $temp_id = $_REQUEST['template'];											
 $query_id = $_REQUEST['query_id']; 
-echo $url= "https://bulkpush.mytoday.com/BulkSms/SingleMsgApi?feedid=385302&username=9920706289&password=SML2021@123&senderid=SML&To=91".$subject."&Text=".$description.;
+echo $url= "https://bulkpush.mytoday.com/BulkSms/SingleMsgApi?feedid=385302&username=9920706289&password=SML2021@123&senderid=SML&To=91".$subject."&Text=".$description;
 $response = curl_get_helper(rtrim($url));
 
 print_r($response);
