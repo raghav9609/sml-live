@@ -23,7 +23,8 @@ var temp_id = $( "#template" ).val() ;
 			success: function(html)
 			{
 			var data = JSON.parse(html);
-                CKEDITOR.instances['email_query'].setData(atob(data.html_temp));
+               // CKEDITOR.instances['email_query'].setData(atob(data.html_temp));
+                $("#email_query").val(data.html_temp);
                 $("#subject").val(data.subject);
                 $("#recipient_email").val(data.customer_email_id);
                 $("#cc_recipient_email").val(data.cc_email_id);
