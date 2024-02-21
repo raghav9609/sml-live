@@ -57,7 +57,7 @@ require_once(dirname(__FILE__) . '/../include/helper.functions.php');
     function search_as() {
         var loan_type = $("#loan_type").val();
         var city_sub_grp = $("#city_sub_grp").val();
-        var user_mlc = $("#u_assign").val();
+        var user_sml = $("#u_assign").val();
         if(city_sub_grp == '') {
             swal("Oops!", "Please Select City Sub Group!", "error");  
         } else if (loan_type == '') {
@@ -69,7 +69,7 @@ require_once(dirname(__FILE__) . '/../include/helper.functions.php');
                 type: "POST",
                 cache: false,
                 url: "search_assign.php",
-                data: "loan_type=" + loan_type + "&sml_user=" + user_mlc + "&city_sub_grp=" + city_sub_grp,
+                data: "loan_type=" + loan_type + "&sml_user=" + user_sml + "&city_sub_grp=" + city_sub_grp,
                 success: function (html) {
                     $("#search_btn").attr('value', 'Search');
                     $("#search_btn").attr("disabled", false);

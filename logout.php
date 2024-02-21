@@ -1,6 +1,4 @@
 <?php 
-    
-    
     require_once(dirname(__FILE__) . '/include/constant.php');
     require_once(dirname(__FILE__) . '/helpers/common-helper.php');
     require_once(dirname(__FILE__) . '/config/config.php');	
@@ -8,7 +6,7 @@
     $login_ip = ipAddress();
     if (!empty($_SESSION['userDetails']['user_id'])){
         $insert_arr = array(
-            "mlc_master_user_id"=>(int)$_SESSION['userDetails']['user_id'],
+            "crm_master_user_id"=>(int)$_SESSION['userDetails']['user_id'],
             "ip"=>$login_ip,
             "login_type"=>2
         );
@@ -16,7 +14,7 @@
         $db_handle->insertRows($ins_qry);
     }
     session_destroy();
-    header("Location: https://astechnos.com/crmsml");
+    header("Location: http://52.66.203.12");
     header("location:".$head_url);
     echo '<script>window.location.href = "'.$head_url.'";</script>';
     exit();

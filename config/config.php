@@ -1,14 +1,13 @@
 <?php
-//error_reporting(0);
-//require_once(dirname(__FILE__) . '/../../../../config/config.php');
+require_once(dirname(__FILE__) . '/../../../../config/config.php');
 require_once(dirname(__FILE__) . '/../include/constant.php');    
 
 class DBController
 {
-        private $host = 'localhost';
-        private $user = 'astecztc_sml';
-        private $password = 'yI@l~0Sy7F%y';
-        private $database = 'astecztc_sml';
+        private $host = $confighost;
+        private $user = $configuser;
+        private $password = $configpassword;
+        private $database = $configdatabase;
         private $connection = "";
 
         function __construct()

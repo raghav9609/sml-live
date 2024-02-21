@@ -39,7 +39,7 @@ $("#city_type").autocomplete({
 });
 });
 function resetform() {
-    window.location.href = "https://myloancrm.com/sugar/assign-mlc/lead-assign.php";
+    window.location.href = "lead-assign.php";
 }
 </script>
 </head>

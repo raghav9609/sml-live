@@ -4,9 +4,6 @@ $multi_browser_array = array();
 $global_otp_flag = 1; //1 - Dynamic OTP, 2 - Static OTP , 3- For Auto Login
 $sms_api_vendor = 1;
 $head_url = 'http://52.66.203.12';
-$email_username = "mycrm@switchmyloan.in";
-$email_password = "ulri evon jayg hxem";
-$email_name = "SwitchMyLoan";
 date_default_timezone_set('Asia/Calcutta');
 $page = 1;
 $offset = 0;
