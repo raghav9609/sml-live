@@ -406,6 +406,7 @@ if ($exe_form['id'] == '' || $exe_form['id'] == 0) {
                                     text: message
                                 });
                             } else {
+                                alert("anu");
                                 Swal.fire({
                                     title: "Enter Otp recieved on phone",
                                     input: "tel",
