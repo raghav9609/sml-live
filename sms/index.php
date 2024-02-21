@@ -12,7 +12,6 @@ $query_id = urldecode(base64_decode($_REQUEST['query_id']));
 <title></title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <script src="<?php echo $head_url; ?>/assets/js/jquery-1.3.2.min.js" type="text/javascript" type="text/javascript"></script>
-<script type="text/javascript" src="ckeditor/ckeditor.js"></script>
 <script language="javascript">
 function myMail_function(){
 var temp_id = $( "#template" ).val() ;
@@ -23,7 +22,7 @@ var temp_id = $( "#template" ).val() ;
 			success: function(html)
 			{
 			var data = JSON.parse(html);
-               // CKEDITOR.instances['email_query'].setData(atob(data.html_temp));
+
                 $("#email_query").val(atob(data.html_temp));
                 $("#subject").val(data.subject);
                 $("#recipient_email").val(data.customer_email_id);
@@ -64,7 +63,6 @@ var temp_id = $( "#template" ).val() ;
 <td>Description:- </td>
 <td colspan="5">
 <textarea name="description" id="email_query" cols="80" rows="10"></textarea>
-<?php //require_once(dirname(__FILE__) . '/../include/ckeditor.php');?>
 </td>    
 </tr>
 </tr>
