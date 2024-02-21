@@ -418,7 +418,7 @@ if ($exe_form['id'] == '' || $exe_form['id'] == 0) {
                                         $.ajax({
                                             type: "POST",
                                             dataType: "text",
-                                            data: "type="+type+"&query_id="+query_id+"&otp="+result.value,
+                                            data: "type="+type+"&query_id="+query_id+"&otp="+result.value+"&stgOneHitId="+obj.stgOneHitId+"&stgTwoHitId="+obj.stgTwoHitId,
                                             cache: false,
                                             url: "<?php echo $head_url;?>/experian/validate-otp.php",
                                             success: function (data) {
