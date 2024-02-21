@@ -407,17 +407,15 @@ if ($exe_form['id'] == '' || $exe_form['id'] == 0) {
                                     text: message
                                 });
                             } else {
-                                alert("anu");
                                 Swal.fire({
                                     title: "Enter Otp recieved on phone",
-                                    input: "text",
+                                    input: "tel",
                                     showCancelButton: true,
                                     confirmButtonText: "Submit",
                                     showLoaderOnConfirm: true,
                                     preConfirm: async (login) => {
-                                        
                                         try{
-                                            alert(result.value.login);
+                                            alert(${login});
                                             $.ajax({
                                             type: "POST",
                                             dataType: "text",
