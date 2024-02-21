@@ -215,7 +215,7 @@
                         </div>
                         <div class="form-group col-xl-2 col-lg-4 col-md-6 salaried company_name_input">
                             <span class="fa-icon fa-industry"></span>
-                            <input type="text" class="form-control alpha-num salaried" name="comp_name" id="comp_name" onfocusout="check_comp_name(this.value);" Placeholder="Company Name" maxlength="100" autocomplete="off" value="<?php echo $comp_name;?>" />
+                            <input type="text" class="form-control alpha-num salaried" name="comp_name" id="comp_name" Placeholder="Company Name" maxlength="100" autocomplete="off" value="<?php echo $comp_name;?>" />
                             <label for="comp_name" class="label-tag">Company Name</label>
                         </div>
                         <div class="form-group col-xl-2 col-lg-4 col-md-6 salaried">
@@ -680,8 +680,7 @@
                    <form action="" class="form-step" id="form_step3" style="display:none">
                     <input type="hidden" name="cust_id" value="<?php echo $cust_id; ?>">
                     <input type="hidden" name="case_id" class="case_id_received" id="case_id" value="<?php echo $case_id ?>">
-                    <!-- <input type="text" name="loan_type" value="<?php echo $loan_type ?>"> -->
-                    <?php //include('../offers/index.php'); ?>
+             
                         <div class="col-12 pt-2 pb-3" id="new_offers_journey"></div>
                         <?php if($pan_card != '' && strlen($pan_card) == 10){ 
                                 $check_pan_card_duplicacy_qry = mysqli_query($Conn1,"select * from crm_customer where pan_no = '".$pan_card."' and pan_no != '' and pan_no IS NOT NULL ORDER BY id DESC");

@@ -40,62 +40,15 @@
     });
 
     function suggestion_box(get_val,offers_level_type=0){
-        var query_id = $("input[name='final_query_id']").val();
+        var query_id = $("input[name='query_id']").val();
         var cust_iddd = $("#cust_iddd").val();
-        var journey_type = $("#journey_type").val();
-        var loan_amt = $("#loan_amount").val();
-        var comp_name = $("#comp_name").val();
-        var bank_account_type = $("#bank_account_type option:selected").val();
-        var comp_name_other = $("#comp_name_other").val();
-        var net_incm = $("#net_month_inc").val();
-        var pin_code = $("#pin_code").val();
-        var twe = $("#twe").val();
-        var dob = $("#dob").val();
-        var main_acc = $("#main_acc").val();
-        var city_name = $("#city_id").val();
-        var occup_id = $("#occupation_id").val();
-        var name = $("#name").val();
-        var loan_type = $("#loan_type").val();
-        var twe = $("#twe").val();
-        var loan_emi = $("#ex_emi").val();
-        var extng_amt = $("#ex_amt").val();
-        var slry_mode = $("#slry_paid").val();
-        var nature_loan = $("#nature_loan").val();
-        var rented_id = $("#rented_id").val();
-        var cur_rate = $("#cur_rate").val();
-        var asset_type = $("#asset_type").val();
-        var weight_gold = $("#gold_weight").val();
-        var purity_gold = $("#gold_purity").val();
-        var exis_loans = $("#exis_loans").val();
-        var credit_running =  $("#credit_running option:selected").val();
-        var profession_id = $("#profession option:selected").val();
-        var bus_nature = $("#nature_of_business option:selected").val();
-        var industry_type =  $("#industry_type option:selected").val();
-        var registration_type = $("#type_of_registration option:selected").val();
-        var type_of_business = $("#business_type option:selected").val();
-        var annual_turnover_num = $("#annual_turnover").val();
-        var business_existing_num = $("#years_in_business").val();
-        var itr_available_num = $("#ITR_available option:selected").val();
-        var degree_reg_year = $("#degree_reg_year option:selected").val();
-        var property_identified_sale_type_id = $("#prop_identified_sale_type option:selected").val();
-        var property_location_id = $("#prop_loc").val();
-        var property_size = $("#property_size").val();
-        var property_city_id =  $("#prop_city_id").val();
-        var property_identified = $("input[name='prop_identified']:checked").val();
-        var loan_in_past = $("input[name='loan_in_past']:checked").val();
-        var gold_type  = $("#gold_type option:selected").val();
-        var top_loan_amt  = $("#top_loan_amt").val();
-        var case_id = $('input[name="case_id"]').val();
-        if(get_val == 1){
-            var url = "<?php echo $head_url; ?>/query/dss.php";	 
-        }else{
-            var url = "<?php echo $head_url; ?>/offers/index.php";
-        }
+        var url = "<?php echo $head_url; ?>/offers/index.php";
+
         $.ajax({
             method:'GET',
             cache:'false',  
             url: url,
-            data: "top_loan_amt="+top_loan_amt+"&loan_in_past="+loan_in_past+"&industry_type="+industry_type+"&registration_type="+registration_type+"&type_of_business="+type_of_business+"&bank_account_type="+bank_account_type+"&degree_reg_year="+degree_reg_year+"&loan_amt="+loan_amt+"&pin_code="+pin_code+"&comp_name="+comp_name+"&cust_iddd="+cust_iddd+"&net_incm="+net_incm+"&twe="+twe+"&dob="+dob+"&main_acc="+main_acc+"&loan_type="+loan_type+"&occup_id="+occup_id+"&city_name="+city_name+"&name="+name+"&loan_emi="+loan_emi+"&extng_amt="+extng_amt+"&slry_paid="+slry_mode+"&loan_nature="+nature_loan+"&rented_id="+rented_id+"&cur_rate="+cur_rate+"&asset_type="+asset_type+"&weight_gold="+weight_gold+"&purity_gold="+purity_gold+"&exis_loans="+exis_loans+"&credit_running="+credit_running+"&profession_id="+profession_id+"&bus_nature="+bus_nature+"&annual_turnover_num="+annual_turnover_num+"&business_existing_num="+business_existing_num+"&itr_available_num="+itr_available_num+"&property_identified_sale_type_id="+property_identified_sale_type_id+"&journey_type="+journey_type+"&property_size="+property_size+"&property_city_id="+property_city_id+"&property_identified="+property_identified+"&run_ch=1&query_id="+query_id+"&gold_type="+gold_type+"&case_id="+case_id+"&offers_level_type="+offers_level_type,
+            data: "query_id="+query_id+"&cust_iddd="+cust_iddd,
             success: function(response) {
                 if(offers_level_type == 1){
                     $(".id01").html(response);
