@@ -229,7 +229,7 @@ $('#upload_csv').on('click', function(event){
 						data_show = data.message + " " + "Total Row Insert (" + insertData + ")";
 						
 						if (window.confirm(data_show)) {
-							window.location.href = '/crmsml/upload-csv/index.php';
+							window.location.href = '/upload-csv/index.php';
 						}
 					} else if (data && data.status === 'success') {
 						const message = data.message || "";
@@ -238,11 +238,11 @@ $('#upload_csv').on('click', function(event){
 						data_show = message + " " + "Total Row Insert (" + insertData + ")";
 						
 						if (window.confirm(data_show)) {
-							window.location.href = '/crmsml/upload-csv/index.php';
+							window.location.href = '/upload-csv/index.php';
 						}
 					} else {
 						if (window.confirm(data)) {
-							window.location.href = '/crmsml/upload-csv/index.php';
+							window.location.href = '/upload-csv/index.php';
 						}
 					}
 

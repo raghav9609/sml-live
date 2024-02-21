@@ -167,7 +167,7 @@
             beforeSend: function () {
                 $("#show_btn").attr('onclick', '');
             },
-            url: "/crmsml/query/show_number_history.php",
+            url: "/query/show_number_history.php",
             success:function(data){
                 $("#phone_no").val(data);
                 $('html, body').animate({

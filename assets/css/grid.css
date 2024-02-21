@@ -4,8 +4,8 @@
  
 @font-face {
   font-family: FontAwesome;
-  src: url(/crmsml/assets/fonts/icon.eot?wvc7cg);
-  src: url(/crmsml/assets/fonts/icon.eot?wvc7cg#iefix) format('embedded-opentype'), url(/crmsml/assets/fonts/icon.woff?wvc7cg) format('woff'), url(/crmsml/assets/fonts/icon.ttf?wvc7cg) format('truetype'), url(/crmsml/assets/fonts/icon.svg?wvc7cg#icon) format('svg');
+  src: url(/assets/fonts/icon.eot?wvc7cg);
+  src: url(/assets/fonts/icon.eot?wvc7cg#iefix) format('embedded-opentype'), url(/assets/fonts/icon.woff?wvc7cg) format('woff'), url(/assets/fonts/icon.ttf?wvc7cg) format('truetype'), url(/assets/fonts/icon.svg?wvc7cg#icon) format('svg');
   font-weight: 400;
   font-style: normal
 }
@@ -5201,7 +5201,7 @@ input[disabled] {
 
 .ui-widget-header {
   border: 1px solid #aaa;
-  background: url(/crmsml/assets/ui-bg_highlight-soft_75_cccccc_1x100.png) 50% 50% repeat-x #ccc;
+  background: url(/assets/ui-bg_highlight-soft_75_cccccc_1x100.png) 50% 50% repeat-x #ccc;
   color: #222;
   font-weight: 700
 }
@@ -5323,7 +5323,7 @@ input[disabled] {
 .ui-widget-content .ui-state-active,
 .ui-widget-header .ui-state-active {
   border: 1px solid #aaa;
-  background: url(/crmsml/assets/css/smoothness/images/ui-bg_glass_65_ffffff_1x400.png) 50% 50% repeat-x #fff;
+  background: url(/assets/css/smoothness/images/ui-bg_glass_65_ffffff_1x400.png) 50% 50% repeat-x #fff;
   font-weight: 400;
   color: #212121
 }

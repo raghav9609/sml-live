@@ -474,7 +474,7 @@ require_once(dirname(__FILE__) . '/../include/display-name-functions.php');
                             } ?>
                 </div>
             <?php include "../include/footer_close.php"; ?>
-            <script type="text/javascript" src="/crmsml/assets/js/common-function.js"></script>
+            <script type="text/javascript" src="/assets/js/common-function-call.js"></script>
     </body>
 
     </html>
