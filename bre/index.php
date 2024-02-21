@@ -93,8 +93,12 @@ $data_to_display = $db_handle->runQuery($breDetailsExport->searchFilter($filter_
                 <td><input type="checkbox" name="ch_edit[]" value="<?php echo $id; ?>" id="<?php echo $id; ?>" class ="all allchecked" onchange="disbaledFields(this);"/>
                 </td>
                 <td >
-                <?php $partner_name  = get_name($partner_id,$partner_id);
-                echo $partner_name['value']; ?>
+                <?php 
+                $partner_name = '';
+                if($partner_id > 0){
+                    $partner_namefetch  = get_name($partner_id,$partner_id);
+                    $partner_name = $partner_namefetch['value'];
+                }  echo $partner_name; ?>
                 </td>
                     <td>
                         <input name="min_loan_amount<?php echo $id; ?>" value="<?php echo $min_loan_amount; ?>" class="<?php echo $id; ?>_chng all" disabled="" type="text" maxlength="10"/>

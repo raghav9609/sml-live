@@ -416,7 +416,11 @@ if($follow_up_time == '' || $follow_up_time == '00:00:00' ){
 }
 
 $application_status_get  = $exe['application_status'];
-$get_application_status = get_name('status_name',$application_status_get);
+if($application_status_get > 0){
+    $get_application_statusfetch = get_name('status_name',$application_status_get);
+    $get_application_status = $get_application_statusfetch['value'];
+}
+
 
 $loan_type = $exe['loan_type'];
 $loan_amount = ($exe['required_loan_amt'] > 0) ? custom_money_format($exe['required_loan_amt']) : "";
@@ -431,13 +435,22 @@ $bank_application_no = $exe['bank_application_no'];
 $case_id = $exe['crm_raw_data_id'];
 $cust_id = $exe['cust_id'];
 $city_id = $exe['city_id'];
-$city_name_get = get_name("city_id",$city_id);
-$city_name = $city_name_get['city_name'];
-$get_name_bank = get_name("",$name_bank);
-$name_bank_on = $get_name_bank['value'];
+$city_name = '';
+if($city_id > 0){
+    $city_name_get = get_name("city_id",$city_id);
+    $city_name = $city_name_get['city_name'];
+}
+$name_bank_on = '';
+if($name_bank > 0){
+    $get_name_bank = get_name("",$name_bank);
+    $name_bank_on = $get_name_bank['value'];
+}
 $app_user = $exe['user_id'];
-$get_user_name = get_name("user_id",$app_user);
-
+$get_user_name = 'Unassigned';
+if($app_user > 0){
+    $get_user_namefetch = get_name("user_id",$app_user);
+    $get_user_name = $get_user_namefetch['name'];
+}
 
 $app_partner_on = $exe['partner_on'];
 
@@ -451,9 +464,7 @@ if ($(this).not(":checked")) {
 ?>
 <tr>
 <td>
-    <!-- <input type='' name='applcation_id_<?php echo $case_id;?>' value='<?php echo base64_encode($app_id);?>'> -->
-<!-- <a href = "../cases/edit.php?case_id=<?php echo urlencode(base64_encode($case_id)) ;?>" class="has_link"><?php echo $case_id;?></a> -->
-<!-- <br/> -->
+
 <a href = "edit.php?app_id=<?php echo urlencode(base64_encode($app_i)); ?>" class="has_link">
 <span><?php echo $app_i;?></span></a>
 <br>
@@ -494,7 +505,7 @@ if ($(this).not(":checked")) {
     <?php echo $final_follow_up_date." ".$final_follow_up_time;?>
 </td>
 <td>
-    <?php echo $get_user_name['name'];?>
+    <?php echo $get_user_name;?>
 </td>
 <td>
     <a href="edit.php?app_id=<?php echo urlencode(base64_encode($app_i)); ?>" class="has_link"><input type="button" class = "pointer_n" value="View" style="border-radius: 5px; background-color: #18375f; font-weight: bold;"></a>

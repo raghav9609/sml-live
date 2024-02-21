@@ -98,9 +98,16 @@ $data_to_display = $db_handle->runQuery($partnerDetailsExport->searchFilter($fil
                 <td><input type="checkbox" name="ch_edit[]" value="<?php echo $id; ?>" id="<?php echo $id; ?>" class ="all allchecked" onchange="disbaledFields(this);"/>
                 </td>
                 <td >
-                <?php $partner_name  = get_name($partner_id,$partner_id);
-                $city_name  = get_name('city_id',$city_id); 
-                echo $partner_name['value']. "<br><span class='orange'>" .$city_name['city_name']."</span><br>"; ?>
+                <?php
+                if($partner_id > 0){
+                    $partner_namefetch  = get_name($master_code_id,$partner_id);
+                    $partner_name = $partner_namefetch['value'];
+                }
+                if($city_id > 0){
+                    $city_namefetch  = get_name('city_id',$city_id);
+                    $city_name = $city_namefetch['city_name'];
+                }
+                echo $partner_name. "<br><span class='orange'>" .$city_name."</span><br>"; ?>
                 </td>
                     <td>
                     <?php echo $agent_type == 2 ? "SM":"RM"; ?>

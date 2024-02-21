@@ -60,12 +60,17 @@ if($_REQUEST['assign_to'] == '1'){
 if($user_role = 3){
     $user_id = $_SESSION['userDetails']['user_id'];
 }
+$comp_id = 0;
+if($company_name != ''){
+    $companyIdfetch = get_name('comp_id',$company_name); 
+    $comp_id = $companyIdfetch['id']; 
+}
 
-$companyIdfetch = get_name('comp_id',$company_name); 
-$comp_id = $companyIdfetch['id']; 
-
-$custIdfetch = get_name('customer_id',$phone); 
-$cust_id = $custIdfetch['id']; 
+$cust_id = 0;
+if($phone > 0){
+    $custIdfetch = get_name('customer_id',$phone); 
+    $cust_id = $custIdfetch['id']; 
+}
 
 if($comp_id == '' || $comp_id == '0'){
     $comp_id_n = '';

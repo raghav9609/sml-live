@@ -417,9 +417,11 @@ if($user_role == 4){
                                     $user_name = $exe_form['user_name'];
                                     $follow_name = $exe_form['follow_status'];
                                     $qy_status_id = $exe_form['query_status'];
-                                    $qy_status_get = get_name('status_name',$qy_status_id);
-                                    $qy_status = $qy_status_get['value']; 
-                        
+                                    $qy_status = '';
+                                    if($qy_status_id > 0){
+                                        $qy_status_get = get_name('status_name',$qy_status_id);
+                                        $qy_status = $qy_status_get['value']; 
+                                    }
                                     if (in_array($query_status, array(20, 3))) {
                                         $follow_name = $query_follow_date = '';
                                     }

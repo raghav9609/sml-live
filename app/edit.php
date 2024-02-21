@@ -34,7 +34,10 @@ if ($exe_form['id'] == '' || $exe_form['id'] == 0) {
     $follow_up_date = '';
     $follow_up_time = '';
     $name_bank = $exe_form['bank_id'];
-    $get_bank_name = get_name("",$name_bank);
+    if($name_bank > 0){
+        $get_bank_namefetch = get_name("",$name_bank);
+        $get_bank_name = $get_bank_namefetch['value'];
+    }
     $application_status = $exe_form['application_status'];
     $app_u_assign = $exe_form['user_id'];
     $applied_amount = $exe_form['applied_amount'] > 0 ? $exe_form['applied_amount'] : '';

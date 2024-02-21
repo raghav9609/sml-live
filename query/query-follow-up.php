@@ -218,12 +218,21 @@ while ($result_query = mysqli_fetch_array($query_follow_up)) {
         } else {
             $fol_time = (date('H:i a', strtotime($f_time)) == '00:00 am') ? '--' : date('H:i a', strtotime($f_time));
         }
-        $follow_up_name = get_name('status_name',$follow_status);
-        $follow_up_user_name = get_name('user_id',$result_query['user_id']);
+        $follow_up_name = '';
+        if($follow_status > 0){
+            $follow_up_namefetcg = get_name('status_name',$follow_status);
+            $follow_up_name = $follow_up_namefetcg['value'];
+        }
+        $follow_up_user_name = '';
+        if($result_query['user_id'] > 0){
+            $follow_up_user_namefetch = get_name('user_id',$result_query['user_id']);
+            $follow_up_user_name = $follow_up_user_namefetch['name'];
+        }
+        
         ?>
         
-        <tr class='center-align'><td><?php echo $follow_up_name['value']; ?><br>(<?php echo $given_by; ?>)</td>
-<td><?php echo date('d-m-Y', strtotime($result_query['created_on'])); ?></td><td><?php echo $desc; ?> </td><td><?php echo $follow_up_user_name['name']; ?> </td><td><?php echo $f_date; ?><br><?php echo $fol_time; ?> <br><?php echo $status;?></td></tr>
+        <tr class='center-align'><td><?php echo $follow_up_name; ?><br>(<?php echo $given_by; ?>)</td>
+<td><?php echo date('d-m-Y', strtotime($result_query['created_on'])); ?></td><td><?php echo $desc; ?> </td><td><?php echo $follow_up_user_name; ?> </td><td><?php echo $f_date; ?><br><?php echo $fol_time; ?> <br><?php echo $status;?></td></tr>
     <?php } } ?>
 <div id="up_desc"></div>
 </table>

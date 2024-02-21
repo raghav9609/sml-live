@@ -24,10 +24,12 @@ $recordcount = mysqli_num_rows($res);
                     $record = 0;
                     while($exe = mysqli_fetch_array($res)) {
                         $record++;
-                        
+                        $user_name = '';
                         $user_id_get = $exe['user_id'];
-                        $user_name_get = get_name('user_id', $user_id_get);
-                        $user_name = $user_name_get['name'];
+                        if ($user_id_get > 0){
+                            $user_name_get = get_name('user_id', $user_id_get);
+                            $user_name = $user_name_get['name'];
+                        }  
                         $description_bank = $exe['description_by_bank'];
                         $description_by_user = $exe['description_by_user'];
                         $follow_up_date_get = $exe['follow_up_date'];

@@ -8,12 +8,10 @@
         <form onsubmit="datavalidate(); return false;" class="form-step col-12" autocomplete="off" id="form_step1">
                       
             <div class="row div-width">
-            
-            
                 <div class="form-group col-xl-2 col-lg-4 col-md-6">
                     <span class="fa-icon fa-building"></span>
                     
-                    <input type="text" id="bank_name" name="bank_name" value="<?php echo ($get_bank_name['value']) ;?>" placeholder="Enter Bank Name" class="form-control alphaonly valid" maxlength="20" <?php echo ($get_bank_name['value'] != '') ? 'disabled' : 'disabled'; ?>  required >
+                    <input type="text" id="bank_name" name="bank_name" value="<?php echo $get_bank_name ;?>" placeholder="Enter Bank Name" class="form-control alphaonly valid" maxlength="20" <?php echo ($get_bank_name != '') ? 'disabled' : 'disabled'; ?>  required >
                     <label for="bank_name" class="label-tag"> Bank Name</label>
                 </div> 
                 
