@@ -203,6 +203,7 @@ function special_encryption($sData)
 if (!function_exists('curl_helper')) {
     function curl_helper($url, $header = array('content-type:application/json'), $content = '')
     {
+        echo "<br><br>Hello sumit    ".$url;
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_POST, true);
         curl_setopt($curl, CURLOPT_POSTFIELDS, $content);
