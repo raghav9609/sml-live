@@ -5,8 +5,8 @@ require_once(dirname(__FILE__) . '/../helpers/common-helper.php');
 
 $query_id = base64_decode($_REQUEST['query_id']);
 $type = ($_REQUEST['type']);
-$stage_one_id = base64_decode($_REQUEST['stage_one_id']);
-$stage_two_id = base64_decode($_REQUEST['stage_two_id']);
+$stage_one_id = base64_decode($_REQUEST['stgOneHitId']);
+$stage_two_id = base64_decode($_REQUEST['stgTwoHitId']);
 $otp = base64_decode($_REQUEST['otp']);
 if(in_array($type,array(1,2)) && $query_id > 0){
     $get_customerData = mysqli_query($Conn1,"select * from crm_query as qry INNER JOIN crm_customer as customer ON qry.crm_customer_id = customer.id where qry.id = ".$query_id);
