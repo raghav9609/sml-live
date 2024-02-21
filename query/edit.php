@@ -97,11 +97,12 @@ if ($exe_form['id'] == '' || $exe_form['id'] == 0) {
     $offce_address = $result_cust_data['offce_address'];
     $ofc_pincode = $result_cust_data['ofc_pincode'];
     $ofc_email = $result_cust_data['ofc_email'];
-    echo $work_city = $result_cust_data['work_city'];
+    $work_city = $result_cust_data['work_city'];
     $maritalstatus = $result_cust_data['maritalstatus'];
     $ofc_city_name = '';
     if($work_city > 0){
         $getofccityId = get_name("city_id", $work_city);
+        print_r($getofccityId);
         $ofc_city_name = getofccityId["city_name"];
     }
     $curDate = currentDate();
