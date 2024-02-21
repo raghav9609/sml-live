@@ -1,9 +1,13 @@
 <?php
+echo "hello1";
 require_once(dirname(__FILE__) . '/../config/session.php');
+echo "hello1";
 require_once(dirname(__FILE__) . '/../helpers/common-helper.php');
+echo "hello1";
 require_once(dirname(__FILE__) . '/../config/config.php');
-
+echo "hello1";
 require_once(dirname(__FILE__) . '/../include/display-name-functions.php');
+echo "hello1";
 $loan_type = replace_special($_REQUEST['loan_type']);
 $loan_amount = replace_special($_REQUEST['loan_amount']);
 $amt_deposit = replace_special($_REQUEST['amt_deposit']);
