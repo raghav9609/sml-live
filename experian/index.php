@@ -33,12 +33,12 @@ if($jsonDecodeResp['stgOneHitId'] != "" && $jsonDecodeResp['stgTwoHitId'] != "")
     $url_otp_gen = "https://ecvuat.experian.in/ECV-P2/content/generateMobileOTP.action";
     $content_otp_gen = 'stgOneHitId='.$jsonDecodeResp['stgOneHitId'].'&stgTwoHitId='.$jsonDecodeResp['stgTwoHitId'].'&mobileNo='.$result['phone_no'].'&type='.$apitype;
     $response_otpgeneration = curl_helper($url_otp_gen,$header,$content_otp_gen);
-
-    print_r($response_otpgeneration);
+    $resp_otp_gen  = json_decode($response_otpgeneration,true);
+    echo json_encode(array("apistatus"=>$resp_otp_gen['otpGenerationStatus'],"errorstring"=>$resp_otp_gen['errorString'],"stgOneHitId"=>$jsonDecodeResp['stgOneHitId'],"stgTwoHitId"=>$jsonDecodeResp['stgTwoHitId']));
+    
 }else{
     echo json_encode(array("apistatus"=>0,"errorstring"=>$jsonDecodeResp['errorString'],"stgOneHitId"=>$jsonDecodeResp['stgOneHitId'],"stgTwoHitId"=>$jsonDecodeResp['stgTwoHitId']));
 }
- print_r($response);
 }
 
 ?>
