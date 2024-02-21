@@ -412,7 +412,7 @@ if ($exe_form['id'] == '' || $exe_form['id'] == 0) {
                                     input: "tel",
                                     showCancelButton: true,
                                     confirmButtonText: "Submit",
-                                    showLoaderOnConfirm: true,
+                                    showLoaderOnConfirm: true
                                 }).then((result) => {
                                 if (result.isConfirmed) {
                                     alert(result.value);
