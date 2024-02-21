@@ -47,6 +47,9 @@ require_once(dirname(__FILE__) . '/include/constant.php');
 				<input type="button" id="submit" class="buttonsub cursor" name="submit" value="Enter Login Id" />
 			</div>
 		</div>
+		<script>
+			var head_url = "<?php echo $head_url; ?>";
+		</script>
         <script src="<?php echo $head_url; ?>/assets/js/jquery-1.10.2.js"></script>
         <script src="<?php echo $head_url; ?>/assets/js/login.js?v=1"></script>
     </body>
