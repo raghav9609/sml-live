@@ -398,23 +398,45 @@ if ($exe_form['id'] == '' || $exe_form['id'] == 0) {
                             var obj = jQuery.parseJSON(data);
 
                             var apistatus = obj.apistatus;
-                            alert(apistatus);
-                            let message;
-                            const somePromise = swal({
-                                title: "Please enter OTP Recieved:",
-                                content: "input",
-                            }).then(input => message = input);
-
-
-                            somePromise.then(() => {
-                                if (message != "" && message != null) {
-                                    console.log("greeting", message);
-                                    swal("your personalized message is:", message, "success");
+                            var message = obj.errorstring;
+                            if(parseInt(apistatus) != 1){
+                                Swal.fire({
+                                    icon: "error",
+                                    title: "Oops...",
+                                    text: message
+                                });
+                            } else {
+                                Swal.fire({
+                                    title: "Enter Otp recieved on phone",
+                                    input: "tel",
+                                    showCancelButton: true,
+                                    confirmButtonText: "Submit",
+                                    showLoaderOnConfirm: true,
+                                }).then((result) => {
+                                if (result.isConfirmed) {
+                                    alert(result.value);
+                                    $.ajax({
+                                        type: "POST",
+                                        dataType: "text",
+                                        data: "type="+type+"&query_id="+query_id+"&otp="+result.value,
+                                        cache: false,
+                                        beforeSend: function () {
+                                            $("#shrt_url_"+type).attr('value', 'Processing...');
+                                            $("#shrt_url_"+type).prop('disabled', true);
+                                        }, 
+                                        url: "<?php echo $head_url;?>/experian/validate-otp.php",
+                                        success: function (data) {
+                                            var obj = jQuery.parseJSON(data);
+                                        }
+                                    });
+                                    Swal.fire({
+                                    title: `${result.value.login}'s avatar`,
+                                    imageUrl: result.value.avatar_url
+                                    });
                                 }
-                            });
-
-
-                            //alert(data);
+                                });
+                            }
+                           
                             alert(data);
                             //window.location.href=headURL+'/app/edit.php?app_id='+$("#app_id").val();
                         }
