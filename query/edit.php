@@ -395,6 +395,8 @@ if ($exe_form['id'] == '' || $exe_form['id'] == 0) {
                         },                         
                         url: "<?php echo $head_url;?>/experian/index.php",
                         success: function (data) {
+                            var apistatus = data.apistatus;
+                            alert(apistatus);
                             let message;
                             const somePromise = swal({
                                 title: "Please enter OTP Recieved:",
