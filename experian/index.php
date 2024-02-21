@@ -22,43 +22,25 @@ if($type == 1){
         $lastname = trim($result['name']);
     }
     $url = "https://ecvuat.experian.in/ECV-P2/content/registerEnhancedMatchMobileOTP.action";
-    echo $content = 'clientName=SWITCH_EM&allowInput=1&allowEdit=1&allowCaptcha=1&allowConsent=1&allowEmailVerify=1&allowVoucher=1&voucherCode=SWITCHMYLOANTkqRs&firstName='.$name[0].'&surName='.trim($lastname).'&mobileNo='.$result['phone_no'].'&email='.$result['email_id'].'&noValidationByPass=0&emailConditionalByPass=1';
+    $content = 'clientName=SWITCH_EM&allowInput=1&allowEdit=1&allowCaptcha=1&allowConsent=1&allowEmailVerify=1&allowVoucher=1&voucherCode=SWITCHMYLOANTkqRs&firstName='.$name[0].'&surName='.trim($lastname).'&mobileNo='.$result['phone_no'].'&email='.$result['email_id'].'&noValidationByPass=0&emailConditionalByPass=1';
     $apitype= "CUSTOM";
-
-    $curl = curl_init();
-        curl_setopt($curl, CURLOPT_POST, true);
-        curl_setopt($curl, CURLOPT_POSTFIELDS, $content);
-        curl_setopt($curl, CURLOPT_URL, $url);
-        curl_setopt($curl, CURLOPT_CONNECTTIMEOUT, 60);
-        curl_setopt($curl, CURLOPT_HTTPHEADER, $header);
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, TRUE);
-        curl_setopt($curl, CURLOPT_FOLLOWLOCATION, false);
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
-        curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
-        $response = curl_exec($curl);
-        $error = curl_error($curl);
-        $status = curl_getinfo($curl);
-        echo "Resp<br><br>";
-        print_r($response);
-        echo "Error<br><br>";
-        print_r($error);
-        echo "Status<br><br>";
-        print_r($status);
-        curl_close($curl);
-        return $response;
-
-
 }
 // else if($type == 2){
 //     $url = "https://ecvuat.experian.in/ECV-P2/content/validateMobileOTP.action";
 //     $apitype= "NORMAL";
 // }
-//  $response = curl_helper($url,$header,$content);
+ $response = curl_helper($url,$header,$content);
+$jsonDecodeResp = json_decode($response,true);
+if($jsonDecodeResp['stgOneHitId'] != "" && $jsonDecodeResp['stgTwoHitId'] != ""){
+    $url = "https://ecvuat.experian.in/ECV-P2/content/generateMobileOTP.action";
+    $content_otp_gen = 'stgOneHitId='.$jsonDecodeResp['stgOneHitId'].'&stgTwoHitId='.$jsonDecodeResp['stgTwoHitId'].'&mobileNo='.$result['phone_no'].'&type='.$apitype;
+    $response_otpgeneration = curl_helper($url,$header,$content);
 
-//  print_r($response);
+    print_r($response_otpgeneration);
+}else{
+    echo json_encode(array("apistatus"=>0,"errorstring"=>$jsonDecodeResp['errorString'],"stgOneHitId"=>$jsonDecodeResp['stgOneHitId'],"stgTwoHitId"=>$jsonDecodeResp['stgTwoHitId']));
 }
-
-echo '<script>window.location.href = "'.$head_url.'/query/edit.php?id='.$query_id.';</script>';
+ print_r($response);
+}
 
 ?>
