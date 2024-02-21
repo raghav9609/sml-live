@@ -2,10 +2,10 @@
 
 class DBController
 {
-        private $host = 'localhost';
-        private $user = 'astecztc_sml';
-        private $password = 'yI@l~0Sy7F%y';
-        private $database = 'astecztc_sml';
+        private $host = "smlcrmdb.c1e80z56vnnv.ap-south-1.rds.amazonaws.com";
+        private $user = "admin";
+        private $password = "bd339354e50a4544b157474ac3134f0b";
+        private $database = "crmsml";
         private $connection = "";
 
         function __construct()
