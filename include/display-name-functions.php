@@ -19,7 +19,7 @@ function get_display_name($type,$selected_val){
             $qry = "Select value from crm_masters where crm_masters_code_id = 4 and id = '".$selected_val."'";
         break;
         case "customer_id":
-            $qry = "Select id from crm_customers where phone_no = '".$selected_val."'";
+            $qry = "Select id from crm_customer where phone_no = '".$selected_val."'";
             break;
     }
 	$result_qry = mysqli_query($Conn1,$qry);
