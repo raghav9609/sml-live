@@ -3,9 +3,6 @@ require_once "../config/config.php";
 require_once "../include/helper.functions.php";
 require_once "../include/display-name-functions.php";
 
-/* if($user == '173'){
-echo "select * from tbl_updated_query_details where query_id='".$qryyy_id."'";
-} */
 $qryyy_id = $_REQUEST['query_id'];
 $return_html = "";
 

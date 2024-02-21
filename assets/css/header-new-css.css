@@ -830,7 +830,7 @@ border-top: 1px solid #18375f;
 /* .nav-resetbtn li{ display: flex!important; align-items: center; } */
 .nav-resetbtn .logout-text-new { float: left!important }
 .nav-resetbtn .logout-icon { margin-top:0px }
-.mlc-user-name {padding: 0px 0px 0px 0px; margin-right: 0px; padding-right: 0;}
+.crm-user-name {padding: 0px 0px 0px 0px; margin-right: 0px; padding-right: 0;}
 .watch-badge{position: relative;}
 .watch-badge .wn-badge{top: 0px!important;}
 .name-logout {display: flex; width: auto;align-items: center;justify-content: center;margin-left:1rem;}

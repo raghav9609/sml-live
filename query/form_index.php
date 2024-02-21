@@ -316,7 +316,6 @@
                         <input type="hidden" name="id" value="<?php echo $id; ?>">
                         <input type="hidden" name="customer_id" value="<?php echo $cust_id; ?>">
                         <input type="hidden" name="step" value="2">
-                        <input type="hidden" name="mlc_product_id"  value="<?php echo $mlc_product_id;?>">
                         <input type="hidden" name="user_id" id="user_id"  value="<?php echo $user;?>">
                         <input type="hidden" name="if_hot_case" id="if_hot_case" class="if_hot_case"  value="<?php echo $hotcase;?>">
                         <div class="row div-width">
