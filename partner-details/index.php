@@ -65,7 +65,7 @@ $data_to_display = $db_handle->runQuery($partnerDetailsExport->searchFilter($fil
         <input type='text' name="phoneno" placeholder= "RM/ SM Phone No" maxlength="10">
         <input class="cursor" type='submit' value='Search' name='search_btn'>
         <a href="<?php echo $head_url; ?>/partner-details/"><input class="cursor" type='button' value='Clear'></a>
-        <input class="cursor" type="button" name="add" value="Add" id="add" onclick="add_info();">
+        <a href="<?php echo $head_url; ?>/partner-details/add-partner.php"><input class="cursor" type="button" name="add" value="Add" id="add" ></a>
     </form>
         
     </fieldset>
@@ -151,18 +151,6 @@ $data_to_display = $db_handle->runQuery($partnerDetailsExport->searchFilter($fil
             $(".all").attr('disabled', 'disabled');
             $(".allchecked").removeAttr('disabled').prop("checked",false);
         }
-    }
-
-    function add_info() {
-        $("#msg").text("");
-        $("#add").addClass("hidden");
-        $.ajax({
-            type: "POST",
-            url: "add-partner.php",
-            success: function (html) {
-                $("#loan").html(html);
-            }
-        })
     }
 </script>
 <?php
