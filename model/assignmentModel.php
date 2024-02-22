@@ -20,7 +20,7 @@ class leadAssignMent{
         return $query_to_execute;
     }
     function leadAssignment($data){
-        $query_to_execute = "select * from crm_lead_assignment where city_sub_group_id = ".$data['city_sub_group_id']." and min_net_income <= ".$data['net_income']." and max_net_income >= ".$data['net_income']." and min_loan_amount <= ".$data['loan_amount']." and max_loan_amount >=".$data['loan_amount']." and loan_type >=".$data['loan_type_id']." and is_active = 1 order by last_lead_assign_on DESC LIMIT 1";
+        $query_to_execute = "select * from crm_lead_assignment where city_sub_group_id = ".$data['city_sub_group_id']." and min_net_income <= ".$data['net_income']." and max_net_income >= ".$data['net_income']." and min_loan_amount <= ".$data['loan_amount']." and max_loan_amount >=".$data['loan_amount']." and loan_type >=".$data['loan_type_id']." and is_active = 1 order by last_lead_assign_on  LIMIT 1";
         return $query_to_execute;
     }
     function updateLastLeadAssignDate($data){
