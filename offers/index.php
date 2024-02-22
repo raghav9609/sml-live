@@ -51,21 +51,21 @@ if ($recordcount > 0) {
     echo implode($data_bnk);
 }
 
-        // $breURL = 'bre.switchmyloan.in/v1/bre/personal-loans/offers-new';
-        // $content = array("cibilScore" => 0,
-        //         "loanAmount" => 0,
-        //         "netIncomeDeclared" => $resqrydets['net_income'],
-        //         "dob" => $resqrydets['dob'],
-        //         "companyName" => $compnm,
-        //         "salaryTransferMode" => $modesal,
-        //         "tenure" => 0,
-        //         "obligationsDeclared" => 0,
-        //         "pinCode" => "string",
-        //         "creditReportXml" => "string",
-        //         "netIncomeDeclaredBankStatement" => 0,
-        //         "obligationsBankStatement" => 0);
+        $breURL = 'bre.switchmyloan.in/v1/bre/personal-loans/offers-new';
+        $content = array("cibilScore" => 0,
+                "loanAmount" => 0,
+                "netIncomeDeclared" => $resqrydets['net_income'],
+                "dob" => $resqrydets['dob'],
+                "companyName" => $compnm,
+                "salaryTransferMode" => $modesal,
+                "tenure" => 0,
+                "obligationsDeclared" => 0,
+                "pinCode" => "string",
+                "creditReportXml" => "string",
+                "netIncomeDeclaredBankStatement" => 0,
+                "obligationsBankStatement" => 0);
 
-        // $header = array('content-type:application/x-www-form-urlencoded');
-        // $data = json_encode($content);
-        // $response = curl_helper($breURL,$header,$data);
+        $header = array('content-type:application/x-www-form-urlencoded');
+        $data = json_encode($content);
+        $response = curl_helper($breURL,$header,$data);
 ?>
