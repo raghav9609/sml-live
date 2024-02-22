@@ -4,6 +4,7 @@ require_once(dirname(__FILE__) . '/helpers/common-helper.php');
 require_once(dirname(__FILE__) . '/include/header.php');
 require_once(dirname(__FILE__) . '/config/config.php');
 require_once(dirname(__FILE__) . '/include/helper.functions.php');
+$dispDateArr = array('Today','Yesterday','Last 7 Days','Last 30 days');
 ?>
 <!DOCTYPE html>
     <html>
@@ -37,16 +38,16 @@ require_once(dirname(__FILE__) . '/include/helper.functions.php');
                 <!-- Title Header -->
                 <div class="span9">
                     <?php 
-                        $getreport = "SELECT usr.name As user_name,count(qry.id) As Total_count, stat.value As status FROM `crm_query` As qry left JOIN crm_master_user As usr ON qry.lead_assign_to = usr.id LEFT JOIN crm_master_status As stat ON qry.query_status = stat.id WHERE stat.status_type = 1 and qry.lead_assign_to = '".$user_id."'";
 
-                       echo $getreport .= " GROUP by qry.query_status";
+                        // $getreport = "SELECT usr.name As user_name,count(qry.id) As Total_count, stat.value As status FROM `crm_query` As qry left JOIN crm_master_user As usr ON qry.lead_assign_to = usr.id LEFT JOIN crm_master_status As stat ON qry.query_status = stat.id WHERE stat.status_type = 1 and qry.lead_assign_to = '".$user_id."' and date(qry.created_on) between '" . $date_from . "' and '" . $date_to . "' GROUP by qry.query_status ";
+
+                        $getreport = "SELECT usr.name As user_name,count(qry.id) As Total_count, stat.value As status FROM `crm_query` As qry left JOIN crm_master_user As usr ON qry.lead_assign_to = usr.id LEFT JOIN crm_master_status As stat ON qry.query_status = stat.id WHERE stat.status_type = 1 and qry.lead_assign_to = '".$user_id."' and date(qry.created_on) = CURDATE() GROUP by qry.query_status ";
+
+                       
                         
                         $resreport = mysqli_query($Conn1,$getreport);
                         while($resdata = mysqli_fetch_array($resreport)){
-                            if($resdata['user_name'] == ''){$userName = 'Unassigned'; } else {$userName = $resdata['user_name'];}
-                            $datadisp[$userName][$resdata['status']] = $resdata['Total_count'];
-                            $userdata[] = $userName;
-                            $statusdata[] = $resdata['status'];
+                            $datadisp['Today'][$resdata['status']] = $resdata['Total_count'];
                         }
                     ?>
 
@@ -69,7 +70,7 @@ require_once(dirname(__FILE__) . '/include/helper.functions.php');
                                 <th width="10%">Not Eligible/Foir</th>
                                 <th width="10%">Foir</th>
                             </tr>
-                        <?php  foreach(array_unique($userdata) As $dat){?>
+                        <?php  foreach(array_unique($dispDateArr) As $dat){?>
                             <tr>
                                 <td><span><?php echo $dat;?> </span> </td>
                                 <td><span><?php echo $datadisp[$dat]['Open'] > 0 ? $datadisp[$dat]['Open']:0;?> </span> </td>
