@@ -24,10 +24,13 @@ foreach($fetch_unassign_leads as $key=>$value){
     echo "<br>".$leadAssignmentClassexport->leadAssignment($data);
     $getLeadAssignment = $db_handle->runQuery($leadAssignmentClassexport->leadAssignment($data));
     $data_to_update = array("lead_assign_to"=>$getLeadAssignment[0]['shift1user_id'],"query_id"=>$query_id);
+    echo "<br>".$leadAssignmentClassexport->userQueryID($data_to_update);
     $updateUserIdQuery = $db_handle->updateRows($leadAssignmentClassexport->userQueryID($data_to_update));
     $data_to_insert = array("lead_assign_to"=>$getLeadAssignment[0]['shift1user_id'],"query_id"=>$query_id);
+    echo "<br>".$leadAssignmentClassexport->leadAssignmentHistory($data_to_insert);
     $insertHistory = $db_handle->insertRows($leadAssignmentClassexport->leadAssignmentHistory($data_to_insert));
     $updateLastLeadAssignOn = array("id"=>$getLeadAssignment[0]['id']);
+    echo "<br>".$leadAssignmentClassexport->updateLastLeadAssignDate($updateLastLeadAssignOn);
     $updateLastLeadAssignmentBucket = $db_handle->updateRows($leadAssignmentClassexport->updateLastLeadAssignDate($updateLastLeadAssignOn));
 
 }
