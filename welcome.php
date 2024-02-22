@@ -39,8 +39,10 @@ $dispDateArr = array('Today','Yesterday','Last 7 Days','Last 30 Days');
                 <div class="span9">
                     <?php 
                         
-                        $getreport = "SELECT usr.name As user_name,count(qry.id) As Total_count, stat.value As status FROM `crm_query` As qry left JOIN crm_master_user As usr ON qry.lead_assign_to = usr.id LEFT JOIN crm_master_status As stat ON qry.query_status = stat.id WHERE stat.status_type = 1 and qry.lead_assign_to = '".$user_id."' ";
-
+                        $getreport = "SELECT usr.name As user_name,count(qry.id) As Total_count, stat.value As status FROM `crm_query` As qry left JOIN crm_master_user As usr ON qry.lead_assign_to = usr.id LEFT JOIN crm_master_status As stat ON qry.query_status = stat.id WHERE stat.status_type = 1 ";
+                        if($user_role != 1){
+                            $getreport = " and qry.lead_assign_to = '".$user_id."' ";
+                        }
                         foreach($dispDateArr As $dat){
                             $getreportnew = '';
                             $getreportcreated = '';
