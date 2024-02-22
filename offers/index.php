@@ -86,7 +86,7 @@ if(!empty($json_decode_bank['offers'])){
             $textclas = 'green bold';
             }
             $input_checkbox = "<input type ='checkbox' style='position: unset !important;' class='check_bank' name = 'check_bank[]' id = 'check_bank_".$resule_get_id['id']."' value ='".$resule_get_id['id']."' ".$disablcls.">";
-        echo "<tr><td>".$value['PolicyName']."</td><td>".$value['TotalEligibleIncome']."</td><td>".$value['EligibleLoanAmount']."</td><td>".$value['Tenure']."</td><td>".$value['RateOfInterest']."</td><td>".$value['MonthlyEMI']."</td><td>".$input_checkbox."</td></tr>";
+        echo "<tr><td class='".$textclas."'>".$value['PolicyName']."</td><td>".$value['TotalEligibleIncome']."</td><td>".$value['EligibleLoanAmount']."</td><td>".$value['Tenure']."</td><td>".$value['RateOfInterest']."</td><td>".$value['MonthlyEMI']."</td><td>".$input_checkbox."</td></tr>";
         }
 }else{
     echo "<tr><td colspan=''>".$value['message']."</td></tr>";
