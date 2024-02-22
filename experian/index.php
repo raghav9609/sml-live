@@ -2,6 +2,7 @@
 require_once(dirname(__FILE__) . '/../config/session.php');
 require_once(dirname(__FILE__) . '/../config/config.php');
 require_once(dirname(__FILE__) . '/../helpers/common-helper.php');
+require_once(dirname(__FILE__) . '/../include/helper.functions.php');
 
 $query_id = base64_decode($_REQUEST['query_id']);
 $type = ($_REQUEST['type']);
@@ -23,10 +24,30 @@ if($type == 1){
     $content = 'clientName=SWITCH_EM&allowInput=1&allowEdit=1&allowCaptcha=1&allowConsent=1&allowEmailVerify=1&allowVoucher=1&voucherCode=SWITCHMYLOANTkqRs&firstName='.$name[0].'&surName='.trim($lastname).'&mobileNo='.$result['phone_no'].'&email='.$result['email_id'].'&noValidationByPass=0&emailConditionalByPass=1';
     $apitype= "CUSTOM";
 }
-// else if($type == 2){
-//     $url = "https://ecvuat.experian.in/ECV-P2/content/validateMobileOTP.action";
-//     $apitype= "NORMAL";
-// }
+else if($type == 2){
+    $gender = 1;
+    if($result['gender'] > 0){
+        $gender = $result['gender'];
+    }
+    if($result['city_id'] > 0){
+        $get_city_name = get_name('city_id',$result['city_id']);
+        $city_name = $get_city_name['city_name'];
+        $state_id = $get_city_name['state_id'];
+    }
+
+    if($city_name == ""){
+        $city_name = "Others";
+    }
+
+    $get_experian_state_id = mysqli_query($Conn1,"select * from crm_experian_sml_state_mapping where sml_state_id = '".$state_id."'");
+    $result_exp = mysqli_fetch_array($get_experian_state_id);
+    
+    
+    $url = "https://ecvuat.experian.in/ECV-P2/content/registerSingleActionMobileOTP.action";
+        $gender = $result['gender'];
+        $content = 'clientName=SWITCH_FM&allowInput=1&allowEdit=1&allowCaptcha=1&allowConsent=1&allowVoucher=1&allowConsent_additional=1&allowEmailVerify=1&voucherCode=XXXXXXXXXX&emailConditionalByPass=1&firstName='.$name[0].'&middleName=&surName='.trim($lastname).'&dateOfBirth='.date("d-M-Y",strtotime($result['dob'])).'&gender='.$gender.'&mobileNo='.$result['phone_no'].'&telephoneNo=&telephoneType=0&email='.$result['email_id'].'&flatno='.$city_name.'&buildingName=&roadName=&city='.$city_name.'&state='.$result_exp['experian_state_id'].'&pincode='.$result['pincode'].'&pan='.$result['pan_no'].'&passport=&aadhaar=&voterid=&driverlicense=&rationcard=&reason=&novalidationbypass=0';
+    $apitype= "NORMAL";
+}
  $response = curl_helper($url,$header,$content);
 $jsonDecodeResp = json_decode($response,true);
 if($jsonDecodeResp['stgOneHitId'] != "" && $jsonDecodeResp['stgTwoHitId'] != ""){
