@@ -69,7 +69,7 @@ foreach($explpat As $patners){
             $recep_mail = $email;
             $replytomail = array();
             $cctomail = array();
-            $mailresp = mailSend($recep_mail,$cctomail,$replytomail,$subject,htmlspecialchars_decode($description));
+            $mailresp = mailSend($recep_mail,$cctomail,$replytomail,$subject,htmlspecialchars_decode($maildata));
         }
     } 
 }
