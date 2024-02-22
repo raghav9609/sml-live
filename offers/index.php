@@ -49,7 +49,7 @@ if ($recordcount > 0) {
         }
         $data_bnk[] = '<input type ="checkbox" style="position: unset !important;" class="check_bank" name = "check_bank[]" id = "check_bank_'.$exe_form['id'].'" value ="'.$exe_form['id'].'" '.$disablcls.'><label class="cursor '.$textclas.'" for="check_bank_'.$exe_form['id'].'">'.$exe_form['value'].'</label>&nbsp;&nbsp;&nbsp;&nbsp;';
     }
-    echo implode($data_bnk);
+   // echo implode($data_bnk);
 }
 
 $fetch_bureau_report = mysqli_query($Conn1,"Select xml_report from crm_experian_data where query_id = '".$query_id."' order by id desc LIMIT 1");
@@ -71,7 +71,13 @@ $breURL = 'bre.switchmyloan.in/v1/bre/personal-loans/offers-new';
                 "netIncomeDeclaredBankStatement":"'.$resqrydets['net_income'].'",
                 "obligationsBankStatement": 0
             }';
-
-         $header = array('content-type:application/json');
-echo $response = curl_helper($breURL,$header,$content);
+$header = array('content-type:application/json');
+$response = curl_helper($breURL,$header,$content);
+$json_decode_bank = json_decode($response,true);
+echo "<table class='gridtable' width='100%'><tr>
+<th>Bank Name</th><th>TotalEligibleIncome</th><th>EligibleLoanAmount</th><th>Tenure</th><th>RateOfInterest</th><th>MonthlyEMI</th><th>Action</th></tr>";
+foreach($json_decode_bank as $key=>$value){
+echo "<tr><td>".$value['PolicyName']."</td><td>".$value['TotalEligibleIncome']."</td><td>".$value['EligibleLoanAmount']."</td><td>".$value['Tenure']."</td><td>".$value['RateOfInterest']."</td><td>".$value['MonthlyEMI']."</td><td></td></tr>";
+}
+echo "</table>";
 ?>
