@@ -21,7 +21,7 @@ if($type == 1){
         $lastname = trim($result['name']);
     }
     $url = "https://ecvuat.experian.in/ECV-P2/content/registerEnhancedMatchMobileOTP.action";
-    $content = 'clientName=SWITCH_EM&allowInput=1&allowEdit=1&allowCaptcha=1&allowConsent=1&allowEmailVerify=1&allowVoucher=1&voucherCode=SWITCHMYLOAN8iwnw&firstName='.$name[0].'&surName='.trim($lastname).'&mobileNo='.$result['phone_no'].'&email='.$result['email_id'].'&noValidationByPass=0&emailConditionalByPass=1';
+    $content = 'clientName=SWITCH_EM&allowInput=1&allowEdit=1&allowCaptcha=1&allowConsent=1&allowEmailVerify=1&allowVoucher=1&voucherCode=SWITCHMYLOANTkqRs&firstName='.$name[0].'&surName='.trim($lastname).'&mobileNo='.$result['phone_no'].'&email='.$result['email_id'].'&noValidationByPass=0&emailConditionalByPass=1';
     $apitype= "CUSTOM";
 } else if($type == 2){
     $gender = 1;
@@ -44,7 +44,7 @@ if($type == 1){
     
     $url = "https://ecvuat.experian.in/ECV-P2/content/registerSingleActionMobileOTP.action";
         $gender = $result['gender'];
-        $content = 'clientName=SWITCH_FM&allowInput=1&allowEdit=1&allowCaptcha=1&allowConsent=1&allowVoucher=1&allowConsent_additional=1&allowEmailVerify=1&voucherCode=SWITCHMYLOAN8iwnw&emailConditionalByPass=1&firstName='.$name[0].'&middleName=&surName='.trim($lastname).'&dateOfBirth='.date("d-M-Y",strtotime($result['dob'])).'&gender='.$gender.'&mobileNo='.$result['phone_no'].'&telephoneNo=&telephoneType=0&email='.$result['email_id'].'&flatno='.$city_name.'&buildingName=&roadName=&city='.$city_name.'&state='.$result_exp['experian_state_id'].'&pincode='.$result['pincode'].'&pan='.$result['pan_no'].'&passport=&aadhaar=&voterid=&driverlicense=&rationcard=&reason=&novalidationbypass=0';
+        $content = 'clientName=SWITCH_FM&allowInput=1&allowEdit=1&allowCaptcha=1&allowConsent=1&allowVoucher=1&allowConsent_additional=1&allowEmailVerify=1&voucherCode=SWITCHMYLOANTkqRs&emailConditionalByPass=1&firstName='.$name[0].'&middleName=&surName='.trim($lastname).'&dateOfBirth='.date("d-M-Y",strtotime($result['dob'])).'&gender='.$gender.'&mobileNo='.$result['phone_no'].'&telephoneNo=&telephoneType=0&email='.$result['email_id'].'&flatno='.$city_name.'&buildingName=&roadName=&city='.$city_name.'&state='.$result_exp['experian_state_id'].'&pincode='.$result['pincode'].'&pan='.$result['pan_no'].'&passport=&aadhaar=&voterid=&driverlicense=&rationcard=&reason=&novalidationbypass=0';
     $apitype= "NORMAL";
 }
  $response = curl_helper($url,$header,$content);
