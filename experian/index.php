@@ -44,14 +44,14 @@ if($type == 1){
     
     $url = "https://ecvuat.experian.in/ECV-P2/content/registerSingleActionMobileOTP.action";
         $gender = $result['gender'];
-       echo $content = 'clientName=SWITCH_FM&allowInput=1&allowEdit=1&allowCaptcha=1&allowConsent=1&allowVoucher=1&allowConsent_additional=1&allowEmailVerify=1&voucherCode=XXXXXXXXXX&emailConditionalByPass=1&firstName='.$name[0].'&middleName=&surName='.trim($lastname).'&dateOfBirth='.date("d-M-Y",strtotime($result['dob'])).'&gender='.$gender.'&mobileNo='.$result['phone_no'].'&telephoneNo=&telephoneType=0&email='.$result['email_id'].'&flatno='.$city_name.'&buildingName=&roadName=&city='.$city_name.'&state='.$result_exp['experian_state_id'].'&pincode='.$result['pincode'].'&pan='.$result['pan_no'].'&passport=&aadhaar=&voterid=&driverlicense=&rationcard=&reason=&novalidationbypass=0';
+        $content = 'clientName=SWITCH_FM&allowInput=1&allowEdit=1&allowCaptcha=1&allowConsent=1&allowVoucher=1&allowConsent_additional=1&allowEmailVerify=1&voucherCode=SWITCHMYLOANTkqRs&emailConditionalByPass=1&firstName='.$name[0].'&middleName=&surName='.trim($lastname).'&dateOfBirth='.date("d-M-Y",strtotime($result['dob'])).'&gender='.$gender.'&mobileNo='.$result['phone_no'].'&telephoneNo=&telephoneType=0&email='.$result['email_id'].'&flatno='.$city_name.'&buildingName=&roadName=&city='.$city_name.'&state='.$result_exp['experian_state_id'].'&pincode='.$result['pincode'].'&pan='.$result['pan_no'].'&passport=&aadhaar=&voterid=&driverlicense=&rationcard=&reason=&novalidationbypass=0';
     $apitype= "NORMAL";
 }
  $response = curl_helper($url,$header,$content);
 $jsonDecodeResp = json_decode($response,true);
 if($jsonDecodeResp['stgOneHitId'] != "" && $jsonDecodeResp['stgTwoHitId'] != ""){
     $url_otp_gen = "https://ecvuat.experian.in/ECV-P2/content/generateMobileOTP.action";
-    echo "<br>".$content_otp_gen = 'stgOneHitId='.$jsonDecodeResp['stgOneHitId'].'&stgTwoHitId='.$jsonDecodeResp['stgTwoHitId'].'&mobileNo='.$result['phone_no'].'&type='.$apitype;
+    $content_otp_gen = 'stgOneHitId='.$jsonDecodeResp['stgOneHitId'].'&stgTwoHitId='.$jsonDecodeResp['stgTwoHitId'].'&mobileNo='.$result['phone_no'].'&type='.$apitype;
     $response_otpgeneration = curl_helper($url_otp_gen,$header,$content_otp_gen);
     $resp_otp_gen  = json_decode($response_otpgeneration,true);
     echo json_encode(array("apistatus"=>$resp_otp_gen['otpGenerationStatus'],"errorstring"=>$resp_otp_gen['errorString'],"stgOneHitId"=>$jsonDecodeResp['stgOneHitId'],"stgTwoHitId"=>$jsonDecodeResp['stgTwoHitId']));
