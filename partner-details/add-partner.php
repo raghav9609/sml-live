@@ -55,67 +55,32 @@ $msg = $_REQUEST['msg'];
 </td>
 </tr>
 <tr>
-<th>RM Name</th>
+<th>Executive Name</th>
 <td><input type="text" name="rm_name" placeholder="Enter RM Name" /></td>
 </tr>
 <tr>
-<th>RM Email ID</th>
+<th>Executive Email ID</th>
 <td><input type="email" name="rm_email" placeholder="Enter RM Email ID" /></td>
 </tr>
 <tr>
-<th>RM Contact No.</th>
+<th>Executive Contact No.</th>
 <td><input type="tel" name="rm_phone" placeholder="Enter RM Contact Number" maxlength="10"/></td>
-</tr>
-<tr>
-<th>RM Employee Code</th>
-<td><input type="tel" name="rm_emp_code" placeholder="Enter RM Emp Code" maxlength="10"/></td>
-</tr>
-<tr>
-<th>RM SMS FLag</th>
-<td><select name="rm_sms_flag" ><option value="">SMS Flag</option><option value="1">Active</option><option value="0">Inactive</option></select></td>
-</tr>
-<tr>
-<th>RM EMAIL Flag</th>
-<td><select name="rm_email_flag" ><option value="">EMAIL Flag</option><option value="1">Active</option><option value="0">Inactive</option></select></td>
-</tr>
-<tr>
-<th>SM Name</th>
-<td><input type="text" name="sm_name" placeholder="Enter SM Name" /></td>
-</tr>
-<tr>
-<th>SM Email ID</th>
-<td><input type="email" name="sm_email" placeholder="Enter SM Email ID" /></td>
-</tr>
-<tr>
-<th>SM Contact No.</th>
-<td><input type="tel" name="sm_phone" placeholder="Enter SM Contact Number" maxlength="10"/></td>
-</tr>
-<tr>
-<th>SM Employee Code</th>
-<td><input type="tel" name="sm_emp_code" placeholder="Enter SM Emp Code" maxlength="10"/></td>
-</tr>
-<tr>
-<th>SM SMS FLag</th>
-<td><select name="sm_sms_flag" ><option value="">SMS Flag</option><option value="1">Active</option><option value="0">Inactive</option></select></td>
-</tr>
-<tr>
-<th>SM EMAIL Flag</th>
-<td><select name="sm_email_flag" ><option value="">EMAIL Flag</option><option value="1">Active</option><option value="0">Inactive</option></select></td>
 </tr>
 
 <tr>
-<tr>
-<th>Executive Name</th>
-<td><input type="text" name="exe_name" placeholder="Enter Executive Name" /></td>
+<th>Executive SMS FLag</th>
+<td><select name="rm_sms_flag" ><option value="">SMS Flag</option><option value="1">Active</option><option value="0">Inactive</option></select></td>
 </tr>
 <tr>
-<th>Executive Email ID</th>
-<td><input type="email" name="exe_email" placeholder="Enter Executive Email ID" /></td>
+<th>Executive EMAIL Flag</th>
+<td><select name="rm_email_flag" ><option value="">EMAIL Flag</option><option value="1">Active</option><option value="0">Inactive</option></select></td>
 </tr>
+
 <tr>
-<th>Executive Contact No.</th>
-<td><input type="tel" name="exe_phone" placeholder="Enter Executive Contact Number" maxlength="10"/></td>
+<th>Executive Type</th>
+<td><select name="executive_type" ><option value="">Executive Type</option><option value="1">RM</option><option value="2">SM</option></select></td>
 </tr>
+
 </tr>
 
 </table>
