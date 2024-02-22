@@ -15,7 +15,7 @@ $query_id = $_REQUEST['query_id'];
 
 $header = array('content-type:application/x-www-form-urlencoded');
 $url = "https://bulkpush.mytoday.com/BulkSms/SingleMsgApi";
-echo $content = "feedid=385302&username=9920706289&password=SML2021@123&senderid=SML&To=91".$subject."&Text=".$description;
+echo $content = "async=1&feedid=385302&username=9920706289&password=SML2021@123&senderid=SML&To=91".$subject."&Text=".str_replace(' ','+',$description);
 echo $response = curl_helper($url,$header,$content);
 
 
