@@ -57,20 +57,20 @@ $result_bureau = mysqli_fetch_array($fetch_bureau_report);
 echo $xml_report = html_entity_decode(base64_decode($result_bureau['xml_report']));
 $dob = date('d-m-Y',strtotime($resqrydets['dob']));
 $breURL = 'bre.switchmyloan.in/v1/bre/personal-loans/offers-new';
-        $content = '{
-            "cibilScore" : 0,
-                "loanAmount":$resqrydets['loan_amount'],
-                "netIncomeDeclared":$resqrydets['net_income'],
-                "dob":"'.$dob.'",
-                "companyName":"'.$compnm.'",
-                "salaryTransferMode" :"'.$modesal.'",
-                "tenure":0,
-                "obligationsDeclared":0,
-                "pinCode":"'.$pincode.'",
-                "creditReportXml":"'.$xml_report.'",
-                "netIncomeDeclaredBankStatement":"'.$resqrydets['net_income'].'",
-                "obligationsBankStatement": 0
-            }';
+        // $content = '{
+        //     "cibilScore" : 0,
+        //         "loanAmount":$resqrydets['loan_amount'],
+        //         "netIncomeDeclared":$resqrydets['net_income'],
+        //         "dob":"'.$dob.'",
+        //         "companyName":"'.$compnm.'",
+        //         "salaryTransferMode" :"'.$modesal.'",
+        //         "tenure":0,
+        //         "obligationsDeclared":0,
+        //         "pinCode":"'.$pincode.'",
+        //         "creditReportXml":"'.$xml_report.'",
+        //         "netIncomeDeclaredBankStatement":"'.$resqrydets['net_income'].'",
+        //         "obligationsBankStatement": 0
+        //     }';
 
          $header = array('content-type:application/json');
 //         $data = json_encode($content);
