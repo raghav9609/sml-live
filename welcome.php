@@ -43,6 +43,7 @@ $dispDateArr = array('Today','Yesterday','Last 7 Days','Last 30 Days');
 
                         foreach($dispDateArr As $dat){
                             $getreportnew = '';
+                            $getreportcreated = '';
                             if($dat == 'Today'){
                                 $getreportnew = " and date(qry.created_on) = CURDATE() GROUP by qry.query_status ";
                             } else if($dat == 'Yesterday'){
@@ -52,7 +53,7 @@ $dispDateArr = array('Today','Yesterday','Last 7 Days','Last 30 Days');
                             } else if($dat == 'Last 30 Days'){
                                 $getreportnew = " and date(qry.created_on) = date_sub(CURDATE(),interval 30 day) GROUP by qry.query_status ";
                             }
-                            echo $getreport .= $getreportnew;
+                            echo $getreportcreated = $getreport.$getreportnew;
                             $resreport = mysqli_query($Conn1,$getreport);
                             while($resdata = mysqli_fetch_array($resreport)){
                                 $datadisp[$dat][$resdata['status']] = $resdata['Total_count'];
