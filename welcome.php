@@ -63,7 +63,7 @@ $dispDateArr = array('Today','Yesterday','Last 7 Days','Last 30 Days');
                         }
                     ?>
 
-                    <h2>Summary</h2>
+                    <h2>Welcome <?php echo $_SESSION['userDetails']['user_name'];?>, Please find your Summary Report</h2>
                     <table width="80%" class="gridtable" style="margin-left:5%">
                         <tbody>
                             <tr>
