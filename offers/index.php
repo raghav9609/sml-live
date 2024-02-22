@@ -57,7 +57,7 @@ $result_bureau = mysqli_fetch_array($fetch_bureau_report);
 $xml_report = html_entity_decode(base64_decode($result_bureau['xml_report']));
 $dob = date('d-m-Y',strtotime($resqrydets['dob']));
 $breURL = 'bre.switchmyloan.in/v1/bre/personal-loans/offers-new';
-      echo  $content = '{
+        $content = '{
             "cibilScore" : 0,
                 "loanAmount":'.$resqrydets['loan_amount'].',
                 "netIncomeDeclared":'.$resqrydets['net_income'].',
@@ -73,6 +73,5 @@ $breURL = 'bre.switchmyloan.in/v1/bre/personal-loans/offers-new';
             }';
 
          $header = array('content-type:application/json');
-//         $data = json_encode($content);
-//        echo $response = curl_helper($breURL,$header,$data);
+echo $response = curl_helper($breURL,$header,$content);
 ?>
