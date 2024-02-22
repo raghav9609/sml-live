@@ -53,7 +53,9 @@ if(requestMethod() != 'POST'){
                 $message = 'Details Fetch Successfully';
                 if($user_data[0]['role_id'] == 4){
                     $goto = $head_url."/app/"; 
-                }else{
+                } else if($user_data[0]['role_id'] == 3){
+                    $goto = $head_url."/welcome.php"; 
+                } else{
                     $goto = $head_url."/query/"; 
                 }
                               
