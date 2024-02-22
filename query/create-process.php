@@ -17,6 +17,7 @@ if($user_role == 3){
 
 echo "Select qry.net_income as income,qry.loan_amount, cust.* from crm_query As qry Inner JOIN crm_customer As cust qry.crm_customer_id = cust.id where qry.id = '".$query_id."'";
 
+die();
 $getcustdetails = mysqli_query($Conn1,"Select qry.net_income as income,qry.loan_amount, cust.* from crm_query As qry Inner JOIN crm_customer As cust qry.crm_customer_id = cust.id where qry.id = '".$query_id."'");
 $resultDetails = mysqli_fetch_array($getcustdetails);
 $city_name = '';
