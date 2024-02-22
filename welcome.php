@@ -63,7 +63,7 @@ $dispDateArr = array('Today','Yesterday','Last 7 Days','Last 30 Days');
                         }
                     ?>
 
-                    <h2>Welcome <span class="orange"><?php echo ucwords($_SESSION['userDetails']['user_name']);?></span>, Please find your Summary Report</h2>
+                    <h4 class="ml40">Welcome <span class="orange"><?php echo ucwords($_SESSION['userDetails']['user_name']);?></span>, Please find your Summary Report</h4>
                     <table width="80%" class="gridtable" style="margin-left:5%">
                         <tbody>
                             <tr>
