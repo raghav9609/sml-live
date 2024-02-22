@@ -2,7 +2,7 @@
 require_once(dirname(__FILE__) . '/../config/session.php');
 require_once(dirname(__FILE__) . '/../helpers/common-helper.php');
 require_once(dirname(__FILE__) . '/../config/config.php');
-require_once(dirname(__FILE__) . '/../include/helper.functions.php');
+//require_once(dirname(__FILE__) . '/../include/helper.functions.php');
 
 $query_id = $_REQUEST['query_id'];
 $get_applicationcreated = mysqli_query($Conn1,"Select * from crm_query_application where crm_query_id = '".$query_id."'");
