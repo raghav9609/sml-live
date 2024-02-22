@@ -15,10 +15,10 @@ if($_REQUEST['rm_phone'] != ''){
  	
 		$msg = "<span class='green'>Successfully Added!!!!!</span>";
  		$res_pat = mysqli_query($Conn1,$qry_partner);
-      	header("location:add.php?msg=".$msg);
+      	header("location:add-partner.php?msg=".$msg);
  	} else {  
 		$message = "<span class='red'>Executive Already Exist</span>";
-		header("location:add.php?msg=".$message);
+		header("location:add-partner.php?msg=".$message);
  	}
 
 ?>
