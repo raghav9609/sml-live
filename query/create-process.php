@@ -56,7 +56,7 @@ if($modeSalary > 0){
 }
 echo "anu 2";
 
-echo $maildata = '<table><tr><th>SML Lead ID</th><td>'.$query_id.'</td></tr>
+echo $maildata = '<table class="gridtable"><tr><th>SML Lead ID</th><td>'.$query_id.'</td></tr>
         <tr><th>Customer</th><td>'.ucfirst($resultDetails['name']).'<br>'.$resultDetails['phone_no'].'<br>'.$resultDetails['email'].'<br>'.$city_name.'<br>'.$resultDetails['dob'].'</td></tr><tr><th>Occupation</th><td>'.$occup_name.' @ '.$compnm.' NTH Rs. '.$resultDetails['income'].'<br> Paid By '.$modesal.' '.$bnknm.'<br> CWE '.$ccweget.' Months TWE '.$tweget.' Months</td></tr><tr><th>Loan Amount / Type</th><td>'.$resultDetails['loan_amount'].' Personal Loan</td></tr><tr><th>Residential Address</th><td>'.$resultDetails['address'].'</td></tr><tr><th>SML User</th><td>'.$_SESSION['userDetails']['user_name'].'</td></tr></table>';
 
 foreach($explpat As $patners){
