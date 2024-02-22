@@ -51,6 +51,10 @@
             data: "query_id="+query_id+"&cust_iddd="+cust_iddd,
             success: function(response) {
                 $("#new_offers_journey").html(response);
+                if(get_val == 2){
+                    $('#form_2').slideUp(300);
+                    $('#form_3').slideDown(300);
+                }
                 $('#form_1').prev('.brdr-top-gray').addClass('step-green').removeClass('blue-bg');
                 $('#form_1').next('.blue-bg').addClass('white').removeClass('gray');
                 $('#form_1').next('.brdr-top-gray').next('form').slideDown(300);
