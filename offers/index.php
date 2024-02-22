@@ -76,7 +76,7 @@ $response = curl_helper($breURL,$header,$content);
 $json_decode_bank = json_decode($response,true);
 echo "<table class='gridtable' width='100%'><tr>
 <th>Bank Name</th><th>TotalEligibleIncome</th><th>EligibleLoanAmount</th><th>Tenure</th><th>RateOfInterest</th><th>MonthlyEMI</th><th>Action</th></tr>";
-foreach($json_decode_bank as $key=>$value){
+foreach($json_decode_bank['offers'] as $key=>$value){
 echo "<tr><td>".$value['PolicyName']."</td><td>".$value['TotalEligibleIncome']."</td><td>".$value['EligibleLoanAmount']."</td><td>".$value['Tenure']."</td><td>".$value['RateOfInterest']."</td><td>".$value['MonthlyEMI']."</td><td></td></tr>";
 }
 echo "</table>";
