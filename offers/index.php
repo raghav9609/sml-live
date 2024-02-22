@@ -13,11 +13,9 @@ while($resultApp = mysqli_fetch_array($get_applicationcreated)){
 
 $getqrydetails =  mysqli_query($Conn1,"Select * from crm_query As qry Inner JOIN crm_customer As cust ON qry.crm_customer_id = cust.id where qry.id = '".$query_id."'");
 $resqrydets = mysqli_fetch_array($getqrydetails);
-
 $companyId = $resqrydets['company_id'];
 $modeSalary = $resqrydets['mode_of_salary'];
 $pincode = $resqrydets['pincode'];
-
 if($companyId > 0){
     $compnmfetch = get_name('comp_name',$companyId);
     $compnm = $compnmfetch['company_name'];
@@ -34,23 +32,23 @@ if($modeSalary > 0){
 }
 
 //print_r($createdApplications);
-$qry1 = "select * from crm_masters where crm_masters_code_id = 10 and is_active = 1 ";
-$res = mysqli_query($Conn1, $qry1) or die("Error: " . mysqli_error($Conn1));
-$recordcount = mysqli_num_rows($res); 
-if ($recordcount > 0) {
-    $record = 0;
-    while ($exe_form = mysqli_fetch_array($res)) {
-        $record++;
-        $disablcls = '';
-        $textclas = '';
-        if(in_array($exe_form['id'],$createdApplications)){
-            $disablcls = 'checked disabled';
-            $textclas = 'green bold';
-        }
-        $data_bnk[] = '<input type ="checkbox" style="position: unset !important;" class="check_bank" name = "check_bank[]" id = "check_bank_'.$exe_form['id'].'" value ="'.$exe_form['id'].'" '.$disablcls.'><label class="cursor '.$textclas.'" for="check_bank_'.$exe_form['id'].'">'.$exe_form['value'].'</label>&nbsp;&nbsp;&nbsp;&nbsp;';
-    }
-   // echo implode($data_bnk);
-}
+// $qry1 = "select * from crm_masters where crm_masters_code_id = 10 and is_active = 1 ";
+// $res = mysqli_query($Conn1, $qry1) or die("Error: " . mysqli_error($Conn1));
+// $recordcount = mysqli_num_rows($res); 
+// if ($recordcount > 0) {
+//     $record = 0;
+//     while ($exe_form = mysqli_fetch_array($res)) {
+//         $record++;
+//         $disablcls = '';
+//         $textclas = '';
+//         if(in_array($exe_form['id'],$createdApplications)){
+//             $disablcls = 'checked disabled';
+//             $textclas = 'green bold';
+//         }
+//         $data_bnk[] = '<input type ="checkbox" style="position: unset !important;" class="check_bank" name = "check_bank[]" id = "check_bank_'.$exe_form['id'].'" value ="'.$exe_form['id'].'" '.$disablcls.'><label class="cursor '.$textclas.'" for="check_bank_'.$exe_form['id'].'">'.$exe_form['value'].'</label>&nbsp;&nbsp;&nbsp;&nbsp;';
+//     }
+//    // echo implode($data_bnk);
+// }
 
 $fetch_bureau_report = mysqli_query($Conn1,"Select xml_report from crm_experian_data where query_id = '".$query_id."' order by id desc LIMIT 1");
 $result_bureau = mysqli_fetch_array($fetch_bureau_report);
@@ -76,8 +74,23 @@ $response = curl_helper($breURL,$header,$content);
 $json_decode_bank = json_decode($response,true);
 echo "<table class='gridtable' width='100%'><tr>
 <th>Bank Name</th><th>TotalEligibleIncome</th><th>EligibleLoanAmount</th><th>Tenure</th><th>RateOfInterest</th><th>MonthlyEMI</th><th>Action</th></tr>";
-foreach($json_decode_bank['offers'] as $key=>$value){
-echo "<tr><td>".$value['PolicyName']."</td><td>".$value['TotalEligibleIncome']."</td><td>".$value['EligibleLoanAmount']."</td><td>".$value['Tenure']."</td><td>".$value['RateOfInterest']."</td><td>".$value['MonthlyEMI']."</td><td></td></tr>";
+if(!empty($json_decode_bank['offers'])){
+    foreach($json_decode_bank['offers'] as $key=>$value){
+
+        $query_get_id = mysqli_query($Conn1,"select * from crm_masters where crm_masters_code_id = 10 and value='".$value['PolicyName']."'");
+        $resule_get_id = mysqli_fetch_array($query_get_id);
+        $disablcls = '';
+        $textclas = '';
+        if(in_array($resule_get_id['id'],$createdApplications)){
+            $disablcls = 'checked disabled';
+            $textclas = 'green bold';
+            }
+            $input_checkbox = "<input type ='checkbox' style='position: unset !important;' class='check_bank' name = 'check_bank[]' id = 'check_bank_".$resule_get_id['id']."' value ='".$resule_get_id['id']."' ".$disablcls.">";
+        echo "<tr><td>".$value['PolicyName']."</td><td>".$value['TotalEligibleIncome']."</td><td>".$value['EligibleLoanAmount']."</td><td>".$value['Tenure']."</td><td>".$value['RateOfInterest']."</td><td>".$value['MonthlyEMI']."</td><td>".$input_checkbox."</td></tr>";
+        }
+}else{
+    echo "<tr><td colspan=''>".$value['message']."</td></tr>";
 }
+
 echo "</table>";
 ?>
