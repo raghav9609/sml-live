@@ -16,6 +16,7 @@ $resqrydets = mysqli_fetch_array($getqrydetails);
 
 $companyId = $resqrydets['company_id'];
 $modeSalary = $resqrydets['mode_of_salary'];
+$pincode = $resqrydets['pincode'];
 
 if($companyId > 0){
     $compnmfetch = get_name('comp_name',$companyId);
@@ -50,22 +51,24 @@ if ($recordcount > 0) {
     }
     echo implode($data_bnk);
 }
-
+$fetch_bureau_report = mysqli_query($Conn1,"Select xml_report from crm_experian_data where query_id = '".$query_id."' order by id desc LIMIT 1");
+$result_bureau = mysqli_fetch_array($fetch_bureau_report);
+echo $xml_report = html_entity_decode($result_bureau['xml_report']);
         $breURL = 'bre.switchmyloan.in/v1/bre/personal-loans/offers-new';
         $content = array("cibilScore" => 0,
-                "loanAmount" => 0,
+                "loanAmount" => $resqrydets['loan_amount'],
                 "netIncomeDeclared" => $resqrydets['net_income'],
-                "dob" => $resqrydets['dob'],
-                "companyName" => $compnm,
-                "salaryTransferMode" => $modesal,
+                "dob" => "date('d-m-Y',strtotime($resqrydets['dob']))",
+                "companyName" => "$compnm",
+                "salaryTransferMode" => "$modesal",
                 "tenure" => 0,
                 "obligationsDeclared" => 0,
-                "pinCode" => "string",
-                "creditReportXml" => "string",
-                "netIncomeDeclaredBankStatement" => 0,
+                "pinCode" => "$pincode",
+                "creditReportXml" => "$xml_report",
+                "netIncomeDeclaredBankStatement" => "$resqrydets['net_income']",
                 "obligationsBankStatement" => 0);
 
-        $header = array('content-type:application/x-www-form-urlencoded');
+        $header = array('content-type:application/json');
         $data = json_encode($content);
-        $response = curl_helper($breURL,$header,$data);
+       echo $response = curl_helper($breURL,$header,$data);
 ?>

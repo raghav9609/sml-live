@@ -20,8 +20,8 @@ if($type == 1){
     }else{
         $lastname = trim($result['name']);
     }
-    $url = "https://ecvuat.experian.in/ECV-P2/content/registerEnhancedMatchMobileOTP.action";
-    $url= "https://consumer.experian.in:8443/ECV-P2/content/registerEnhancedMatchMobileOTP.action";
+     $url = "https://ecvuat.experian.in/ECV-P2/content/registerEnhancedMatchMobileOTP.action";
+    //$url= "https://consumer.experian.in:8443/ECV-P2/content/registerEnhancedMatchMobileOTP.action";
     $content = 'clientName=SWITCH_EM&allowInput=1&allowEdit=1&allowCaptcha=1&allowConsent=1&allowEmailVerify=1&allowVoucher=1&voucherCode=SWITCHMYLOAN8iwnw&firstName='.$name[0].'&surName='.trim($lastname).'&mobileNo='.$result['phone_no'].'&email='.$result['email_id'].'&noValidationByPass=0&emailConditionalByPass=1';
     $apitype= "CUSTOM";
 } else if($type == 2){
@@ -44,7 +44,7 @@ if($type == 1){
     
     
     $url = "https://ecvuat.experian.in/ECV-P2/content/registerSingleActionMobileOTP.action";
-    $url = "https://consumer.experian.in:8443/ECV-P2/content/registerSingleActionMobileOTP.action";
+   // $url = "https://consumer.experian.in:8443/ECV-P2/content/registerSingleActionMobileOTP.action";
         $gender = $result['gender'];
         $content = 'clientName=SWITCH_FM&allowInput=1&allowEdit=1&allowCaptcha=1&allowConsent=1&allowVoucher=1&allowConsent_additional=1&allowEmailVerify=1&voucherCode=SWITCHMYLOAN8iwnw&emailConditionalByPass=1&firstName='.$name[0].'&middleName=&surName='.trim($lastname).'&dateOfBirth='.date("d-M-Y",strtotime($result['dob'])).'&gender='.$gender.'&mobileNo='.$result['phone_no'].'&telephoneNo=&telephoneType=0&email='.$result['email_id'].'&flatno='.$city_name.'&buildingName=&roadName=&city='.$city_name.'&state='.$result_exp['experian_state_id'].'&pincode='.$result['pincode'].'&pan='.$result['pan_no'].'&passport=&aadhaar=&voterid=&driverlicense=&rationcard=&reason=&novalidationbypass=0';
     $apitype= "NORMAL";
@@ -52,8 +52,8 @@ if($type == 1){
  $response = curl_helper($url,$header,$content);
 $jsonDecodeResp = json_decode($response,true);
 if($jsonDecodeResp['stgOneHitId'] != "" && $jsonDecodeResp['stgTwoHitId'] != ""){
-    //$url_otp_gen = "https://ecvuat.experian.in/ECV-P2/content/generateMobileOTP.action";
-    $url_otp_gen =  "https://consumer.experian.in:8443/ECV-P2/content/generateMobileOTP.action";
+    $url_otp_gen = "https://ecvuat.experian.in/ECV-P2/content/generateMobileOTP.action";
+    //$url_otp_gen =  "https://consumer.experian.in:8443/ECV-P2/content/generateMobileOTP.action";
     $content_otp_gen = 'stgOneHitId='.$jsonDecodeResp['stgOneHitId'].'&stgTwoHitId='.$jsonDecodeResp['stgTwoHitId'].'&mobileNo='.$result['phone_no'].'&type='.$apitype;
     $response_otpgeneration = curl_helper($url_otp_gen,$header,$content_otp_gen);
     $resp_otp_gen  = json_decode($response_otpgeneration,true);

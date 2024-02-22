@@ -16,8 +16,8 @@ if(in_array($type,array(1,2)) && $query_id > 0){
     if($type == 1){
         $apitype = 'CUSTOM';
     }
-    //$url_otp_gen = "https://ecvuat.experian.in/ECV-P2/content/validateMobileOTP.action";
-    $url_otp_gen = "https://consumer.experian.in:8443/ECV-P2/content/validateMobileOTP.action";
+    $url_otp_gen = "https://ecvuat.experian.in/ECV-P2/content/validateMobileOTP.action";
+    //$url_otp_gen = "https://consumer.experian.in:8443/ECV-P2/content/validateMobileOTP.action";
     $content_otp_gen = 'stgOneHitId='.$stage_one_id.'&stgTwoHitId='.$stage_two_id.'&mobileNo='.$result['phone_no'].'&type='.$apitype.'&otp='.$otp;
     $response_otpgeneration = curl_helper($url_otp_gen,$header,$content_otp_gen);
     $resp_otp_gen  = json_decode($response_otpgeneration,true);
