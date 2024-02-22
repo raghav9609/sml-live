@@ -61,7 +61,7 @@ $dispDateArr = array('Today','Yesterday','Last 7 Days','Last 30 Days');
                         }
                     ?>
 
-                    <h2>Query Report</h2>
+                    <h2>Summary</h2>
                     <table width="80%" class="gridtable" style="margin-left:5%">
                         <tbody>
                             <tr>
