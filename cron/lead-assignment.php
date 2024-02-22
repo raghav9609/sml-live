@@ -5,6 +5,7 @@ require_once(dirname(__FILE__) . '/../helpers/common-helper.php');
 require_once(dirname(__FILE__) . '/../model/assignmentModel.php');
 
 $fetch_unassign_leads = $db_handle->runQuery($leadAssignmentClassexport->getUnassignleadData());
+print_r($fetch_unassign_leads);
 foreach($fetch_unassign_leads as $key=>$value){
     $loan_amount = $value['loan_amount'];
     $query_id = $value['query_id'];
