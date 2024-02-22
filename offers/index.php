@@ -11,7 +11,7 @@ while($resultApp = mysqli_fetch_array($get_applicationcreated)){
     $createdApplications[] = $resultApp['bank_id'];
 }
 
-$getqrydetails =  mysqli_query($Conn1,"Select * from crm_query As qry Inner JOIN crm_customer As cust ON qry.crm_customer_id = qry.id where qry.id = '".$query_id."'");
+$getqrydetails =  mysqli_query($Conn1,"Select * from crm_query As qry Inner JOIN crm_customer As cust ON qry.crm_customer_id = cust.id where qry.id = '".$query_id."'");
 $resqrydets = mysqli_fetch_array($getqrydetails);
 
 $companyId = $resqrydets['company_id'];
