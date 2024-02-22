@@ -4,6 +4,7 @@ require_once(dirname(__FILE__) . '/../config/session.php');
 require_once(dirname(__FILE__) . '/../helpers/common-helper.php');
 require_once(dirname(__FILE__) . '/../config/config.php');
 require_once "../include/helper.functions.php";
+require_once(dirname(__FILE__) . '/../include/class.mailer.php');
 
 $partnerId = $_REQUEST['partner_id'];
 $query_id = $_REQUEST['query_id'];
@@ -28,7 +29,7 @@ if($resultDetails['occupation_id'] > 0){
     $occup_namenm = get_name('master_code_id',$resultDetails['occupation_id']);
     $occup_name = $occup_namenm['value'];
 }
-echo "anu";
+
 $companyId = $resultDetails['company_id'];
 $modeSalary = $resultDetails['mode_of_salary'];
 $pincode = $resultDetails['pincode'];
@@ -37,7 +38,7 @@ if($result_cust_data['current_work_exp'] )
 $ccweget = dateDiff($curDate,$result_cust_data['current_work_exp'],1);
 $tweget = dateDiff($curDate,$result_cust_data['total_work_exp'],1);
 $bnknm = '';
-echo "anu 1";
+
 if($salary_bank_id > 0){
     $bankfetch = get_name('master_code_id',$salary_bank_id);
     $bnknm = $bankfetch['value'];
@@ -54,9 +55,7 @@ if($modeSalary > 0){
     $salarymode = get_name('master_code_id',$modeSalary);
     $modesal = $salarymode['value'];
 }
-echo "anu 2";
-
-echo $maildata = '<table style="border: 1;border-collapse: collapse;" border="1"><tr><th style="background: aliceblue;">SML Lead ID</th><td>'.$query_id.'</td></tr>
+ $maildata = '<table style="border: 1;border-collapse: collapse;" border="1"><tr><th style="background: aliceblue;">SML Lead ID</th><td>'.$query_id.'</td></tr>
         <tr><th style="background: aliceblue;">Customer</th><td>'.ucfirst($resultDetails['name']).'<br>'.$resultDetails['phone_no'].'<br>'.$resultDetails['email'].'<br>'.$city_name.'<br>'.$resultDetails['dob'].'</td></tr><tr><th style="background: aliceblue;">Occupation</th><td>'.$occup_name.' @ '.$compnm.' NTH Rs. '.$resultDetails['income'].'<br> Paid By '.$modesal.' '.$bnknm.'<br> CWE '.$ccweget.' Months TWE '.$tweget.' Months</td></tr><tr><th style="background: aliceblue;">Loan Amount / Type</th><td>'.$resultDetails['loan_amount'].' Personal Loan</td></tr><tr><th style="background: aliceblue;">Residential Address</th><td>'.$resultDetails['address'].'</td></tr><tr><th style="background: aliceblue;">SML User</th><td>'.$_SESSION['userDetails']['user_name'].'</td></tr></table>';
 
 foreach($explpat As $patners){
@@ -64,6 +63,14 @@ foreach($explpat As $patners){
     $exisdetails = mysqli_num_rows($getAppDetails);
     if ($exisdetails == 0){
         $createApp = mysqli_query($Conn1,"Insert into crm_query_application set crm_query_id = '".$query_id."', bank_id ='".$patners."', applied_amount='".$loanAmount."',application_status=34,user_id='".$user_id."'");  
+        $email = array('raghav9609@gmail.com');
+        $subject = 'Lead Id '.$query_id.' '.ucfirst($resultDetails['name']);
+        if(!empty($email)){
+            $recep_mail = $email;
+            $replytomail = array();
+            $cctomail = array();
+            $mailresp = mailSend($recep_mail,$cctomail,$replytomail,$subject,htmlspecialchars_decode($description));
+        }
     } 
 }
 echo '1';
