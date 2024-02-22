@@ -12,15 +12,17 @@ while($resultApp = mysqli_fetch_array($get_applicationcreated)){
 }
 
 //print_r($createdApplications);
-echo $qry1 = "select * from crm_masters where crm_masters_code_id = 10 and is_active = 1 ";
+$qry1 = "select * from crm_masters where crm_masters_code_id = 10 and is_active = 1 ";
 $res = mysqli_query($Conn1, $qry1) or die("Error: " . mysqli_error($Conn1));
 $recordcount = mysqli_num_rows($res); 
 if ($recordcount > 0) {
     $record = 0;
+    echo "as";
     while ($exe_form = mysqli_fetch_array($res)) {
         $record++;
         $disablcls = '';
         $textclas = '';
+        echo "anu";
         if(in_array($exe_form['id'],$createdApplications)){
             $disablcls = 'checked disabled';
             $textclas = 'green bold';
