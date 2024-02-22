@@ -36,6 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'dob' => $dob_get,
             'query_status' => 1,
             'tool_type'=>"Upload_CSV",
+            'loan_type_id'=>54,
             'net_income' => $net_income[$i]
         );
             $insert_qry =  "INSERT INTO crm_raw_data set ";
