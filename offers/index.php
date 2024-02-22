@@ -26,7 +26,7 @@ if ($recordcount > 0) {
             $textclas = 'green bold';
         }
         $data_bnk[] = '<input type ="checkbox" style="position: unset !important;" class="check_bank" name = "check_bank[]" id = "check_bank_'.$exe_form['id'].'" value ="'.$exe_form['id'].'" ><label class="cursor '.$textclas.'" for="check_bank_'.$exe_form['id'].'">'.$exe_form['value'].'</label>&nbsp;&nbsp;&nbsp;&nbsp;';
-        print_r($data_bnk);
+       // print_r($data_bnk);
     }
     print_r($data_bnk);
     echo implode($data_bnk);
