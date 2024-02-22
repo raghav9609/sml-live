@@ -285,11 +285,10 @@ function calculate_pmt($ir, $np, $pv, $fv, $type)
 }
 }
 if (!function_exists('calculate_flat_from_reduce')) {
-function calculate_flat_from_reduce($reducing_rate, $emi, $loan_tenure)
-{
-    $years = $loan_tenure / 12;
-    $calculated_flat_rate = ((-(calculate_pmt(floor($reducing_rate) / 1200, $years * 12, 100, 0, 0.1) * $years * 12) - 100) / $years / 100 * 100);
-    return number_format($calculated_flat_rate, 2);
-}
+    function calculate_flat_from_reduce($reducing_rate, $emi, $loan_tenure){
+        $years = $loan_tenure / 12;
+        $calculated_flat_rate = ((-(calculate_pmt(floor($reducing_rate) / 1200, $years * 12, 100, 0, 0.1) * $years * 12) - 100) / $years / 100 * 100);
+        return number_format($calculated_flat_rate, 2);
+    }
 }
 ?>
