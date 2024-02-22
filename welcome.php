@@ -4,7 +4,7 @@ require_once(dirname(__FILE__) . '/helpers/common-helper.php');
 require_once(dirname(__FILE__) . '/include/header.php');
 require_once(dirname(__FILE__) . '/config/config.php');
 require_once(dirname(__FILE__) . '/include/helper.functions.php');
-$dispDateArr = array('Today','Yesterday','Last 7 Days','Last 30 days');
+$dispDateArr = array('Today','Yesterday','Last 7 Days','Last 30 Days');
 ?>
 <!DOCTYPE html>
     <html>
@@ -38,29 +38,24 @@ $dispDateArr = array('Today','Yesterday','Last 7 Days','Last 30 days');
                 <!-- Title Header -->
                 <div class="span9">
                     <?php 
-
-                        // $getreport = "SELECT usr.name As user_name,count(qry.id) As Total_count, stat.value As status FROM `crm_query` As qry left JOIN crm_master_user As usr ON qry.lead_assign_to = usr.id LEFT JOIN crm_master_status As stat ON qry.query_status = stat.id WHERE stat.status_type = 1 and qry.lead_assign_to = '".$user_id."' and date(qry.created_on) between '" . $date_from . "' and '" . $date_to . "' GROUP by qry.query_status ";
-
-                        $getreport = "SELECT usr.name As user_name,count(qry.id) As Total_count, stat.value As status FROM `crm_query` As qry left JOIN crm_master_user As usr ON qry.lead_assign_to = usr.id LEFT JOIN crm_master_status As stat ON qry.query_status = stat.id WHERE stat.status_type = 1 and qry.lead_assign_to = '".$user_id."' and date(qry.created_on) = CURDATE() GROUP by qry.query_status ";
-
-                        $getreportyes = "SELECT usr.name As user_name,count(qry.id) As Total_count, stat.value As status FROM `crm_query` As qry left JOIN crm_master_user As usr ON qry.lead_assign_to = usr.id LEFT JOIN crm_master_status As stat ON qry.query_status = stat.id WHERE stat.status_type = 1 and qry.lead_assign_to = '".$user_id."' and date(qry.created_on) = date_sub(CURDATE(),interval 1 day) GROUP by qry.query_status ";
                         
-                        $getreport = "SELECT usr.name As user_name,count(qry.id) As Total_count, stat.value As status FROM `crm_query` As qry left JOIN crm_master_user As usr ON qry.lead_assign_to = usr.id LEFT JOIN crm_master_status As stat ON qry.query_status = stat.id WHERE stat.status_type = 1 and qry.lead_assign_to = '".$user_id."' and date(qry.created_on) = CURDATE() ";
+                        $getreport = "SELECT usr.name As user_name,count(qry.id) As Total_count, stat.value As status FROM `crm_query` As qry left JOIN crm_master_user As usr ON qry.lead_assign_to = usr.id LEFT JOIN crm_master_status As stat ON qry.query_status = stat.id WHERE stat.status_type = 1 and qry.lead_assign_to = '".$user_id."' ";
 
                         foreach($dispDateArr As $dat){
-                            echo $dat;
-                            $getreport .= " and date(qry.created_on) = CURDATE() GROUP by qry.query_status ";
+                            if($dat == 'Today'){
+                                $getreport .= " and date(qry.created_on) = CURDATE() GROUP by qry.query_status ";
+                            } else if($dat == 'Yesterday'){
+                                $getreport .= " and date(qry.created_on) = date_sub(CURDATE(),interval 1 day) GROUP by qry.query_status ";
+                            } else if($dat == 'Last 7 Days'){
+                                $getreport .= " and date(qry.created_on) = date_sub(CURDATE(),interval 7 day) GROUP by qry.query_status ";
+                            } else if($dat == 'Last 30 Days'){
+                                $getreport .= " and date(qry.created_on) = date_sub(CURDATE(),interval 7 day) GROUP by qry.query_status ";
+                            }
                             
-                        }
-                        die();
-                        $resreport = mysqli_query($Conn1,$getreport);
-                        while($resdata = mysqli_fetch_array($resreport)){
-                            $datadisp['Today'][$resdata['status']] = $resdata['Total_count'];
-                        }
-
-                        $resreportyes = mysqli_query($Conn1,$getreportyes);
-                        while($resdatayes = mysqli_fetch_array($resreportyes)){
-                            $datadisp['Yesterday'][$resdatayes['status']] = $resdatayes['Total_count'];
+                            $resreport = mysqli_query($Conn1,$getreport);
+                            while($resdata = mysqli_fetch_array($resreport)){
+                                $datadisp[$dat][$resdata['status']] = $resdata['Total_count'];
+                            }
                         }
                     ?>
 
