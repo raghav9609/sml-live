@@ -1,7 +1,7 @@
 <?php 
 class headerModel {
     function getHeader ($offset, $max_offset, $columns_to_fetch = array("*")){
-        $queryReturn = "select ".implode(',',$columns_to_fetch)." from crm_master_header  where id > 0  and status =1 ORDER BY id ASC LIMIT ".$offset.", ".$max_offset;
+        $queryReturn = "select ".implode(',',$columns_to_fetch)." from crm_master_header  where id > 0  and status =1 ORDER BY sort_order ASC LIMIT ".$offset.", ".$max_offset;
         return $queryReturn;
     }
 	
