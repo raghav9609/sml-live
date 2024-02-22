@@ -4,6 +4,7 @@ require_once(dirname(__FILE__) . '/../config/config.php');
 require_once(dirname(__FILE__) . '/../helpers/common-helper.php');
 require_once(dirname(__FILE__) . '/../model/assignmentModel.php');
 
+echo $leadAssignmentClassexport->getUnassignleadData()."<br>";
 $fetch_unassign_leads = $db_handle->runQuery($leadAssignmentClassexport->getUnassignleadData());
 print_r($fetch_unassign_leads);
 foreach($fetch_unassign_leads as $key=>$value){
