@@ -77,7 +77,7 @@ require_once "../include/helper.functions.php";
 	if($_REQUEST['loan_type'] == 11 && $_REQUEST['occupation_id'] == 1){
 		$hospital_name = $get_company_name;
 	}
-
+	mysqli_query($Conn1,"update crm_query set net_income = '".$net_income."' where id = '".$_REQUEST['id']."'");
     	
 } else if($_REQUEST['step'] == 2){
    
