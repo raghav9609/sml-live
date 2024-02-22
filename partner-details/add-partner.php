@@ -34,7 +34,7 @@ $msg = $_REQUEST['msg'];
 <input type="submit" name="add" class="buttonsub" value="Add"/></div></th></tr>
 <tr>
 <th>Partner Name</th>
-<td><?php echo get_dropdown('partner_list','partner_name',$pat_id,'required'); ?></td>
+<td><?php echo get_dropdown('10','partner_name',$pat_id,'required'); ?></td>
 </tr>
 <tr>
 <th>City Name</th>
