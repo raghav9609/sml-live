@@ -52,9 +52,9 @@ if ($recordcount > 0) {
     echo implode($data_bnk);
 }
 
-// $fetch_bureau_report = mysqli_query($Conn1,"Select xml_report from crm_experian_data where query_id = '".$query_id."' order by id desc LIMIT 1");
-// $result_bureau = mysqli_fetch_array($fetch_bureau_report);
-// echo $xml_report = html_entity_decode($result_bureau['xml_report']);
+$fetch_bureau_report = mysqli_query($Conn1,"Select xml_report from crm_experian_data where query_id = '".$query_id."' order by id desc LIMIT 1");
+$result_bureau = mysqli_fetch_array($fetch_bureau_report);
+echo $xml_report = html_entity_decode($result_bureau['xml_report']);
 // $dob = date('d-m-Y',strtotime($resqrydets['dob']));
 //         $breURL = 'bre.switchmyloan.in/v1/bre/personal-loans/offers-new';
 //         $content = array("cibilScore" => 0,
