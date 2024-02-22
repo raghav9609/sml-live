@@ -23,11 +23,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $dob_get = "1000-01-01";
             }
         };
+        $getcityId = mysqli_query($Conn1,"select city_id from crm_master_pincode where pincode='".$pincode[$i]."'"); 
+        $rescity = mysqli_fetch_array($getcityId);
+        $city_id = $rescity['city_id'];
         $row = array(
             'name' => $name[$i],
             'phone_no' => $phone_no[$i],
             'email_id' => $email_id[$i],
             'pincode' => $pincode[$i],
+            'city_id' => $city_id,
             'loan_amount' => $loan_amount[$i],
             'dob' => $dob_get,
             'query_status' => 1,
