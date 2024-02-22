@@ -65,7 +65,7 @@ $data_to_display = $db_handle->runQuery($partnerDetailsExport->searchFilter($fil
         <input type='text' name="phoneno" placeholder= "RM/ SM Phone No" maxlength="10">
         <input class="cursor" type='submit' value='Search' name='search_btn'>
         <a href="<?php echo $head_url; ?>/partner-details/"><input class="cursor" type='button' value='Clear'></a>
-        <a href="<?php echo $head_url; ?>/partner-details/add-partner.php"><input class="cursor" type="button" name="add" value="Add" id="add" ></a>
+        <a href="<?php echo $head_url; ?>/partner-details/add-partner.php"><input class="cursor" type="button" value="Add"></a>
     </form>
         
     </fieldset>
