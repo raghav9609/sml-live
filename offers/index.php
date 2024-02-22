@@ -5,10 +5,31 @@ require_once(dirname(__FILE__) . '/../config/config.php');
 require_once(dirname(__FILE__) . '/../include/helper.functions.php');
 
 $query_id = $_REQUEST['query_id'];
-$get_applicationcreated = mysqli_query($Conn1,"Select * from crm_query_application where crm_query_id = '".$query_id."'");
+$get_applicationcreated = mysqli_query($Conn1,"Select bank_id from crm_query_application where crm_query_id = '".$query_id."'");
 $createdApplications = array();
 while($resultApp = mysqli_fetch_array($get_applicationcreated)){
     $createdApplications[] = $resultApp['bank_id'];
+}
+
+$getqrydetails =  mysqli_query($Conn1,"Select * from crm_query As qry Inner JOIN crm_customer As cust ON qry.crm_customer_id = qry.id where id = '".$query_id."'");
+$resqrydets = mysqli_fetch_array($getqrydetails);
+
+$companyId = $resqrydets['company_id'];
+$modeSalary = $resqrydets['mode_of_salary'];
+
+if($companyId > 0){
+    $compnmfetch = get_name('comp_name',$companyId);
+    $compnm = $compnmfetch['company_name'];
+} else {
+    $compnm = $resqrydets['company_name'];
+}
+$modesal = 'Bank Transfer';
+if($modeSalary > 0){
+    $salarymode = get_name('master_code_id',$modeSalary);
+    $modesal = $salarymode['value'];
+    if($modeSalary == 6){
+        $modesal = 'Bank Transfer';
+    }
 }
 
 //print_r($createdApplications);
@@ -29,4 +50,22 @@ if ($recordcount > 0) {
     }
     echo implode($data_bnk);
 }
+
+        $breURL = 'bre.switchmyloan.in/v1/bre/personal-loans/offers-new';
+        $content = array("cibilScore" => 0,
+                "loanAmount" => 0,
+                "netIncomeDeclared" => $resqrydets['net_income'],
+                "dob" => $resqrydets['dob'],
+                "companyName" => $compnm,
+                "salaryTransferMode" => $modesal,
+                "tenure" => 0,
+                "obligationsDeclared" => 0,
+                "pinCode" => "string",
+                "creditReportXml" => "string",
+                "netIncomeDeclaredBankStatement" => 0,
+                "obligationsBankStatement" => 0);
+
+        $header = array('content-type:application/x-www-form-urlencoded');
+        $data = json_encode($content);
+        $response = curl_helper($breURL,$header,$data);
 ?>
