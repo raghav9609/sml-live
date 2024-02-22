@@ -1,7 +1,7 @@
 <?php
 require_once(dirname(__FILE__) . '/../config/session.php');
-require_once(dirname(__FILE__) . '/../helpers/common-helper.php');
 require_once(dirname(__FILE__) . '/../config/config.php');
+require_once(dirname(__FILE__) . '/../helpers/common-helper.php');
 require_once(dirname(__FILE__) . '/../include/helper.functions.php');
 
 $query_id = $_REQUEST['query_id'];
@@ -51,14 +51,16 @@ if ($recordcount > 0) {
     }
     echo implode($data_bnk);
 }
+
 $fetch_bureau_report = mysqli_query($Conn1,"Select xml_report from crm_experian_data where query_id = '".$query_id."' order by id desc LIMIT 1");
 $result_bureau = mysqli_fetch_array($fetch_bureau_report);
 echo $xml_report = html_entity_decode($result_bureau['xml_report']);
+$dob = date('d-m-Y',strtotime($resqrydets['dob']));
         $breURL = 'bre.switchmyloan.in/v1/bre/personal-loans/offers-new';
         $content = array("cibilScore" => 0,
                 "loanAmount" => $resqrydets['loan_amount'],
                 "netIncomeDeclared" => $resqrydets['net_income'],
-                "dob" => "date('d-m-Y',strtotime($resqrydets['dob']))",
+                "dob" => "$dob",
                 "companyName" => "$compnm",
                 "salaryTransferMode" => "$modesal",
                 "tenure" => 0,
