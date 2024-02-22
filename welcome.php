@@ -62,8 +62,11 @@ $dispDateArr = array('Today','Yesterday','Last 7 Days','Last 30 Days');
                             }
                         }
                     ?>
-
-                    <h4 class="ml40">Welcome <span class="orange"><?php echo ucwords($_SESSION['userDetails']['user_name']);?></span>, Please find your Summary Report</h4>
+                    <div style="margin-top: 20px;margin-bottom: 10px;margin-left: 55px;width: 80%;padding: 1% 2% 6% 0%;" class="ml40">
+                        <span style="float: left;"><h4 style="margin-left: 20px;">Welcome <span class="orange"><?php echo ucwords($_SESSION['userDetails']['user_name']);?></span>, Please find your Summary Report</h4></span>
+                        <span style="float: right;"><img src="<?php echo $head_url;?>/assets/images/logo_new.png" alt="Logo" style="width: 50%;"></span>
+                    </div>
+                    
                     <table width="80%" class="gridtable" style="margin-left:5%">
                         <tbody>
                             <tr>
