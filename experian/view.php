@@ -134,7 +134,7 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
             $gender_status = 'Female';
         }
 	
-        if($result_credit_query["Date_Of_Birth_Applicant"] != '0000-00-00' && $result_credit_query["Date_Of_Birth_Applicant"] != '' && $result_credit_query["Date_Of_Birth_Applicant"] != '1970-01-01'){$dob_applicant = date('d-m-Y',strtotime($result_credit_query["Date_Of_Birth_Applicant"]));}else{$dob_applicant = '-';}
+        if($result_credit_query["CAPS_Applicant_Details"]["Date_Of_Birth_Applicant"] != '0000-00-00' && $result_credit_query["CAPS_Applicant_Details"]["Date_Of_Birth_Applicant"] != '' && $result_credit_query["CAPS_Applicant_Details"]["Date_Of_Birth_Applicant"] != '1970-01-01'){$dob_applicant = date('d-m-Y',strtotime($result_credit_query["CAPS_Applicant_Details"]["Date_Of_Birth_Applicant"]));}else{$dob_applicant = '-';}
         
         if($result_credit_query["Date_of_Request"] != '0000-00-00' && $result_credit_query["Date_of_Request"] != '' && $result_credit_query["Date_of_Request"] != '1970-01-01'){$req_date = date('d-m-Y',strtotime($result_credit_query["Date_of_Request"]));}else{$req_date = '-';}
         
@@ -143,7 +143,7 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
                 <td colspan="2">
                     <table cellpadding="0" cellspacing="0" style="border: 1px solid #dddddd;padding: 5px;font-size: 12px;width: 100%">
                         <tr>
-                            <td style="font-weight: bold;color:#008db1;padding: 5px" colspan="6">'.$result_credit_query["CAPS_Applicant_Details"]["First_Name"].'</td>
+                            <td style="font-weight: bold;color:#008db1;padding: 5px" colspan="6">'.$result_credit_query["CAPS_Applicant_Details"]["First_Name"].' '.$result_credit_query["CAPS_Applicant_Details"]["Last_Name"].'</td>
                         </tr>
                         <tr>
                             <td style="font-weight: bold;color:#008db1;padding-right: 15px;padding: 5px">Address 1</td>
