@@ -74,7 +74,7 @@ foreach($explpat As $patners){
     if ($exisdetails == 0){
         $createApp = mysqli_query($Conn1,"Insert into crm_query_application set crm_query_id = '".$query_id."', bank_id ='".$patners."', applied_amount='".$loanAmount."',application_status=34,user_id='".$user_id."'");  
         $email = array('bharat.bhushan@switchmyloan.in');
-        $subject = 'Lead Id '.$query_id.' '.ucfirst($resultDetails['name']);
+        $subject = 'Lead Id '.$query_id.' '.ucfirst($resultDetails['name']).' '.$city_name.' '.$resultDetails['loan_amount'];
         if(!empty($email)){
             $recep_mail = $email;
             $replytomail = array();
