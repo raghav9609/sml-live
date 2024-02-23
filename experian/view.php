@@ -10,7 +10,7 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
     if($bureauData != ''){
         $dispBureauData = base64_decode($bureauData);
         $dom = new DomDocument('1.0', 'UTF-8');
-        $dom->loadXML($dispBureauData);
+        $dom->loadXML(html_entity_decode($dispBureauData));
         $dom->saveXML();
 
         echo gettype(html_entity_decode($dom));
