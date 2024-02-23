@@ -132,10 +132,10 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
 						<td style="border-right: 1px solid #d6d6d6;padding: 5px;">Residence Code</td>
 						<td style="border-right: 1px solid #d6d6d6;padding: 5px;">Date Reported</td>
 					</tr><tr>
-						<td style="border-right: 1px solid #d6d6d6;border-top:1px solid #d6d6d6;padding: 5px;">MEERUT,UTTAR PRADESH     </td>
+						<td style="border-right: 1px solid #d6d6d6;border-top:1px solid #d6d6d6;padding: 5px;"><?php echo $returnResponse['Current_Application']['Current_Application_Details']['Current_Applicant_Address_Details']['FlatNoPlotNoHouseNo'];?> <?php echo $returnResponse['Current_Application']['Current_Application_Details']['Current_Applicant_Address_Details']['BldgNoSocietyName'];?> <?php echo $returnResponse['Current_Application']['Current_Application_Details']['Current_Applicant_Address_Details']['City'];?></td>
 						<td style="border-right: 1px solid #d6d6d6;border-top:1px solid #d6d6d6;padding: 5px;">Residence Address</td>
-						<td style="border-right: 1px solid #d6d6d6;border-top:1px solid #d6d6d6;padding: 5px;"></td>
-						<td style="border-right: 1px solid #d6d6d6;border-top:1px solid #d6d6d6;padding: 5px;">2023-10-04</td>
+						<td style="border-right: 1px solid #d6d6d6;border-top:1px solid #d6d6d6;padding: 5px;"> <?php echo $returnResponse['Current_Application']['Current_Application_Details']['Current_Applicant_Address_Details']['PINCode'];?> </td>
+						<td style="border-right: 1px solid #d6d6d6;border-top:1px solid #d6d6d6;padding: 5px;"><?php echo date('d-m-Y',strtotime($returnResponse['Header']['ReportDate']));?></td>
 					</tr></tbody></table>
 			</td>
 		</tr><tr><td style="background: #efefef;padding: 5px 0px" colspan="2"><img src="./Credit Report_files/tick.png"><span style="font-size: 18px;font-weight: 600;padding: 8px;vertical-align: super;">Telephone(s)</span></td></tr>
