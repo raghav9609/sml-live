@@ -238,7 +238,7 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
 						<td style="color: #008db1;padding-right: 15px;padding: 5px"><b>Telephone</b></td>
 						<td style="padding: 5px;padding-left: 15px"><?php echo $creditsummary['CAPS_Applicant_Details']['Telephone_Number_Applicant_1st'];?> </td>
 						<td style="color: #008db1;padding: 5px"><b>Passport Number</b></td>
-						<td style="padding: 5px;padding-left: 15px"><?php echo $creditsummary['CAPS_Applicant_Details']['Passport_number'];?> </td>
+						<td style="padding: 5px;padding-left: 15px"><?php if(!empty($creditsummary['CAPS_Applicant_Details']['Passport_number'])){ echo $creditsummary['CAPS_Applicant_Details']['Passport_number'][0];} else { echo "-"; } ?> </td>
 						<td style="color: #008db1;padding: 5px"><b>Search Type</b></td>
 						<td style="padding: 5px;padding-left: 15px">Personal Loan</td>
 					</tr>
@@ -246,7 +246,7 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
 						<td style="color: #008db1;padding-right: 15px;padding: 5px"><b>Mobile Phone</b></td>
 						<td style="padding: 5px;padding-left: 15px">-</td>
 						<td style="color: #008db1;padding: 5px"><b>Voter ID</b></td>
-						<td style="padding: 5px;padding-left: 15px"><?php echo $creditsummary['CAPS_Applicant_Details']['Passport_number'];?> </td>
+						<td style="padding: 5px;padding-left: 15px"><?php if(!empty($creditsummary['CAPS_Applicant_Details']['Voter_s_Identity_Card'])){ echo $creditsummary['CAPS_Applicant_Details']['Voter_s_Identity_Card'][0];} else { echo "-"; } ?> </td>
 						<td style="color: #008db1;padding: 5px"><b>Credit Institution Name</b></td>
 						<td style="padding: 5px;padding-left: 15px">NOT DISCLOSED</td>
 					</tr>
@@ -254,7 +254,7 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
 						<td style="color: #008db1;padding-right: 15px;padding: 5px"><b>Gender</b></td>
 						<td style="padding: 5px;padding-left: 15px"><?php if($creditsummary['CAPS_Applicant_Details']['Gender_Code'] == 3){ echo "Others";} else if($creditsummary['CAPS_Applicant_Details']['Gender_Code'] == 2){ echo "FEMALE";} else { echo "MALE";} ?> </td>
 						<td style="color: #008db1;padding: 5px"><b>Driving License</b></td>
-						<td style="padding: 5px;padding-left: 15px"><?php echo $creditsummary['CAPS_Applicant_Details']['Driver_License_Number'][0];?> </td>
+						<td style="padding: 5px;padding-left: 15px"><?php if(!empty($creditsummary['CAPS_Applicant_Details']['Driver_License_Number'])){ echo $creditsummary['CAPS_Applicant_Details']['Driver_License_Number'][0];} else { echo "-"; } ?> </td>
 						<td style="color: #008db1;padding: 5px"><b>Application date</b></td>
 						<td style="padding: 5px;padding-left: 15px"><?php echo date('d-m-Y',strtotime($creditsummary['Date_of_Request']));?></td>
 					</tr>
@@ -262,13 +262,13 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
 						<td style="color: #008db1;padding-right: 15px;padding: 5px"><b>Marital Status</b></td>
 						<td style="padding: 5px;padding-left: 15px">-</td>
 						<td style="color: #008db1;padding: 5px"><b>Ration Card</b></td>
-						<td style="padding: 5px;padding-left: 15px"><?php echo $creditsummary['CAPS_Applicant_Details']['Ration_Card_Number'][0];?> </td>
+						<td style="padding: 5px;padding-left: 15px"><?php if(!empty($creditsummary['CAPS_Applicant_Details']['Ration_Card_Number'])){ echo $creditsummary['CAPS_Applicant_Details']['Ration_Card_Number'][0];} else { echo "-"; } ?> </td>
 						<td style="color: #008db1;padding: 5px"><b>Amount applied for</b></td>
 						<td style="padding: 5px;padding-left: 15px"><?php echo $creditsummary['CAPS_Applicant_Details']['Amount_Financed'];?></td>
 					</tr>
 					<tr>
 						<td style="color: #008db1;padding-right: 15px;padding: 5px"><b>Email</b></td>
-						<td style="padding: 5px;padding-left: 15px"><?php echo $creditsummary['CAPS_Applicant_Details']['EMailId'];?></td>
+						<td style="padding: 5px;padding-left: 15px"><?php if(!empty($creditsummary['CAPS_Applicant_Details']['EMailId'])){ echo $creditsummary['CAPS_Applicant_Details']['EMailId'][0];} else { echo "-"; } ?></td>
 						<td style="color: #008db1;padding: 5px"><b>Duration of Agreement</b></td>
 						<td style="padding: 5px;padding-left: 15px">-</td>
 					</tr>
