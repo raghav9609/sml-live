@@ -35,18 +35,6 @@ if($type == "app") {
         
         $return_html .= '</table>';
     }
-} else if($type == 'experian'){
-    echo "hello";
-    $qry_id = $_REQUEST['query_id'];
-    $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where query_id = '".$qry_id."'");
-    $resultbureaudetails = mysqli_fetch_array($getbureaudetails);
-    $bureauData = $resultbureaudetails['xml_report'];
-    if($bureauData != ''){
-       echo $dispBureauData = base64_decode($bureauData);
-       echo "anu";
-        //$return_html = '<table width="100%" class="gridtable"><tr class="font-weight-bold"><th>Report</th></tr><tr><td>'.$dispBureauData.'</td></tr></table>';
-    }
-}
-
+} 
 echo $return_html;
 ?>
