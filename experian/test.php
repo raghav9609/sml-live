@@ -137,9 +137,9 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
                             <td style="border-right: 1px solid #d6d6d6;padding: 5px;">Current Balance</td>
                             <td style="padding: 5px;">Amount Overdue</td>
                         </tr>';
-                        $qry_account_details  = mysqli_query($Conn1,"select status.short as status,atype.description as atype,acc_holder_type.description as acc_holder_type,sum_h.* from mlc_experian_customer_account_report_summary_history as sum_h left join mlc_experian_account_type as atype on sum_h.Account_Type = atype.value left join mlc_experian_acc_holder_type_code as acc_holder_type on sum_h.AccountHoldertypeCode = acc_holder_type.value left join mlc_experian_expected_on_web_status as status on sum_h.Account_Status = status.value where experian_history_id = '".$hid."' and cust_id = '".$result_get_cust_id_qry['cust_id']."' group by history_id") or die(mysqli_error($Conn1));
+                        
                     $i =0;$data=array();
-                        while($result_fetch_acc_details = mysqli_fetch_array($qry_account_details)){
+                        foreach($returnResponse['CAPS']['CAPS_Application_Details'] as $key=>$result_fetch_acc_details){
                             $data[] = $result_fetch_acc_details;
                             if($result_fetch_acc_details['Open_Date'] != '1970-01-01' && $result_fetch_acc_details['Open_Date'] != '0000-00-00' && $result_fetch_acc_details['Open_Date'] !='' ){
                                 $open_date_to_display = date('d-m-Y',strtotime($result_fetch_acc_details['Open_Date']));
