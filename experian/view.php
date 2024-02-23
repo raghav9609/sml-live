@@ -168,7 +168,7 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
                         </tr>
                         <tr>
                             <td style="color: #008db1;padding-right: 15px;padding: 5px"><b>Mobile Phone</b></td>
-                            <td style="padding: 5px;padding-left: 15px">'.$result_credit_query["MobilePhoneNumber"].'</td>
+                            <td style="padding: 5px;padding-left: 15px">'.$result_credit_query["CAPS_Applicant_Details"]["Telephone_Number_Applicant_1st"].'</td>
                             <td style="color: #008db1;padding: 5px"><b>Voter ID</b></td>
                             <td style="padding: 5px;padding-left: 15px">-</td>
                             <td style="color: #008db1;padding: 5px"><b>Credit Institution Name</b></td>
@@ -184,7 +184,7 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
                         </tr>
                         <tr>
                             <td style="color: #008db1;padding-right: 15px;padding: 5px"><b>Marital Status</b></td>
-                            <td style="padding: 5px;padding-left: 15px">'.$result_credit_query["marital_status"].'</td>
+                            <td style="padding: 5px;padding-left: 15px">-</td>
                             <td style="color: #008db1;padding: 5px"><b>Ration Card</b></td>
                             <td style="padding: 5px;padding-left: 15px">-</td>
                             <td style="color: #008db1;padding: 5px"><b>Amount applied for</b></td>
@@ -192,7 +192,7 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
                         </tr>
                         <tr>
                             <td style="color: #008db1;padding-right: 15px;padding: 5px"><b>Email</b></td>
-                            <td style="padding: 5px;padding-left: 15px">'.$result_credit_query["EMailId"].'</td>
+                            <td style="padding: 5px;padding-left: 15px">'.$result_credit_query["CAPS_Applicant_Details"]["EMailId"].'</td>
                             <td style="color: #008db1;padding: 5px"><b>Duration of Agreement</b></td>
                             <td style="padding: 5px;padding-left: 15px">'.$result_credit_query["Duration_Of_Agreement"].'</td>
                         </tr>
