@@ -13,15 +13,12 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
     $bureauData = $resultbureaudetails['xml_report'];
     if($bureauData != ''){
         $dispBureauData = base64_decode($bureauData);
-        $rawxml = utf8_encode($dispBureauData);
-        
-        $ob = simplexml_load_string(html_entity_decode($rawxml));
+        $ob = simplexml_load_string(html_entity_decode($dispBureauData));
         $json  = json_encode($ob);
         $returnResponse = json_decode($json, true);
         print_r($returnResponse);
 
     }
-    die();
     ?>
 
 <!DOCTYPE html>
@@ -31,7 +28,7 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
 		<tbody><tr>
 			<td width="75%" style="padding-top:10px">
 			</td>
-			<td width="25%" style="font-size: 14px;text-align: right;padding-top:10px"><span style="color: #008db1;font-weight: bold;">ERN : </span><span>006539780914</span><br><span style="color: #008db1;font-weight: bold;">Report Date : </span><span>2023-10-04</span><br><span style="color: #008db1;font-weight: bold;">Bureau Name : </span><span>Cibil</span></td>
+			<td width="25%" style="font-size: 14px;text-align: right;padding-top:10px"><span style="color: #008db1;font-weight: bold;">ERN : </span><span>006539780914</span><br><span style="color: #008db1;font-weight: bold;">Report Date : </span><span><?php echo $returnResponse['Header']['ReportDate'];?></span><br><span style="color: #008db1;font-weight: bold;">Bureau Name : </span><span>Cibil</span></td>
 		</tr>
 		<tr><td colspan="2" style="color: #f06c00;text-align: center;font-weight: bold;font-size: 18px;padding: 10px"></td></tr>
 		<tr><td style="border-top: 1px solid #d6d6d6" colspan="2"></td></tr>
