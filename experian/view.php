@@ -16,9 +16,9 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
         $rawxml = utf8_encode($dispBureauData);
         
         $ob = simplexml_load_string(html_entity_decode($rawxml));
-        echo $json  = json_encode($ob);
-        // $returnResponse = json_decode($json, true);
-        
+        $json  = json_encode($ob);
+        $returnResponse = json_decode($json, true);
+        print_r($returnResponse);
 
     }
     die();
