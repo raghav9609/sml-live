@@ -41,7 +41,7 @@ if($type == "app") {
     $resultbureaudetails = mysqli_fetch_array($getbureaudetails);
     $bureauData = $resultbureaudetails['xml_report'];
     if($bureauData != ''){
-        $dispBureauData = base64_decode($bureauData);
+       echo $dispBureauData = base64_decode($bureauData);
         $return_html = '<table width="100%" class="gridtable"><tr class="font-weight-bold"><th>Report</th></tr><tr><td>'.$dispBureauData.'</td></tr></table>';
     }
 }
