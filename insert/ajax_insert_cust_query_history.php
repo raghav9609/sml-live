@@ -36,6 +36,7 @@ if($type == "app") {
         $return_html .= '</table>';
     }
 } else if($type == 'experian'){
+    echo "hello";
     $qry_id = $_REQUEST['query_id'];
     $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where query_id = '".$qry_id."'");
     $resultbureaudetails = mysqli_fetch_array($getbureaudetails);
