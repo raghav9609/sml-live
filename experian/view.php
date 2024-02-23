@@ -162,7 +162,11 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
                             <td style="border-right: 1px solid #d6d6d6;border-top:1px solid #d6d6d6;padding: 5px;">'.$result_fetch_acc_details['Account_Number'].'</td>
                             <td style="border-right: 1px solid #d6d6d6;border-top:1px solid #d6d6d6;padding: 5px;">'.$result_fetch_acc_details['AccountHoldertypeCode'].'</td>
                             <td style="border-right: 1px solid #d6d6d6;border-top:1px solid #d6d6d6;padding: 5px;">'.$report_date_to_display.'</td>
-                            
+                            <td style="border-right: 1px solid #d6d6d6;border-top:1px solid #d6d6d6;padding: 5px;">'.$result_fetch_acc_details['Account_Status'].'</td>
+                            <td style="border-right: 1px solid #d6d6d6;border-top:1px solid #d6d6d6;padding: 5px;">'.$open_date_to_display.'</td>
+                            <td style="border-right: 1px solid #d6d6d6;border-top:1px solid #d6d6d6;padding: 5px;">'.($result_fetch_acc_details['Highest_Credit_or_Original_Loan_Amount']).'</td>
+                            <td style="border-right: 1px solid #d6d6d6;border-top:1px solid #d6d6d6;padding: 5px;">'.($result_fetch_acc_details['Current_Balance']).'</td>
+                            <td style="border-top:1px solid #d6d6d6;padding: 5px;">'.($result_fetch_acc_details['Amount_Past_Due']).'</td>
                         </tr>';
                         }
                   $template .= '</table>
