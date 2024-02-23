@@ -9,7 +9,8 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
     $bureauData = $resultbureaudetails['xml_report'];
     if($bureauData != ''){
         $dispBureauData = base64_decode($bureauData);
-        $xml = simplexml_load_string(html_entity_decode($dispBureauData));
+        $xmldata = simplexml_load_string($dispBureauData, "SimpleXMLElement", 0, "epp", true);
+        //$xml = simplexml_load_string(html_entity_decode($dispBureauData));
 
 
     }
