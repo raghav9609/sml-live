@@ -9,11 +9,11 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
     $bureauData = $resultbureaudetails['xml_report'];
     if($bureauData != ''){
         $dispBureauData = base64_decode($bureauData);
-
-        $dispBureauData = preg_replace("/(<\/?)(\w+):([^>]*>)/", '$1$2$3', $dispBureauData);
-        $json_response = str_replace("ns0:","",$dispBureauData);
-        $xml = new SimpleXMLElement($json_response);
-        preArray($xml);
+        echo gettype($dispBureauData);
+        // $dispBureauData = preg_replace("/(<\/?)(\w+):([^>]*>)/", '$1$2$3', $dispBureauData);
+        // $json_response = str_replace("ns0:","",$dispBureauData);
+        // $xml = new SimpleXMLElement($json_response);
+        // preArray($xml);
         // $ob= simplexml_load_string( $xml );
         // echo $json  = json_encode($ob);
         // $returnResponse = json_decode($json, true);
