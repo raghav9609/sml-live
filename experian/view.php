@@ -140,30 +140,9 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
                         
                     $i =0;$data=array();
                         foreach($returnResponse['CAIS_Account']['CAIS_Account_DETAILS'] as $key => $result_fetch_acc_details){
-							$i++;
-                            $data[] = $result_fetch_acc_details;
-                            if($result_fetch_acc_details['Open_Date'] != '1970-01-01' && $result_fetch_acc_details['Open_Date'] != '0000-00-00' && $result_fetch_acc_details['Open_Date'] !='' ){
-                                $open_date_to_display = date('d-m-Y',strtotime($result_fetch_acc_details['Open_Date']));
-                            }else{
-                                $open_date_to_display = '';
-                            }
-							echo $i;
-							preArray($result_fetch_acc_details);
-                    echo $template .= '<tr>
-                            <td style="border-right: 1px solid #d6d6d6;border-top:1px solid #d6d6d6;font-weight: bold;color: #008db1;padding: 5px;">Acct '.$i.'</td>
-                            <td style="border-right: 1px solid #d6d6d6;border-top:1px solid #d6d6d6;padding: 5px;">'.$result_fetch_acc_details['Subscriber_Name'].'</td>
-                            <td style="border-right: 1px solid #d6d6d6;border-top:1px solid #d6d6d6;padding: 5px;">'.$result_fetch_acc_details['Account_Type'].'</td>
-                            <td style="border-right: 1px solid #d6d6d6;border-top:1px solid #d6d6d6;padding: 5px;">'.$result_fetch_acc_details['Account_Number'].'</td>
-                            <td style="border-right: 1px solid #d6d6d6;border-top:1px solid #d6d6d6;padding: 5px;">'.$result_fetch_acc_details['AccountHoldertypeCode'].'</td>
-                            <td style="border-right: 1px solid #d6d6d6;border-top:1px solid #d6d6d6;padding: 5px;">'.date('d-m-Y',strtotime($result_fetch_acc_details['Date_Reported'])).'</td>
-                            <td style="border-right: 1px solid #d6d6d6;border-top:1px solid #d6d6d6;padding: 5px;">'.$result_fetch_acc_details['Account_Status'].'</td>
-                            <td style="border-right: 1px solid #d6d6d6;border-top:1px solid #d6d6d6;padding: 5px;">'.$open_date_to_display.'</td>
-                            <td style="border-right: 1px solid #d6d6d6;border-top:1px solid #d6d6d6;padding: 5px;">'.number_format($result_fetch_acc_details['Highest_Credit_or_Original_Loan_Amount']).'</td>
-                            <td style="border-right: 1px solid #d6d6d6;border-top:1px solid #d6d6d6;padding: 5px;">'.number_format($result_fetch_acc_details['Current_Balance']).'</td>
-                            <td style="border-top:1px solid #d6d6d6;padding: 5px;">'.number_format($result_fetch_acc_details['Amount_Past_Due']).'</td>
-                        </tr>';
+							
                         }
-                 echo $template .= '</table>
+                  $template .= '</table>
                 </td>
             </tr>
             <tr><td style="background: #efefef;padding: 5px" colspan="2"><img src="'.$head_url.'/assets/images/tick.png"><span style="font-size: 18px;font-weight: 600;padding: 8px;vertical-align: super;">Credit Account Information details</span></td></tr>
