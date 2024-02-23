@@ -180,9 +180,9 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
 						<td style="border-right: 1px solid #d6d6d6;padding: 5px;">Expiration Date</td>
 					</tr><tr>
 						<td style="border-right: 1px solid #d6d6d6;border-top:1px solid #d6d6d6;padding: 5px;">Income Tax ID Number (PAN)</td>
-						<td style="border-right: 1px solid #d6d6d6;border-top:1px solid #d6d6d6;padding: 5px;">EJGPK1826R</td>
-						<td style="border-right: 1px solid #d6d6d6;border-top:1px solid #d6d6d6;padding: 5px;"></td>
-						<td style="border-right: 1px solid #d6d6d6;border-top:1px solid #d6d6d6;padding: 5px;"></td>
+						<td style="border-right: 1px solid #d6d6d6;border-top:1px solid #d6d6d6;padding: 5px;"><?php if(!empty($returnResponse['Current_Application']['Current_Application_Details']['Current_Applicant_Details']['IncomeTaxPan'])){ echo $returnResponse['Current_Application']['Current_Application_Details']['Current_Applicant_Details']['IncomeTaxPan']; } else { echo "-";} ?></td>
+						<td style="border-right: 1px solid #d6d6d6;border-top:1px solid #d6d6d6;padding: 5px;"> <?php if(!empty($returnResponse['Current_Application']['Current_Application_Details']['Current_Applicant_Details']['PAN_Issue_Date'])){ echo $returnResponse['Current_Application']['Current_Application_Details']['Current_Applicant_Details']['PAN_Issue_Date']; } else { echo "-";} ?> </td>
+						<td style="border-right: 1px solid #d6d6d6;border-top:1px solid #d6d6d6;padding: 5px;"> <?php if(!empty($returnResponse['Current_Application']['Current_Application_Details']['Current_Applicant_Details']['PAN_Expiration_Date'])){ echo $returnResponse['Current_Application']['Current_Application_Details']['Current_Applicant_Details']['PAN_Expiration_Date']; } else { echo "-";} ?></td>
 					</tr></tbody></table>
 			</td>
 		</tr>
