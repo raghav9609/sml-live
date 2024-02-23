@@ -478,7 +478,7 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
                 </td>
             </tr>';
             }
-        $template .= '
+       echo $template .= '
         </table></body>
     </html>';
     ?>
