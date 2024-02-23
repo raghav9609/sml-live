@@ -137,10 +137,10 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
                             <td style="border-right: 1px solid #d6d6d6;padding: 5px;">Current Balance</td>
                             <td style="padding: 5px;">Amount Overdue</td>
                         </tr>';
-                        preArray($returnResponse['CAIS_Account']['CAIS_Account_DETAILS']);
+                        
                     $i =0;$data=array();
-                        foreach($returnResponse['CAIS_Account']['CAIS_Account_DETAILS'] as $key=>$result_fetch_acc_details){
-                            //preArray($result_fetch_acc_details);
+                        foreach($returnResponse['CAIS_Account']['CAIS_Account_DETAILS'] as $key => $result_fetch_acc_details){
+                            preArray($result_fetch_acc_details);
                             //$data[] = $result_fetch_acc_details;
                             if($result_fetch_acc_details['Open_Date'] != '1970-01-01' && $result_fetch_acc_details['Open_Date'] != '0000-00-00' && $result_fetch_acc_details['Open_Date'] !='' ){
                                 $open_date_to_display = date('d-m-Y',strtotime($result_fetch_acc_details['Open_Date']));
@@ -152,11 +152,11 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
                     $template .= '<tr>
                             <td style="border-right: 1px solid #d6d6d6;border-top:1px solid #d6d6d6;font-weight: bold;color: #008db1;padding: 5px;">Acct '.$i.'</td>
                             <td style="border-right: 1px solid #d6d6d6;border-top:1px solid #d6d6d6;padding: 5px;">'.$result_fetch_acc_details['Subscriber_Name'].'</td>
-                            <td style="border-right: 1px solid #d6d6d6;border-top:1px solid #d6d6d6;padding: 5px;">'.$result_fetch_acc_details['atype'].'</td>
+                            <td style="border-right: 1px solid #d6d6d6;border-top:1px solid #d6d6d6;padding: 5px;">'.$result_fetch_acc_details['Account_Type'].'</td>
                             <td style="border-right: 1px solid #d6d6d6;border-top:1px solid #d6d6d6;padding: 5px;">'.$result_fetch_acc_details['Account_Number'].'</td>
-                            <td style="border-right: 1px solid #d6d6d6;border-top:1px solid #d6d6d6;padding: 5px;">'.$result_fetch_acc_details['acc_holder_type'].'</td>
+                            <td style="border-right: 1px solid #d6d6d6;border-top:1px solid #d6d6d6;padding: 5px;">'.$result_fetch_acc_details['AccountHoldertypeCode'].'</td>
                             <td style="border-right: 1px solid #d6d6d6;border-top:1px solid #d6d6d6;padding: 5px;">'.date('d-m-Y',strtotime($result_fetch_acc_details['Date_Reported'])).'</td>
-                            <td style="border-right: 1px solid #d6d6d6;border-top:1px solid #d6d6d6;padding: 5px;">'.$result_fetch_acc_details['status'].'</td>
+                            <td style="border-right: 1px solid #d6d6d6;border-top:1px solid #d6d6d6;padding: 5px;">'.$result_fetch_acc_details['Account_Status'].'</td>
                             <td style="border-right: 1px solid #d6d6d6;border-top:1px solid #d6d6d6;padding: 5px;">'.$open_date_to_display.'</td>
                             <td style="border-right: 1px solid #d6d6d6;border-top:1px solid #d6d6d6;padding: 5px;">'.number_format($result_fetch_acc_details['Highest_Credit_or_Original_Loan_Amount']).'</td>
                             <td style="border-right: 1px solid #d6d6d6;border-top:1px solid #d6d6d6;padding: 5px;">'.number_format($result_fetch_acc_details['Current_Balance']).'</td>
