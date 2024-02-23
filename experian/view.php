@@ -43,7 +43,7 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
 				<table style="width: 100%;">
 					<tbody><tr>
 						<td width="20%"><img src="./Credit Report_files/experian-red.png" width="100%"></td>
-						<td style="font-size: 25px;padding: 15px;font-weight: bold;" width="10%">000-1</td>
+						<td style="font-size: 25px;padding: 15px;font-weight: bold;" width="10%"><?php echo $returnResponse['SCORE']['BureauScore'];?></td>
 						<td width="70%">
 							<table style="width: 100%;border: 1px solid #dddddd;">
 								<tbody><tr><td colspan="2" style="padding: 10px 5px"><span style="font-size: 15px;font-weight: bold;text-decoration: underline;padding-bottom: 10px">Score Factors</span></td></tr>
