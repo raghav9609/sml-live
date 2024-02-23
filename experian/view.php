@@ -166,7 +166,7 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
                             <td style="color: #008db1;padding: 5px"><b>Passport Number</b></td>
                             <td style="padding: 5px;padding-left: 15px">-</td>
                             <td style="color: #008db1;padding: 5px"><b>Search Type</b></td>
-                            <td style="padding: 5px;padding-left: 15px">'.$enquiry_reason_array[$result_credit_query["Finance_Purpose"]].'</td>
+                            <td style="padding: 5px;padding-left: 15px">'.$result_credit_query["Finance_Purpose"].'</td>
                         </tr>
                         <tr>
                             <td style="color: #008db1;padding-right: 15px;padding: 5px"><b>Mobile Phone</b></td>
