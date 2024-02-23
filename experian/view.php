@@ -163,7 +163,7 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
                             <td style="border-top:1px solid #d6d6d6;padding: 5px;">'.number_format($result_fetch_acc_details['Amount_Past_Due']).'</td>
                         </tr>';
                         }
-                 $template .= '</table>
+               echo  $template .= '</table>
                 </td>
             </tr>
             <tr><td style="background: #efefef;padding: 5px" colspan="2"><img src="'.$head_url.'/assets/images/tick.png"><span style="font-size: 18px;font-weight: 600;padding: 8px;vertical-align: super;">Credit Account Information details</span></td></tr>
