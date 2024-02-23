@@ -153,6 +153,25 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
                                 $report_date_to_display = '';
                             }
 
+							if(!empty($result_fetch_acc_details['Highest_Credit_or_Original_Loan_Amount']) && $result_fetch_acc_details['Highest_Credit_or_Original_Loan_Amount'] !='' ){
+                                $Highest_Credit_or_Original_Loan_Amount = number_format($result_fetch_acc_details['Highest_Credit_or_Original_Loan_Amount']);
+                            }else{
+                                $Highest_Credit_or_Original_Loan_Amount = '';
+                            }
+
+							if(!empty($result_fetch_acc_details['Highest_Credit_or_Original_Loan_Amount']) && $result_fetch_acc_details['Highest_Credit_or_Original_Loan_Amount'] !='' ){
+                                $Highest_Credit_or_Original_Loan_Amount = number_format($result_fetch_acc_details['Highest_Credit_or_Original_Loan_Amount']);
+                            }else{
+                                $Highest_Credit_or_Original_Loan_Amount = '';
+                            }
+
+
+							if(!empty($result_fetch_acc_details['Amount_Past_Due']) && $result_fetch_acc_details['Amount_Past_Due'] !='' ){
+                                $Amount_Past_Due = number_format($result_fetch_acc_details['Amount_Past_Due']);
+                            }else{
+                                $Amount_Past_Due = '';
+                            }
+
 							
 						
                      $template .= '<tr>
@@ -164,9 +183,9 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
                             <td style="border-right: 1px solid #d6d6d6;border-top:1px solid #d6d6d6;padding: 5px;">'.$report_date_to_display.'</td>
                             <td style="border-right: 1px solid #d6d6d6;border-top:1px solid #d6d6d6;padding: 5px;">'.$result_fetch_acc_details['Account_Status'].'</td>
                             <td style="border-right: 1px solid #d6d6d6;border-top:1px solid #d6d6d6;padding: 5px;">'.$open_date_to_display.'</td>
-                            <td style="border-right: 1px solid #d6d6d6;border-top:1px solid #d6d6d6;padding: 5px;">'.($result_fetch_acc_details['Highest_Credit_or_Original_Loan_Amount']).'</td>
-                            <td style="border-right: 1px solid #d6d6d6;border-top:1px solid #d6d6d6;padding: 5px;">'.($result_fetch_acc_details['Current_Balance']).'</td>
-                            <td style="border-top:1px solid #d6d6d6;padding: 5px;">'.($result_fetch_acc_details['Amount_Past_Due']).'</td>
+                            <td style="border-right: 1px solid #d6d6d6;border-top:1px solid #d6d6d6;padding: 5px;">'.$Highest_Credit_or_Original_Loan_Amount.'</td>
+                            <td style="border-right: 1px solid #d6d6d6;border-top:1px solid #d6d6d6;padding: 5px;">'.$Current_Balance.'</td>
+                            <td style="border-top:1px solid #d6d6d6;padding: 5px;">'.$Amount_Past_Due.'</td>
                         </tr>';
                         }
                   $template .= '</table>
