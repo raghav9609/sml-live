@@ -212,33 +212,34 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
         <tr><td style="background: #efefef;padding: 5px" colspan="2"><img src="./Credit Report_files/tick.png"><span style="font-size: 18px;font-weight: 600;padding: 8px;vertical-align: super;">CREDIT ENQUIRIES</span></td></tr>
 		
         <tr><td style="font-style: italic;color: orange;padding: 15px 0px;" colspan="2"> This section shows the names of the credit institutions that have processed a credit / loan application for you.</td></tr>
-        
+        <?php $i = 1;
+            foreach($returnResponse['CAPS']['CAPS_Application_Details'] As $creditsummary){?>
         <tr>
         
 			<td colspan="2">
 				<table cellpadding="0" cellspacing="0" style="border: 1px solid #dddddd;padding: 5px;font-size: 12px;width: 100%">
 					<tbody><tr>
-						<td style="font-weight: bold;color:#008db1;padding: 5px" colspan="6"><?php print_r($returnResponse['CAPS']['CAPS_Application_Details']);?></td>
+						<td style="font-weight: bold;color:#008db1;padding: 5px" colspan="6"><?php echo $creditsummary['CAPS_Applicant_Details']['First_Name'].' '.$creditsummary['CAPS_Applicant_Details']['Last_Name'];?></td>
 					</tr>
 					<tr>
-						<td style="font-weight: bold;color:#008db1;padding-right: 15px;padding: 5px">Address 1</td>
+						<td style="font-weight: bold;color:#008db1;padding-right: 15px;padding: 5px">Address <?php echo $i;?></td>
 						<td colspan="4" style="padding-left: 15px;padding: 5px">-</td>
-						<td style="text-align: center;font-weight: 600;padding: 5px"><img src="./Credit Report_files/tick.png"><span style="vertical-align: super;">Cr Enq 1</span></td>
+						<td style="text-align: center;font-weight: 600;padding: 5px"><img src="./Credit Report_files/tick.png"><span style="vertical-align: super;">Cr Enq <?php echo $i;?></span></td>
 					</tr>
 					<tr><td height="10" colspan="6"></td></tr>
 					<tr>
 						<td style="color: #008db1;padding-right: 15px;padding: 5px"><b>Date of Birth</b></td>
-						<td style="padding: 5px;padding-left: 15px"></td>
+						<td style="padding: 5px;padding-left: 15px"><?php echo date('d-m-Y',strtotime($creditsummary['CAPS_Applicant_Details']['Date_Of_Birth_Applicant']));?></td>
 						<td style="color: #008db1;padding: 5px"><b>PAN</b></td>
-						<td style="padding: 5px;padding-left: 15px">-</td>
+						<td style="padding: 5px;padding-left: 15px"><?php echo $creditsummary['CAPS_Applicant_Details']['IncomeTaxPan'];?> </td>
 						<td style="color: #008db1;padding: 5px"><b>ERN</b></td>
-						<td style="padding: 5px;padding-left: 15px">-</td>
+						<td style="padding: 5px;padding-left: 15px"><?php echo $creditsummary['ReportNumber'];?></td>
 					</tr>
 					<tr>
 						<td style="color: #008db1;padding-right: 15px;padding: 5px"><b>Telephone</b></td>
-						<td style="padding: 5px;padding-left: 15px">-</td>
+						<td style="padding: 5px;padding-left: 15px"><?php echo $creditsummary['CAPS_Applicant_Details']['Telephone_Number_Applicant_1st'];?> </td>
 						<td style="color: #008db1;padding: 5px"><b>Passport Number</b></td>
-						<td style="padding: 5px;padding-left: 15px">-</td>
+						<td style="padding: 5px;padding-left: 15px"><?php echo $creditsummary['CAPS_Applicant_Details']['Passport_number'];?> </td>
 						<td style="color: #008db1;padding: 5px"><b>Search Type</b></td>
 						<td style="padding: 5px;padding-left: 15px">Personal Loan</td>
 					</tr>
@@ -246,155 +247,37 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
 						<td style="color: #008db1;padding-right: 15px;padding: 5px"><b>Mobile Phone</b></td>
 						<td style="padding: 5px;padding-left: 15px">-</td>
 						<td style="color: #008db1;padding: 5px"><b>Voter ID</b></td>
-						<td style="padding: 5px;padding-left: 15px">-</td>
+						<td style="padding: 5px;padding-left: 15px"><?php echo $creditsummary['CAPS_Applicant_Details']['Passport_number'];?> </td>
 						<td style="color: #008db1;padding: 5px"><b>Credit Institution Name</b></td>
 						<td style="padding: 5px;padding-left: 15px">NOT DISCLOSED</td>
 					</tr>
 					<tr>
 						<td style="color: #008db1;padding-right: 15px;padding: 5px"><b>Gender</b></td>
-						<td style="padding: 5px;padding-left: 15px"></td>
+						<td style="padding: 5px;padding-left: 15px"><?php echo if($creditsummary['CAPS_Applicant_Details']['Gender_Code'] == 3){ echo "Others";} else if($creditsummary['CAPS_Applicant_Details']['Gender_Code'] == 2){ echo "FEMALE";} else { echo "MALE";}?> </td>
 						<td style="color: #008db1;padding: 5px"><b>Driving License</b></td>
-						<td style="padding: 5px;padding-left: 15px">-</td>
+						<td style="padding: 5px;padding-left: 15px"><?php echo $creditsummary['CAPS_Applicant_Details']['Driver_License_Number'];?> </td>
 						<td style="color: #008db1;padding: 5px"><b>Application date</b></td>
-						<td style="padding: 5px;padding-left: 15px">2023-10-04</td>
+						<td style="padding: 5px;padding-left: 15px"><?php echo date('d-m-Y',strtotime($creditsummary['CAPS_Applicant_Details']['Date_of_Request']));?></td>
 					</tr>
 					<tr>
 						<td style="color: #008db1;padding-right: 15px;padding: 5px"><b>Marital Status</b></td>
 						<td style="padding: 5px;padding-left: 15px">-</td>
 						<td style="color: #008db1;padding: 5px"><b>Ration Card</b></td>
-						<td style="padding: 5px;padding-left: 15px">-</td>
+						<td style="padding: 5px;padding-left: 15px"><?php echo $creditsummary['CAPS_Applicant_Details']['Ration_Card_Number'];?> </td>
 						<td style="color: #008db1;padding: 5px"><b>Amount applied for</b></td>
-						<td style="padding: 5px;padding-left: 15px">5,000</td>
+						<td style="padding: 5px;padding-left: 15px"><?php echo $creditsummary['CAPS_Applicant_Details']['Amount_Financed'];?></td>
 					</tr>
 					<tr>
 						<td style="color: #008db1;padding-right: 15px;padding: 5px"><b>Email</b></td>
-						<td style="padding: 5px;padding-left: 15px">-</td>
+						<td style="padding: 5px;padding-left: 15px"><?php echo $creditsummary['CAPS_Applicant_Details']['EMailId'];?></td>
 						<td style="color: #008db1;padding: 5px"><b>Duration of Agreement</b></td>
 						<td style="padding: 5px;padding-left: 15px">-</td>
 					</tr>
 				</tbody></table>
 			</td>
-		</tr><tr>
-			<td colspan="2">
-				<table cellpadding="0" cellspacing="0" style="border: 1px solid #dddddd;padding: 5px;font-size: 12px;width: 100%">
-					<tbody><tr>
-						<td style="font-weight: bold;color:#008db1;padding: 5px" colspan="6">DEEPIKA KUMAR</td>
-					</tr>
-					<tr>
-						<td style="font-weight: bold;color:#008db1;padding-right: 15px;padding: 5px">Address 1</td>
-						<td colspan="4" style="padding-left: 15px;padding: 5px">-</td>
-						<td style="text-align: center;font-weight: 600;padding: 5px"><img src="./Credit Report_files/tick.png"><span style="vertical-align: super;">Cr Enq 1</span></td>
-					</tr>
-					<tr><td height="10" colspan="6"></td></tr>
-					<tr>
-						<td style="color: #008db1;padding-right: 15px;padding: 5px"><b>Date of Birth</b></td>
-						<td style="padding: 5px;padding-left: 15px"></td>
-						<td style="color: #008db1;padding: 5px"><b>PAN</b></td>
-						<td style="padding: 5px;padding-left: 15px">-</td>
-						<td style="color: #008db1;padding: 5px"><b>ERN</b></td>
-						<td style="padding: 5px;padding-left: 15px">-</td>
-					</tr>
-					<tr>
-						<td style="color: #008db1;padding-right: 15px;padding: 5px"><b>Telephone</b></td>
-						<td style="padding: 5px;padding-left: 15px">-</td>
-						<td style="color: #008db1;padding: 5px"><b>Passport Number</b></td>
-						<td style="padding: 5px;padding-left: 15px">-</td>
-						<td style="color: #008db1;padding: 5px"><b>Search Type</b></td>
-						<td style="padding: 5px;padding-left: 15px">Personal Loan</td>
-					</tr>
-					<tr>
-						<td style="color: #008db1;padding-right: 15px;padding: 5px"><b>Mobile Phone</b></td>
-						<td style="padding: 5px;padding-left: 15px">-</td>
-						<td style="color: #008db1;padding: 5px"><b>Voter ID</b></td>
-						<td style="padding: 5px;padding-left: 15px">-</td>
-						<td style="color: #008db1;padding: 5px"><b>Credit Institution Name</b></td>
-						<td style="padding: 5px;padding-left: 15px">NOT DISCLOSED</td>
-					</tr>
-					<tr>
-						<td style="color: #008db1;padding-right: 15px;padding: 5px"><b>Gender</b></td>
-						<td style="padding: 5px;padding-left: 15px"></td>
-						<td style="color: #008db1;padding: 5px"><b>Driving License</b></td>
-						<td style="padding: 5px;padding-left: 15px">-</td>
-						<td style="color: #008db1;padding: 5px"><b>Application date</b></td>
-						<td style="padding: 5px;padding-left: 15px">2023-10-04</td>
-					</tr>
-					<tr>
-						<td style="color: #008db1;padding-right: 15px;padding: 5px"><b>Marital Status</b></td>
-						<td style="padding: 5px;padding-left: 15px">-</td>
-						<td style="color: #008db1;padding: 5px"><b>Ration Card</b></td>
-						<td style="padding: 5px;padding-left: 15px">-</td>
-						<td style="color: #008db1;padding: 5px"><b>Amount applied for</b></td>
-						<td style="padding: 5px;padding-left: 15px">3,000</td>
-					</tr>
-					<tr>
-						<td style="color: #008db1;padding-right: 15px;padding: 5px"><b>Email</b></td>
-						<td style="padding: 5px;padding-left: 15px">-</td>
-						<td style="color: #008db1;padding: 5px"><b>Duration of Agreement</b></td>
-						<td style="padding: 5px;padding-left: 15px">-</td>
-					</tr>
-				</tbody></table>
-			</td>
-		</tr><tr>
-			<td colspan="2">
-				<table cellpadding="0" cellspacing="0" style="border: 1px solid #dddddd;padding: 5px;font-size: 12px;width: 100%">
-					<tbody><tr>
-						<td style="font-weight: bold;color:#008db1;padding: 5px" colspan="6">DEEPIKA KUMAR</td>
-					</tr>
-					<tr>
-						<td style="font-weight: bold;color:#008db1;padding-right: 15px;padding: 5px">Address 1</td>
-						<td colspan="4" style="padding-left: 15px;padding: 5px">-</td>
-						<td style="text-align: center;font-weight: 600;padding: 5px"><img src="./Credit Report_files/tick.png"><span style="vertical-align: super;">Cr Enq 1</span></td>
-					</tr>
-					<tr><td height="10" colspan="6"></td></tr>
-					<tr>
-						<td style="color: #008db1;padding-right: 15px;padding: 5px"><b>Date of Birth</b></td>
-						<td style="padding: 5px;padding-left: 15px"></td>
-						<td style="color: #008db1;padding: 5px"><b>PAN</b></td>
-						<td style="padding: 5px;padding-left: 15px">-</td>
-						<td style="color: #008db1;padding: 5px"><b>ERN</b></td>
-						<td style="padding: 5px;padding-left: 15px">-</td>
-					</tr>
-					<tr>
-						<td style="color: #008db1;padding-right: 15px;padding: 5px"><b>Telephone</b></td>
-						<td style="padding: 5px;padding-left: 15px">-</td>
-						<td style="color: #008db1;padding: 5px"><b>Passport Number</b></td>
-						<td style="padding: 5px;padding-left: 15px">-</td>
-						<td style="color: #008db1;padding: 5px"><b>Search Type</b></td>
-						<td style="padding: 5px;padding-left: 15px">Personal Loan</td>
-					</tr>
-					<tr>
-						<td style="color: #008db1;padding-right: 15px;padding: 5px"><b>Mobile Phone</b></td>
-						<td style="padding: 5px;padding-left: 15px">-</td>
-						<td style="color: #008db1;padding: 5px"><b>Voter ID</b></td>
-						<td style="padding: 5px;padding-left: 15px">-</td>
-						<td style="color: #008db1;padding: 5px"><b>Credit Institution Name</b></td>
-						<td style="padding: 5px;padding-left: 15px">NOT DISCLOSED</td>
-					</tr>
-					<tr>
-						<td style="color: #008db1;padding-right: 15px;padding: 5px"><b>Gender</b></td>
-						<td style="padding: 5px;padding-left: 15px"></td>
-						<td style="color: #008db1;padding: 5px"><b>Driving License</b></td>
-						<td style="padding: 5px;padding-left: 15px">-</td>
-						<td style="color: #008db1;padding: 5px"><b>Application date</b></td>
-						<td style="padding: 5px;padding-left: 15px">2023-10-04</td>
-					</tr>
-					<tr>
-						<td style="color: #008db1;padding-right: 15px;padding: 5px"><b>Marital Status</b></td>
-						<td style="padding: 5px;padding-left: 15px">-</td>
-						<td style="color: #008db1;padding: 5px"><b>Ration Card</b></td>
-						<td style="padding: 5px;padding-left: 15px">-</td>
-						<td style="color: #008db1;padding: 5px"><b>Amount applied for</b></td>
-						<td style="padding: 5px;padding-left: 15px">5,000</td>
-					</tr>
-					<tr>
-						<td style="color: #008db1;padding-right: 15px;padding: 5px"><b>Email</b></td>
-						<td style="padding: 5px;padding-left: 15px">-</td>
-						<td style="color: #008db1;padding: 5px"><b>Duration of Agreement</b></td>
-						<td style="padding: 5px;padding-left: 15px">-</td>
-					</tr>
-				</tbody></table>
-			</td>
-		</tr><tr><td colspan="2" style="padding-bottom: 20px"></td></tr>
+		</tr>
+        <?php } ?>
+        <tr><td colspan="2" style="padding-bottom: 20px"></td></tr>
 		<!-- Account detals End 1--><tr><td style="background: #efefef;padding: 5px" colspan="2"><img src="./Credit Report_files/tick.png"><span style="font-size: 18px;font-weight: 600;padding: 8px;vertical-align: super;">NON-CREDIT ENQUIRIES</span></td></tr>
 		<tr><td style="font-style: italic;color: orange;padding: 15px 0px;" colspan="2">This section shows non-credit enquiries such as authentication requests and request for your Experian Credit Report &amp; Credit Score by you.</td></tr>
 		<tr><td colspan="2" style="padding-bottom: 20px"></td></tr></tbody></table>
