@@ -55,20 +55,30 @@ if($modeSalary > 0){
     $salarymode = get_name('master_code_id',$modeSalary);
     $modesal = $salarymode['value'];
 }
+$ccwetext = '';
+if($ccweget > 0){
+    $ccwetext = 'CWE '.$ccweget.' Months';
+}
+
+$twetext = '';
+if($tweget > 0){
+    $twetext = 'TWE '.$tweget.' Months';
+}
+
  $maildata = '<table style="border: 1;border-collapse: collapse;" border="1"><tr><th style="background: aliceblue;">SML Lead ID</th><td>'.$query_id.'</td></tr>
-        <tr><th style="background: aliceblue;">Customer</th><td>'.ucfirst($resultDetails['name']).'<br>'.$resultDetails['phone_no'].'<br>'.$resultDetails['email'].'<br>'.$city_name.'<br>'.$resultDetails['dob'].'</td></tr><tr><th style="background: aliceblue;">Occupation</th><td>'.$occup_name.' @ '.$compnm.' NTH Rs. '.$resultDetails['income'].'<br> Paid By '.$modesal.' '.$bnknm.'<br> CWE '.$ccweget.' Months TWE '.$tweget.' Months</td></tr><tr><th style="background: aliceblue;">Loan Amount / Type</th><td>'.$resultDetails['loan_amount'].' Personal Loan</td></tr><tr><th style="background: aliceblue;">Residential Address</th><td>'.$resultDetails['address'].'</td></tr><tr><th style="background: aliceblue;">SML User</th><td>'.$_SESSION['userDetails']['user_name'].'</td></tr></table>';
+        <tr><th style="background: aliceblue;">Customer</th><td>'.ucfirst($resultDetails['name']).'<br>'.$resultDetails['phone_no'].'<br>'.$resultDetails['email'].'<br>'.$city_name.'<br>'.$resultDetails['dob'].'</td></tr><tr><th style="background: aliceblue;">Occupation</th><td>'.$occup_name.' @ '.$compnm.' NTH Rs. '.$resultDetails['income'].'<br> Paid By '.$modesal.' '.$bnknm.'<br> '.$ccwetext.' '.$twetext.'</td></tr><tr><th style="background: aliceblue;">Loan Amount / Type</th><td>'.$resultDetails['loan_amount'].' Personal Loan</td></tr><tr><th style="background: aliceblue;">Residential Address</th><td>'.$resultDetails['address'].'</td></tr><tr><th style="background: aliceblue;">SML User</th><td>'.$_SESSION['userDetails']['user_name'].'</td></tr></table>';
 
 foreach($explpat As $patners){
     $getAppDetails = mysqli_query($Conn1,"select * from crm_query_application where crm_query_id = '".$query_id."' and bank_id ='".$patners."'");
     $exisdetails = mysqli_num_rows($getAppDetails);
     if ($exisdetails == 0){
         $createApp = mysqli_query($Conn1,"Insert into crm_query_application set crm_query_id = '".$query_id."', bank_id ='".$patners."', applied_amount='".$loanAmount."',application_status=34,user_id='".$user_id."'");  
-        $email = array('raghav9609@gmail.com');
+        $email = array('bharat.bhushan@switchmyloan.in');
         $subject = 'Lead Id '.$query_id.' '.ucfirst($resultDetails['name']);
         if(!empty($email)){
             $recep_mail = $email;
             $replytomail = array();
-            $cctomail = array();
+            $cctomail = array('chintan@switchmyloan.in','durwang@switchmyloan.in');
             $mailresp = mailSend($recep_mail,$cctomail,$replytomail,$subject,htmlspecialchars_decode($maildata));
         }
     } 
