@@ -33,7 +33,7 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
 		<tr><td colspan="2" style="color: #f06c00;text-align: center;font-weight: bold;font-size: 18px;padding: 10px"></td></tr>
 		<tr><td style="border-top: 1px solid #d6d6d6" colspan="2"></td></tr>
 		<tr> 
-			<td style="font-size: 25px;padding: 20px 10px;"><?php echo $resultbureaudetails['Current_Application']['Current_Application_Details']['Current_Applicant_Details']['First_Name'];?> <?php echo $resultbureaudetails['Current_Application']['Current_Application_Details']['Current_Applicant_Details']['Last_Name'];?>'s Credit Report</td>
+			<td style="font-size: 25px;padding: 20px 10px;"><?php echo $returnResponse['Current_Application']['Current_Application_Details']['Current_Applicant_Details']['First_Name'];?> <?php echo $returnResponse['Current_Application']['Current_Application_Details']['Current_Applicant_Details']['Last_Name'];?>'s Credit Report</td>
 			<td style="text-align: right;">&nbsp;</td>
 		</tr>
 		<tr><td style="background: #efefef;padding: 5px" colspan="2"><img src="./Credit Report_files/tick.png"><span style="font-size: 18px;font-weight: 600;padding: 8px;vertical-align: super;">Credit Score</span></td></tr>
