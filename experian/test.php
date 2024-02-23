@@ -140,6 +140,7 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
                         
                     $i =0;$data=array();
                         foreach($returnResponse['CAPS']['CAPS_Application_Details'] as $key=>$result_fetch_acc_details){
+                            preArray($result_fetch_acc_details);
                             $data[] = $result_fetch_acc_details;
                             if($result_fetch_acc_details['Open_Date'] != '1970-01-01' && $result_fetch_acc_details['Open_Date'] != '0000-00-00' && $result_fetch_acc_details['Open_Date'] !='' ){
                                 $open_date_to_display = date('d-m-Y',strtotime($result_fetch_acc_details['Open_Date']));
