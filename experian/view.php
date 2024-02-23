@@ -9,8 +9,13 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
     $bureauData = $resultbureaudetails['xml_report'];
     if($bureauData != ''){
         $dispBureauData = base64_decode($bureauData);
-        echo $jsonBureau = simplexml_load_string($dispBureauData);
-        echo $xml = json_encode($jsonBureau);
+        // echo $jsonBureau = simplexml_load_string($dispBureauData);
+        // echo $xml = json_encode($jsonBureau);
+
+        $xmldata = simplexml_load_string($dispBureauData);
+        $jsondata = json_encode($xmldata);
+        print_r($jsondata);
+
         //$itemList = $xml->xpath("//*[item/apn]");
 
     }
