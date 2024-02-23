@@ -230,7 +230,7 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
 						<td style="color: #008db1;padding-right: 15px;padding: 5px"><b>Date of Birth</b></td>
 						<td style="padding: 5px;padding-left: 15px"><?php if(!empty($creditsummary['CAPS_Applicant_Details']['Date_Of_Birth_Applicant'])){ echo date('d-m-Y',strtotime($creditsummary['CAPS_Applicant_Details']['Date_Of_Birth_Applicant'])); } else { echo "-"; }?></td>
 						<td style="color: #008db1;padding: 5px"><b>PAN</b></td>
-						<td style="padding: 5px;padding-left: 15px"><?php echo $creditsummary['CAPS_Applicant_Details']['IncomeTaxPan'];?> </td>
+						<td style="padding: 5px;padding-left: 15px"><?php if(!empty($creditsummary['CAPS_Applicant_Details']['IncomeTaxPan'])){ echo $creditsummary['CAPS_Applicant_Details']['IncomeTaxPan']; } else { echo "-";} ?> </td>
 						<td style="color: #008db1;padding: 5px"><b>ERN</b></td>
 						<td style="padding: 5px;padding-left: 15px"><?php echo $creditsummary['ReportNumber'];?></td>
 					</tr>
