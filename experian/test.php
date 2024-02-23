@@ -69,16 +69,16 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
                                 <table width="100%">
                                     <tr><td colspan="2" style="font-size: 15px;font-weight: 600;color: #008db1;padding-bottom: 8px;">Credit Account Summary</td></tr>
                                     <tr>
-                                        <td style="color: #008db1;font-weight: 600;padding: 5px">Total Accounts</td><td width="25%">'.$result_get_cust_id_qry['CreditAccountTotal'].'</td>
+                                        <td style="color: #008db1;font-weight: 600;padding: 5px">Total Accounts</td><td width="25%">'.$returnResponse['CAIS_Account']['CAIS_Summary']['Credit_Account']['CreditAccountTotal'].'</td>
                                     </tr>
                                     <tr>
-                                        <td style="color: #008db1;font-weight: 600;padding: 5px">Active Accounts</td><td width="25%">'.$result_get_cust_id_qry['CreditAccountActive'].'</td>
+                                        <td style="color: #008db1;font-weight: 600;padding: 5px">Active Accounts</td><td width="25%">'.$returnResponse['CAIS_Account']['CAIS_Summary']['Credit_Account']['CreditAccountActive'].'</td>
                                     </tr>
                                     <tr>
-                                        <td style="color: #008db1;font-weight: 600;padding: 5px">Closed Accounts</td><td width="25%">'.$result_get_cust_id_qry['CreditAccountClosed'].'</td>
+                                        <td style="color: #008db1;font-weight: 600;padding: 5px">Closed Accounts</td><td width="25%">'.$returnResponse['CAIS_Account']['CAIS_Summary']['Credit_Account']['CreditAccountClosed'].'</td>
                                     </tr>
                                     <tr>
-                                        <td style="color: #008db1;font-weight: 600;padding: 5px">SF/WD/WO/Settled</td><td width="25%">'.$result_get_cust_id_qry['CreditAccountDefault'].'</td>
+                                        <td style="color: #008db1;font-weight: 600;padding: 5px">SF/WD/WO/Settled</td><td width="25%">'.$returnResponse['CAIS_Account']['CAIS_Summary']['Credit_Account']['CreditAccountDefault'].'</td>
                                     </tr>
                                 </table>
                             </td>
@@ -86,16 +86,16 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
                                 <table width="100%">
                                     <tr><td colspan="2" style="font-size: 15px;font-weight: 600;color: #008db1;padding-bottom: 8px;">Current Balance Amount Summary</td></tr>
                                     <tr>
-                                        <td style="color: #008db1;font-weight: 600;padding: 5px">Total Current Bal. amt</td><td>'.number_format($result_get_cust_id_qry['Outstanding_Balance_All']).'</td>
+                                        <td style="color: #008db1;font-weight: 600;padding: 5px">Total Current Bal. amt</td><td>'.number_format($returnResponse['CAIS_Account']['CAIS_Summary']['Total_Outstanding_Balance']['Outstanding_Balance_All']).'</td>
                                     </tr>
                                     <tr>
-                                        <td style="color: #008db1;font-weight: 600;padding: 5px">SF/WD/WO/Settled amt</td><td>'.number_format($result_get_cust_id_qry['CADSuitFiledCurrentBalance']).'</td>
+                                        <td style="color: #008db1;font-weight: 600;padding: 5px">SF/WD/WO/Settled amt</td><td>'.number_format($returnResponse['CAIS_Account']['CAIS_Summary']['Credit_Account']['CADSuitFiledCurrentBalance']).'</td>
                                     </tr>
                                     <tr>
-                                        <td style="color: #008db1;font-weight: 600;padding: 5px">Secured Accounts amt</td><td>'.number_format($result_get_cust_id_qry['Outstanding_Balance_Secured']).'</td>
+                                        <td style="color: #008db1;font-weight: 600;padding: 5px">Secured Accounts amt</td><td>'.number_format($returnResponse['CAIS_Account']['CAIS_Summary']['Total_Outstanding_Balance']['Outstanding_Balance_Secured']).'</td>
                                     </tr>
                                     <tr>
-                                        <td style="color: #008db1;font-weight: 600;padding: 5px">Unsecured Accounts amt</td><td>'.number_format($result_get_cust_id_qry['Outstanding_Balance_UnSecured']).'</td>
+                                        <td style="color: #008db1;font-weight: 600;padding: 5px">Unsecured Accounts amt</td><td>'.number_format($returnResponse['CAIS_Account']['CAIS_Summary']['Total_Outstanding_Balance']['Outstanding_Balance_UnSecured']).'</td>
                                     </tr>
                                 </table>
                             </td>
