@@ -70,15 +70,22 @@ if($tweget > 0){
 }
 
  $maildata = '<table style="border: 1;border-collapse: collapse;" border="1"><tr><th style="background: aliceblue;">SML Lead ID</th><td>'.$query_id.'</td></tr>
-        <tr><th style="background: aliceblue;">Customer</th><td>'.ucfirst($resultDetails['name']).'<br>'.$resultDetails['phone_no'].'<br>'.$resultDetails['email_id'].'<br>'.$city_name.'<br>'.$resultDetails['dob'].'</td></tr><tr><th style="background: aliceblue;">Occupation</th><td>'.$occup_name.' @ '.$compnm.' NTH Rs. '.$resultDetails['income'].'<br> Paid By '.$modesal.' '.$bnknm.'<br> '.$ccwetext.' '.$twetext.'</td></tr><tr><th style="background: aliceblue;">Loan Amount / Type</th><td>'.$resultDetails['loan_amount'].' Personal Loan</td></tr><tr><th style="background: aliceblue;"> Address</th><td>Residential Address - '.$resultDetails['address'].' '.$city_name.' <br> Office Address - '.$resultDetails['office_address'].' '.$officecity_name</td></tr><tr><th style="background: aliceblue;">SML User</th><td>'.$_SESSION['userDetails']['user_name'].'</td></tr></table>';
+        <tr><th style="background: aliceblue;">Customer</th><td>'.ucfirst($resultDetails['name']).'<br>'.$resultDetails['phone_no'].'<br>'.$resultDetails['email_id'].'<br>'.$city_name.'<br>'.$resultDetails['dob'].'</td></tr><tr><th style="background: aliceblue;">Occupation</th><td>'.$occup_name.' @ '.$compnm.' NTH Rs. '.$resultDetails['income'].'<br> Paid By '.$modesal.' '.$bnknm.'<br> '.$ccwetext.' '.$twetext.'</td></tr><tr><th style="background: aliceblue;">Loan Amount / Type</th><td>'.$resultDetails['loan_amount'].' Personal Loan</td></tr><tr><th style="background: aliceblue;"> Address</th><td>Residential Address - '.$resultDetails['address'].' '.$city_name.' <br> Office Address - '.$resultDetails['office_address'].' '.$officecity_name.'</td></tr><tr><th style="background: aliceblue;">SML User</th><td>'.$_SESSION['userDetails']['user_name'].'</td></tr></table>';
 
 foreach($explpat As $patners){
     $getAppDetails = mysqli_query($Conn1,"select * from crm_query_application where crm_query_id = '".$query_id."' and bank_id ='".$patners."'");
     $exisdetails = mysqli_num_rows($getAppDetails);
     if ($exisdetails == 0){
         $createApp = mysqli_query($Conn1,"Insert into crm_query_application set crm_query_id = '".$query_id."', bank_id ='".$patners."', applied_amount='".$loanAmount."',application_status=34,user_id='".$user_id."'");  
+
+        $bankdetname = '';
+        if($patners > 0){
+            $patidfetch = get_name('master_code_id',$patners);
+            $bankdetname = $patidfetch['value'];
+        }
+
         $email = array('bharat.bhushan@switchmyloan.in');
-        $subject = 'Lead Id '.$query_id.' '.ucfirst($resultDetails['name']).' '.$city_name.' '.$resultDetails['loan_amount'];
+        $subject = 'Lead Id '.$query_id.' '.ucfirst($resultDetails['name']).' '.$city_name.' '.$resultDetails['loan_amount'].' created for '.$bankdetname;
         if(!empty($email)){
             $recep_mail = $email;
             $replytomail = array();
