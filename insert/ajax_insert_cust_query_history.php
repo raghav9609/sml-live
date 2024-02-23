@@ -36,5 +36,6 @@ if($type == "app") {
         $return_html .= '</table>';
     }
 } 
+
 echo $return_html;
 ?>
