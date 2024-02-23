@@ -11,12 +11,12 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
     if($bureauData != ''){
         $dispBureauData = base64_decode($bureauData);
         $ob = simplexml_load_string(html_entity_decode($dispBureauData));
-       echo $json  = json_encode($ob);
+        $json  = json_encode($ob);
         $returnResponse = json_decode($json, true);
     }
     if($returnResponse['SCORE']['BureauScore'] >= '750'){$img_experian = 'experian-green.png';}else if($returnResponse['SCORE']['BureauScore'] < '650'){
         $img_experian = 'experian-red.png';}else{   $img_experian = 'experian-yellow.png';}
-    $template = '<!DOCTYPE html><html><head><title>Credit Report</title></head>
+    echo $template = '<!DOCTYPE html><html><head><title>Credit Report</title></head>
     <body style="background: #d6d6d6;font-family: inherit;margin-bottom: 20px;margin-top: 20px"><table style="min-width: 800px;max-width:900px;background: #ffffff;border: 1px solid #000000;margin: auto;font-size: 13px;padding: 20px">
             <tr>
                 <td width="75%" style="padding-top:10px">
