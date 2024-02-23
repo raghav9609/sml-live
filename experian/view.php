@@ -15,7 +15,7 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
         $dispBureauData = base64_decode($bureauData);
         $rawxml = utf8_encode($dispBureauData);
         
-        $ob = simplexml_load_string($rawxml);
+        $ob = simplexml_load_string(html_entity_decode($rawxml));
         var_dump($ob);
         // $dispBureauData = preg_replace("/(<\/?)(\w+):([^>]*>)/", '$1$2$3', $dispBureauData);
         // $json_response = str_replace("ns0:","",$dispBureauData);
