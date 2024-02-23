@@ -136,7 +136,13 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
         }
 
         if($result_credit_query["Date_of_Request"] != '0000-00-00' && $result_credit_query["Date_of_Request"] != '' && $result_credit_query["Date_of_Request"] != '1970-01-01'){$req_date = date('d-m-Y',strtotime($result_credit_query["Date_of_Request"]));}else{$req_date = '-';}
-        
+        if($result_credit_query["CAPS_Applicant_Details"]["Telephone_Number_Applicant_1st"] != '' && !empty($result_credit_query["CAPS_Applicant_Details"]["Telephone_Number_Applicant_1st"])){
+			$telephoneno = $result_credit_query["CAPS_Applicant_Details"]["Telephone_Number_Applicant_1st"];
+		}else if($result_credit_query["CAPS_Applicant_Details"]["MobilePhoneNumber"] != '' && !empty($result_credit_query["CAPS_Applicant_Details"]["MobilePhoneNumber"])){
+			$telephoneno = $result_credit_query["CAPS_Applicant_Details"]["MobilePhoneNumber"];
+		}else{
+			$telephoneno = '';
+		}
         
                 $template .= '<tr>
                 <td colspan="2">
@@ -168,7 +174,7 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
                         </tr>
                         <tr>
                             <td style="color: #008db1;padding-right: 15px;padding: 5px"><b>Mobile Phone</b></td>
-                            <td style="padding: 5px;padding-left: 15px">'.$result_credit_query["CAPS_Applicant_Details"]["Telephone_Number_Applicant_1st"].'</td>
+                            <td style="padding: 5px;padding-left: 15px">'.$telephoneno.'</td>
                             <td style="color: #008db1;padding: 5px"><b>Voter ID</b></td>
                             <td style="padding: 5px;padding-left: 15px">-</td>
                             <td style="color: #008db1;padding: 5px"><b>Credit Institution Name</b></td>
