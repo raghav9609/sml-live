@@ -77,13 +77,13 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
 									<td style="color: #008db1;font-weight: 600;padding: 5px">Total Accounts</td><td width="25%"><?php echo $returnResponse['CAIS_Account']['CAIS_Summary']['Credit_Account']['CreditAccountTotal'];?></td>
 								</tr>
 								<tr>
-									<td style="color: #008db1;font-weight: 600;padding: 5px">Active Accounts</td><td width="25%">0</td>
+									<td style="color: #008db1;font-weight: 600;padding: 5px">Active Accounts</td><td width="25%"><?php echo $returnResponse['CAIS_Account']['CAIS_Summary']['Credit_Account']['CreditAccountActive'];?></td>
 								</tr>
 								<tr>
-									<td style="color: #008db1;font-weight: 600;padding: 5px">Closed Accounts</td><td width="25%">0</td>
+									<td style="color: #008db1;font-weight: 600;padding: 5px">Closed Accounts</td><td width="25%"><?php echo $returnResponse['CAIS_Account']['CAIS_Summary']['Credit_Account']['CreditAccountClosed'];?></td>
 								</tr>
 								<tr>
-									<td style="color: #008db1;font-weight: 600;padding: 5px">SF/WD/WO/Settled</td><td width="25%">0</td>
+									<td style="color: #008db1;font-weight: 600;padding: 5px">SF/WD/WO/Settled</td><td width="25%"><?php echo $returnResponse['CAIS_Account']['CAIS_Summary']['Credit_Account']['CADSuitFiledCurrentBalance'];?></td>
 								</tr>
 							</tbody></table>
 						</td>
@@ -91,16 +91,13 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
 							<table width="100%">
 								<tbody><tr><td colspan="2" style="font-size: 15px;font-weight: 600;color: #008db1;padding-bottom: 8px;">Current Balance Amount Summary</td></tr>
 								<tr>
-									<td style="color: #008db1;font-weight: 600;padding: 5px">Total Current Bal. amt</td><td></td>
+									<td style="color: #008db1;font-weight: 600;padding: 5px">Total Current Bal. amt</td><td><?php echo $returnResponse['CAIS_Account']['CAIS_Summary']['Total_Outstanding_Balance']['Outstanding_Balance_All'];?></td>
 								</tr>
 								<tr>
-									<td style="color: #008db1;font-weight: 600;padding: 5px">SF/WD/WO/Settled amt</td><td></td>
+									<td style="color: #008db1;font-weight: 600;padding: 5px">Secured Accounts amt</td><td><?php echo $returnResponse['CAIS_Account']['CAIS_Summary']['Total_Outstanding_Balance']['Outstanding_Balance_Secured'];?></td>
 								</tr>
 								<tr>
-									<td style="color: #008db1;font-weight: 600;padding: 5px">Secured Accounts amt</td><td></td>
-								</tr>
-								<tr>
-									<td style="color: #008db1;font-weight: 600;padding: 5px">Unsecured Accounts amt</td><td></td>
+									<td style="color: #008db1;font-weight: 600;padding: 5px">Unsecured Accounts amt</td><td><?php echo $returnResponse['CAIS_Account']['CAIS_Summary']['Total_Outstanding_Balance']['Outstanding_Balance_UnSecured'];?></td>
 								</tr>
 							</tbody></table>
 						</td>
