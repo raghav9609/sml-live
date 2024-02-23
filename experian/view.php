@@ -213,9 +213,9 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
 		
         <tr><td style="font-style: italic;color: orange;padding: 15px 0px;" colspan="2"> This section shows the names of the credit institutions that have processed a credit / loan application for you.</td></tr>
         <?php $i = 1;
-            foreach($returnResponse['CAPS']['CAPS_Application_Details'] As $creditsummary){?>
+            foreach($returnResponse['CAPS']['CAPS_Application_Details'] As $creditsummary){
+                print_r($creditsummary);?>
         <tr>
-        
 			<td colspan="2">
 				<table cellpadding="0" cellspacing="0" style="border: 1px solid #dddddd;padding: 5px;font-size: 12px;width: 100%">
 					<tbody><tr>
