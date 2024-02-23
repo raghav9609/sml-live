@@ -30,13 +30,13 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
                 <td style="font-size: 25px;padding: 20px 10px;">'.ucwords(strtolower($returnResponse['Current_Application']['Current_Application_Details']['Current_Applicant_Details']['First_Name'])).'&#39;s Credit Report</td>
                 <td style="text-align: right;">&nbsp;</td>
             </tr>
-            <tr><td style="background: #efefef;padding: 5px" colspan="2"><img src="'.$head_url.'assets/images/tick.png"><span style="font-size: 18px;font-weight: 600;padding: 8px;vertical-align: super;">Credit Score</span></td></tr>
+            <tr><td style="background: #efefef;padding: 5px" colspan="2"><img src="'.$head_url.'/assets/images/tick.png"><span style="font-size: 18px;font-weight: 600;padding: 8px;vertical-align: super;">Credit Score</span></td></tr>
             <tr><td style="font-style: italic;color: orange;padding: 15px 0px;" colspan="2">Your Credit Report is summarized in the form of Credit Score which ranges from 300 - 900</td></tr>
             <tr>
                 <td colspan="2">
                     <table style="width: 100%;">
                         <tr>
-                            <td width="20%"><img src="'.$head_url.'assets/images/'.$img_experian.'" width="100%"></td>
+                            <td width="20%"><img src="'.$head_url.'/assets/images/'.$img_experian.'" width="100%"></td>
                             <td style="font-size: 25px;padding: 15px;font-weight: bold;" width="10%">'.$returnResponse['SCORE']['BureauScore'].'</td>
                             <td width="70%">
                                 <table style="width: 100%;border: 1px solid #dddddd;">
@@ -60,7 +60,7 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
                 </td>
             </tr>
             <tr><td colspan="2" style="padding: 10px 0px"></td></tr>
-            <tr><td style="background: #efefef;padding: 5px" colspan="2"><img src="'.$head_url.'assets/images/tick.png"><span style="font-size: 18px;font-weight: 600;padding: 8px;vertical-align: super;">Report Summary</span></td></tr>
+            <tr><td style="background: #efefef;padding: 5px" colspan="2"><img src="'.$head_url.'/assets/images/tick.png"><span style="font-size: 18px;font-weight: 600;padding: 8px;vertical-align: super;">Report Summary</span></td></tr>
             <tr>
                 <td colspan="2" style="padding: 15px 0px">
                     <table width="100%">
@@ -120,7 +120,7 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
                     </table>
                 </td>
             </tr>
-            <tr><td style="background: #efefef;padding: 5px 0px" colspan="2"><img src="'.$head_url.'assets/images/tick.png"><span style="font-size: 18px;font-weight: 600;padding: 8px;vertical-align: super;">SUMMARY : Credit Account Information</span></td></tr>
+            <tr><td style="background: #efefef;padding: 5px 0px" colspan="2"><img src="'.$head_url.'/assets/images/tick.png"><span style="font-size: 18px;font-weight: 600;padding: 8px;vertical-align: super;">SUMMARY : Credit Account Information</span></td></tr>
             <tr><td style="font-style: italic;color: orange;padding: 15px 0px;" colspan="2">This section displays summary of all your reported credit accounts found in the Credit Bureau database.</td></tr>
             <tr>
                 <td colspan="2" style="padding-bottom: 20px">
@@ -165,7 +165,7 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
                  $template .= '</table>
                 </td>
             </tr>
-            <tr><td style="background: #efefef;padding: 5px" colspan="2"><img src="'.$head_url.'assets/images/tick.png"><span style="font-size: 18px;font-weight: 600;padding: 8px;vertical-align: super;">Credit Account Information details</span></td></tr>
+            <tr><td style="background: #efefef;padding: 5px" colspan="2"><img src="'.$head_url.'/assets/images/tick.png"><span style="font-size: 18px;font-weight: 600;padding: 8px;vertical-align: super;">Credit Account Information details</span></td></tr>
             <tr><td style="font-style: italic;color: orange;padding: 15px 0px;" colspan="2">This section has information based on the details provided to our Bureau Partner by all our member banks, credit / financial institutions and other credit grantors with whom you have a credit / loan account.</td></tr>';
         //print_r($data);
             foreach($data as $key=>$val){
@@ -209,7 +209,7 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
                         <tr>
                             <td style="width: 33.33%;color: #008db1;font-weight: 600;">'.$data[$key][atype].'</td>
                             <td style="width: 33.33%;color: #008db1;font-weight: 600;">'.$data[$key][Subscriber_Name].'</td>
-                            <td style="width: 33.33%;text-align: center;font-weight: 600;"><img src="'.$head_url.'assets/images/tick.png"><span style="vertical-align: super;">Acct '.($key+1).'</span></td>
+                            <td style="width: 33.33%;text-align: center;font-weight: 600;"><img src="'.$head_url.'/assets/images/tick.png"><span style="vertical-align: super;">Acct '.($key+1).'</span></td>
                         </tr>
                         <tr>
                             <td colspan="2" style="border-bottom: 2px solid orange"></td>
@@ -399,7 +399,7 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
             <!-- Account detals End 1-->';
          } 
          
-             $template .= '<tr><td style="background: #efefef;padding: 5px" colspan="2"><img src="'.$head_url.'assets/images/tick.png"><span style="font-size: 18px;font-weight: 600;padding: 8px;vertical-align: super;">CREDIT ENQUIRIES</span></td></tr>
+             $template .= '<tr><td style="background: #efefef;padding: 5px" colspan="2"><img src="'.$head_url.'/assets/images/tick.png"><span style="font-size: 18px;font-weight: 600;padding: 8px;vertical-align: super;">CREDIT ENQUIRIES</span></td></tr>
             <tr><td style="font-style: italic;color: orange;padding: 15px 0px;" colspan="2"> This section shows the names of the credit institutions that have processed a credit / loan application for you.</td></tr>';
         
         $credit_query = mysqli_query($Conn1,"select hist.*,search.search_desc as search_desc,marital.description as marital_status from mlc_experian_customer_credit_enquiry_report_history as hist left join mlc_experian_search_type as search on hist.Enquiry_Reason = search.search_val left join mlc_experian_marital_status as marital on hist.Marital_Status = marital.id where experian_history_id = ".$hid." and enquiry_type = 'credit'") or die(mysqli_error($Conn1));
@@ -425,7 +425,7 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
                         <tr>
                             <td style="font-weight: bold;color:#008db1;padding-right: 15px;padding: 5px">Address 1</td>
                             <td colspan="4" style="padding-left: 15px;padding: 5px">'.$result_credit_query["Address"].'</td>
-                            <td style="text-align: center;font-weight: 600;padding: 5px"><img src="'.$head_url.'assets/images/tick.png"><span style="vertical-align: super;">Cr Enq 1</span></td>
+                            <td style="text-align: center;font-weight: 600;padding: 5px"><img src="'.$head_url.'/assets/images/tick.png"><span style="vertical-align: super;">Cr Enq 1</span></td>
                         </tr>
                         <tr><td height="10" colspan="6"></td></tr>
                         <tr>
