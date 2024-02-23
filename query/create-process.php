@@ -84,7 +84,7 @@ foreach($explpat As $patners){
             $bankdetname = $patidfetch['value'];
         }
 
-        $email = array('bharat.bhushan@switchmyloan.in');
+        $email = array('bharat.bhushan@switchmyloan.in','raghav9609@gmail.com');
         $subject = 'Lead Id '.$query_id.' '.ucfirst($resultDetails['name']).' '.$city_name.' '.$resultDetails['loan_amount'].' created for '.$bankdetname;
         if(!empty($email)){
             $recep_mail = $email;
