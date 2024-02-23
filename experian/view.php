@@ -143,6 +143,12 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
 		}else{
 			$telephoneno = '';
 		}
+
+		if($result_credit_query["CAPS_Applicant_Details"]["Date_Of_Birth_Applicant"] != '' && !empty($result_credit_query["CAPS_Applicant_Details"]["Date_Of_Birth_Applicant"])){
+			$dob_applicant = date('d-m-Y',strtotime($result_credit_query["CAPS_Applicant_Details"]["Date_Of_Birth_Applicant"]));
+		}else{
+			$dob_applicant = '-';
+		}
         
                 $template .= '<tr>
                 <td colspan="2">
@@ -158,7 +164,7 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
                         <tr><td height="10" colspan="6"></td></tr>
                         <tr>
                             <td style="color: #008db1;padding-right: 15px;padding: 5px"><b>Date of Birth</b></td>
-                            <td style="padding: 5px;padding-left: 15px">'.$result_credit_query["CAPS_Applicant_Details"]["Date_Of_Birth_Applicant"].'</td>
+                            <td style="padding: 5px;padding-left: 15px">'.$dob_applicant.'</td>
                             <td style="color: #008db1;padding: 5px"><b>PAN</b></td>
                             <td style="padding: 5px;padding-left: 15px">'.$result_credit_query["CAPS_Applicant_Details"]["IncomeTaxPan"].'</td>
                             <td style="color: #008db1;padding: 5px"><b>ERN</b></td>
