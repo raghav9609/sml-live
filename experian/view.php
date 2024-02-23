@@ -11,8 +11,9 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
         $dispBureauData = base64_decode($bureauData);
         // echo $jsonBureau = simplexml_load_string($dispBureauData);
         // echo $xml = json_encode($jsonBureau);
+        echo html_entity_encode($dispBureauData);
 
-        $xmldata = simplexml_load_string(html_entity_encode($dispBureauData));
+        echo "<br> ANU ".$xmldata = simplexml_load_string(html_entity_encode($dispBureauData));
         $jsondata = json_encode($xmldata);
         print_r($jsondata);
 
