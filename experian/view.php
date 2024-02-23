@@ -134,7 +134,9 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
             $gender_status = 'Female';
         }
 	echo $result_credit_query["CAPS_Applicant_Details"]["Date_Of_Birth_Applicant"];
-        if($result_credit_query["CAPS_Applicant_Details"]["Date_Of_Birth_Applicant"] != '0000-00-00' && $result_credit_query["CAPS_Applicant_Details"]["Date_Of_Birth_Applicant"] != '' && $result_credit_query["CAPS_Applicant_Details"]["Date_Of_Birth_Applicant"] != '1970-01-01'){$dob_applicant = date('d-m-Y',strtotime($result_credit_query["CAPS_Applicant_Details"]["Date_Of_Birth_Applicant"]));}else{$dob_applicant = '-';}
+        if($result_credit_query["CAPS_Applicant_Details"]["Date_Of_Birth_Applicant"] != ''){
+			$dob_applicant = date('d-m-Y',strtotime($result_credit_query["CAPS_Applicant_Details"]["Date_Of_Birth_Applicant"]));
+		}else{$dob_applicant = '-';}
         
         if($result_credit_query["Date_of_Request"] != '0000-00-00' && $result_credit_query["Date_of_Request"] != '' && $result_credit_query["Date_of_Request"] != '1970-01-01'){$req_date = date('d-m-Y',strtotime($result_credit_query["Date_of_Request"]));}else{$req_date = '-';}
         
