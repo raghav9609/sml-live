@@ -9,12 +9,12 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
     $bureauData = $resultbureaudetails['xml_report'];
     if($bureauData != ''){
         $dispBureauData = base64_decode($bureauData);
-        // echo $jsonBureau = simplexml_load_string($dispBureauData);
-        // echo $xml = json_encode($jsonBureau);
-       // echo html_entity_decode($dispBureauData);
 
-        $xmldata = html_entity_decode($dispBureauData);
-        $jsondata = json_encode($xmldata);
+        $dispBureauData = str_replace(array("\n", "\r", "\t"), '', $dispBureauData);
+        $dispBureauData = trim(str_replace('"', "'", $dispBureauData));
+        $simpleXml = simplexml_load_string($dispBureauData);
+        $jsondata = stripslashes(json_encode($simpleXml)); 
+    
         print_r($jsondata);
 
         //$itemList = $xml->xpath("//*[item/apn]");
