@@ -212,7 +212,7 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
         <tr><td style="background: #efefef;padding: 5px" colspan="2"><img src="./Credit Report_files/tick.png"><span style="font-size: 18px;font-weight: 600;padding: 8px;vertical-align: super;">CREDIT ENQUIRIES</span></td></tr>
 		
         <tr><td style="font-style: italic;color: orange;padding: 15px 0px;" colspan="2"> This section shows the names of the credit institutions that have processed a credit / loan application for you.</td></tr>
-        <?php print_r($returnResponse['CAPS']);?>
+        <?php print_r($returnResponse);?>
         <tr>
 			<td colspan="2">
 				<table cellpadding="0" cellspacing="0" style="border: 1px solid #dddddd;padding: 5px;font-size: 12px;width: 100%">
