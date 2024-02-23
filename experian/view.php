@@ -236,7 +236,7 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
 					</tr>
 					<tr>
 						<td style="color: #008db1;padding-right: 15px;padding: 5px"><b>Telephone</b></td>
-						<td style="padding: 5px;padding-left: 15px"><?php echo $creditsummary['CAPS_Applicant_Details']['Telephone_Number_Applicant_1st'];?> </td>
+						<td style="padding: 5px;padding-left: 15px"><?php if(!empty($creditsummary['CAPS_Applicant_Details']['Telephone_Number_Applicant_1st'])){ echo $creditsummary['CAPS_Applicant_Details']['Telephone_Number_Applicant_1st'][0];} else { echo "-"; } ?> </td>
 						<td style="color: #008db1;padding: 5px"><b>Passport Number</b></td>
 						<td style="padding: 5px;padding-left: 15px"><?php if(!empty($creditsummary['CAPS_Applicant_Details']['Passport_number'])){ echo $creditsummary['CAPS_Applicant_Details']['Passport_number'][0];} else { echo "-"; } ?> </td>
 						<td style="color: #008db1;padding: 5px"><b>Search Type</b></td>
@@ -244,7 +244,7 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
 					</tr>
 					<tr>
 						<td style="color: #008db1;padding-right: 15px;padding: 5px"><b>Mobile Phone</b></td>
-						<td style="padding: 5px;padding-left: 15px">-</td>
+						<td style="padding: 5px;padding-left: 15px"><?php if(!empty($creditsummary['CAPS_Applicant_Details']['MobilePhoneNumber'])){ echo $creditsummary['CAPS_Applicant_Details']['MobilePhoneNumber'][0];} else { echo "-"; }?></td>
 						<td style="color: #008db1;padding: 5px"><b>Voter ID</b></td>
 						<td style="padding: 5px;padding-left: 15px"><?php if(!empty($creditsummary['CAPS_Applicant_Details']['Voter_s_Identity_Card'])){ echo $creditsummary['CAPS_Applicant_Details']['Voter_s_Identity_Card'][0];} else { echo "-"; } ?> </td>
 						<td style="color: #008db1;padding: 5px"><b>Credit Institution Name</b></td>
