@@ -9,11 +9,7 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
     $bureauData = $resultbureaudetails['xml_report'];
     if($bureauData != ''){
         $dispBureauData = base64_decode($bureauData);
-        $xml = new SimpleXMLElement($dispBureauData) or die("Error");
-        $jsonData = json_encode($xml, JSON_PRETTY_PRINT); // convert the XML string to JSON
-
-echo '<pre>';
-print_r(var_dump($jsonData));
+        echo $xml = new SimpleXMLElement($dispBureauData);
 
     }
     die();
