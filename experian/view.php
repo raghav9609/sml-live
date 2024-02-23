@@ -137,7 +137,7 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
                             <td style="border-right: 1px solid #d6d6d6;padding: 5px;">Current Balance</td>
                             <td style="padding: 5px;">Amount Overdue</td>
                         </tr>';
-                        
+                        preArray($returnResponse['CAIS_Account']['CAIS_Account_DETAILS']);
                     $i =0;$data=array();
                         foreach($returnResponse['CAIS_Account']['CAIS_Account_DETAILS'] as $key=>$result_fetch_acc_details){
                             //preArray($result_fetch_acc_details);
