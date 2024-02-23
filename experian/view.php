@@ -211,12 +211,12 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
         
         <tr><td style="background: #efefef;padding: 5px" colspan="2"><img src="./Credit Report_files/tick.png"><span style="font-size: 18px;font-weight: 600;padding: 8px;vertical-align: super;">CREDIT ENQUIRIES</span></td></tr>
 		
-        <tr><td style="font-style: italic;color: orange;padding: 15px 0px;" colspan="2"> This section shows the names of the credit institutions that have processed a credit / loan application for you.</td></tr>
+        <tr><td style="font-style: italic;color: orange;padding: 15px 0px;" colspan="2"> This section shows the names of the credit institutions that have processed a credit / loan application for you.</td></tr><tr>
         <?php $i = 1;
             foreach($returnResponse['CAPS']['CAPS_Application_Details'] As $creditsummary){
                 print_r($creditsummary);?>
         
-        <?php $i++; } ?>
+        <?php $i++; } ?></tr>
         <tr><td colspan="2" style="padding-bottom: 20px"></td></tr>
 		<!-- Account detals End 1--><tr><td style="background: #efefef;padding: 5px" colspan="2"><img src="./Credit Report_files/tick.png"><span style="font-size: 18px;font-weight: 600;padding: 8px;vertical-align: super;">NON-CREDIT ENQUIRIES</span></td></tr>
 		<tr><td style="font-style: italic;color: orange;padding: 15px 0px;" colspan="2">This section shows non-credit enquiries such as authentication requests and request for your Experian Credit Report &amp; Credit Score by you.</td></tr>
