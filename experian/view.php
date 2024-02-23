@@ -221,7 +221,11 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
 		}else{
 			$dob_applicant = '-';
 		}
-        
+        if(!empty($result_credit_query["Amount_Financed"]) && $result_credit_query["Amount_Financed"] !='' ){
+			$Amount_Financed = number_format($result_credit_query["Amount_Financed"]);
+		}else{
+			$Amount_Financed = '';
+		}
                 $template .= '<tr>
                 <td colspan="2">
                     <table cellpadding="0" cellspacing="0" style="border: 1px solid #dddddd;padding: 5px;font-size: 12px;width: 100%">
@@ -272,7 +276,7 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
                             <td style="color: #008db1;padding: 5px"><b>Ration Card</b></td>
                             <td style="padding: 5px;padding-left: 15px">-</td>
                             <td style="color: #008db1;padding: 5px"><b>Amount applied for</b></td>
-                            <td style="padding: 5px;padding-left: 15px">'.number_format($result_credit_query["Amount_Financed"]).'</td>
+                            <td style="padding: 5px;padding-left: 15px">'.$Amount_Financed.'</td>
                         </tr>
                         <tr>
                             <td style="color: #008db1;padding-right: 15px;padding: 5px"><b>Email</b></td>
