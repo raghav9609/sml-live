@@ -17,7 +17,7 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
 	$enquiry_reason_array = array("1"=>"Agricultural Machinery","2"=>" Animal Husbandry","3"=>"Aquaculture","4"=>"Biogas Plant","5"=>"Crop Loan","6"=>"Horticulture","7"=>"Irrigation System","99"=>"Others","8"=>"New Car","9"=>"Overdraft against Car","10"=>"Used Car","11"=>"General","12"=>"Small & Medium Business","13"=>"Professionals","14"=>"Trade","15"=>"Bus","16"=>"Tempo","17"=>"Tipper","18"=>"Truck","20"=>"Forklift","21"=>"Wheel Loaders","22"=>"Consumer Search","66"=>"Consumer Search Loan","68"=>"Consumer Search Loan","23"=>"Credit Card","24"=>"Fleet Card","25"=>"For Working Executives","26"=>"Study Abroad","27"=>"Study in India","28"=>"Leasing","29"=>"Bank Deposits","30"=>"Gold","31"=>"Govt. Bonds / PPF / NSC / KVP / FD","32"=>"Shares and Mutual Funds","33"=>"Business Loan","34"=>"Housing Loan","35"=>"Personal Loan","36"=>"Agriculture","37"=>"General","38"=>"Small Business","39"=>"Computers / Laptops","40"=>"Consumer Durables","41"=>"Marriage / Religious Ceremonies","42"=>"Travel","43"=>"Balance Transfer","44"=>"Home Improvement / Extension","45"=>" Land","46"=>"Lease Rental Discounting","47"=>"Loan against Property","48"=>"New Home","49"=>"Office Premises","50"=>"Under construction","51"=>"Broadband","52"=>"Landline","53"=>"Mobile","54"=>"Three Wheeler","55"=>"Two Wheeler","56"=>"Cash credit facility","57"=>"Overdraft","58"=>"Term Loan","60"=>"Microfinance Detailed Report","61"=>"Summary Report","62"=>"VB OLM Retrieval Service","63"=>"Account Review","64"=>"Retro Enquiry","65"=>"Locate Plus","67"=>"Indicative Report","69"=>"Bank OLM Retrieval Service","70"=>"Adviser Liability","71"=>"Secured (Account Group for Portfolio Review response)","72"=>"Unsecured (Account Group for Portfolio Review response)");
     if($returnResponse['SCORE']['BureauScore'] >= '750'){$img_experian = 'experian-green.png';}else if($returnResponse['SCORE']['BureauScore'] < '650'){
         $img_experian = 'experian-red.png';}else{   $img_experian = 'experian-yellow.png';}
-     echo $template = '<!DOCTYPE html><html><head><title>Credit Report</title></head>
+      $template = '<!DOCTYPE html><html><head><title>Credit Report</title></head>
     <body style="background: #d6d6d6;font-family: inherit;margin-bottom: 20px;margin-top: 20px"><table style="min-width: 800px;max-width:900px;background: #ffffff;border: 1px solid #000000;margin: auto;font-size: 13px;padding: 20px">
             <tr>
                 <td width="75%" style="padding-top:10px">
@@ -149,6 +149,7 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
                             }
                             
                             $i++;
+							echo "hellooooo";
                     echo $template .= '<tr>
                             <td style="border-right: 1px solid #d6d6d6;border-top:1px solid #d6d6d6;font-weight: bold;color: #008db1;padding: 5px;">Acct '.$i.'</td>
                             <td style="border-right: 1px solid #d6d6d6;border-top:1px solid #d6d6d6;padding: 5px;">'.$result_fetch_acc_details['Subscriber_Name'].'</td>
@@ -163,7 +164,7 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
                             <td style="border-top:1px solid #d6d6d6;padding: 5px;">'.number_format($result_fetch_acc_details['Amount_Past_Due']).'</td>
                         </tr>';
                         }
-                 $template .= '</table>
+                 echo $template .= '</table>
                 </td>
             </tr>
             <tr><td style="background: #efefef;padding: 5px" colspan="2"><img src="'.$head_url.'/assets/images/tick.png"><span style="font-size: 18px;font-weight: 600;padding: 8px;vertical-align: super;">Credit Account Information details</span></td></tr>
