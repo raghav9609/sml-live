@@ -254,7 +254,7 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
 						<td style="color: #008db1;padding-right: 15px;padding: 5px"><b>Gender</b></td>
 						<td style="padding: 5px;padding-left: 15px"><?php if($creditsummary['CAPS_Applicant_Details']['Gender_Code'] == 3){ echo "Others";} else if($creditsummary['CAPS_Applicant_Details']['Gender_Code'] == 2){ echo "FEMALE";} else { echo "MALE";} ?> </td>
 						<td style="color: #008db1;padding: 5px"><b>Driving License</b></td>
-						<td style="padding: 5px;padding-left: 15px"><?php echo $creditsummary['CAPS_Applicant_Details']['Driver_License_Number'];?> </td>
+						<td style="padding: 5px;padding-left: 15px"><?php echo $creditsummary['CAPS_Applicant_Details']['Driver_License_Number'][0];?> </td>
 						<td style="color: #008db1;padding: 5px"><b>Application date</b></td>
 						<td style="padding: 5px;padding-left: 15px"><?php echo date('d-m-Y',strtotime($creditsummary['Date_of_Request']));?></td>
 					</tr>
@@ -262,7 +262,7 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
 						<td style="color: #008db1;padding-right: 15px;padding: 5px"><b>Marital Status</b></td>
 						<td style="padding: 5px;padding-left: 15px">-</td>
 						<td style="color: #008db1;padding: 5px"><b>Ration Card</b></td>
-						<td style="padding: 5px;padding-left: 15px"><?php echo $creditsummary['CAPS_Applicant_Details']['Ration_Card_Number'];?> </td>
+						<td style="padding: 5px;padding-left: 15px"><?php echo $creditsummary['CAPS_Applicant_Details']['Ration_Card_Number'][0];?> </td>
 						<td style="color: #008db1;padding: 5px"><b>Amount applied for</b></td>
 						<td style="padding: 5px;padding-left: 15px"><?php echo $creditsummary['CAPS_Applicant_Details']['Amount_Financed'];?></td>
 					</tr>
