@@ -28,12 +28,12 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
 		<tbody><tr>
 			<td width="75%" style="padding-top:10px">
 			</td>
-			<td width="25%" style="font-size: 14px;text-align: right;padding-top:10px"><span style="color: #008db1;font-weight: bold;">ERN : </span><span>006539780914</span><br><span style="color: #008db1;font-weight: bold;">Report Date : </span><span><?php echo date('d-m-Y',strtotime($returnResponse['Header']['ReportDate']));?></span><br><span style="color: #008db1;font-weight: bold;">Bureau Name : </span><span>Cibil</span></td>
+			<td width="25%" style="font-size: 14px;text-align: right;padding-top:10px"><span style="color: #008db1;font-weight: bold;">ERN : </span><span><?php echo $returnResponse['CreditProfileHeader']['ReportNumber'];?></span><br><span style="color: #008db1;font-weight: bold;">Report Date : </span><span><?php echo date('d-m-Y',strtotime($returnResponse['Header']['ReportDate']));?></span><br><span style="color: #008db1;font-weight: bold;">Bureau Name : </span><span>Experian</span></td>
 		</tr>
 		<tr><td colspan="2" style="color: #f06c00;text-align: center;font-weight: bold;font-size: 18px;padding: 10px"></td></tr>
 		<tr><td style="border-top: 1px solid #d6d6d6" colspan="2"></td></tr>
 		<tr> 
-			<td style="font-size: 25px;padding: 20px 10px;">DEEPIKA KUMAR's Credit Report</td>
+			<td style="font-size: 25px;padding: 20px 10px;"><?php echo $resultbureaudetails['Current_Application']['Current_Application_Details']['Current_Applicant_Details']['First_Name'];?> <?php echo $resultbureaudetails['Current_Application']['Current_Application_Details']['Current_Applicant_Details']['Last_Name'];?>'s Credit Report</td>
 			<td style="text-align: right;">&nbsp;</td>
 		</tr>
 		<tr><td style="background: #efefef;padding: 5px" colspan="2"><img src="./Credit Report_files/tick.png"><span style="font-size: 18px;font-weight: 600;padding: 8px;vertical-align: super;">Credit Score</span></td></tr>
