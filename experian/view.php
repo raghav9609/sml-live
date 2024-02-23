@@ -11,7 +11,7 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
     if($bureauData != ''){
         $dispBureauData = base64_decode($bureauData);
         $ob = simplexml_load_string(html_entity_decode($dispBureauData));
-       $json  = json_encode($ob);
+       echo $json  = json_encode($ob);
         $returnResponse = json_decode($json, true);
     }
 	$enquiry_reason_array = array("01"=>"Agricultural Machinery","02"=>" Animal Husbandry","03"=>"Aquaculture","04"=>"Biogas Plant","05"=>"Crop Loan","06"=>"Horticulture","07"=>"Irrigation System","1"=>"Agricultural Machinery","2"=>" Animal Husbandry","3"=>"Aquaculture","4"=>"Biogas Plant","5"=>"Crop Loan","6"=>"Horticulture","7"=>"Irrigation System","99"=>"Others","08"=>"New Car","09"=>"Overdraft against Car","8"=>"New Car","9"=>"Overdraft against Car","10"=>"Used Car","11"=>"General","12"=>"Small & Medium Business","13"=>"Professionals","14"=>"Trade","15"=>"Bus","16"=>"Tempo","17"=>"Tipper","18"=>"Truck","20"=>"Forklift","21"=>"Wheel Loaders","22"=>"Consumer Search","66"=>"Consumer Search Loan","68"=>"Consumer Search Loan","23"=>"Credit Card","24"=>"Fleet Card","25"=>"For Working Executives","26"=>"Study Abroad","27"=>"Study in India","28"=>"Leasing","29"=>"Bank Deposits","30"=>"Gold","31"=>"Govt. Bonds / PPF / NSC / KVP / FD","32"=>"Shares and Mutual Funds","33"=>"Business Loan","34"=>"Housing Loan","35"=>"Personal Loan","36"=>"Agriculture","37"=>"General","38"=>"Small Business","39"=>"Computers / Laptops","40"=>"Consumer Durables","41"=>"Marriage / Religious Ceremonies","42"=>"Travel","43"=>"Balance Transfer","44"=>"Home Improvement / Extension","45"=>" Land","46"=>"Lease Rental Discounting","47"=>"Loan against Property","48"=>"New Home","49"=>"Office Premises","50"=>"Under construction","51"=>"Broadband","52"=>"Landline","53"=>"Mobile","54"=>"Three Wheeler","55"=>"Two Wheeler","56"=>"Cash credit facility","57"=>"Overdraft","58"=>"Term Loan","60"=>"Microfinance Detailed Report","61"=>"Summary Report","62"=>"VB OLM Retrieval Service","63"=>"Account Review","64"=>"Retro Enquiry","65"=>"Locate Plus","67"=>"Indicative Report","69"=>"Bank OLM Retrieval Service","70"=>"Adviser Liability","71"=>"Secured (Account Group for Portfolio Review response)","72"=>"Unsecured (Account Group for Portfolio Review response)");
@@ -200,9 +200,10 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
             </tr>
             <tr><td style="background: #efefef;padding: 5px" colspan="2"><img src="'.$head_url.'/assets/images/tick.png"><span style="font-size: 18px;font-weight: 600;padding: 8px;vertical-align: super;">Credit Account Information details</span></td></tr>
             <tr><td style="font-style: italic;color: orange;padding: 15px 0px;" colspan="2">This section has information based on the details provided to our Bureau Partner by all our member banks, credit / financial institutions and other credit grantors with whom you have a credit / loan account.</td></tr>';
-			print_r($data);
 			foreach($data as $key=>$val){
-                if($data[$key][Gender_Code] == 1){$gender = 'Male';}else if($data[$key][Gender_Code] == 2){$gender = 'Female';}else if($data[$key][Gender_Code] == 3){$gender = 'Transgender';}
+				$gender = 'Unknown';
+                if(val[Gender_Code] == 1){$gender = 'Male';}else if(val[Gender_Code] == 2){$gender = 'Female';}else if(val[Gender_Code] == 3){$gender = 'Transgender';}
+				
                 if($data[$key][Date_of_Last_Payment] != '0000-00-00' && $data[$key][Date_of_Last_Payment] != '1970-01-01' && $data[$key][Date_of_Last_Payment] != ''){$Date_of_Last_Payment = date('d-m-Y',strtotime($data[$key][Date_of_Last_Payment]));}else{$Date_of_Last_Payment = '-';}
         if($data[$key][Rate_of_Interest] != '0.00'){$Rate_of_Interest = $data[$key][Rate_of_Interest] ;}else{$Rate_of_Interest = '-';}
                     if($data[$key][Date_Closed] != '0000-00-00' && $data[$key][Date_Closed] != '' && $data[$key][Date_Closed] != '1970-01-01'){$Date_Closed = date('d-m-Y',strtotime($data[$key][Date_Closed]));}else{$Date_Closed = '-';}
