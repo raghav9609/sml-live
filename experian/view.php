@@ -200,8 +200,7 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
             </tr>
             <tr><td style="background: #efefef;padding: 5px" colspan="2"><img src="'.$head_url.'/assets/images/tick.png"><span style="font-size: 18px;font-weight: 600;padding: 8px;vertical-align: super;">Credit Account Information details</span></td></tr>
             <tr><td style="font-style: italic;color: orange;padding: 15px 0px;" colspan="2">This section has information based on the details provided to our Bureau Partner by all our member banks, credit / financial institutions and other credit grantors with whom you have a credit / loan account.</td></tr>';
-			
-			
+			print_r($data);
 			foreach($data as $key=>$val){
                 if($data[$key][Gender_Code] == 1){$gender = 'Male';}else if($data[$key][Gender_Code] == 2){$gender = 'Female';}else if($data[$key][Gender_Code] == 3){$gender = 'Transgender';}
                 if($data[$key][Date_of_Last_Payment] != '0000-00-00' && $data[$key][Date_of_Last_Payment] != '1970-01-01' && $data[$key][Date_of_Last_Payment] != ''){$Date_of_Last_Payment = date('d-m-Y',strtotime($data[$key][Date_of_Last_Payment]));}else{$Date_of_Last_Payment = '-';}
