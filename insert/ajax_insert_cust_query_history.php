@@ -11,14 +11,15 @@ if($type == "app") {
    
     $case_id = $_REQUEST['case_id'];
 
-    $qry = "select * from crm_query_application where crm_query_id = ".$case_id."";
-    $res = mysqli_query($Conn1,$qry) or die(mysqli_error($Conn1));
-    $res_num = mysqli_num_rows($res);
-    f($res_num > 0) {
-        $sr_no = 0;
-        $return_html = '<table width="100%" class="gridtable"><tr class="font-weight-bold"><th>Sr. No.</th><th>Application Id</th><th>Bank Name</th><th>Status</th><th>Created On</th><th>Action</th></tr>';
-        
-        while($exe_app_history = mysqli_fetch_array($res)){
+$qry = "select * from crm_query_application where crm_query_id = ".$case_id."";
+$res = mysqli_query($Conn1,$qry) or die(mysqli_error($Conn1));
+$res_num = mysqli_num_rows($res);
+if($res_num > 0) {
+    $sr_no = 0;
+?>
+   <?php $return_html = '<table width="100%" class="gridtable"><tr class="font-weight-bold"><th>Sr. No.</th><th>Application Id</th><th>Bank Name</th><th>Status</th><th>Created On</th><th>Action</th></tr>'; ?>
+
+    <?php while($exe_app_history = mysqli_fetch_array($res)){
             ++$sr_no;
             $get_bank_name = '';
             $get_app_status = '';
@@ -31,11 +32,20 @@ if($type == "app") {
                 $get_app_status = $get_app_status_get['value'];
             }
             $return_html .= '<tr class="center-align"><td>'.$sr_no.'</td><td><span class="fs-12"><a href="../app/edit.php?app_id='.urlencode(base64_encode($exe_app_history['id'])).'">'.$exe_app_history['id'].'</a></span></td><td>'.$get_bank_name.'</td><td>'.$get_app_status.'</td><td>'.date("d-m-Y H:i a",strtotime($exe_app_history['created_on'])).'</td><td><br><span class="fs-12"><a href="../app/edit.php?app_id='.urlencode(base64_encode($exe_app_history['id'])).'">View</a></span></td></tr>'; 
-        } 
-        
-        $return_html .= '</table>';
+        } ?>
+    <?php $return_html .= '</table>';
     }
-} 
+} else if($type == 'experian'){
+    $qry_id = $_REQUEST['query_id'];
+    $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where query_id = '".$qry_id."'");
+    $resultbureaudetails = mysqli_fetch_array($getbureaudetails);
+    $bureauData = $resultbureaudetails['xml_report'];
+    if($bureauData != ''){
+       echo $dispBureauData = base64_decode($bureauData);
+       echo "anu";
+        $return_html = '<table width="100%" class="gridtable"><tr class="font-weight-bold"><th>Report</th></tr><tr><td>'.$dispBureauData.'</td></tr></table>';
+    }
+}
 
 echo $return_html;
 ?>
