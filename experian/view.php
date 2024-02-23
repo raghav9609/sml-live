@@ -159,10 +159,10 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
                                 $Highest_Credit_or_Original_Loan_Amount = '';
                             }
 
-							if(!empty($result_fetch_acc_details['Highest_Credit_or_Original_Loan_Amount']) && $result_fetch_acc_details['Highest_Credit_or_Original_Loan_Amount'] !='' ){
-                                $Highest_Credit_or_Original_Loan_Amount = number_format($result_fetch_acc_details['Highest_Credit_or_Original_Loan_Amount']);
+							if(!empty($result_fetch_acc_details['Current_Balance']) && $result_fetch_acc_details['Current_Balance'] !='' ){
+                                $Current_Balance = number_format($result_fetch_acc_details['Current_Balance']);
                             }else{
-                                $Highest_Credit_or_Original_Loan_Amount = '';
+                                $Current_Balance = '';
                             }
 
 
