@@ -530,7 +530,7 @@ if ($exe_form['id'] == '' || $exe_form['id'] == 0) {
                             <div class="tab-7 resp-tab-content" aria-labelledby="details_tab_7">
                                 <div class="facts">
                                     <div class="register">
-                                        <div class="table_set">
+                                        <div class="table_set" style="overflow: scroll;height: 50%;">
 
                                         </div>
                                     </div>
