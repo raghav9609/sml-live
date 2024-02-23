@@ -12,9 +12,10 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
 
         $dispBureauData = preg_replace("/(<\/?)(\w+):([^>]*>)/", '$1$2$3', $dispBureauData);
         $xml = new SimpleXMLElement($dispBureauData);
-        $ob= simplexml_load_string( $xml );
-        echo $json  = json_encode($ob);
-        $returnResponse = json_decode($json, true);
+        preArray($xml);
+        // $ob= simplexml_load_string( $xml );
+        // echo $json  = json_encode($ob);
+        // $returnResponse = json_decode($json, true);
         
 
     }
