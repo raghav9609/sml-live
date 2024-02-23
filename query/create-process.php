@@ -23,7 +23,11 @@ if($resultDetails['city_id'] > 0){
     $getcitynm = get_name('city_id',$resultDetails['city_id']);
     $city_name = $getcitynm['city_name'];
 }
-
+$officecity_name = '';
+if($resultDetails['city_id'] > 0){
+    $getofccitynm = get_name('city_id',$resultDetails['office_city_id']);
+    $officecity_name = $getofccitynm['city_name'];
+}
 $occup_name = '';
 if($resultDetails['occupation_id'] > 0){
     $occup_namenm = get_name('master_code_id',$resultDetails['occupation_id']);
@@ -66,7 +70,7 @@ if($tweget > 0){
 }
 
  $maildata = '<table style="border: 1;border-collapse: collapse;" border="1"><tr><th style="background: aliceblue;">SML Lead ID</th><td>'.$query_id.'</td></tr>
-        <tr><th style="background: aliceblue;">Customer</th><td>'.ucfirst($resultDetails['name']).'<br>'.$resultDetails['phone_no'].'<br>'.$resultDetails['email_id'].'<br>'.$city_name.'<br>'.$resultDetails['dob'].'</td></tr><tr><th style="background: aliceblue;">Occupation</th><td>'.$occup_name.' @ '.$compnm.' NTH Rs. '.$resultDetails['income'].'<br> Paid By '.$modesal.' '.$bnknm.'<br> '.$ccwetext.' '.$twetext.'</td></tr><tr><th style="background: aliceblue;">Loan Amount / Type</th><td>'.$resultDetails['loan_amount'].' Personal Loan</td></tr><tr><th style="background: aliceblue;">Residential Address</th><td>'.$resultDetails['address'].'</td></tr><tr><th style="background: aliceblue;">SML User</th><td>'.$_SESSION['userDetails']['user_name'].'</td></tr></table>';
+        <tr><th style="background: aliceblue;">Customer</th><td>'.ucfirst($resultDetails['name']).'<br>'.$resultDetails['phone_no'].'<br>'.$resultDetails['email_id'].'<br>'.$city_name.'<br>'.$resultDetails['dob'].'</td></tr><tr><th style="background: aliceblue;">Occupation</th><td>'.$occup_name.' @ '.$compnm.' NTH Rs. '.$resultDetails['income'].'<br> Paid By '.$modesal.' '.$bnknm.'<br> '.$ccwetext.' '.$twetext.'</td></tr><tr><th style="background: aliceblue;">Loan Amount / Type</th><td>'.$resultDetails['loan_amount'].' Personal Loan</td></tr><tr><th style="background: aliceblue;"> Address</th><td>Residential Address - '.$resultDetails['address'].' '.$city_name.' <br> Office Address - '.$resultDetails['office_address'].' '.$officecity_name</td></tr><tr><th style="background: aliceblue;">SML User</th><td>'.$_SESSION['userDetails']['user_name'].'</td></tr></table>';
 
 foreach($explpat As $patners){
     $getAppDetails = mysqli_query($Conn1,"select * from crm_query_application where crm_query_id = '".$query_id."' and bank_id ='".$patners."'");
