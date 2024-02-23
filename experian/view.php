@@ -147,13 +147,26 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
                             }else{
                                 $open_date_to_display = '';
                             }
-							// echo $i;
-							// preArray($result_fetch_acc_details);
-                     $template .= '<tr>
+							if($result_fetch_acc_details['Date_Reported'] != '1970-01-01' && $result_fetch_acc_details['Date_Reported'] != '0000-00-00' && $result_fetch_acc_details['Date_Reported'] !='' ){
+                                $report_date_to_display = date('d-m-Y',strtotime($result_fetch_acc_details['Date_Reported']));
+                            }else{
+                                $report_date_to_display = '';
+                            }
+
+							
+						
+                    echo $template .= '<tr>
                             <td style="border-right: 1px solid #d6d6d6;border-top:1px solid #d6d6d6;font-weight: bold;color: #008db1;padding: 5px;">Acct '.$i.'</td>
                             <td style="border-right: 1px solid #d6d6d6;border-top:1px solid #d6d6d6;padding: 5px;">'.$result_fetch_acc_details['Subscriber_Name'].'</td>
                             <td style="border-right: 1px solid #d6d6d6;border-top:1px solid #d6d6d6;padding: 5px;">'.$result_fetch_acc_details['Account_Type'].'</td>
-                            
+                            <td style="border-right: 1px solid #d6d6d6;border-top:1px solid #d6d6d6;padding: 5px;">'.$result_fetch_acc_details['Account_Number'].'</td>
+                            <td style="border-right: 1px solid #d6d6d6;border-top:1px solid #d6d6d6;padding: 5px;">'.$result_fetch_acc_details['AccountHoldertypeCode'].'</td>
+                            <td style="border-right: 1px solid #d6d6d6;border-top:1px solid #d6d6d6;padding: 5px;">'.$report_date_to_display.'</td>
+                            <td style="border-right: 1px solid #d6d6d6;border-top:1px solid #d6d6d6;padding: 5px;">'.$result_fetch_acc_details['Account_Status'].'</td>
+                            <td style="border-right: 1px solid #d6d6d6;border-top:1px solid #d6d6d6;padding: 5px;">'.$open_date_to_display.'</td>
+                            <td style="border-right: 1px solid #d6d6d6;border-top:1px solid #d6d6d6;padding: 5px;">'.number_format($result_fetch_acc_details['Highest_Credit_or_Original_Loan_Amount']).'</td>
+                            <td style="border-right: 1px solid #d6d6d6;border-top:1px solid #d6d6d6;padding: 5px;">'.number_format($result_fetch_acc_details['Current_Balance']).'</td>
+                            <td style="border-top:1px solid #d6d6d6;padding: 5px;">'.number_format($result_fetch_acc_details['Amount_Past_Due']).'</td>
                         </tr>';
                         }
                   $template .= '</table>
