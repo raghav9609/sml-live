@@ -140,8 +140,8 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
                         
                     $i =0;$data=array();
                         foreach($returnResponse['CAPS']['CAPS_Application_Details'] as $key=>$result_fetch_acc_details){
-                            preArray($result_fetch_acc_details);
-                            $data[] = $result_fetch_acc_details;
+                            //preArray($result_fetch_acc_details);
+                            //$data[] = $result_fetch_acc_details;
                             if($result_fetch_acc_details['Open_Date'] != '1970-01-01' && $result_fetch_acc_details['Open_Date'] != '0000-00-00' && $result_fetch_acc_details['Open_Date'] !='' ){
                                 $open_date_to_display = date('d-m-Y',strtotime($result_fetch_acc_details['Open_Date']));
                             }else{
@@ -403,8 +403,8 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
              $template .= '<tr><td style="background: #efefef;padding: 5px" colspan="2"><img src="'.$head_url.'/assets/images/tick.png"><span style="font-size: 18px;font-weight: 600;padding: 8px;vertical-align: super;">CREDIT ENQUIRIES</span></td></tr>
             <tr><td style="font-style: italic;color: orange;padding: 15px 0px;" colspan="2"> This section shows the names of the credit institutions that have processed a credit / loan application for you.</td></tr>';
         
-        $credit_query = mysqli_query($Conn1,"select hist.*,search.search_desc as search_desc,marital.description as marital_status from mlc_experian_customer_credit_enquiry_report_history as hist left join mlc_experian_search_type as search on hist.Enquiry_Reason = search.search_val left join mlc_experian_marital_status as marital on hist.Marital_Status = marital.id where experian_history_id = ".$hid." and enquiry_type = 'credit'") or die(mysqli_error($Conn1));
-         while($result_credit_query = mysqli_fetch_array($credit_query)){
+    
+         foreach($returnResponse['CAPS']['CAPS_Application_Details'] as $key=>$result_credit_query){
              $gender_status = 0;
         if($result_credit_query["Gender_Code"] == '1'){
             $gender_status = 'Male';
