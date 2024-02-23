@@ -74,7 +74,7 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
 							<table width="100%">
 								<tbody><tr><td colspan="2" style="font-size: 15px;font-weight: 600;color: #008db1;padding-bottom: 8px;">Credit Account Summary</td></tr>
 								<tr>
-									<td style="color: #008db1;font-weight: 600;padding: 5px">Total Accounts</td><td width="25%">0</td>
+									<td style="color: #008db1;font-weight: 600;padding: 5px">Total Accounts</td><td width="25%"><?php echo $returnResponse['CAIS_Account']['CAIS_Summary']['Credit_Account']['CreditAccountTotal'];?></td>
 								</tr>
 								<tr>
 									<td style="color: #008db1;font-weight: 600;padding: 5px">Active Accounts</td><td width="25%">0</td>
