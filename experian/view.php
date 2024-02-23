@@ -11,7 +11,7 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
         $dispBureauData = base64_decode($bureauData);
         $xmldata = simplexml_load_string($dispBureauData, "SimpleXMLElement", 0, "epp", true);
         //$xml = simplexml_load_string(html_entity_decode($dispBureauData));
-
+        echo "asas";
 
     }
     die();
