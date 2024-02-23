@@ -256,7 +256,7 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
 						<td style="color: #008db1;padding: 5px"><b>Driving License</b></td>
 						<td style="padding: 5px;padding-left: 15px"><?php echo $creditsummary['CAPS_Applicant_Details']['Driver_License_Number'];?> </td>
 						<td style="color: #008db1;padding: 5px"><b>Application date</b></td>
-						<td style="padding: 5px;padding-left: 15px"><?php echo date('d-m-Y',strtotime($creditsummary['CAPS_Applicant_Details']['Date_of_Request']));?></td>
+						<td style="padding: 5px;padding-left: 15px"><?php echo date('d-m-Y',strtotime($creditsummary['Date_of_Request']));?></td>
 					</tr>
 					<tr>
 						<td style="color: #008db1;padding-right: 15px;padding: 5px"><b>Marital Status</b></td>
