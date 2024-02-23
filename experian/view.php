@@ -138,7 +138,9 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
 						<td style="border-right: 1px solid #d6d6d6;border-top:1px solid #d6d6d6;padding: 5px;"><?php echo date('d-m-Y',strtotime($returnResponse['Header']['ReportDate']));?></td>
 					</tr></tbody></table>
 			</td>
-		</tr><tr><td style="background: #efefef;padding: 5px 0px" colspan="2"><img src="./Credit Report_files/tick.png"><span style="font-size: 18px;font-weight: 600;padding: 8px;vertical-align: super;">Telephone(s)</span></td></tr>
+		</tr>
+        
+        <tr><td style="background: #efefef;padding: 5px 0px" colspan="2"><img src="./Credit Report_files/tick.png"><span style="font-size: 18px;font-weight: 600;padding: 8px;vertical-align: super;">Telephone(s)</span></td></tr>
 	
 		<tr>
 			<td colspan="2" style="padding-bottom: 20px">
@@ -153,7 +155,9 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
 						<td style="border-right: 1px solid #d6d6d6;border-top:1px solid #d6d6d6;padding: 5px;"></td>
 					</tr></tbody></table>
 			</td>
-		</tr><tr><td style="background: #efefef;padding: 5px 0px" colspan="2"><img src="./Credit Report_files/tick.png"><span style="font-size: 18px;font-weight: 600;padding: 8px;vertical-align: super;">Email Address(es)</span></td></tr>
+		</tr>
+        
+        <tr><td style="background: #efefef;padding: 5px 0px" colspan="2"><img src="./Credit Report_files/tick.png"><span style="font-size: 18px;font-weight: 600;padding: 8px;vertical-align: super;">Email Address(es)</span></td></tr>
 
 		<tr>
 			<td colspan="2" style="padding-bottom: 20px">
@@ -162,7 +166,9 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
 						<td style="border-right: 1px solid #d6d6d6;padding: 5px;">Email Address</td>
 					</tr></tbody></table>
 			</td>
-		</tr><tr><td style="background: #efefef;padding: 5px 0px" colspan="2"><img src="./Credit Report_files/tick.png"><span style="font-size: 18px;font-weight: 600;padding: 8px;vertical-align: super;">Identification(s)</span></td></tr>
+		</tr>
+        
+        <tr><td style="background: #efefef;padding: 5px 0px" colspan="2"><img src="./Credit Report_files/tick.png"><span style="font-size: 18px;font-weight: 600;padding: 8px;vertical-align: super;">Identification(s)</span></td></tr>
 		
 		<tr>
 			<td colspan="2" style="padding-bottom: 20px">
@@ -179,7 +185,9 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
 						<td style="border-right: 1px solid #d6d6d6;border-top:1px solid #d6d6d6;padding: 5px;"></td>
 					</tr></tbody></table>
 			</td>
-		</tr><tr><td style="background: #efefef;padding: 5px 0px" colspan="2"><img src="./Credit Report_files/tick.png"><span style="font-size: 18px;font-weight: 600;padding: 8px;vertical-align: super;">SUMMARY : Credit Account Information</span></td></tr>
+		</tr>
+        
+        <tr><td style="background: #efefef;padding: 5px 0px" colspan="2"><img src="./Credit Report_files/tick.png"><span style="font-size: 18px;font-weight: 600;padding: 8px;vertical-align: super;">SUMMARY : Credit Account Information</span></td></tr>
 		<tr><td style="font-style: italic;color: orange;padding: 15px 0px;" colspan="2">This section displays summary of all your reported credit accounts found in the Credit Bureau database.</td></tr>
 		<tr>
 			<td colspan="2" style="padding-bottom: 20px">
@@ -199,8 +207,13 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
 			</td>
 		</tr>
 		<tr><td style="background: #efefef;padding: 5px" colspan="2"><img src="./Credit Report_files/tick.png"><span style="font-size: 18px;font-weight: 600;padding: 8px;vertical-align: super;">Credit Account Information details</span></td></tr>
-		<tr><td style="font-style: italic;color: orange;padding: 15px 0px;" colspan="2">This section has information based on the details provided to our Bureau Partner by all our member banks, credit / financial institutions and other credit grantors with whom you have a credit / loan account.</td></tr><tr><td style="background: #efefef;padding: 5px" colspan="2"><img src="./Credit Report_files/tick.png"><span style="font-size: 18px;font-weight: 600;padding: 8px;vertical-align: super;">CREDIT ENQUIRIES</span></td></tr>
-		<tr><td style="font-style: italic;color: orange;padding: 15px 0px;" colspan="2"> This section shows the names of the credit institutions that have processed a credit / loan application for you.</td></tr><tr>
+		<tr><td style="font-style: italic;color: orange;padding: 15px 0px;" colspan="2">This section has information based on the details provided to our Bureau Partner by all our member banks, credit / financial institutions and other credit grantors with whom you have a credit / loan account.</td></tr>
+        
+        <tr><td style="background: #efefef;padding: 5px" colspan="2"><img src="./Credit Report_files/tick.png"><span style="font-size: 18px;font-weight: 600;padding: 8px;vertical-align: super;">CREDIT ENQUIRIES</span></td></tr>
+		
+        <tr><td style="font-style: italic;color: orange;padding: 15px 0px;" colspan="2"> This section shows the names of the credit institutions that have processed a credit / loan application for you.</td></tr>
+        <?php print_r($returnResponse['CAPS']['CAPS_Application_Details']);?>
+        <tr>
 			<td colspan="2">
 				<table cellpadding="0" cellspacing="0" style="border: 1px solid #dddddd;padding: 5px;font-size: 12px;width: 100%">
 					<tbody><tr>
