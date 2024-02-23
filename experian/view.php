@@ -13,6 +13,7 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
         $ob = simplexml_load_string(html_entity_decode($dispBureauData));
        $json  = json_encode($ob);
         $returnResponse = json_decode($json, true);
+		$enquiry_reason_array = array("1"=>"Agricultural Machinery","2"=>" Animal Husbandry","3 "=>"Aquaculture","4 "=>"Biogas Plant","5 "=>"Crop Loan","6 "=>"Horticulture","7 "=>"Irrigation System","99 "=>"Others", "8 "=>"New Car","9 "=>"Overdraft against Car","10 "=>"Used Car","11 "=>"General","12 "=>"Small & Medium Business","13 "=>"Professionals","14 "=>"Trade","15 "=>"Bus","16 "=>"Tempo","17 "=>"Tipper","18 "=>"Truck","20 "=>"Forklift","21 "=>"Wheel Loaders","22 "=>"Consumer Search","66 "=>"Consumer Search Loan","68 "=>"Consumer Search Loan","23 "=>"Credit Card","24 "=>"Fleet Card","25 "=>"For Working Executives","26 "=>"Study Abroad","27 "=>"Study in India","28 "=>"Leasing","29 "=>"Bank Deposits","30 "=>"Gold","31 "=>"Govt. Bonds / PPF / NSC / KVP / FD","32 "=>"Shares and Mutual Funds","33 "=>"Business Loan","34 "=>"Housing Loan","35 "=>"Personal Loan","36 "=>"Agriculture","37 "=>"General","38 "=>"Small Business","39 "=>"Computers / Laptops","40 "=>"Consumer Durables","41 "=>"Marriage / Religious Ceremonies","42 "=>"Travel","43 "=>"Balance Transfer","44 "=>"Home Improvement / Extension","45"=>" Land","46 "=>"Lease Rental Discounting","47 "=>"Loan against Property","48 "=>"New Home","49 "=>"Office Premises","50 "=>"Under construction","51 "=>"Broadband","52 "=>"Landline","53 "=>"Mobile","54 "=>"Three Wheeler","55 "=>"Two Wheeler","56 "=>"Cash credit facility","57 "=>"Overdraft","58 "=>"Term Loan","60 "=>"Microfinance Detailed Report","61 "=>"Summary Report","62 "=>"VB OLM Retrieval Service","63 "=>"Account Review","64 "=>"Retro Enquiry","65 "=>"Locate Plus","67 "=>"Indicative Report","69 "=>"Bank OLM Retrieval Service","70 "=>"Adviser Liability","71 "=>"Secured (Account Group for Portfolio Review response)","72 "=>"Unsecured (Account Group for Portfolio Review response)");
     }
     if($returnResponse['SCORE']['BureauScore'] >= '750'){$img_experian = 'experian-green.png';}else if($returnResponse['SCORE']['BureauScore'] < '650'){
         $img_experian = 'experian-red.png';}else{   $img_experian = 'experian-yellow.png';}
@@ -128,13 +129,13 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
     
          foreach($returnResponse['CAPS']['CAPS_Application_Details'] as $key=>$result_credit_query){
              $gender_status = 0;
-        if($result_credit_query["Gender_Code"] == '1'){
+        if($result_credit_query['CAPS_Applicant_Details']["Gender_Code"] == '1'){
             $gender_status = 'Male';
-        }else if($result_credit_query["Gender_Code"] == '2'){
+        }else if($result_credit_query['CAPS_Applicant_Details']["Gender_Code"] == '2'){
             $gender_status = 'Female';
         }
     
-        if($result_credit_query["Date_Of_Birth_Applicant"] != '0000-00-00' && $result_credit_query["Date_Of_Birth_Applicant"] != '' && $result_credit_query["Date_Of_Birth_Applicant"] != '1970-01-01'){$dob_applicant = date('d-m-Y',strtotime($result_credit_query["Date_Of_Birth_Applicant"]));}else{$dob_applicant = '-';}
+        if($result_credit_query['CAPS_Applicant_Details']["Date_Of_Birth_Applicant"] != '0000-00-00' && $result_credit_query['CAPS_Applicant_Details']["Date_Of_Birth_Applicant"] != '' && $result_credit_query['CAPS_Applicant_Details']["Date_Of_Birth_Applicant"] != '1970-01-01'){$dob_applicant = date('d-m-Y',strtotime($result_credit_query['CAPS_Applicant_Details']["Date_Of_Birth_Applicant"]));}else{$dob_applicant = '-';}
         
         if($result_credit_query["Date_of_Request"] != '0000-00-00' && $result_credit_query["Date_of_Request"] != '' && $result_credit_query["Date_of_Request"] != '1970-01-01'){$req_date = date('d-m-Y',strtotime($result_credit_query["Date_of_Request"]));}else{$req_date = '-';}
         
@@ -143,7 +144,7 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
                 <td colspan="2">
                     <table cellpadding="0" cellspacing="0" style="border: 1px solid #dddddd;padding: 5px;font-size: 12px;width: 100%">
                         <tr>
-                            <td style="font-weight: bold;color:#008db1;padding: 5px" colspan="6">'.$result_credit_query["Name"].'</td>
+                            <td style="font-weight: bold;color:#008db1;padding: 5px" colspan="6">'.$result_credit_query['CAPS_Applicant_Details']["First_Name"].'</td>
                         </tr>
                         <tr>
                             <td style="font-weight: bold;color:#008db1;padding-right: 15px;padding: 5px">Address 1</td>
@@ -155,7 +156,7 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
                             <td style="color: #008db1;padding-right: 15px;padding: 5px"><b>Date of Birth</b></td>
                             <td style="padding: 5px;padding-left: 15px">'.$dob_applicant.'</td>
                             <td style="color: #008db1;padding: 5px"><b>PAN</b></td>
-                            <td style="padding: 5px;padding-left: 15px">'.$result_credit_query["IncomeTaxPan"].'</td>
+                            <td style="padding: 5px;padding-left: 15px">'.$result_credit_query['CAPS_Applicant_Details']["IncomeTaxPan"].'</td>
                             <td style="color: #008db1;padding: 5px"><b>ERN</b></td>
                             <td style="padding: 5px;padding-left: 15px">'.$result_credit_query["ReportNumber"].'</td>
                         </tr>
@@ -165,11 +166,11 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
                             <td style="color: #008db1;padding: 5px"><b>Passport Number</b></td>
                             <td style="padding: 5px;padding-left: 15px">-</td>
                             <td style="color: #008db1;padding: 5px"><b>Search Type</b></td>
-                            <td style="padding: 5px;padding-left: 15px">'.$result_credit_query["search_desc"].'</td>
+                            <td style="padding: 5px;padding-left: 15px">'.$enquiry_reason_array[$result_credit_query["Finance_Purpose"]].'</td>
                         </tr>
                         <tr>
                             <td style="color: #008db1;padding-right: 15px;padding: 5px"><b>Mobile Phone</b></td>
-                            <td style="padding: 5px;padding-left: 15px">'.$result_credit_query["MobilePhoneNumber"].'</td>
+                            <td style="padding: 5px;padding-left: 15px">'.$result_credit_query['CAPS_Applicant_Details']["MobilePhoneNumber"].'</td>
                             <td style="color: #008db1;padding: 5px"><b>Voter ID</b></td>
                             <td style="padding: 5px;padding-left: 15px">-</td>
                             <td style="color: #008db1;padding: 5px"><b>Credit Institution Name</b></td>
