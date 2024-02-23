@@ -44,7 +44,7 @@ if($type == "app") {
     if($bureauData != ''){
        echo $dispBureauData = base64_decode($bureauData);
        echo "anu";
-        $return_html = '<table width="100%" class="gridtable"><tr class="font-weight-bold"><th>Report</th></tr><tr><td>'.$dispBureauData.'</td></tr></table>';
+        //$return_html = '<table width="100%" class="gridtable"><tr class="font-weight-bold"><th>Report</th></tr><tr><td>'.$dispBureauData.'</td></tr></table>';
     }
 }
 
