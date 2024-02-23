@@ -155,7 +155,7 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
 
 							
 						
-                    echo $template .= '<tr>
+                     $template .= '<tr>
                             <td style="border-right: 1px solid #d6d6d6;border-top:1px solid #d6d6d6;font-weight: bold;color: #008db1;padding: 5px;">Acct '.$i.'</td>
                             <td style="border-right: 1px solid #d6d6d6;border-top:1px solid #d6d6d6;padding: 5px;">'.$result_fetch_acc_details['Subscriber_Name'].'</td>
                             <td style="border-right: 1px solid #d6d6d6;border-top:1px solid #d6d6d6;padding: 5px;">'.$result_fetch_acc_details['Account_Type'].'</td>
