@@ -360,18 +360,16 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
                                     <tr>
                                         <td style="color: #008db1;padding: 5px;font-weight: bold;">Settlement Amt</td><td>'.$val['Settlement_Amount'].'</td>
                                     </tr>
+									<tr>
+                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">Payment Profile</td><td>'.$val['Payment_History_Profile'].'</td>
+                                    </tr>
                                 </table>
                             </td>
                         </tr>
                     </table>
                 </td>
             </tr>
-            <tr><td colspan="2" style="color: #008db1;font-weight: bold;font-size: 18px;padding-top: 15px">Payment History</td></tr>
-            <tr>
-                <td colspan="2">'.$val['Payment_History_Profile'].'
-                    
-                </td>
-            </tr>
+			
             <tr><td colspan="2" style="font-size: 16px;font-weight: bold;color: #008db1;padding-top: 20px">Consumer Personal details on the '.$accounttype.'</td></tr>
             <tr>
                 <td colspan="2">
