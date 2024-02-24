@@ -217,20 +217,20 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
 			$state_name = "";
 		}
 
-		if(!emmpty($val['Account_Type']) && $val['Account_Type'] != ""){
+		if(!empty($val['Account_Type']) && $val['Account_Type'] != ""){
 			$accounttype = $account_type_array[$val['Account_Type']];
 		}else{
 			$accounttype = '';
 		}
 
 
-		if(!emmpty($val['AccountHoldertypeCode']) && $val['AccountHoldertypeCode'] != ""){
+		if(!empty($val['AccountHoldertypeCode']) && $val['AccountHoldertypeCode'] != ""){
 			$accountholdertype = $account_holder_type[$val['AccountHoldertypeCode']];
 		}else{
 			$accountholdertype = '';
 		}
 
-		if(!emmpty($val['Account_Status']) && $val['Account_Status'] != ""){
+		if(!empty($val['Account_Status']) && $val['Account_Status'] != ""){
 			$account_status_final = $account_status[$val['Account_Status']];
 		}else{
 			$account_status_final = '';
@@ -277,7 +277,184 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
                     </table>
                 </td>
             </tr>
-            
+            <tr>
+                <td colspan="2">
+                    <table style="width: 100%;border: 1px solid #d6d6d6">
+                        <tr><td colspan="3" style="color: #008db1;font-weight: bold;padding-left: 10px;border-bottom: 1px solid #d6d6d6;padding: 5px">'.$accounttype.'</td>
+                        </tr>
+                        <tr>
+                            <td style="color: #008db1;border-right: 1px solid #d6d6d6;border-bottom: 1px solid #d6d6d6;font-weight: 600;width: 33.33%;padding: 5px">Account terms</td>
+                            <td style="color: #008db1;border-right: 1px solid #d6d6d6;border-bottom: 1px solid #d6d6d6;font-weight: 600;width: 33.33%;padding: 5px">Account description</td>
+                            <td style="color: #008db1;border-bottom: 1px solid #d6d6d6;font-weight: 600;width: 33.33%;padding: 5px">Account details</td>
+                        </tr>
+                        <tr>
+                            <td style="border-right: 1px solid #d6d6d6">
+                                <table width="100%">
+                                    <tr>
+                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">Account Number</td><td>'.$val['Account_Number'].'</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">Date Opened</td><td>'.$date_opened.'</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">Date Closed</td><td>'.$Date_Closed.'</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">Ownership</td><td>'.$accountholdertype.'</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">Rate of Interest</td><td>'.$Rate_of_Interest.'</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">Value of Collateral</td><td>'.$val['Value_of_Collateral'].'</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">Type of Collateral</td><td>'.$val['Type_of_Collateral'].'</td>
+                                    </tr>
+                                </table>
+                            </td>
+                            <td style="border-right: 1px solid #d6d6d6">
+                                <table width="100%">
+                                    <tr>
+                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">Date Reported</td><td>'.$date_reported.'</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">Loan Type</td><td>'.$accountholdertype.'</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">Account Status</td><td>'.$account_status_final.'</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">Highest Credit</td><td>'.$Highest_Credit_or_Original_Loan_Amount_final.'</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">Current Balance</td><td>'.$Current_Balance_final.'</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">Amount Overdue</td><td>'.$Amount_Past_Due_final.'</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">Last Payment Date</td><td>'.$Date_of_Last_Payment.'</td>
+                                    </tr>
+                                </table>
+                            </td>
+                            <td>
+                                <table width="100%">
+                                    <tr>
+                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">Credit Limit Amt</td><td>'.$val['Credit_Limit_Amount'].'</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">EMI</td><td>'.$val['Scheduled_Monthly_Payment_Amount'].'</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">Repayment Tenure</td><td>'.$val['Repayment_Tenure'].'</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">Total Write-off Amt</td><td>'.$val['Written_Off_Amt_Total'].'</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">Principal Write-off</td><td>'.$val['Written_Off_Amt_Principal'].'</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">Settlement Amt</td><td>'.$val['Settlement_Amount'].'</td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr><td colspan="2" style="color: #008db1;font-weight: bold;font-size: 18px;padding-top: 15px">Payment History</td></tr>
+            <tr>
+                <td colspan="2">
+                    <table style="width: 100%;border: 1px solid#d6d6d6;text-align: center;">
+                        <tr>
+                            <td style="font-weight: bold;color: #008db1;border-right: 1px solid #ffffff;border-bottom: 1px solid #ffffff;background: #dadada;padding: 5px">DPD</td>
+                            <td style="font-weight: bold;color: #008db1;border-right: 1px solid #ffffff;border-bottom: 1px solid #ffffff;background: #dadada;padding: 5px">Dec</td>
+                            <td style="font-weight: bold;color: #008db1;border-right: 1px solid #ffffff;border-bottom: 1px solid #ffffff;background: #dadada;padding: 5px">Nov</td>
+                            <td style="font-weight: bold;color: #008db1;border-right: 1px solid #ffffff;border-bottom: 1px solid #ffffff;background: #dadada;padding: 5px">Oct</td>
+                            <td style="font-weight: bold;color: #008db1;border-right: 1px solid #ffffff;border-bottom: 1px solid #ffffff;background: #dadada;padding: 5px">Sep</td>
+                            <td style="font-weight: bold;color: #008db1;border-right: 1px solid #ffffff;border-bottom: 1px solid #ffffff;background: #dadada;padding: 5px">Aug</td>
+                            <td style="font-weight: bold;color: #008db1;border-right: 1px solid #ffffff;border-bottom: 1px solid #ffffff;background: #dadada;padding: 5px">Jul</td>
+                            <td style="font-weight: bold;color: #008db1;border-right: 1px solid #ffffff;border-bottom: 1px solid #ffffff;background: #dadada;padding: 5px">Jun</td>
+                            <td style="font-weight: bold;color: #008db1;border-right: 1px solid #ffffff;border-bottom: 1px solid #ffffff;background: #dadada;padding: 5px">May</td>
+                            <td style="font-weight: bold;color: #008db1;border-right: 1px solid #ffffff;border-bottom: 1px solid #ffffff;background: #dadada;padding: 5px">Apr</td>
+                            <td style="font-weight: bold;color: #008db1;border-right: 1px solid #ffffff;border-bottom: 1px solid #ffffff;background: #dadada;padding: 5px">Mar</td>
+                            <td style="font-weight: bold;color: #008db1;border-right: 1px solid #ffffff;border-bottom: 1px solid #ffffff;background: #dadada;padding: 5px">Feb</td>
+                            <td style="font-weight: bold;color: #008db1;border-right: 1px solid #ffffff;border-bottom: 1px solid #ffffff;background: #dadada;padding: 5pxbackground: #dadada;padding: 5px">Jan</td>
+                        </tr>';
+                        foreach($val['CAIS_Account_History'] as $key_y=>$val_y){
+                        $template .= '<tr>
+                            <td style="font-weight: bold;color: #008db1;border-right: 1px solid #ffffff;border-bottom: 1px solid #ffffff;background: #dadada;padding: 5px">'.$val_y['Year'].'</td>';
+                        for($i=12;$i>=1;$i--){
+							
+							if($i == $val_y['Month']){
+								if($val_y['Days_Past_Due'] == ''){
+									$style='border-right: 1px solid #d6d6d6;border-bottom: 1px solid #d6d6d6;padding: 5px';
+								}else if($val_y['Days_Past_Due'] == '0'){
+								   $style='font-weight: bold;color: #ffffff;border-right: 1px solid #d6d6d6;border-bottom: 1px solid #d6d6d6;padding: 5px;background: #43ad43';
+								}else if($val_y['Days_Past_Due'] >= '90'){
+								 $style='font-weight: bold;color: #ffffff;border-right: 1px solid #d6d6d6;border-bottom: 1px solid #d6d6d6;padding: 5px;background: red';
+								}else{
+								 $style='font-weight: bold;color: #ffffff;border-right: 1px solid #d6d6d6;border-bottom: 1px solid #d6d6d6;padding: 5px;background: #f6650b';
+								}
+								$template .= '<td style="'.$style.'">'.$val_y['Days_Past_Due'].'</td>';
+							}else{
+								$template .= '<td style="'.$style.'"></td>';
+							}	
+                        }
+                    $template .= '</tr>';}
+                    $template .= '</table>
+                </td>
+            </tr>
+            <tr><td colspan="2" style="font-size: 16px;font-weight: bold;color: #008db1;padding-top: 20px">Consumer Personal details on the '.$accounttype.'</td></tr>
+            <tr>
+                <td colspan="2">
+                    <table style="border: 1px solid #d6d6d6;padding-top: 5px;width: 100%">
+                        <tr>
+                            <td width="33.33%" style="border-right: 1px solid #d6d6d6;font-size: 12px;vertical-align: top;">
+                                <table width="100%">
+                                    <tr>
+                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">Date of Birth</td><td>'.$Date_of_birth.'</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">Gender</td><td>'.$gender.'</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">Occupation</td><td>'.$occupation_code.'</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">Email address</td><td>'.$val['CAIS_Holder_Details']['EMailId'].'</td>
+                                    </tr>
+                                </table>
+                            </td>
+                            <td width="33.33%" style="border-right: 1px solid #d6d6d6;font-size: 12px;vertical-align: top;">
+                                <table width="100%">
+                                    <tr>
+                                        <td style="color: #008db1;font-weight: bold;padding: 5px;font-weight: bold;font-size: 14px">Phone Type</td>
+                                        <td style="color: #008db1;font-weight: bold;padding: 5px;font-weight: bold;font-size: 14px">Phone Number</td>
+                                        <td style="color: #008db1;font-weight: bold;padding: 5px;font-weight: bold;font-size: 14px">Extension</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">Mobile</td><td>-</td><td>-</td>
+                                    </tr>
+                                </table>
+                            </td>
+                            <td width="33.33%" style="font-size: 12px;vertical-align: top;">
+                                <table width="100%">
+                                    <tr>
+                                        <td style="color: #008db1;font-weight: bold;padding: 5px;font-weight: bold;font-size: 14px;vertical-align: top;">ID Type</td>
+                                        <td style="color: #008db1;font-weight: bold;padding: 5px;font-weight: bold;font-size: 14px;vertical-align: top;">ID Number</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">PAN</td><td>'.$val['CAIS_Holder_ID_Details']['Income_TAX_PAN'].'</td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
             <tr><td colspan="2" style="padding-bottom: 20px"></td></tr>
             <!-- Account detals End 1-->';
          } 
