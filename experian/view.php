@@ -186,6 +186,7 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
             </tr>
             <tr><td style="background: #efefef;padding: 5px" colspan="2"><img src="'.$head_url.'/assets/images/tick.png"><span style="font-size: 18px;font-weight: 600;padding: 8px;vertical-align: super;">Credit Account Information details</span></td></tr>
             <tr><td style="font-style: italic;color: orange;padding: 15px 0px;" colspan="2">This section has information based on the details provided to our Bureau Partner by all our member banks, credit / financial institutions and other credit grantors with whom you have a credit / loan account.</td></tr>';
+			$j=0;
 			foreach($returnResponse['CAIS_Account']['CAIS_Account_DETAILS'] as $key => $val){
 				$gender = 'Unknown';
                 if($val['CAIS_Holder_Details']['Gender_Code'] == 1){$gender = 'Male';}else if($val['CAIS_Holder_Details']['Gender_Code'] == 2){$gender = 'Female';}else if($val['CAIS_Holder_Details']['Gender_Code'] == 3){$gender = 'Transgender';}
@@ -254,8 +255,8 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
 			$Amount_Past_Due_final = '';
 		}
 		
-       
-            $template .= '	
+       $j++;
+            echo $template .= '	
             <!-- Account Detals Satrt 1-->
             <tr>
                 <td colspan="2">
@@ -263,7 +264,7 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
                         <tr>
                             <td style="width: 33.33%;color: #008db1;font-weight: 600;">'.$accounttype.'</td>
                             <td style="width: 33.33%;color: #008db1;font-weight: 600;">'.$val['Subscriber_Name'].'</td>
-                            <td style="width: 33.33%;text-align: center;font-weight: 600;"><img src="'.$head_url.'/assets/images/tick.png"><span style="vertical-align: super;">Acct '.($key+1).'</span></td>
+                            <td style="width: 33.33%;text-align: center;font-weight: 600;"><img src="'.$head_url.'/assets/images/tick.png"><span style="vertical-align: super;">Acct '.($j+1).'</span></td>
                         </tr>
                         <tr>
                             <td colspan="2" style="border-bottom: 2px solid orange"></td>
