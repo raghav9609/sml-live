@@ -391,7 +391,7 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
 						}
 
 						//print_r($final_dpd_array['2019']['01']);
-					echo $dataasdfg = count($final_dpd_array);
+					echo $dataasdfg = count($final_dpd_array)." ------   ";
                     foreach($final_dpd_array as $key_valueee => $val_y){							
                      $template .= '<tr>
                             <td style="font-weight: bold;color: #008db1;border-right: 1px solid #ffffff;border-bottom: 1px solid #ffffff;background: #dadada;padding: 5px">'.$key_valueee.'</td>';
