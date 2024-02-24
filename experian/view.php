@@ -388,7 +388,7 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
 							$final_dpd_array[$val_yn['Year']][$val_yn['Month']] = $val_yn['Days_Past_Due'];
 						}
 
-						print_r($final_dpd_array[2019][01]);
+						print_r($final_dpd_array['2019']['01']);
 						
                         foreach($final_dpd_array as $key_valueee => $val_y){
 							//echo $key;
