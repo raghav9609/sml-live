@@ -26,6 +26,8 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
 
 	$state_array = array("1"=>"JAMMU and KASHMIR","2"=>"HIMACHAL PRADESH","3"=>"PUNJAB","4"=>"CHANDIGARH","5"=>"UTTRANCHAL","6"=>"HARAYANA","7"=>"DELHI","8"=>"RAJASTHAN","9"=>"UTTAR PRADESH","01"=>"JAMMU and KASHMIR","02"=>"HIMACHAL PRADESH","03"=>"PUNJAB","04"=>"CHANDIGARH","05"=>"UTTRANCHAL","06"=>"HARAYANA","07"=>"DELHI","08"=>"RAJASTHAN","09"=>"UTTAR PRADESH","10"=>"BIHAR","11"=>"SIKKIM","12"=>"ARUNACHAL PRADESH","13"=>"NAGALAND","14"=>"MANIPUR","15"=>"MIZORAM","16"=>"TRIPURA","17"=>"MEGHALAYA","18"=>"ASSAM","19"=>"WEST BENGAL","20"=>"JHARKHAND","21"=>"ORRISA","22"=>"CHHATTISGARH","23"=>"MADHYA PRADESH","24"=>"GUJRAT","25"=>"DAMAN and DIU","26"=>"DADARA and NAGAR HAVELI","27"=>"MAHARASHTRA","28"=>"ANDHRA PRADESH","29"=>"KARNATAKA","30"=>"GOA","31"=>"LAKSHADWEEP","32"=>"KERALA","33"=>"TAMIL NADU","34"=>"PONDICHERRY","35"=>"ANDAMAN and NICOBAR ISLANDS","36"=>"Telangana");
 
+	$month_array = array("01"=>"Jan","02"=>"Feb","03"=>"Mar","04"=>"Apr","05"=>"May","06"=>"Jun","07"=>"Jul","08"=>"Aug","09"=>"Sep","10"=>"Oct","11"=>"Nov","12"=>"Dec","1"=>"Jan","2"=>"Feb","3"=>"Mar","4"=>"Apr","5"=>"May","6"=>"Jun","7"=>"Jul","8"=>"Aug","9"=>"Sep");
+
     if($returnResponse['SCORE']['BureauScore'] >= '750'){$img_experian = 'experian-green.png';}else if($returnResponse['SCORE']['BureauScore'] < '650'){
         $img_experian = 'experian-red.png';}else{   $img_experian = 'experian-yellow.png';}
       $template = '<!DOCTYPE html><html><head><title>Credit Report</title></head>
@@ -385,12 +387,13 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
                         </tr>';
 						$final_dpd_array = array();
 						$dpd_array = $val['CAIS_Account_History'];
-						foreach($dpd_array as $keynn=>$val_yn){
-							$final_dpd_array[$val_yn['Year']][$val_yn['Month']] = $val_yn['Days_Past_Due'];
+						foreach($dpd_array as $keynnn=>$valnnn){
+							$month_year = $month_array($valnnn['Month']).'-'.$valnnn['Year'];
+							$final_dpd_array[$month_year] = $valnnn['Days_Past_Due'];
 						}
-                        foreach($final_dpd_array as $key_valueee => $val_y){
-                     	$template_val[]= '<tr><td style="font-weight: bold;color: #008db1;border-right: 1px solid #ffffff;border-bottom: 1px solid #ffffff;background: #dadada;padding: 5px">'.$key_valueee.'</td></tr>';
-						}
+
+						print_r($month_year);
+						
                  	$template .= '</table>
                 </td>
             </tr>
