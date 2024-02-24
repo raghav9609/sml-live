@@ -388,14 +388,16 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
 						foreach($val['CAIS_Account_History'] as $key_yn=>$val_yn){
 							$final_dpd_array[$val_yn['Year']][$val_yn['Month']] = $val_yn['Days_Past_Due'];
 						}
-
-						preArray($final_dpd_array);
+						if($_REQUEST['abc'] == 1){
+							preArray($final_dpd_array);
+						}
+						
 						
                         foreach($final_dpd_array as $key_valueee=>$val_y){
 							//echo $key;
                      $template .= '<tr>
                             <td style="font-weight: bold;color: #008db1;border-right: 1px solid #ffffff;border-bottom: 1px solid #ffffff;background: #dadada;padding: 5px">'.$key_valueee.'</td>';
-                        for($i=12;$i>=1;$i--){
+                        for($i=12;$i>=1;$i--;){
 							
 								// if($val_y[$i] == ''){
 								// 	$style='border-right: 1px solid #d6d6d6;border-bottom: 1px solid #d6d6d6;padding: 5px';
@@ -406,7 +408,7 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
 								// }else{
 								//  $style='font-weight: bold;color: #ffffff;border-right: 1px solid #d6d6d6;border-bottom: 1px solid #d6d6d6;padding: 5px;background: #f6650b';
 								// }
-								$template .= '<td style="'.$style.'">-</td>';
+								$template .= '<td>-</td>';
 							
                         }
                     $template .= '</tr>';
