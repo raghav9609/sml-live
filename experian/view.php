@@ -189,20 +189,20 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
 			$j=0;
 			foreach($returnResponse['CAIS_Account']['CAIS_Account_DETAILS'] as $key => $val){
 				$gender = 'Unknown';
-                // if($val['CAIS_Holder_Details']['Gender_Code'] == 1){$gender = 'Male';}else if($val['CAIS_Holder_Details']['Gender_Code'] == 2){$gender = 'Female';}else if($val['CAIS_Holder_Details']['Gender_Code'] == 3){$gender = 'Transgender';}
+                if($val['CAIS_Holder_Details']['Gender_Code'] == 1){$gender = 'Male';}else if($val['CAIS_Holder_Details']['Gender_Code'] == 2){$gender = 'Female';}else if($val['CAIS_Holder_Details']['Gender_Code'] == 3){$gender = 'Transgender';}
 				
-                // if($val['Date_of_Last_Payment'] != '0000-00-00' && $val['Date_of_Last_Payment'] != '1970-01-01' && $val['Date_of_Last_Payment'] != '' && !empty($val['Date_of_Last_Payment'])){$Date_of_Last_Payment = date('d-m-Y',strtotime($val['Date_of_Last_Payment']));}else{$Date_of_Last_Payment = '-';}
+                if($val['Date_of_Last_Payment'] != '0000-00-00' && $val['Date_of_Last_Payment'] != '1970-01-01' && $val['Date_of_Last_Payment'] != '' && !empty($val['Date_of_Last_Payment'])){$Date_of_Last_Payment = date('d-m-Y',strtotime($val['Date_of_Last_Payment']));}else{$Date_of_Last_Payment = '-';}
 
 
         		if($val['Rate_of_Interest'] != '0.00' && !empty($val['Rate_of_Interest'])){$Rate_of_Interest = $val['Rate_of_Interest'] ;}else{$Rate_of_Interest = '-';}
 
-                    // if($val['Date_Closed'] != '0000-00-00' && $val['Date_Closed'] != '' && $val['Date_Closed'] != '1970-01-01' && !empty($val['Date_Closed'])){$Date_Closed = date('d-m-Y',strtotime($val['Date_Closed']));}else{$Date_Closed = '-';}
+                    if($val['Date_Closed'] != '0000-00-00' && $val['Date_Closed'] != '' && $val['Date_Closed'] != '1970-01-01' && !empty($val['Date_Closed'])){$Date_Closed = date('d-m-Y',strtotime($val['Date_Closed']));}else{$Date_Closed = '-';}
     
-                    // if($val['Open_Date'] != '0000-00-00' && $val['Open_Date'] != '' && $val['Open_Date'] != '1970-01-01' && !empty($val['Open_Date'])){$date_opened = date('d-m-Y',strtotime($val['Open_Date']));}else{$date_opened = '-';}
+                    if($val['Open_Date'] != '0000-00-00' && $val['Open_Date'] != '' && $val['Open_Date'] != '1970-01-01' && !empty($val['Open_Date'])){$date_opened = date('d-m-Y',strtotime($val['Open_Date']));}else{$date_opened = '-';}
                      
-                    // if($val['Date_Reported'] != '0000-00-00' && !empty($val['Date_Reported']) && $val['Date_Reported'] != '' && $val['Date_Reported'] != '1970-01-01'){$date_reported = date('d-m-Y',strtotime($val['Date_Reported']));}else{$date_reported = '-';}
+                    if($val['Date_Reported'] != '0000-00-00' && !empty($val['Date_Reported']) && $val['Date_Reported'] != '' && $val['Date_Reported'] != '1970-01-01'){$date_reported = date('d-m-Y',strtotime($val['Date_Reported']));}else{$date_reported = '-';}
     
-                    // if($val['CAIS_Holder_Details']['Date_of_birth'] != '0000-00-00' && !empty($val['CAIS_Holder_Details']['Date_of_birth']) && $val['CAIS_Holder_Details']['Date_of_birth'] != '' && $val['CAIS_Holder_Details']['Date_of_birth'] != '1970-01-01'){$Date_of_birth = date('d-m-Y',strtotime($val['CAIS_Holder_Details']['Date_of_birth']));}else{$Date_of_birth = '-';}
+                    if($val['CAIS_Holder_Details']['Date_of_birth'] != '0000-00-00' && !empty($val['CAIS_Holder_Details']['Date_of_birth']) && $val['CAIS_Holder_Details']['Date_of_birth'] != '' && $val['CAIS_Holder_Details']['Date_of_birth'] != '1970-01-01'){$Date_of_birth = date('d-m-Y',strtotime($val['CAIS_Holder_Details']['Date_of_birth']));}else{$Date_of_birth = '-';}
 
 					if(!empty($val['Occupation_Code']) && $val['Occupation_Code'] != ""){
 						$occupation_code = $occupation_array[$val['Occupation_Code']];
@@ -386,23 +386,7 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
                         foreach($val['CAIS_Account_History'] as $key_y=>$val_y){
                         $template .= '<tr>
                             <td style="font-weight: bold;color: #008db1;border-right: 1px solid #ffffff;border-bottom: 1px solid #ffffff;background: #dadada;padding: 5px">'.$val_y['Year'].'</td>';
-                        for($i=12;$i>=1;$i--){
-							
-							if($i == $val_y['Month']){
-								if($val_y['Days_Past_Due'] == ''){
-									$style='border-right: 1px solid #d6d6d6;border-bottom: 1px solid #d6d6d6;padding: 5px';
-								}else if($val_y['Days_Past_Due'] == '0'){
-								   $style='font-weight: bold;color: #ffffff;border-right: 1px solid #d6d6d6;border-bottom: 1px solid #d6d6d6;padding: 5px;background: #43ad43';
-								}else if($val_y['Days_Past_Due'] >= '90'){
-								 $style='font-weight: bold;color: #ffffff;border-right: 1px solid #d6d6d6;border-bottom: 1px solid #d6d6d6;padding: 5px;background: red';
-								}else{
-								 $style='font-weight: bold;color: #ffffff;border-right: 1px solid #d6d6d6;border-bottom: 1px solid #d6d6d6;padding: 5px;background: #f6650b';
-								}
-								$template .= '<td style="'.$style.'">'.$val_y['Days_Past_Due'].'</td>';
-							}else{
-								$template .= '<td style="'.$style.'"></td>';
-							}	
-                        }
+                        
                     $template .= '</tr>';}
                  $template .= '</table>
                 </td>
@@ -459,7 +443,7 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
             <!-- Account detals End 1-->';
          } 
          
-            $template .= '<tr><td style="background: #efefef;padding: 5px" colspan="2"><img src="'.$head_url.'/assets/images/tick.png"><span style="font-size: 18px;font-weight: 600;padding: 8px;vertical-align: super;">CREDIT ENQUIRIES</span></td></tr>
+              $template .= '<tr><td style="background: #efefef;padding: 5px" colspan="2"><img src="'.$head_url.'/assets/images/tick.png"><span style="font-size: 18px;font-weight: 600;padding: 8px;vertical-align: super;">CREDIT ENQUIRIES</span></td></tr>
             <tr><td style="font-style: italic;color: orange;padding: 15px 0px;" colspan="2"> This section shows the names of the credit institutions that have processed a credit / loan application for you.</td></tr>';
         
     
