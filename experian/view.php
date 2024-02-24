@@ -187,7 +187,72 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
             <tr><td style="background: #efefef;padding: 5px" colspan="2"><img src="'.$head_url.'/assets/images/tick.png"><span style="font-size: 18px;font-weight: 600;padding: 8px;vertical-align: super;">Credit Account Information details</span></td></tr>
             <tr><td style="font-style: italic;color: orange;padding: 15px 0px;" colspan="2">This section has information based on the details provided to our Bureau Partner by all our member banks, credit / financial institutions and other credit grantors with whom you have a credit / loan account.</td></tr>';
 			foreach($returnResponse['CAIS_Account']['CAIS_Account_DETAILS'] as $key => $val){
+				$gender = 'Unknown';
+                if($val['CAIS_Holder_Details']['Gender_Code'] == 1){$gender = 'Male';}else if($val['CAIS_Holder_Details']['Gender_Code'] == 2){$gender = 'Female';}else if($val['CAIS_Holder_Details']['Gender_Code'] == 3){$gender = 'Transgender';}
 				
+                if($val['Date_of_Last_Payment'] != '0000-00-00' && $val['Date_of_Last_Payment'] != '1970-01-01' && $val['Date_of_Last_Payment'] != '' && !empty($val['Date_of_Last_Payment'])){$Date_of_Last_Payment = date('d-m-Y',strtotime($val['Date_of_Last_Payment']));}else{$Date_of_Last_Payment = '-';}
+
+
+        		if($val['Rate_of_Interest'] != '0.00' && !empty($val['Rate_of_Interest'])){$Rate_of_Interest = $val['Rate_of_Interest'] ;}else{$Rate_of_Interest = '-';}
+
+                    if($val['Date_Closed'] != '0000-00-00' && $val['Date_Closed'] != '' && $val['Date_Closed'] != '1970-01-01' && !empty($val['Date_Closed'])){$Date_Closed = date('d-m-Y',strtotime($val['Date_Closed']));}else{$Date_Closed = '-';}
+    
+                    if($val['Open_Date'] != '0000-00-00' && $val['Open_Date'] != '' && $val['Open_Date'] != '1970-01-01' && !empty($val['Open_Date'])){$date_opened = date('d-m-Y',strtotime($val['Open_Date']));}else{$date_opened = '-';}
+                     
+                    if($val['Date_Reported'] != '0000-00-00' && !empty($val['Date_Reported']) && $val['Date_Reported'] != '' && $val['Date_Reported'] != '1970-01-01'){$date_reported = date('d-m-Y',strtotime($val['Date_Reported']));}else{$date_reported = '-';}
+    
+                    if($val['CAIS_Holder_Details']['Date_of_birth'] != '0000-00-00' && !empty($val['CAIS_Holder_Details']['Date_of_birth']) && $val['CAIS_Holder_Details']['Date_of_birth'] != '' && $val['CAIS_Holder_Details']['Date_of_birth'] != '1970-01-01'){$Date_of_birth = date('d-m-Y',strtotime($val['CAIS_Holder_Details']['Date_of_birth']));}else{$Date_of_birth = '-';}
+
+					if(!empty($val['Occupation_Code']) && $val['Occupation_Code'] != ""){
+						$occupation_code = $occupation_array[$val['Occupation_Code']];
+					}else{
+						$occupation_code = "-";
+					}
+                    
+
+		if(!empty($val['CAIS_Holder_Address_Details']['State_non_normalized']) && $val['CAIS_Holder_Address_Details']['State_non_normalized'] != ""){
+			$state_name = $state_array[$val['CAIS_Holder_Address_Details']['State_non_normalized']];
+		}else{
+			$state_name = "";
+		}
+
+		if(!emmpty($val['Account_Type']) && $val['Account_Type'] != ""){
+			$accounttype = $account_type_array[$val['Account_Type']];
+		}else{
+			$accounttype = '';
+		}
+
+
+		if(!emmpty($val['AccountHoldertypeCode']) && $val['AccountHoldertypeCode'] != ""){
+			$accountholdertype = $account_holder_type[$val['AccountHoldertypeCode']];
+		}else{
+			$accountholdertype = '';
+		}
+
+		if(!emmpty($val['Account_Status']) && $val['Account_Status'] != ""){
+			$account_status_final = $account_status[$val['Account_Status']];
+		}else{
+			$account_status_final = '';
+		}
+
+		if(!empty($val['Highest_Credit_or_Original_Loan_Amount']) && $val['Highest_Credit_or_Original_Loan_Amount'] !='' ){
+			$Highest_Credit_or_Original_Loan_Amount_final = number_format($val['Highest_Credit_or_Original_Loan_Amount']);
+		}else{
+			$Highest_Credit_or_Original_Loan_Amount_final = '';
+		}
+
+		if(!empty($val['Current_Balance']) && $val['Current_Balance'] !='' ){
+			$Current_Balance_final = number_format($val['Current_Balance']);
+		}else{
+			$Current_Balance_final = '';
+		}
+
+
+		if(!empty($val['Amount_Past_Due']) && $val['Amount_Past_Due'] !='' ){
+			$Amount_Past_Due_final = number_format($val['Amount_Past_Due']);
+		}else{
+			$Amount_Past_Due_final = '';
+		}
 		
        
             $template .= '	
@@ -211,93 +276,12 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
                     </table>
                 </td>
             </tr>
-            <tr>
-                <td colspan="2">
-                    <table style="width: 100%;border: 1px solid #d6d6d6">
-                        <tr><td colspan="3" style="color: #008db1;font-weight: bold;padding-left: 10px;border-bottom: 1px solid #d6d6d6;padding: 5px">'.$accounttype.'</td>
-                        </tr>
-                        <tr>
-                            <td style="color: #008db1;border-right: 1px solid #d6d6d6;border-bottom: 1px solid #d6d6d6;font-weight: 600;width: 33.33%;padding: 5px">Account terms</td>
-                            <td style="color: #008db1;border-right: 1px solid #d6d6d6;border-bottom: 1px solid #d6d6d6;font-weight: 600;width: 33.33%;padding: 5px">Account description</td>
-                            <td style="color: #008db1;border-bottom: 1px solid #d6d6d6;font-weight: 600;width: 33.33%;padding: 5px">Account details</td>
-                        </tr>
-                        <tr>
-                            <td style="border-right: 1px solid #d6d6d6">
-                                <table width="100%">
-                                    <tr>
-                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">Account Number</td><td>'.$val['Account_Number'].'</td>
-                                    </tr>
-                                    <tr>
-                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">Date Opened</td><td>'.$date_opened.'</td>
-                                    </tr>
-                                    <tr>
-                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">Date Closed</td><td>'.$Date_Closed.'</td>
-                                    </tr>
-                                    <tr>
-                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">Ownership</td><td>'.$accountholdertype.'</td>
-                                    </tr>
-                                    <tr>
-                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">Rate of Interest</td><td>'.$Rate_of_Interest.'</td>
-                                    </tr>
-                                    <tr>
-                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">Value of Collateral</td><td>'.$val['Value_of_Collateral'].'</td>
-                                    </tr>
-                                    <tr>
-                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">Type of Collateral</td><td>'.$val['Type_of_Collateral'].'</td>
-                                    </tr>
-                                </table>
-                            </td>
-                            <td style="border-right: 1px solid #d6d6d6">
-                                <table width="100%">
-                                    <tr>
-                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">Date Reported</td><td>'.$date_reported.'</td>
-                                    </tr>
-                                    <tr>
-                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">Loan Type</td><td>'.$accountholdertype.'</td>
-                                    </tr>
-                                    <tr>
-                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">Account Status</td><td>'.$account_status_final.'</td>
-                                    </tr>
-                                    <tr>
-                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">Highest Credit</td><td>'.$Highest_Credit_or_Original_Loan_Amount_final.'</td>
-                                    </tr>
-                                    <tr>
-                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">Current Balance</td><td>'.$Current_Balance_final.'</td>
-                                    </tr>
-                                    <tr>
-                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">Amount Overdue</td><td>'.$Amount_Past_Due_final.'</td>
-                                    </tr>
-                                    <tr>
-                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">Last Payment Date</td><td>'.$Date_of_Last_Payment.'</td>
-                                    </tr>
-                                </table>
-                            </td>
-                            <td>
-                                <table width="100%">
-                                    <tr>
-                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">Credit Limit Amt</td><td>'.$val['Credit_Limit_Amount'].'</td>
-                                    </tr>
-                                    <tr>
-                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">EMI</td><td>'.$val['Scheduled_Monthly_Payment_Amount'].'</td>
-                                    </tr>
-                                    <tr>
-                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">Repayment Tenure</td><td>'.$val['Repayment_Tenure'].'</td>
-                                    </tr>
-                                    <tr>
-                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">Total Write-off Amt</td><td>'.$val['Written_Off_Amt_Total'].'</td>
-                                    </tr>
-                                    <tr>
-                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">Principal Write-off</td><td>'.$val['Written_Off_Amt_Principal'].'</td>
-                                    </tr>
-                                    <tr>
-                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">Settlement Amt</td><td>'.$val['Settlement_Amount'].'</td>
-                                    </tr>
-                                </table>
-                            </td>
-                        </tr>
-                    </table>
-                </td>
-            </tr>
+            
+
+
+
+
+			
             <tr><td colspan="2" style="color: #008db1;font-weight: bold;font-size: 18px;padding-top: 15px">Payment History</td></tr>
             <tr>
                 <td colspan="2">
