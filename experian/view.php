@@ -30,7 +30,8 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
 
     if($returnResponse['SCORE']['BureauScore'] >= '750'){$img_experian = 'experian-green.png';}else if($returnResponse['SCORE']['BureauScore'] < '650'){
         $img_experian = 'experian-red.png';}else{   $img_experian = 'experian-yellow.png';}
-      $template = '<!DOCTYPE html><html><head><title>Credit Report</title></head>
+      $template = '<!DOCTYPE html><html><head><title>Credit Report</title><link rel="icon" href="'.$head_url.'/assets/images/favicon.png" type="image/x-icon">
+	  </head>
     <body style="background: #d6d6d6;font-family: inherit;margin-bottom: 20px;margin-top: 20px"><table style="min-width: 800px;max-width:900px;background: #ffffff;border: 1px solid #000000;margin: auto;font-size: 13px;padding: 20px">
             <tr>
                 <td width="75%" style="padding-top:10px">
