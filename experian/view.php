@@ -257,31 +257,94 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
        
             $template .= '	
             <!-- Account Detals Satrt 1-->
+            
             <tr>
                 <td colspan="2">
-                    <table width="100%">
-                        <tr>
-                            <td style="width: 33.33%;color: #008db1;font-weight: 600;">'.$accounttype.'</td>
-                            <td style="width: 33.33%;color: #008db1;font-weight: 600;">'.$val['Subscriber_Name'].'</td>
-                            <td style="width: 33.33%;text-align: center;font-weight: 600;"><img src="'.$head_url.'/assets/images/tick.png"><span style="vertical-align: super;">Acct '.($key+1).'</span></td>
+                    <table style="width: 100%;border: 1px solid #d6d6d6">
+                        <tr><td colspan="3" style="color: #008db1;font-weight: bold;padding-left: 10px;border-bottom: 1px solid #d6d6d6;padding: 5px">'.$accounttype.'</td>
                         </tr>
                         <tr>
-                            <td colspan="2" style="border-bottom: 2px solid orange"></td>
-                            <td></td>
+                            <td style="color: #008db1;border-right: 1px solid #d6d6d6;border-bottom: 1px solid #d6d6d6;font-weight: 600;width: 33.33%;padding: 5px">Account terms</td>
+                            <td style="color: #008db1;border-right: 1px solid #d6d6d6;border-bottom: 1px solid #d6d6d6;font-weight: 600;width: 33.33%;padding: 5px">Account description</td>
+                            <td style="color: #008db1;border-bottom: 1px solid #d6d6d6;font-weight: 600;width: 33.33%;padding: 5px">Account details</td>
                         </tr>
                         <tr>
-                            <td colspan="3" style="color: #008db1;font-weight: 600;width: 20%;padding: 15px 0px">Address 1 <span style="color: #000000;font-weight: normal;padding-left: 10%">
-                            '.$val['CAIS_Holder_Address_Details']['First_Line_Of_Address_non_normalized'].' '.$val['CAIS_Holder_Address_Details']['Second_Line_Of_Address_non_normalized'].' '.$val['CAIS_Holder_Address_Details']['Third_Line_Of_Address_non_normalized'].' '.$val['CAIS_Holder_Address_Details']['City_non_normalized'].' '.$val['CAIS_Holder_Address_Details']['Fifth_Line_Of_Address_non_normalized'].' '.$state_name.' '.$val['CAIS_Holder_Address_Details']['ZIP_Postal_Code_non_normalized'].'</span></td>
+                            <td style="border-right: 1px solid #d6d6d6">
+                                <table width="100%">
+                                    <tr>
+                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">Account Number</td><td>'.$val['Account_Number'].'</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">Date Opened</td><td>'.$date_opened.'</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">Date Closed</td><td>'.$Date_Closed.'</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">Ownership</td><td>'.$accountholdertype.'</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">Rate of Interest</td><td>'.$Rate_of_Interest.'</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">Value of Collateral</td><td>'.$val['Value_of_Collateral'].'</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">Type of Collateral</td><td>'.$val['Type_of_Collateral'].'</td>
+                                    </tr>
+                                </table>
+                            </td>
+                            <td style="border-right: 1px solid #d6d6d6">
+                                <table width="100%">
+                                    <tr>
+                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">Date Reported</td><td>'.$date_reported.'</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">Loan Type</td><td>'.$accountholdertype.'</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">Account Status</td><td>'.$account_status_final.'</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">Highest Credit</td><td>'.$Highest_Credit_or_Original_Loan_Amount_final.'</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">Current Balance</td><td>'.$Current_Balance_final.'</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">Amount Overdue</td><td>'.$Amount_Past_Due_final.'</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">Last Payment Date</td><td>'.$Date_of_Last_Payment.'</td>
+                                    </tr>
+                                </table>
+                            </td>
+                            <td>
+                                <table width="100%">
+                                    <tr>
+                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">Credit Limit Amt</td><td>'.$val['Credit_Limit_Amount'].'</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">EMI</td><td>'.$val['Scheduled_Monthly_Payment_Amount'].'</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">Repayment Tenure</td><td>'.$val['Repayment_Tenure'].'</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">Total Write-off Amt</td><td>'.$val['Written_Off_Amt_Total'].'</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">Principal Write-off</td><td>'.$val['Written_Off_Amt_Principal'].'</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">Settlement Amt</td><td>'.$val['Settlement_Amount'].'</td>
+                                    </tr>
+                                </table>
+                            </td>
                         </tr>
                     </table>
                 </td>
             </tr>
-            
-
-
-
-
-			
             <tr><td colspan="2" style="color: #008db1;font-weight: bold;font-size: 18px;padding-top: 15px">Payment History</td></tr>
             <tr>
                 <td colspan="2">
