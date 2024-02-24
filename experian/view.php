@@ -404,7 +404,7 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
 							}	
                         }
                     $template .= '</tr>';}
-                    $template .= '</table>
+                    echo $template .= '</table>
                 </td>
             </tr>
             <tr><td colspan="2" style="font-size: 16px;font-weight: bold;color: #008db1;padding-top: 20px">Consumer Personal details on the '.$accounttype.'</td></tr>
