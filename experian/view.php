@@ -388,11 +388,11 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
 							$final_dpd_array[$val_yn['Year']][$val_yn['Month']] = $val_yn['Days_Past_Due'];
 						}
 
-						preArray($final_dpd_array);
+						//preArray($final_dpd_array);
 						
-                        foreach($final_dpd_array as $val_y){
+                        foreach($final_dpd_array as $key=>$val_y){
                         $template .= '<tr>
-                            <td style="font-weight: bold;color: #008db1;border-right: 1px solid #ffffff;border-bottom: 1px solid #ffffff;background: #dadada;padding: 5px">'.$val_y.'</td>';
+                            <td style="font-weight: bold;color: #008db1;border-right: 1px solid #ffffff;border-bottom: 1px solid #ffffff;background: #dadada;padding: 5px">'.$key.'</td>';
                         
                     $template .= '</tr>';
 				}
