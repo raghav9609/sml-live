@@ -393,7 +393,7 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
                         foreach($final_dpd_array as $val_y){
                         $template .= '<tr>
                             <td style="font-weight: bold;color: #008db1;border-right: 1px solid #ffffff;border-bottom: 1px solid #ffffff;background: #dadada;padding: 5px">'.$val_y.'</td>';
-                        for($i=12;$i>=1;$i--){
+                        for($i=12;$i>=01;$i--){
 							if(array_key_exists($i,$val_y)){
 								if($val_y[$i] == ''){
 									$style='border-right: 1px solid #d6d6d6;border-bottom: 1px solid #d6d6d6;padding: 5px';
