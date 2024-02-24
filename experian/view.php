@@ -368,33 +368,8 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
             </tr>
             <tr><td colspan="2" style="color: #008db1;font-weight: bold;font-size: 18px;padding-top: 15px">Payment History</td></tr>
             <tr>
-                <td colspan="2">
-                    <table style="width: 100%;border: 1px solid#d6d6d6;text-align: center;">
-                        <tr>
-                            <td style="font-weight: bold;color: #008db1;border-right: 1px solid #ffffff;border-bottom: 1px solid #ffffff;background: #dadada;padding: 5px">DPD</td>
-                            <td style="font-weight: bold;color: #008db1;border-right: 1px solid #ffffff;border-bottom: 1px solid #ffffff;background: #dadada;padding: 5px">Dec</td>
-                            <td style="font-weight: bold;color: #008db1;border-right: 1px solid #ffffff;border-bottom: 1px solid #ffffff;background: #dadada;padding: 5px">Nov</td>
-                            <td style="font-weight: bold;color: #008db1;border-right: 1px solid #ffffff;border-bottom: 1px solid #ffffff;background: #dadada;padding: 5px">Oct</td>
-                            <td style="font-weight: bold;color: #008db1;border-right: 1px solid #ffffff;border-bottom: 1px solid #ffffff;background: #dadada;padding: 5px">Sep</td>
-                            <td style="font-weight: bold;color: #008db1;border-right: 1px solid #ffffff;border-bottom: 1px solid #ffffff;background: #dadada;padding: 5px">Aug</td>
-                            <td style="font-weight: bold;color: #008db1;border-right: 1px solid #ffffff;border-bottom: 1px solid #ffffff;background: #dadada;padding: 5px">Jul</td>
-                            <td style="font-weight: bold;color: #008db1;border-right: 1px solid #ffffff;border-bottom: 1px solid #ffffff;background: #dadada;padding: 5px">Jun</td>
-                            <td style="font-weight: bold;color: #008db1;border-right: 1px solid #ffffff;border-bottom: 1px solid #ffffff;background: #dadada;padding: 5px">May</td>
-                            <td style="font-weight: bold;color: #008db1;border-right: 1px solid #ffffff;border-bottom: 1px solid #ffffff;background: #dadada;padding: 5px">Apr</td>
-                            <td style="font-weight: bold;color: #008db1;border-right: 1px solid #ffffff;border-bottom: 1px solid #ffffff;background: #dadada;padding: 5px">Mar</td>
-                            <td style="font-weight: bold;color: #008db1;border-right: 1px solid #ffffff;border-bottom: 1px solid #ffffff;background: #dadada;padding: 5px">Feb</td>
-                            <td style="font-weight: bold;color: #008db1;border-right: 1px solid #ffffff;border-bottom: 1px solid #ffffff;background: #dadada;padding: 5pxbackground: #dadada;padding: 5px">Jan</td>
-                        </tr>';
-						$final_dpd_array = array();
-						$dpd_array = $val['CAIS_Account_History'];
-						foreach($dpd_array as $keynnn=>$valnnn){
-							$month_year = $month_array[$valnnn['Month']].'-'.$valnnn['Year'];
-							$final_dpd_array[$month_year] = $valnnn['Days_Past_Due'];
-						}
-
-						//print_r($final_dpd_array);
-						
-                 	$template .= '</table>
+                <td colspan="2">'.$val['Payment_History_Profile'].'
+                    
                 </td>
             </tr>
             <tr><td colspan="2" style="font-size: 16px;font-weight: bold;color: #008db1;padding-top: 20px">Consumer Personal details on the '.$accounttype.'</td></tr>
