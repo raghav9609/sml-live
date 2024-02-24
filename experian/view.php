@@ -186,69 +186,11 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
 			
 			foreach($returnResponse['CAIS_Account']['CAIS_Account_DETAILS'] as $key => $val){
 				$gender = 'Unknown';
-                if($val['CAIS_Holder_Details']['Gender_Code'] == 1){$gender = 'Male';}else if($val['CAIS_Holder_Details']['Gender_Code'] == 2){$gender = 'Female';}else if($val['CAIS_Holder_Details']['Gender_Code'] == 3){$gender = 'Transgender';}
+                if($val['CAIS_Holder_Details']['Gender_Code'] == 1){$gender = 'Male';}
+				else if($val['CAIS_Holder_Details']['Gender_Code'] == 2){$gender = 'Female';}
+				else if($val['CAIS_Holder_Details']['Gender_Code'] == 3){$gender = 'Transgender';}
 				
-                if($val['Date_of_Last_Payment'] != '0000-00-00' && $val['Date_of_Last_Payment'] != '1970-01-01' && $val['Date_of_Last_Payment'] != '' && !empty($val['Date_of_Last_Payment'])){$Date_of_Last_Payment = date('d-m-Y',strtotime($val['Date_of_Last_Payment']));}else{$Date_of_Last_Payment = '-';}
-
-
-        		if($val['Rate_of_Interest'] != '0.00' && !empty($val['Rate_of_Interest'])){$Rate_of_Interest = $val['Rate_of_Interest'] ;}else{$Rate_of_Interest = '-';}
-
-                    if($val['Date_Closed'] != '0000-00-00' && $val['Date_Closed'] != '' && $val['Date_Closed'] != '1970-01-01' && !empty($val['Date_Closed'])){$Date_Closed = date('d-m-Y',strtotime($val['Date_Closed']));}else{$Date_Closed = '-';}
-    
-                    if($val['Open_Date'] != '0000-00-00' && $val['Open_Date'] != '' && $val['Open_Date'] != '1970-01-01' && !empty($val['Open_Date'])){$date_opened = date('d-m-Y',strtotime($val['Open_Date']));}else{$date_opened = '-';}
-                     
-                    if($val['Date_Reported'] != '0000-00-00' && !empty($val['Date_Reported']) && $val['Date_Reported'] != '' && $val['Date_Reported'] != '1970-01-01'){$date_reported = date('d-m-Y',strtotime($val['Date_Reported']));}else{$date_reported = '-';}
-    
-                    if($val['CAIS_Holder_Details']['Date_of_birth'] != '0000-00-00' && !empty($val['CAIS_Holder_Details']['Date_of_birth']) && $val['CAIS_Holder_Details']['Date_of_birth'] != '' && $val['CAIS_Holder_Details']['Date_of_birth'] != '1970-01-01'){$Date_of_birth = date('d-m-Y',strtotime($val['CAIS_Holder_Details']['Date_of_birth']));}else{$Date_of_birth = '-';}
-
-					if(!empty($val['Occupation_Code']) && $val['Occupation_Code'] != ""){
-						$occupation_code = $occupation_array[$val['Occupation_Code']];
-					}else{
-						$occupation_code = "-";
-					}
-		if(!empty($val['CAIS_Holder_Address_Details']['State_non_normalized']) && $val['CAIS_Holder_Address_Details']['State_non_normalized'] != ""){
-			$state_name = $state_array[$val['CAIS_Holder_Address_Details']['State_non_normalized']];
-		}else{
-			$state_name = "";
-		}
-
-		if(!emmpty($val['Account_Type']) && $val['Account_Type'] != ""){
-			$accounttype = $account_type_array[$val['Account_Type']];
-		}else{
-			$accounttype = '';
-		}
-
-
-		if(!emmpty($val['AccountHoldertypeCode']) && $val['AccountHoldertypeCode'] != ""){
-			$accountholdertype = $account_holder_type[$val['AccountHoldertypeCode']];
-		}else{
-			$accountholdertype = '';
-		}
-
-		if(!emmpty($val['Account_Status']) && $val['Account_Status'] != ""){
-			$account_status_final = $account_status[$val['Account_Status']];
-		}else{
-			$account_status_final = '';
-		}
-
-		if(!empty($val['Highest_Credit_or_Original_Loan_Amount']) && $val['Highest_Credit_or_Original_Loan_Amount'] !='' ){
-			$Highest_Credit_or_Original_Loan_Amount_final = number_format($val['Highest_Credit_or_Original_Loan_Amount']);
-		}else{
-			$Highest_Credit_or_Original_Loan_Amount_final = '';
-		}
-
-		if(!empty($val['Current_Balance']) && $val['Current_Balance'] !='' ){
-			$Current_Balance_final = number_format($val['Current_Balance']);
-		}else{
-			$Current_Balance_final = '';
-		}
-
-
-		if(!empty($val['Amount_Past_Due']) && $val['Amount_Past_Due'] !='' ){
-			$Amount_Past_Due_final = number_format($val['Amount_Past_Due']);
-		}else{
-			$Amount_Past_Due_final = '';
-		}
+                
 		
        
             $template .= '	
