@@ -390,10 +390,10 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
 
 						//preArray($final_dpd_array);
 						
-                        foreach($final_dpd_array as $key=>$val_y){
+                        foreach($final_dpd_array as $key_valueee=>$val_y){
 							//echo $key;
                      $template .= '<tr>
-                            <td style="font-weight: bold;color: #008db1;border-right: 1px solid #ffffff;border-bottom: 1px solid #ffffff;background: #dadada;padding: 5px">'.$key.'</td>';
+                            <td style="font-weight: bold;color: #008db1;border-right: 1px solid #ffffff;border-bottom: 1px solid #ffffff;background: #dadada;padding: 5px">'.$key_valueee.'</td>';
                         for($i=12;$i>=1;$i--){
 							
 								// if($val_y[$i] == ''){
