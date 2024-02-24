@@ -11,7 +11,7 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
     if($bureauData != ''){
         $dispBureauData = base64_decode($bureauData);
         $ob = simplexml_load_string(html_entity_decode($dispBureauData));
-       echo $json  = json_encode($ob);
+        $json  = json_encode($ob);
         $returnResponse = json_decode($json, true);
     }
 	$enquiry_reason_array = array("01"=>"Agricultural Machinery","02"=>" Animal Husbandry","03"=>"Aquaculture","04"=>"Biogas Plant","05"=>"Crop Loan","06"=>"Horticulture","07"=>"Irrigation System","1"=>"Agricultural Machinery","2"=>" Animal Husbandry","3"=>"Aquaculture","4"=>"Biogas Plant","5"=>"Crop Loan","6"=>"Horticulture","7"=>"Irrigation System","99"=>"Others","08"=>"New Car","09"=>"Overdraft against Car","8"=>"New Car","9"=>"Overdraft against Car","10"=>"Used Car","11"=>"General","12"=>"Small & Medium Business","13"=>"Professionals","14"=>"Trade","15"=>"Bus","16"=>"Tempo","17"=>"Tipper","18"=>"Truck","20"=>"Forklift","21"=>"Wheel Loaders","22"=>"Consumer Search","66"=>"Consumer Search Loan","68"=>"Consumer Search Loan","23"=>"Credit Card","24"=>"Fleet Card","25"=>"For Working Executives","26"=>"Study Abroad","27"=>"Study in India","28"=>"Leasing","29"=>"Bank Deposits","30"=>"Gold","31"=>"Govt. Bonds / PPF / NSC / KVP / FD","32"=>"Shares and Mutual Funds","33"=>"Business Loan","34"=>"Housing Loan","35"=>"Personal Loan","36"=>"Agriculture","37"=>"General","38"=>"Small Business","39"=>"Computers / Laptops","40"=>"Consumer Durables","41"=>"Marriage / Religious Ceremonies","42"=>"Travel","43"=>"Balance Transfer","44"=>"Home Improvement / Extension","45"=>" Land","46"=>"Lease Rental Discounting","47"=>"Loan against Property","48"=>"New Home","49"=>"Office Premises","50"=>"Under construction","51"=>"Broadband","52"=>"Landline","53"=>"Mobile","54"=>"Three Wheeler","55"=>"Two Wheeler","56"=>"Cash credit facility","57"=>"Overdraft","58"=>"Term Loan","60"=>"Microfinance Detailed Report","61"=>"Summary Report","62"=>"VB OLM Retrieval Service","63"=>"Account Review","64"=>"Retro Enquiry","65"=>"Locate Plus","67"=>"Indicative Report","69"=>"Bank OLM Retrieval Service","70"=>"Adviser Liability","71"=>"Secured (Account Group for Portfolio Review response)","72"=>"Unsecured (Account Group for Portfolio Review response)");
@@ -21,6 +21,10 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
 	$account_status = array("0"=>"NoSuitFiled","89"=>"Wilfuldefault","93"=>"SuitFiled(Wilfuldefault)","97"=>"SuitFiled(WilfulDefault)andWritten-off","30"=>"Restructured","31"=>"RestructuredLoan(Govt.Mandated)","32"=>"Settled","33"=>"Post(WO)Settled","34"=>"AccountSold","35"=>"WrittenOffandAccountSold","36"=>"AccountPurchased","37"=>"AccountPurchasedandWrittenOff","38"=>"AccountPurchasedandSettled","39"=>"AccountPurchasedandRestructured","40"=>"StatusCleared","41"=>"RestructuredLoan","42"=>"RestructuredLoan(Govt.Mandated)","43"=>"Written-off","44"=>"Settled","45"=>"Post(WO)Settled","46"=>"AccountSold","47"=>"WrittenOffandAccountSold","48"=>"AccountPurchased","49"=>"AccountPurchasedandWrittenOff","50"=>"AccountPurchasedandSettled","51"=>"AccountPurchasedandRestructured","52"=>"StatusCleared","53"=>"SuitFiled","54"=>"SuitFiledandWritten-off","55"=>"SuitFiledandSettled","56"=>"SuitFiledandPost(WO)Settled","57"=>"SuitFiledandAccountSold","58"=>"SuitFiledandWrittenOffandAccountSold","59"=>"SuitFiledandAccountPurchased","60"=>"SuitFiledandAccountPurchasedandWrittenOff","61"=>"SuitFiledandAccountPurchasedandSettled","62"=>"SuitFiledandAccountPurchasedandRestructured","63"=>"SuitFiledandStatusCleared","64"=>"WilfulDefaultandRestructuredLoan","65"=>"WilfulDefaultandRestructuredLoan(Govt.Mandated)","66"=>"WilfulDefaultandSettled","67"=>"WilfulDefaultandPost(WO)Settled","68"=>"WilfulDefaultandAccountSold","69"=>"WilfulDefaultandWrittenOffandAccountSold","70"=>"WilfulDefaultandAccountPurchased","72"=>"WilfulDefaultandAccountPurchasedandWrittenOff","73"=>"WilfulDefaultandAccountPurchasedandSettled","74"=>"WilfulDefaultandAccountPurchasedandRestructured","75"=>"WilfulDefaultandStatusCleared","76"=>"Suitfiled(Wilfuldefault)andRestructured","77"=>"Suitfiled(Wilfuldefault)andRestructuredLoan(Govt.","79"=>"Suitfiled(Wilfuldefault)andSettled","81"=>"Suitfiled(Wilfuldefault)andPost(WO)Settled","85"=>"Suitfiled(Wilfuldefault)andAccountSold","86"=>"Suitfiled(Wilfuldefault)andWrittenOffandSold","87"=>"Suitfiled(Wilfuldefault)andAccountPurchased","88"=>"Suitfiled(Wilfuldefault)andAccountPurchasedandOff","94"=>"Suitfiled(Wilfuldefault)andAccountPurchasedand","90"=>"Suitfiled(Wilfuldefault)andAccountPurchasedand","91"=>"Suitfiled(Wilfuldefault)andStatusCleared","13"=>"CLOSED","14"=>"CLOSED","15"=>"CLOSED","16"=>"CLOSED","16"=>"CLOSED","16"=>"CLOSED","17"=>"CLOSED","12"=>"CLOSED","11"=>"ACTIVE","71"=>"ACTIVE","78"=>"ACTIVE","80"=>"ACTIVE","82"=>"ACTIVE","83"=>"ACTIVE","84"=>"ACTIVEDEFAULTVALUEACTIVE","21"=>"ACTIVE","22"=>"ACTIVE","23"=>"ACTIVE","24"=>"ACTIVE","25"=>"ACTIVE","131"=>"Restructuredduetonaturalcalamity","130"=>"RestructuredduetoCOVID-19");
 
 	$account_holder_type = array("1"=>"Individual","2"=>"Joint","3"=>"Authorized User","7"=>"Guarantor","20"=>"Deceased");
+
+	$occupation_array  array("S"=>"Salaried","N"=>"Non-Salaried","E"=>"Self-employed","P"=>"Self-employed Professional","U"=>"Unemployed");
+
+	$state_array = array("1"=>"JAMMU and KASHMIR","2"=>"HIMACHAL PRADESH","3"=>"PUNJAB","4"=>"CHANDIGARH","5"=>"UTTRANCHAL","6"=>"HARAYANA","7"=>"DELHI","8"=>"RAJASTHAN","9"=>"UTTAR PRADESH","01"=>"JAMMU and KASHMIR","02"=>"HIMACHAL PRADESH","03"=>"PUNJAB","04"=>"CHANDIGARH","05"=>"UTTRANCHAL","06"=>"HARAYANA","07"=>"DELHI","08"=>"RAJASTHAN","09"=>"UTTAR PRADESH","10"=>"BIHAR","11"=>"SIKKIM","12"=>"ARUNACHAL PRADESH","13"=>"NAGALAND","14"=>"MANIPUR","15"=>"MIZORAM","16"=>"TRIPURA","17"=>"MEGHALAYA","18"=>"ASSAM","19"=>"WEST BENGAL","20"=>"JHARKHAND","21"=>"ORRISA","22"=>"CHHATTISGARH","23"=>"MADHYA PRADESH","24"=>"GUJRAT","25"=>"DAMAN and DIU","26"=>"DADARA and NAGAR HAVELI","27"=>"MAHARASHTRA","28"=>"ANDHRA PRADESH","29"=>"KARNATAKA","30"=>"GOA","31"=>"LAKSHADWEEP","32"=>"KERALA","33"=>"TAMIL NADU","34"=>"PONDICHERRY","35"=>"ANDAMAN and NICOBAR ISLANDS","36"=>"Telangana");
 
     if($returnResponse['SCORE']['BureauScore'] >= '750'){$img_experian = 'experian-green.png';}else if($returnResponse['SCORE']['BureauScore'] < '650'){
         $img_experian = 'experian-red.png';}else{   $img_experian = 'experian-yellow.png';}
@@ -145,10 +149,9 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
                             <td style="padding: 5px;">Amount Overdue</td>
                         </tr>';
                         
-                    $i =0;$data=array();
+                    $i =0;
                         foreach($returnResponse['CAIS_Account']['CAIS_Account_DETAILS'] as $key => $result_fetch_acc_details){
 							$i++;
-                            $data[] = $result_fetch_acc_details;
                             if($result_fetch_acc_details['Open_Date'] != '1970-01-01' && $result_fetch_acc_details['Open_Date'] != '0000-00-00' && $result_fetch_acc_details['Open_Date'] !='' ){
                                 $open_date_to_display = date('d-m-Y',strtotime($result_fetch_acc_details['Open_Date']));
                             }else{
@@ -160,24 +163,7 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
                                 $report_date_to_display = '';
                             }
 
-							if(!empty($result_fetch_acc_details['Highest_Credit_or_Original_Loan_Amount']) && $result_fetch_acc_details['Highest_Credit_or_Original_Loan_Amount'] !='' ){
-                                $Highest_Credit_or_Original_Loan_Amount = number_format($result_fetch_acc_details['Highest_Credit_or_Original_Loan_Amount']);
-                            }else{
-                                $Highest_Credit_or_Original_Loan_Amount = '';
-                            }
-
-							if(!empty($result_fetch_acc_details['Current_Balance']) && $result_fetch_acc_details['Current_Balance'] !='' ){
-                                $Current_Balance = number_format($result_fetch_acc_details['Current_Balance']);
-                            }else{
-                                $Current_Balance = '';
-                            }
-
-
-							if(!empty($result_fetch_acc_details['Amount_Past_Due']) && $result_fetch_acc_details['Amount_Past_Due'] !='' ){
-                                $Amount_Past_Due = number_format($result_fetch_acc_details['Amount_Past_Due']);
-                            }else{
-                                $Amount_Past_Due = '';
-                            }
+							
 
 							
 						
@@ -200,49 +186,82 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
             </tr>
             <tr><td style="background: #efefef;padding: 5px" colspan="2"><img src="'.$head_url.'/assets/images/tick.png"><span style="font-size: 18px;font-weight: 600;padding: 8px;vertical-align: super;">Credit Account Information details</span></td></tr>
             <tr><td style="font-style: italic;color: orange;padding: 15px 0px;" colspan="2">This section has information based on the details provided to our Bureau Partner by all our member banks, credit / financial institutions and other credit grantors with whom you have a credit / loan account.</td></tr>';
-			foreach($data as $key=>$val){
+			foreach($returnResponse['CAIS_Account']['CAIS_Account_DETAILS'] as $key => $val){
 				$gender = 'Unknown';
-                if(val[Gender_Code] == 1){$gender = 'Male';}else if(val[Gender_Code] == 2){$gender = 'Female';}else if(val[Gender_Code] == 3){$gender = 'Transgender';}
+                if($val['CAIS_Holder_Details']['Gender_Code'] == 1){$gender = 'Male';}else if($val['CAIS_Holder_Details']['Gender_Code'] == 2){$gender = 'Female';}else if($val['CAIS_Holder_Details']['Gender_Code'] == 3){$gender = 'Transgender';}
 				
-                if($data[$key][Date_of_Last_Payment] != '0000-00-00' && $data[$key][Date_of_Last_Payment] != '1970-01-01' && $data[$key][Date_of_Last_Payment] != ''){$Date_of_Last_Payment = date('d-m-Y',strtotime($data[$key][Date_of_Last_Payment]));}else{$Date_of_Last_Payment = '-';}
-        if($data[$key][Rate_of_Interest] != '0.00'){$Rate_of_Interest = $data[$key][Rate_of_Interest] ;}else{$Rate_of_Interest = '-';}
-                    if($data[$key][Date_Closed] != '0000-00-00' && $data[$key][Date_Closed] != '' && $data[$key][Date_Closed] != '1970-01-01'){$Date_Closed = date('d-m-Y',strtotime($data[$key][Date_Closed]));}else{$Date_Closed = '-';}
+                if($val['Date_of_Last_Payment'] != '0000-00-00' && $val['Date_of_Last_Payment'] != '1970-01-01' && $val['Date_of_Last_Payment'] != '' && !empty($val['Date_of_Last_Payment'])){$Date_of_Last_Payment = date('d-m-Y',strtotime($val['Date_of_Last_Payment']));}else{$Date_of_Last_Payment = '-';}
+
+
+        		if($val['Rate_of_Interest'] != '0.00' && !empty($val['Rate_of_Interest'])){$Rate_of_Interest = $val['Rate_of_Interest'] ;}else{$Rate_of_Interest = '-';}
+
+                    if($val['Date_Closed'] != '0000-00-00' && $val['Date_Closed'] != '' && $val['Date_Closed'] != '1970-01-01' && !empty($val['Date_Closed'])){$Date_Closed = date('d-m-Y',strtotime($val['Date_Closed']));}else{$Date_Closed = '-';}
     
-                    if($data[$key][Open_Date] != '0000-00-00' && $data[$key][Open_Date] != '' && $data[$key][Open_Date] != '1970-01-01'){$date_opened = date('d-m-Y',strtotime($data[$key][Open_Date]));}else{$date_opened = '-';}
+                    if($val['Open_Date'] != '0000-00-00' && $val['Open_Date'] != '' && $val['Open_Date'] != '1970-01-01' && !empty($val['Open_Date'])){$date_opened = date('d-m-Y',strtotime($val['Open_Date']));}else{$date_opened = '-';}
                      
-                    if($data[$key][Date_Reported] != '0000-00-00' && $data[$key][Date_Reported] != '' && $data[$key][Date_Reported] != '1970-01-01'){$date_reported = date('d-m-Y',strtotime($data[$key][Date_Reported]));}else{$date_reported = '-';}
+                    if($val['Date_Reported'] != '0000-00-00' && !empty($val['Date_Reported']) && $val['Date_Reported'] != '' && $val['Date_Reported'] != '1970-01-01'){$date_reported = date('d-m-Y',strtotime($val['Date_Reported']));}else{$date_reported = '-';}
     
-                    if($data[$key][Date_of_birth] != '0000-00-00' && $data[$key][Date_of_birth] != '' && $data[$key][Date_of_birth] != '1970-01-01'){$Date_of_birth = date('d-m-Y',strtotime($data[$key][Date_of_birth]));}else{$Date_of_birth = '-';}
+                    if($val['CAIS_Holder_Details']['Date_of_birth'] != '0000-00-00' && !empty($val['CAIS_Holder_Details']['Date_of_birth']) && $val['CAIS_Holder_Details']['Date_of_birth'] != '' && $val['CAIS_Holder_Details']['Date_of_birth'] != '1970-01-01'){$Date_of_birth = date('d-m-Y',strtotime($val['CAIS_Holder_Details']['Date_of_birth']));}else{$Date_of_birth = '-';}
+
+					if(!empty($val['Occupation_Code']) && $val['Occupation_Code'] != ""){
+						$occupation_code = $occupation_array[$val['Occupation_Code']];
+					}else{
+						$occupation_code = "-";
+					}
                     
-                    
-    
-                    
-    
-    
-    
-    $occup_name_qry = mysqli_query($Conn1,"select description from mlc_experian_employment_status where value = '".$data[$key][Occupation_Code]."'") or die(mysqli_error($Conn1));
-    $result_occup_name = mysqli_fetch_array($occup_name_qry);
-    $year_data_dpd = array();
-        $get_dpd = mysqli_query($Conn1,"select distinct(year) as dpd_year from mlc_experian_customer_credit_account_history where account_report_id = '".$data[$key][history_id]."' order by year desc") or die(mysqli_error($Conn1));
-        while($result_dpd_qry = mysqli_fetch_array($get_dpd)){
-            $get_detail_data = mysqli_query($Conn1,"select month,Days_Past_Due from mlc_experian_customer_credit_account_history where account_report_id = '".$data[$key][history_id]."' and year = '".$result_dpd_qry['dpd_year']."'") or die(mysqli_error($Conn1));
-        $dpd_year_data = array();
-            while($result_detail_data = mysqli_fetch_array($get_detail_data)){
-                $dpd_year_data[$result_detail_data[month]] = $result_detail_data['Days_Past_Due'];
-            }
-            $year_data_dpd[$result_dpd_qry['dpd_year']] = $dpd_year_data;
-        }
-    
-        $state_name_qry = mysqli_query($Conn1,"SELECT state.state_name FROM `mlc_partner_state_mapping` as mapp INNER JOIN mlc_master_state as state ON mapp.mlc_state_id = state.id where partner_id = 2 and partner_state_id = '".$data[$key][State_non_normalized]."'") or die(mysqli_error($Conn1));
-        $result_state_qry = mysqli_fetch_array($state_name_qry);
+		if(!empty($val['CAIS_Holder_Address_Details']['State_non_normalized']) && $val['CAIS_Holder_Address_Details']['State_non_normalized'] != ""){
+			$state_name = $state_array[$val['CAIS_Holder_Address_Details']['State_non_normalized']];
+		}else{
+			$state_name = "";
+		}
+
+		if(!emmpty($val['Account_Type']) && $val['Account_Type'] != ""){
+			$accounttype = $account_type_array[$val['Account_Type']];
+		}else{
+			$accounttype = '';
+		}
+
+
+		if(!emmpty($val['AccountHoldertypeCode']) && $val['AccountHoldertypeCode'] != ""){
+			$accountholdertype = $account_holder_type[$val['AccountHoldertypeCode']];
+		}else{
+			$accountholdertype = '';
+		}
+
+		if(!emmpty($val['Account_Status']) && $val['Account_Status'] != ""){
+			$account_status_final = $account_status[$val['Account_Status']];
+		}else{
+			$account_status_final = '';
+		}
+
+		if(!empty($val['Highest_Credit_or_Original_Loan_Amount']) && $val['Highest_Credit_or_Original_Loan_Amount'] !='' ){
+			$Highest_Credit_or_Original_Loan_Amount_final = number_format($val['Highest_Credit_or_Original_Loan_Amount']);
+		}else{
+			$Highest_Credit_or_Original_Loan_Amount_final = '';
+		}
+
+		if(!empty($val['Current_Balance']) && $val['Current_Balance'] !='' ){
+			$Current_Balance_final = number_format($val['Current_Balance']);
+		}else{
+			$Current_Balance_final = '';
+		}
+
+
+		if(!empty($val['Amount_Past_Due']) && $val['Amount_Past_Due'] !='' ){
+			$Amount_Past_Due_final = number_format($val['Amount_Past_Due']);
+		}else{
+			$Amount_Past_Due_final = '';
+		}
+		
+       
             $template .= '	
             <!-- Account Detals Satrt 1-->
             <tr>
                 <td colspan="2">
                     <table width="100%">
                         <tr>
-                            <td style="width: 33.33%;color: #008db1;font-weight: 600;">'.$data[$key][atype].'</td>
-                            <td style="width: 33.33%;color: #008db1;font-weight: 600;">'.$data[$key][Subscriber_Name].'</td>
+                            <td style="width: 33.33%;color: #008db1;font-weight: 600;">'.$accounttype.'</td>
+                            <td style="width: 33.33%;color: #008db1;font-weight: 600;">'.$val['Subscriber_Name'].'</td>
                             <td style="width: 33.33%;text-align: center;font-weight: 600;"><img src="'.$head_url.'/assets/images/tick.png"><span style="vertical-align: super;">Acct '.($key+1).'</span></td>
                         </tr>
                         <tr>
@@ -251,7 +270,7 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
                         </tr>
                         <tr>
                             <td colspan="3" style="color: #008db1;font-weight: 600;width: 20%;padding: 15px 0px">Address 1 <span style="color: #000000;font-weight: normal;padding-left: 10%">
-                            '.$data[$key][First_Line_Of_Address_non_normalized].' '.$data[$key][Second_Line_Of_Address_non_normalized].' '.$data[$key][Third_Line_Of_Address_non_normalized].' '.$data[$key][City_non_normalized].' '.$data[$key][Fifth_Line_Of_Address_non_normalized].' '.$result_state_qry['state_name'].' '.$data[$key][ZIP_Postal_Code_non_normalized].'</span></td>
+                            '.$val['CAIS_Holder_Address_Details']['First_Line_Of_Address_non_normalized'].' '.$val['CAIS_Holder_Address_Details']['Second_Line_Of_Address_non_normalized'].' '.$val['CAIS_Holder_Address_Details']['Third_Line_Of_Address_non_normalized'].' '.$val['CAIS_Holder_Address_Details']['City_non_normalized'].' '.$val['CAIS_Holder_Address_Details']['Fifth_Line_Of_Address_non_normalized'].' '.$state_name.' '.$val['CAIS_Holder_Address_Details']['ZIP_Postal_Code_non_normalized'].'</span></td>
                         </tr>
                     </table>
                 </td>
@@ -259,7 +278,7 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
             <tr>
                 <td colspan="2">
                     <table style="width: 100%;border: 1px solid #d6d6d6">
-                        <tr><td colspan="3" style="color: #008db1;font-weight: bold;padding-left: 10px;border-bottom: 1px solid #d6d6d6;padding: 5px">'.$data[$key][atype].'</td>
+                        <tr><td colspan="3" style="color: #008db1;font-weight: bold;padding-left: 10px;border-bottom: 1px solid #d6d6d6;padding: 5px">'.$accounttype.'</td>
                         </tr>
                         <tr>
                             <td style="color: #008db1;border-right: 1px solid #d6d6d6;border-bottom: 1px solid #d6d6d6;font-weight: 600;width: 33.33%;padding: 5px">Account terms</td>
@@ -270,7 +289,7 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
                             <td style="border-right: 1px solid #d6d6d6">
                                 <table width="100%">
                                     <tr>
-                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">Account Number</td><td>'.$data[$key][Account_Number].'</td>
+                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">Account Number</td><td>'.$val['Account_Number'].'</td>
                                     </tr>
                                     <tr>
                                         <td style="color: #008db1;padding: 5px;font-weight: bold;">Date Opened</td><td>'.$date_opened.'</td>
@@ -279,16 +298,16 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
                                         <td style="color: #008db1;padding: 5px;font-weight: bold;">Date Closed</td><td>'.$Date_Closed.'</td>
                                     </tr>
                                     <tr>
-                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">Ownership</td><td>'.$data[$key][acc_holder_type].'</td>
+                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">Ownership</td><td>'.$accountholdertype.'</td>
                                     </tr>
                                     <tr>
                                         <td style="color: #008db1;padding: 5px;font-weight: bold;">Rate of Interest</td><td>'.$Rate_of_Interest.'</td>
                                     </tr>
                                     <tr>
-                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">Value of Collateral</td><td>'.$data[$key][Value_of_Collateral].'</td>
+                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">Value of Collateral</td><td>'.$val['Value_of_Collateral'].'</td>
                                     </tr>
                                     <tr>
-                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">Type of Collateral</td><td>'.$data[$key][Type_of_Collateral].'</td>
+                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">Type of Collateral</td><td>'.$val['Type_of_Collateral'].'</td>
                                     </tr>
                                 </table>
                             </td>
@@ -298,19 +317,19 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
                                         <td style="color: #008db1;padding: 5px;font-weight: bold;">Date Reported</td><td>'.$date_reported.'</td>
                                     </tr>
                                     <tr>
-                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">Loan Type</td><td>'.$data[$key][atype].'</td>
+                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">Loan Type</td><td>'.$accountholdertype.'</td>
                                     </tr>
                                     <tr>
-                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">Account Status</td><td>'.$data[$key][status].'</td>
+                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">Account Status</td><td>'.$account_status_final.'</td>
                                     </tr>
                                     <tr>
-                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">Highest Credit</td><td>'.number_format($data[$key][Highest_Credit_or_Original_Loan_Amount]).'</td>
+                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">Highest Credit</td><td>'.$Highest_Credit_or_Original_Loan_Amount_final.'</td>
                                     </tr>
                                     <tr>
-                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">Current Balance</td><td>'.number_format($data[$key][Current_Balance]).'</td>
+                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">Current Balance</td><td>'.$Current_Balance_final.'</td>
                                     </tr>
                                     <tr>
-                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">Amount Overdue</td><td>'.number_format($data[$key][Amount_Past_Due]).'</td>
+                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">Amount Overdue</td><td>'.$Amount_Past_Due_final.'</td>
                                     </tr>
                                     <tr>
                                         <td style="color: #008db1;padding: 5px;font-weight: bold;">Last Payment Date</td><td>'.$Date_of_Last_Payment.'</td>
@@ -320,22 +339,22 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
                             <td>
                                 <table width="100%">
                                     <tr>
-                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">Credit Limit Amt</td><td>'.$data[$key][Credit_Limit_Amount].'</td>
+                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">Credit Limit Amt</td><td>'.$val['Credit_Limit_Amount'].'</td>
                                     </tr>
                                     <tr>
-                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">EMI</td><td>'.number_format($data[$key][Scheduled_Monthly_Payment_Amount]).'</td>
+                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">EMI</td><td>'.$val['Scheduled_Monthly_Payment_Amount'].'</td>
                                     </tr>
                                     <tr>
-                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">Repayment Tenure</td><td>'.$data[$key][Repayment_Tenure].'</td>
+                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">Repayment Tenure</td><td>'.$val['Repayment_Tenure'].'</td>
                                     </tr>
                                     <tr>
-                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">Total Write-off Amt</td><td>'.$data[$key][Written_Off_Amt_Total].'</td>
+                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">Total Write-off Amt</td><td>'.$val['Written_Off_Amt_Total'].'</td>
                                     </tr>
                                     <tr>
-                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">Principal Write-off</td><td>'.$data[$key][Written_Off_Amt_Principal].'</td>
+                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">Principal Write-off</td><td>'.$val['Written_Off_Amt_Principal'].'</td>
                                     </tr>
                                     <tr>
-                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">Settlement Amt</td><td>'.$data[$key][Settlement_Amount].'</td>
+                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">Settlement Amt</td><td>'.$val['Settlement_Amount'].'</td>
                                     </tr>
                                 </table>
                             </td>
@@ -362,19 +381,22 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
                             <td style="font-weight: bold;color: #008db1;border-right: 1px solid #ffffff;border-bottom: 1px solid #ffffff;background: #dadada;padding: 5px">Feb</td>
                             <td style="font-weight: bold;color: #008db1;border-right: 1px solid #ffffff;border-bottom: 1px solid #ffffff;background: #dadada;padding: 5pxbackground: #dadada;padding: 5px">Jan</td>
                         </tr>';
-                        foreach($year_data_dpd as $key_y=>$val_y){
+                        foreach($val['CAIS_Account_History'] as $key_y=>$val_y){
                         $template .= '<tr>
-                            <td style="font-weight: bold;color: #008db1;border-right: 1px solid #ffffff;border-bottom: 1px solid #ffffff;background: #dadada;padding: 5px">'.$key_y.'</td>';
+                            <td style="font-weight: bold;color: #008db1;border-right: 1px solid #ffffff;border-bottom: 1px solid #ffffff;background: #dadada;padding: 5px">'.$val_y['Year'].'</td>';
                         for($i=12;$i>=1;$i--){	
-                            if($year_data_dpd[$key_y][$i] == ''){
-                                $style='border-right: 1px solid #d6d6d6;border-bottom: 1px solid #d6d6d6;padding: 5px';
-                            }else if($year_data_dpd[$key_y][$i] == '0'){
-                               $style='font-weight: bold;color: #ffffff;border-right: 1px solid #d6d6d6;border-bottom: 1px solid #d6d6d6;padding: 5px;background: #43ad43';
-                            }else if($year_data_dpd[$key_y][$i] >= '90'){
-                             $style='font-weight: bold;color: #ffffff;border-right: 1px solid #d6d6d6;border-bottom: 1px solid #d6d6d6;padding: 5px;background: red';
-                            }else{
-                             $style='font-weight: bold;color: #ffffff;border-right: 1px solid #d6d6d6;border-bottom: 1px solid #d6d6d6;padding: 5px;background: #f6650b';
-                            }
+							if($i == $val_y['Month']){
+								if($year_data_dpd[$key_y][$i] == ''){
+									$style='border-right: 1px solid #d6d6d6;border-bottom: 1px solid #d6d6d6;padding: 5px';
+								}else if($year_data_dpd[$key_y][$i] == '0'){
+								   $style='font-weight: bold;color: #ffffff;border-right: 1px solid #d6d6d6;border-bottom: 1px solid #d6d6d6;padding: 5px;background: #43ad43';
+								}else if($year_data_dpd[$key_y][$i] >= '90'){
+								 $style='font-weight: bold;color: #ffffff;border-right: 1px solid #d6d6d6;border-bottom: 1px solid #d6d6d6;padding: 5px;background: red';
+								}else{
+								 $style='font-weight: bold;color: #ffffff;border-right: 1px solid #d6d6d6;border-bottom: 1px solid #d6d6d6;padding: 5px;background: #f6650b';
+								}
+							}
+                            
                         $template .= '<td style="'.$style.'">'.$year_data_dpd[$key_y][$i].'</td>';
                         }
                     $template .= '</tr>';}
@@ -395,10 +417,10 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
                                         <td style="color: #008db1;padding: 5px;font-weight: bold;">Gender</td><td>'.$gender.'</td>
                                     </tr>
                                     <tr>
-                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">Occupation</td><td>'.$result_occup_name["description"].'</td>
+                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">Occupation</td><td>'.$occupation_code.'</td>
                                     </tr>
                                     <tr>
-                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">Email address</td><td>'.$data[$key][EMailId].'</td>
+                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">Email address</td><td>'.$val['CAIS_Holder_Details']['EMailId'].'</td>
                                     </tr>
                                 </table>
                             </td>
@@ -410,7 +432,7 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
                                         <td style="color: #008db1;font-weight: bold;padding: 5px;font-weight: bold;font-size: 14px">Extension</td>
                                     </tr>
                                     <tr>
-                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">Mobile</td><td>'.$data[$key][Telephone_Number].'</td><td>-</td>
+                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">Mobile</td><td>-</td><td>-</td>
                                     </tr>
                                 </table>
                             </td>
@@ -421,7 +443,7 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
                                         <td style="color: #008db1;font-weight: bold;padding: 5px;font-weight: bold;font-size: 14px;vertical-align: top;">ID Number</td>
                                     </tr>
                                     <tr>
-                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">PAN</td><td>'.$data[$key][Income_TAX_PAN].'</td>
+                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">PAN</td><td>'.$val['CAIS_Holder_ID_Details']['Income_TAX_PAN'].'</td>
                                     </tr>
                                 </table>
                             </td>
