@@ -132,6 +132,9 @@ if ($exe_form['id'] == '' || $exe_form['id'] == 0) {
     $currentDateTime = date("Y-m-d H:i:s");
     $insert_query = "INSERT into crm_lead_summary_history (lead_id,user_id,type,created_on)values($id,$user_id,1,'$currentDateTime')";
     $res_qry = mysqli_query($Conn1,$insert_query);
+
+    $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where query_id = '".$id."' order by id desc LIMIT 1");
+
     ?>
     <html>
     <head>
@@ -151,7 +154,9 @@ if ($exe_form['id'] == '' || $exe_form['id'] == 0) {
                     <a href="javascript:void(0);" onclick="suggestion_box('2','1');"><input type="button" class="buttonsub cursor" value="Offers"></a>
                     <input type="button" style='background: #1b8c1b;' class="buttonsub cursor" id='shrt_url_1' onclick="fetchexperian('1','<?php echo urlencode(base64_encode($id)); ?>');" value="Fetch Experian Enhanced">
                     <input type="button" style='background: #1b8c1b;' class="buttonsub cursor" onclick="fetchexperian('2','<?php echo urlencode(base64_encode($id)); ?>');" id='shrt_url_2' value="Fetch Experian Full">
+                    <?php if(mysqli_num_rows($getbureaudetails) > 0) {?>
                     <a href="<?php $head_url; ?>/experian/view.php?query_id=<?php echo base64_encode($id);?>"><input type="button" style='background: #1b8c1b;' class="buttonsub cursor" value="View Experian"></a>
+                    <?php } ?>
                     <?php if($user_role != 1) { ?>
                         <a href="javascript:void(0);" id='show_btn' onclick="number_show('<?php echo $id; ?>','query');"> <input type="button" style='background: #18375f;' class="buttonsub cursor" value="Show Number"> </a>
                         <a href="javascript:void(0);" id='show_alt_btn' onclick="alt_number_show('<?php echo $id; ?>','query');"> <input type="button" style='background: #18375f;' class="buttonsub cursor" value="Show Alt. Number"> </a>

@@ -5,7 +5,7 @@ require_once(dirname(__FILE__) . '/../helpers/common-helper.php');
 //error_reporting(E_ALL);
 //ini_set("display_errors", 1);// libxml_use_internal_errors(false);
 $query_id = base64_decode($_REQUEST['query_id']);
-$getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where query_id = '".$query_id."'");
+$getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where query_id = '".$query_id."' order by id desc LIMIT 1");
     $resultbureaudetails = mysqli_fetch_array($getbureaudetails);
     $bureauData = $resultbureaudetails['xml_report'];
     if($bureauData != ''){
