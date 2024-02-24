@@ -365,7 +365,54 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
                 </td>
             </tr>
            
-           
+            <tr><td colspan="2" style="font-size: 16px;font-weight: bold;color: #008db1;padding-top: 20px">Consumer Personal details on the '.$accounttype.'</td></tr>
+            <tr>
+                <td colspan="2">
+                    <table style="border: 1px solid #d6d6d6;padding-top: 5px;width: 100%">
+                        <tr>
+                            <td width="33.33%" style="border-right: 1px solid #d6d6d6;font-size: 12px;vertical-align: top;">
+                                <table width="100%">
+                                    <tr>
+                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">Date of Birth</td><td>'.$Date_of_birth.'</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">Gender</td><td>'.$gender.'</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">Occupation</td><td>'.$occupation_code.'</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">Email address</td><td>'.$val['CAIS_Holder_Details']['EMailId'].'</td>
+                                    </tr>
+                                </table>
+                            </td>
+                            <td width="33.33%" style="border-right: 1px solid #d6d6d6;font-size: 12px;vertical-align: top;">
+                                <table width="100%">
+                                    <tr>
+                                        <td style="color: #008db1;font-weight: bold;padding: 5px;font-weight: bold;font-size: 14px">Phone Type</td>
+                                        <td style="color: #008db1;font-weight: bold;padding: 5px;font-weight: bold;font-size: 14px">Phone Number</td>
+                                        <td style="color: #008db1;font-weight: bold;padding: 5px;font-weight: bold;font-size: 14px">Extension</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">Mobile</td><td>-</td><td>-</td>
+                                    </tr>
+                                </table>
+                            </td>
+                            <td width="33.33%" style="font-size: 12px;vertical-align: top;">
+                                <table width="100%">
+                                    <tr>
+                                        <td style="color: #008db1;font-weight: bold;padding: 5px;font-weight: bold;font-size: 14px;vertical-align: top;">ID Type</td>
+                                        <td style="color: #008db1;font-weight: bold;padding: 5px;font-weight: bold;font-size: 14px;vertical-align: top;">ID Number</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">PAN</td><td>-</td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
             <tr><td colspan="2" style="padding-bottom: 20px"></td></tr>
             <!-- Account detals End 1-->';
          } 
