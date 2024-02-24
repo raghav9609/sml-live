@@ -189,7 +189,7 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
 			$j=0;
 			foreach($returnResponse['CAIS_Account']['CAIS_Account_DETAILS'] as $key => $val){
 				$gender = 'Unknown';
-                if($val['CAIS_Holder_Details']['Gender_Code'] == 1){$gender = 'Male';}else if($val['CAIS_Holder_Details']['Gender_Code'] == 2){$gender = 'Female';}else if($val['CAIS_Holder_Details']['Gender_Code'] == 3){$gender = 'Transgender';}
+                // if($val['CAIS_Holder_Details']['Gender_Code'] == 1){$gender = 'Male';}else if($val['CAIS_Holder_Details']['Gender_Code'] == 2){$gender = 'Female';}else if($val['CAIS_Holder_Details']['Gender_Code'] == 3){$gender = 'Transgender';}
 				
                 // if($val['Date_of_Last_Payment'] != '0000-00-00' && $val['Date_of_Last_Payment'] != '1970-01-01' && $val['Date_of_Last_Payment'] != '' && !empty($val['Date_of_Last_Payment'])){$Date_of_Last_Payment = date('d-m-Y',strtotime($val['Date_of_Last_Payment']));}else{$Date_of_Last_Payment = '-';}
 
