@@ -392,7 +392,7 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
 							$final_dpd_array[$month_year] = $valnnn['Days_Past_Due'];
 						}
 
-						print_r($final_dpd_array);
+						//print_r($final_dpd_array);
 						
                  	$template .= '</table>
                 </td>
