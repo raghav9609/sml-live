@@ -257,7 +257,25 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
        
             $template .= '	
             <!-- Account Detals Satrt 1-->
-            
+            <tr>
+                <td colspan="2">
+                    <table width="100%">
+                        <tr>
+                            <td style="width: 33.33%;color: #008db1;font-weight: 600;">'.$accounttype.'</td>
+                            <td style="width: 33.33%;color: #008db1;font-weight: 600;">'.$val['Subscriber_Name'].'</td>
+                            <td style="width: 33.33%;text-align: center;font-weight: 600;"><img src="'.$head_url.'/assets/images/tick.png"><span style="vertical-align: super;">Acct '.($key+1).'</span></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" style="border-bottom: 2px solid orange"></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="color: #008db1;font-weight: 600;width: 20%;padding: 15px 0px">Address 1 <span style="color: #000000;font-weight: normal;padding-left: 10%">
+                            '.$val['CAIS_Holder_Address_Details']['First_Line_Of_Address_non_normalized'].' '.$val['CAIS_Holder_Address_Details']['Second_Line_Of_Address_non_normalized'].' '.$val['CAIS_Holder_Address_Details']['Third_Line_Of_Address_non_normalized'].' '.$val['CAIS_Holder_Address_Details']['City_non_normalized'].' '.$val['CAIS_Holder_Address_Details']['Fifth_Line_Of_Address_non_normalized'].' '.$state_name.' '.$val['CAIS_Holder_Address_Details']['ZIP_Postal_Code_non_normalized'].'</span></td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
             <tr>
                 <td colspan="2">
                     <table style="width: 100%;border: 1px solid #d6d6d6">
@@ -383,17 +401,12 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
 							}else{
 								$template .= '<td style="'.$style.'"></td>';
 							}	
-                            
-
-
-
-                        
                         }
                     $template .= '</tr>';}
                     $template .= '</table>
                 </td>
             </tr>
-            <tr><td colspan="2" style="font-size: 16px;font-weight: bold;color: #008db1;padding-top: 20px">Consumer Personal details on the '.$data[$key][atype].'</td></tr>
+            <tr><td colspan="2" style="font-size: 16px;font-weight: bold;color: #008db1;padding-top: 20px">Consumer Personal details on the '.$accounttype.'</td></tr>
             <tr>
                 <td colspan="2">
                     <table style="border: 1px solid #d6d6d6;padding-top: 5px;width: 100%">
