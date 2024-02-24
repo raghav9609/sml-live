@@ -385,13 +385,12 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
                         </tr>';
 						$final_dpd_array = array();
 						$dpd_array = $val['CAIS_Account_History'];
+						$k=0;
 						foreach($dpd_array as $keynn=>$val_yn){
-							$final_dpd_array[$val_yn['Year']][$val_yn['Month']] = $val_yn['Days_Past_Due'];
+							$final_dpd_array[$k][$val_yn['Year']][$val_yn['Month']] = $val_yn['Days_Past_Due'];
+							$k++;
 						}
-
-						$jsonencode_array = json_encode($final_dpd_array);
-						$jsondecode_array = json_decode($jsonencode_array,true);
-						//print_r($jsondecode_array);
+						print_r($final_dpd_array);
                         foreach($jsondecode_array as $key_valueee=>$val_y){
                      	$template .= '<tr>
                             <td style="font-weight: bold;color: #008db1;border-right: 1px solid #ffffff;border-bottom: 1px solid #ffffff;background: #dadada;padding: 5px">'.$key_valueee.'</td>';
