@@ -404,7 +404,7 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
 							}	
                         }
                     $template .= '</tr>';}
-                    echo $template .= '</table>
+                 $template .= '</table>
                 </td>
             </tr>
             <tr><td colspan="2" style="font-size: 16px;font-weight: bold;color: #008db1;padding-top: 20px">Consumer Personal details on the '.$accounttype.'</td></tr>
@@ -447,7 +447,7 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
                                         <td style="color: #008db1;font-weight: bold;padding: 5px;font-weight: bold;font-size: 14px;vertical-align: top;">ID Number</td>
                                     </tr>
                                     <tr>
-                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">PAN</td><td>'.$val['CAIS_Holder_ID_Details']['Income_TAX_PAN'].'</td>
+                                        <td style="color: #008db1;padding: 5px;font-weight: bold;">PAN</td><td>-</td>
                                     </tr>
                                 </table>
                             </td>
