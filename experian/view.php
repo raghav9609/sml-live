@@ -256,7 +256,7 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
 		}
 		
        $j++;
-            echo $template .= '	
+             $template .= '	
             <!-- Account Detals Satrt 1-->
             <tr>
                 <td colspan="2">
