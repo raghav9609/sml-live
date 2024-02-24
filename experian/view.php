@@ -385,12 +385,12 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
                             <td style="font-weight: bold;color: #008db1;border-right: 1px solid #ffffff;border-bottom: 1px solid #ffffff;background: #dadada;padding: 5px">Feb</td>
                             <td style="font-weight: bold;color: #008db1;border-right: 1px solid #ffffff;border-bottom: 1px solid #ffffff;background: #dadada;padding: 5pxbackground: #dadada;padding: 5px">Jan</td>
                         </tr>';
-						$final_dpd_array = array();
-						$dpd_array = $val['CAIS_Account_History'];
-						foreach($dpd_array as $keynnn=>$valnnn){
-							$month_year = $month_array[$valnnn['Month']].'-'.$valnnn['Year'];
-							$final_dpd_array[$month_year] = $valnnn['Days_Past_Due'];
-						}
+						// $final_dpd_array = array();
+						// $dpd_array = $val['CAIS_Account_History'];
+						// foreach($dpd_array as $keynnn=>$valnnn){
+						// 	$month_year = $month_array[$valnnn['Month']].'-'.$valnnn['Year'];
+						// 	$final_dpd_array[$month_year] = $valnnn['Days_Past_Due'];
+						// }
 
 						//print_r($final_dpd_array);
 						
