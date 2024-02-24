@@ -209,17 +209,7 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
 						$occupation_code = "-";
 					}
                     
-	
-    $year_data_dpd = array();
-        $get_dpd = mysqli_query($Conn1,"select distinct(year) as dpd_year from mlc_experian_customer_credit_account_history where account_report_id = '".$data[$key][history_id]."' order by year desc") or die(mysqli_error($Conn1));
-        while($result_dpd_qry = mysqli_fetch_array($get_dpd)){
-            $get_detail_data = mysqli_query($Conn1,"select month,Days_Past_Due from mlc_experian_customer_credit_account_history where account_report_id = '".$data[$key][history_id]."' and year = '".$result_dpd_qry['dpd_year']."'") or die(mysqli_error($Conn1));
-        $dpd_year_data = array();
-            while($result_detail_data = mysqli_fetch_array($get_detail_data)){
-                $dpd_year_data[$result_detail_data[month]] = $result_detail_data['Days_Past_Due'];
-            }
-            $year_data_dpd[$result_dpd_qry['dpd_year']] = $dpd_year_data;
-        }
+
 		if(!empty($val['CAIS_Holder_Address_Details']['State_non_normalized']) && $val['CAIS_Holder_Address_Details']['State_non_normalized'] != ""){
 			$state_name = $state_array[$val['CAIS_Holder_Address_Details']['State_non_normalized']];
 		}else{
@@ -395,17 +385,27 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
                         foreach($val['CAIS_Account_History'] as $key_y=>$val_y){
                         $template .= '<tr>
                             <td style="font-weight: bold;color: #008db1;border-right: 1px solid #ffffff;border-bottom: 1px solid #ffffff;background: #dadada;padding: 5px">'.$val_y['Year'].'</td>';
-                        for($i=12;$i>=1;$i--){	
-                            if($year_data_dpd[$key_y][$i] == ''){
-                                $style='border-right: 1px solid #d6d6d6;border-bottom: 1px solid #d6d6d6;padding: 5px';
-                            }else if($year_data_dpd[$key_y][$i] == '0'){
-                               $style='font-weight: bold;color: #ffffff;border-right: 1px solid #d6d6d6;border-bottom: 1px solid #d6d6d6;padding: 5px;background: #43ad43';
-                            }else if($year_data_dpd[$key_y][$i] >= '90'){
-                             $style='font-weight: bold;color: #ffffff;border-right: 1px solid #d6d6d6;border-bottom: 1px solid #d6d6d6;padding: 5px;background: red';
-                            }else{
-                             $style='font-weight: bold;color: #ffffff;border-right: 1px solid #d6d6d6;border-bottom: 1px solid #d6d6d6;padding: 5px;background: #f6650b';
-                            }
-                        $template .= '<td style="'.$style.'">'.$year_data_dpd[$key_y][$i].'</td>';
+                        for($i=12;$i>=1;$i--){
+							
+							if($i == $val_y['Month']){
+								if($val_y['Days_Past_Due'] == ''){
+									$style='border-right: 1px solid #d6d6d6;border-bottom: 1px solid #d6d6d6;padding: 5px';
+								}else if($val_y['Days_Past_Due'] == '0'){
+								   $style='font-weight: bold;color: #ffffff;border-right: 1px solid #d6d6d6;border-bottom: 1px solid #d6d6d6;padding: 5px;background: #43ad43';
+								}else if($val_y['Days_Past_Due'] >= '90'){
+								 $style='font-weight: bold;color: #ffffff;border-right: 1px solid #d6d6d6;border-bottom: 1px solid #d6d6d6;padding: 5px;background: red';
+								}else{
+								 $style='font-weight: bold;color: #ffffff;border-right: 1px solid #d6d6d6;border-bottom: 1px solid #d6d6d6;padding: 5px;background: #f6650b';
+								}
+								$template .= '<td style="'.$style.'">'.$val_y['Days_Past_Due'].'</td>';
+							}else{
+								$template .= '<td style="'.$style.'"></td>';
+							}	
+                            
+
+
+
+                        
                         }
                     $template .= '</tr>';}
                     $template .= '</table>
