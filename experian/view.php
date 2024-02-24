@@ -2,8 +2,8 @@
 require_once(dirname(__FILE__) . '/../config/session.php');
 require_once(dirname(__FILE__) . '/../config/config.php');
 require_once(dirname(__FILE__) . '/../helpers/common-helper.php');
-error_reporting(1); 
-// libxml_use_internal_errors(false);
+error_reporting(E_ALL);
+ini_set("display_errors", 1);// libxml_use_internal_errors(false);
 $query_id = base64_decode($_REQUEST['query_id']);
 $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where query_id = '".$query_id."'");
     $resultbureaudetails = mysqli_fetch_array($getbureaudetails);
@@ -394,9 +394,9 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
                      	$template .= '<tr>
                             <td style="font-weight: bold;color: #008db1;border-right: 1px solid #ffffff;border-bottom: 1px solid #ffffff;background: #dadada;padding: 5px">'.$key_valueee.'</td>';
                         
-                    $template .= '</tr>';
-				}
-                 $template .= '</table>
+                    	$template .= '</tr>';
+					}
+                 	$template .= '</table>
                 </td>
             </tr>
             <tr><td colspan="2" style="font-size: 16px;font-weight: bold;color: #008db1;padding-top: 20px">Consumer Personal details on the '.$accounttype.'</td></tr>
