@@ -384,8 +384,9 @@ $getbureaudetails = mysqli_query($Conn1,"Select * from crm_experian_data where q
                             <td style="font-weight: bold;color: #008db1;border-right: 1px solid #ffffff;border-bottom: 1px solid #ffffff;background: #dadada;padding: 5pxbackground: #dadada;padding: 5px">Jan</td>
                         </tr>';
 
-						preArray($val['CAIS_Account_History']);
+						
                         foreach($val['CAIS_Account_History'] as $key_y=>$val_y){
+							print_r($val_y);
                         $template .= '<tr>
                             <td style="font-weight: bold;color: #008db1;border-right: 1px solid #ffffff;border-bottom: 1px solid #ffffff;background: #dadada;padding: 5px">'.$val_y['Year'].'</td>';
                         for($i=12;$i>=1;$i--){
