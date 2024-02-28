@@ -88,7 +88,8 @@ foreach($explpat As $patners){
         if(!empty($email)){
             $recep_mail = $email;
             $replytomail = array();
-            $cctomail = array('chintan@switchmyloan.in','durwang@switchmyloan.in');
+            //$cctomail = array('chintan@switchmyloan.in','durwang@switchmyloan.in');
+            $cctomail = array();
             $mailresp = mailSend($recep_mail,$cctomail,$replytomail,$subject,htmlspecialchars_decode($maildata));
         }
     } 

@@ -66,7 +66,7 @@ var temp_id = $( "#template" ).val() ;
 </td>    
 </tr>
 </tr>
-<tr> <td><input type="submit" name="send" id="send" class="buttonsub" value="Send Email"/></td>
+<tr> <td><input type="submit" name="send" id="send" class="buttonsub" value="Send SMS"/></td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
