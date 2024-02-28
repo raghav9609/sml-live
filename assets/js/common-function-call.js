@@ -36,7 +36,7 @@ $(document).on('keyup', '.alpha-num', function(e) {
     $.ajax({
         data: "pincode=" + pincode,
         type: "POST",
-        url: "/newdemo/include/get-city.php",
+        url: "/include/get-city.php",
         success: function (data) {
             if (data != '') {
                 var element = data.split("@#");
