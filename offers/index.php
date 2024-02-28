@@ -89,8 +89,28 @@ if(!empty($json_decode_bank['offers'])){
         echo "<tr><td class='".$textclas."'>".$value['PolicyName']."</td><td>".$value['TotalEligibleIncome']."</td><td>".$value['EligibleLoanAmount']."</td><td>".$value['Tenure']."</td><td>".$value['RateOfInterest']."</td><td>".$value['MonthlyEMI']."</td><td>".$input_checkbox."</td></tr>";
         }
 }else{
+
+    
     echo "<tr><td colspan=''>".$value['message']."</td></tr>";
 }
 
 echo "</table>";
+
+$qry1 = "select * from crm_masters where crm_masters_code_id = 10 and is_active = 1 ";
+    $res = mysqli_query($Conn1, $qry1) or die("Error: " . mysqli_error($Conn1));
+    $recordcount = mysqli_num_rows($res); 
+    if ($recordcount > 0) {
+        $record = 0;
+        while ($exe_form = mysqli_fetch_array($res)) {
+            $record++;
+            $disablcls = '';
+            $textclas = '';
+            if(in_array($exe_form['id'],$createdApplications)){
+                $disablcls = 'checked disabled';
+                $textclas = 'green bold';
+            }
+            $data_bnk[] = '<input type ="checkbox" style="position: unset !important;" class="check_bank" name = "check_bank[]" id = "check_bank_'.$exe_form['id'].'" value ="'.$exe_form['id'].'" '.$disablcls.'><label class="cursor '.$textclas.'" for="check_bank_'.$exe_form['id'].'">'.$exe_form['value'].'</label>&nbsp;&nbsp;&nbsp;&nbsp;';
+        }
+    // echo implode($data_bnk);
+    }
 ?>
