@@ -94,7 +94,7 @@ if(!empty($json_decode_bank['offers'])){
     echo "<tr><td colspan=''>".$value['message']."</td></tr>";
 }
 
-echo "</table>";
+echo "</table> <br><br><br>";
 
 $qry1 = "select * from crm_masters where crm_masters_code_id = 10 and is_active = 1 ";
     $res = mysqli_query($Conn1, $qry1) or die("Error: " . mysqli_error($Conn1));
